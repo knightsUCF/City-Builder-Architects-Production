@@ -42,3 +42,39 @@ public class MobileControls : MonoBehaviour {
 // https://www.youtube.com/watch?v=0G4vcH9N0gc
 
 
+/* typical two finger rotation
+
+var rotating: boolean;
+var startVector: Vector2;
+var rotGestureWidth: float;
+var rotAngleMinimum: float;
+ 
+function Update () {
+    if (Input.touchCount == 2) {
+        if (!rotating) {
+            startVector = Input.GetTouch(1).position - Input.GetTouch(0).position;
+            rotating = startVector.sqrMagnitude > rotGestureWidth * rotGestureWidth;
+        } else {
+            var currVector = Input.GetTouch(1).position - Input.GetTouch(0).position;
+            var angleOffset = Vector2.Angle(startVector, currVector);
+            var LR = Vector3.Cross(startVector, currVector);
+           
+            if (angleOffset > rotAngleMinimum) {
+                if (LR.z > 0) {
+                    // Anticlockwise turn equal to angleOffset.
+                } else if (LR.z < 0) {
+                    // Clockwise turn equal to angleOffset.
+                }
+            }
+           
+        }
+       
+    } else {
+        rotating = false;
+    }
+}
+
+// https://forum.unity.com/threads/rotation-gesture.87308/
+*/
+
+
