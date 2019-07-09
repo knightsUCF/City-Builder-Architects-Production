@@ -37,3 +37,10 @@
 - Score
 - SFX
 - Apple / Android publishing guidelines
+
+
+# Art
+
+Takes care of all models: https://sketchfab.com/3d-models/voxel-city-d6a64ed19ee842ac8a4f4e4c1fef293b
+
+
