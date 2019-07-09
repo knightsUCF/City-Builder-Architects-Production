@@ -75,6 +75,46 @@ function Update () {
 }
 
 // https://forum.unity.com/threads/rotation-gesture.87308/
+
+// more readable, does this include the fix right before this post?
+
+/// Flag set to true if the user currently makes an rotation gesture, otherwise false
+    private bool rotating = false;
+    /// The squared rotation width determining an rotation
+    public const float TOUCH_ROTATION_WIDTH = 1; // Always
+    /// The threshold in angles which must be exceeded so a touch rotation is recogniced as one
+    public const float TOUCH_ROTATION_MINIMUM = 1;
+    /// Start vector of the current rotation
+    Vector2 startVector = Vector2.zero;
+ 
+    /// Processes input for touch rotation, only the first two touches are used
+    private void TouchRotation (){
+        if (Input.touchCount == 2) {
+            if (!rotating) {
+                startVector = Input.touches [1].position - Input.touches [0].position;
+                rotating = startVector.sqrMagnitude > TOUCH_ROTATION_WIDTH;
+            } else {
+                Vector2 currVector = Input.touches [1].position - Input.touches [0].position;
+                float angleOffset = Vector2.Angle(startVector, currVector);
+ 
+                if (angleOffset > TOUCH_ROTATION_MINIMUM) {
+                    Vector3 LR = Vector3.Cross(startVector, currVector); // z > 0 left rotation, z < 0 right rotation
+ 
+                    if(LR.z > 0)
+                        mouseLook.y += angleOffset;
+                    else if(LR.z < 0)
+                        mouseLook.y -= angleOffset;
+                 
+                    mouseLook.y = Mathf.Clamp (mouseLook.y, 0, 180F); // Clamp looking down and up
+ 
+                    GameController.Instance.mainCamera.transform.localRotation = Quaternion.AngleAxis (-mouseLook.y, Vector3.right);
+                    startVector = currVector;
+                }
+            }
+        } else
+            rotating = false;
+    }
+    
 */
 
 
