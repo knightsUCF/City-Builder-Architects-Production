@@ -15,6 +15,7 @@ public class ButtonHandler : MonoBehaviour
     AudioSource audio;
 
     private EventManager events;
+    private Build build;
 
     // drag in deactivated buttons
     public GameObject confirmButton;
@@ -27,6 +28,7 @@ public class ButtonHandler : MonoBehaviour
     void Awake()
     {
         events = FindObjectOfType<EventManager>();
+        build = FindObjectOfType<Build>();
     }
 
     
@@ -41,6 +43,8 @@ public class ButtonHandler : MonoBehaviour
 
     public void OnBuildClick()
     {
+        build.doneBuilding = false;
+        build.haveWePlacedFirstBuildingStage = false;
         audio.PlayOneShot(select, volume);
         confirmButton.SetActive(toggle);
         cancelButton.SetActive(toggle);
@@ -60,12 +64,18 @@ public class ButtonHandler : MonoBehaviour
 
 
 
+    // cancels the building cycle routine
+
     public void OnCancelClick()
     {
+        build.DestroyBuilding();
         audio.PlayOneShot(select, volume);
+        // events.EventEndBuildingCycleRoutine();
         confirmButton.SetActive(false);
         cancelButton.SetActive(false);
         toggle = true;
+        
+        
     }
 
 
