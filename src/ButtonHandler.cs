@@ -3,53 +3,71 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-// use: if (Data.buttonSelection == Data.ButtonSelection.BlueCube)
-
-// best tutorial on events: http://www.theappguruz.com/blog/using-delegates-and-events-in-unity
 
 
 
-
-public class ButtonHandler : MonoBehaviour // does this need to be a singleton?
+public class ButtonHandler : MonoBehaviour
 {
 
+    float volume = 1.0F;
+    
+    public AudioClip select;
+    AudioSource audio;
 
-    public delegate void SkyscraperButtonClick();
-    public static event SkyscraperButtonClick SkyscraperOptionClick;
+    private EventManager events;
 
-    public delegate void HouseButtonClick();
-    public static event HouseButtonClick HouseOptionClick;
+    // drag in deactivated buttons
+    public GameObject confirmButton;
+    public GameObject cancelButton;
 
-    public delegate void RoadButtonClick();
-    public static event RoadButtonClick RoadOptionClick;
-
+    bool toggle = true;
 
 
 
-
-    // attach this to the button
-
-    public void OnClickBuildSkyscraperOption()
+    void Awake()
     {
-        Data.structureSelection = Data.StructureSelection.Skyscraper1;
-        SkyscraperOptionClick();
+        events = FindObjectOfType<EventManager>();
     }
-
-
-    public void OnClickBuildHouseOption()
-    {
-        HouseOptionClick();
-        Data.structureSelection = Data.StructureSelection.House;
-    }
-
-
-    public void OnClickBuildRoadOption()
-    {
-        RoadOptionClick();
-        Data.structureSelection = Data.StructureSelection.Road;
-    }
-
 
     
-}
 
+
+    void Start()
+    {
+        audio = GetComponent<AudioSource>();
+    }
+
+
+
+    public void OnBuildClick()
+    {
+        audio.PlayOneShot(select, volume);
+        confirmButton.SetActive(toggle);
+        cancelButton.SetActive(toggle);
+        toggle = !toggle;
+    }
+
+
+
+    public void OnConfirmClick()
+    {
+        audio.PlayOneShot(select, volume);
+        events.EventEndBuilding();
+        confirmButton.SetActive(false);
+        cancelButton.SetActive(false);
+        toggle = true;
+    }
+
+
+
+    public void OnCancelClick()
+    {
+        audio.PlayOneShot(select, volume);
+        confirmButton.SetActive(false);
+        cancelButton.SetActive(false);
+        toggle = true;
+    }
+
+
+
+}
