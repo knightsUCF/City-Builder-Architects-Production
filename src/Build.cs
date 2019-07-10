@@ -11,7 +11,49 @@ okay, so we want to place an object, on a grid [ X ]
 
 drag the object around [ X ]
 
-finalize the object [  ]
+finalize the object [ X ]
+
+
+
+So now we want to create a small and simple build process
+
+
+- every time the user clicks on the build icon (other than in progress build) we want to generate a new cube (build routine)
+
+- once the user presses the finalization check we set the cube
+
+- the checkmark and x will appear at all times when we are dragging the cube around
+
+- once we press x we will destroy the GO cube game object
+
+- once the process is working, the build icon will eventually be a house icon, which will be a child of the build icon
+
+
+
+
+
+Okay, so two major things:
+
+
+1) When we click on the build icon, we want to start the build routine cycle
+2) If we click on the x, then we want to end the build routine cycle
+
+What happens when the player presses the build routine cycle right after already pressing the build button?
+
+Need a separate state button, so we only generate 1 structure at the beginning of the build routine, and then set a progress state to unfinished build routine,
+so we can only create a new building once the build routine is finished
+
+bool buildCycleRoutineFinished = false;
+
+if the button is pressed we will send out an event which ends the current buildCycleRoutineFinished
+
+
+
+Nitty Gritty To Do
+
+
+1) when clicking the build icon intialize the state of the start of the build routine cycle
+2) If we click cancel, create a listener in this Build script to destroy the game object, and set the build routine cycle to a fresh start
 
 
 
@@ -30,10 +72,20 @@ public class Build : MonoBehaviour
     GameObject GO;
     Touch touch;
     Vector3 result;
-    bool haveWePlacedFirstBuildingStage = false;
 
-    bool doneBuilding = false; // rewrite
+    // the two gatekeepers to starting a new building routine cycle
+    public bool haveWePlacedFirstBuildingStage = false;
+    public bool doneBuilding = true; // set to true because normal state is not building (for moving the camera around)
 
+
+    // public bool newBuildCycleRoutine = false;
+
+    // so to keep things simple, let's have the build button spawn a new object, then we will worry about concurrent objects, one thing at time
+
+    // so the two variables to reset are: doneBuilding = false (which might have to be adjusted later for concurrent buildings), and haveWePlaceFirstBuildingStage t0 false also
+
+
+    // so that works, the last thing we need to do is prevent building another building if we are still not done building
 
 
     void OnEnable ()
@@ -54,6 +106,7 @@ public class Build : MonoBehaviour
     }
 
 
+    /*
     void BuildingRoutine()
     {
         if (!doneBuilding)
@@ -61,6 +114,14 @@ public class Build : MonoBehaviour
             if (!haveWePlacedFirstBuildingStage) SetStartingPlacement();
             DragStructureAround();
         }
+    }
+    */
+
+
+    void BuildingRoutine()
+    {
+        if (!haveWePlacedFirstBuildingStage) SetStartingPlacement();
+        if (!doneBuilding) DragStructureAround();
     }
 
 
@@ -74,6 +135,8 @@ public class Build : MonoBehaviour
 
     void SetStartingPlacement()
     {
+        doneBuilding = false;
+
         if (Input.touchCount > 0)
         {
             touch = Input.GetTouch(0);
@@ -125,6 +188,12 @@ public class Build : MonoBehaviour
                 GO.transform.position = gridPos;
             }
         }
+    }
+
+
+    public void DestroyBuilding()
+    {
+        Destroy(GO);
     }
 
 }
