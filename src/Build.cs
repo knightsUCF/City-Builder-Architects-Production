@@ -9,7 +9,7 @@ using UnityEngine;
 
 okay, so we want to place an object, on a grid [ X ]
 
-drag the object around [  ]
+drag the object around [ X ]
 
 finalize the object [  ]
 
@@ -30,14 +30,44 @@ public class Build : MonoBehaviour
     GameObject GO;
     Touch touch;
     Vector3 result;
-    bool haveWeBuiltAlready = false;
+    bool haveWePlacedFirstBuildingStage = false;
+
+    bool doneBuilding = false; // rewrite
+
+
+
+    void OnEnable ()
+    {
+        EventManager.endBuilding += FinalizeBuilding;
+    }
+
+    void OnDisable()
+    {
+        EventManager.endBuilding -= FinalizeBuilding;
+    }
+
+
+
+    void FinalizeBuilding()
+    {
+        doneBuilding = true;
+    }
+
+
+    void BuildingRoutine()
+    {
+        if (!doneBuilding)
+        {
+            if (!haveWePlacedFirstBuildingStage) SetStartingPlacement();
+            DragStructureAround();
+        }
+    }
 
 
 
     void Update()
     {
-        if (!haveWeBuiltAlready) SetStartingPlacement();
-        DragStructureAround();
+        BuildingRoutine();
     }
 
 
@@ -53,7 +83,7 @@ public class Build : MonoBehaviour
                 if (Physics.Raycast(ray, out hitInfo)) 
                 {
                     PlaceStructure(hitInfo.point, particle);
-                    haveWeBuiltAlready = true;
+                    haveWePlacedFirstBuildingStage = true;
                 }
             }
         }
@@ -89,14 +119,10 @@ public class Build : MonoBehaviour
         {
             touch = Input.GetTouch(0);
             ray = Camera.main.ScreenPointToRay(touch.position);
-            if (touch.phase == TouchPhase.Began)
+            if (Physics.Raycast(ray, out hitInfo))
             {
-                if (Physics.Raycast(ray, out hitInfo))
-                {
-                    var gridPos = GetNearestPointOnGrid(hitInfo.point);
-                    GO.transform.position = gridPos;
-                    // IsBuildingAreaFree();
-                }
+                var gridPos = GetNearestPointOnGrid(hitInfo.point);
+                GO.transform.position = gridPos;
             }
         }
     }
