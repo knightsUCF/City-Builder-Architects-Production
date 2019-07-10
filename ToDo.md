@@ -14,8 +14,18 @@
 - we will also want some way later to adjust the camera while we are building, so don't let the building move around, while we are moving the camera around, one crude way is to provide a camera toggle when we are building, there might be a better way
 
 
-08 / 10 
+07 / 11
 
 - fine tune build code
 - allow for placing different colored cubes
 
+
+07 / 12
+
+- build roads, we want to build a few roads concurrently, so will need separate ruleset, perhaps even make a separate BuildRoads class to decouple code and keep things simple, or until figure out where the difference between the two lies, and toggle that for road building
+
+
+07 / 13
+
+- impose build constraints with colliders
+- we can only build cubes within some x distance of a road 
