@@ -67,6 +67,14 @@ public class Build : MonoBehaviour
 
     public float gridSize = 10.0f;
     public GameObject particle;
+
+    public GameObject home; // will add start stage later, or perhaps a custom prefab which "grows", but still need outline prefab...
+    public GameObject road;
+
+    private GameObject buildSelection;
+
+
+
     RaycastHit hitInfo;
     Ray ray;
     GameObject GO;
@@ -132,6 +140,13 @@ public class Build : MonoBehaviour
     }
 
 
+    void Start()
+    {
+        // bug -- we are instantiating an object right away 
+
+        buildSelection = home;
+    }
+
 
     void Update()
     {
@@ -146,6 +161,17 @@ public class Build : MonoBehaviour
 
 
 
+        if (Data.structureSelection == Data.StructureSelection.house)
+        {
+            buildSelection = home;
+        }
+
+        if (Data.structureSelection == Data.StructureSelection.road)
+        {
+            buildSelection = road;
+        }
+
+
         #if UNITY_ANDROID
 
         if (Input.touchCount > 0)
@@ -156,7 +182,7 @@ public class Build : MonoBehaviour
             {
                 if (Physics.Raycast(ray, out hitInfo)) 
                 {
-                    PlaceStructure(hitInfo.point, particle);
+                    PlaceStructure(hitInfo.point, buildSelection);
                     haveWePlacedFirstBuildingStage = true;
                 }
             }
@@ -165,13 +191,12 @@ public class Build : MonoBehaviour
         #endif
 
 
-
         #if UNITY_EDITOR
 
         ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         if (Physics.Raycast(ray, out hitInfo))
         {
-            PlaceStructure(hitInfo.point, particle);
+            PlaceStructure(hitInfo.point, buildSelection);
             haveWePlacedFirstBuildingStage = true;
         }
 
@@ -183,7 +208,7 @@ public class Build : MonoBehaviour
         ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         if (Physics.Raycast(ray, out hitInfo))
         {
-            PlaceStructure(hitInfo.point, particle);
+            PlaceStructure(hitInfo.point, buildSelection);
             haveWePlacedFirstBuildingStage = true;
         }
 
