@@ -25,7 +25,23 @@
 - build roads, we want to build a few roads concurrently, so will need separate ruleset, perhaps even make a separate BuildRoads class to decouple code and keep things simple, or until figure out where the difference between the two lies, and toggle that for road building
 
 
-07 / 13
+07 / 15
 
 - impose build constraints with colliders
-- we can only build cubes within some x distance of a road 
+- we can only build cubes within some x distance of a road
+
+
+07 / 16
+
+- create smart roads for interconnecting
+- need curves, and intersections
+- populate traffic
+
+07 / 17
+
+- revise what else is needed up until this point
+
+07 / 18
+
+- what is needed to finish building roads, houses, with smart restrictions, and self populating traffic
+
