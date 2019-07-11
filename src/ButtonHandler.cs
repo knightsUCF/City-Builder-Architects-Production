@@ -52,15 +52,14 @@ public class ButtonHandler : MonoBehaviour
 
     public void OnBuildClick()
     {
-        build.doneBuilding = false;
-        build.haveWePlacedFirstBuildingStage = false;
+        
         audio.PlayOneShot(select, volume);
         // confirmButton.SetActive(toggle);
         // cancelButton.SetActive(toggle);
         roadButton.SetActive(toggle);
         homeButton.SetActive(toggle);
         toggle = !toggle;
-        
+
         if (confirmActive == true && cancelActive == true)
         {
             confirmButton.SetActive(false);
@@ -71,6 +70,16 @@ public class ButtonHandler : MonoBehaviour
 
     public void OnHomeClick()
     {
+        audio.PlayOneShot(select, volume);
+
+        // these two lines begin a new building cycle
+        build.doneBuilding = false;
+        build.haveWePlacedFirstBuildingStage = false;
+
+        // here we will also pass the object type, or set the object type in the data.cs class
+        Data.structureSelection = Data.StructureSelection.house;
+
+
         // toggle = true;
         confirmButton.SetActive(true);
         cancelButton.SetActive(true);
@@ -84,6 +93,16 @@ public class ButtonHandler : MonoBehaviour
 
     public void OnRoadClick()
     {
+        audio.PlayOneShot(select, volume);
+
+        // these two lines begin a new building cycle
+        build.doneBuilding = false;
+        build.haveWePlacedFirstBuildingStage = false;
+
+        // here we will also pass the object type, or set the object type in the data.cs class
+        Data.structureSelection = Data.StructureSelection.road;
+
+
         // toggle = true;
         confirmButton.SetActive(true);
         cancelButton.SetActive(true);
