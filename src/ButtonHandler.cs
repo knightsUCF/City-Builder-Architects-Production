@@ -21,7 +21,17 @@ public class ButtonHandler : MonoBehaviour
     public GameObject confirmButton;
     public GameObject cancelButton;
 
+    public GameObject homeButton;
+    public GameObject roadButton;
+
     bool toggle = true;
+
+
+
+    bool homeActive = false;
+    bool roadActive = false;
+    bool confirmActive = false;
+    bool cancelActive = false;
 
 
 
@@ -32,7 +42,6 @@ public class ButtonHandler : MonoBehaviour
     }
 
     
-
 
     void Start()
     {
@@ -46,9 +55,42 @@ public class ButtonHandler : MonoBehaviour
         build.doneBuilding = false;
         build.haveWePlacedFirstBuildingStage = false;
         audio.PlayOneShot(select, volume);
-        confirmButton.SetActive(toggle);
-        cancelButton.SetActive(toggle);
+        // confirmButton.SetActive(toggle);
+        // cancelButton.SetActive(toggle);
+        roadButton.SetActive(toggle);
+        homeButton.SetActive(toggle);
         toggle = !toggle;
+        
+        if (confirmActive == true && cancelActive == true)
+        {
+            confirmButton.SetActive(false);
+            cancelButton.SetActive(false);
+        }
+    }
+
+
+    public void OnHomeClick()
+    {
+        // toggle = true;
+        confirmButton.SetActive(true);
+        cancelButton.SetActive(true);
+        // toggle = !toggle;
+        homeActive = true;
+        confirmActive = true;
+        cancelActive = true;
+        
+    }
+
+
+    public void OnRoadClick()
+    {
+        // toggle = true;
+        confirmButton.SetActive(true);
+        cancelButton.SetActive(true);
+        // toggle = !toggle;
+        roadActive = true;
+        confirmActive = true;
+        cancelActive = true;
     }
 
 
@@ -77,6 +119,9 @@ public class ButtonHandler : MonoBehaviour
         
         
     }
+
+
+
 
 
 
