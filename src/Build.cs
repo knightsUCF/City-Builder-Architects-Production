@@ -88,6 +88,9 @@ public class Build : MonoBehaviour
     // so that works, the last thing we need to do is prevent building another building if we are still not done building
 
 
+
+
+
     void OnEnable ()
     {
         EventManager.endBuilding += FinalizeBuilding;
@@ -118,10 +121,14 @@ public class Build : MonoBehaviour
     */
 
 
+    // so for the camera drag functionality for now, let's just activate that functionality
+    // if we detect that both haveWePlacedFirstBuildingStage, and doneBuilding are both true
+
+
     void BuildingRoutine()
     {
         if (!haveWePlacedFirstBuildingStage) SetStartingPlacement();
-        if (!doneBuilding) DragStructureAround();
+        if (!doneBuilding && GO != null) DragStructureAround(); // hacky solution for destroyed game object but works for now
     }
 
 
@@ -137,6 +144,10 @@ public class Build : MonoBehaviour
     {
         doneBuilding = false;
 
+
+
+        #if UNITY_ANDROID
+
         if (Input.touchCount > 0)
         {
             touch = Input.GetTouch(0);
@@ -150,6 +161,33 @@ public class Build : MonoBehaviour
                 }
             }
         }
+
+        #endif
+
+
+
+        #if UNITY_EDITOR
+
+        ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        if (Physics.Raycast(ray, out hitInfo))
+        {
+            PlaceStructure(hitInfo.point, particle);
+            haveWePlacedFirstBuildingStage = true;
+        }
+
+        #endif
+
+
+        #if UNITY_STANDALONE_OSX
+
+        ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        if (Physics.Raycast(ray, out hitInfo))
+        {
+            PlaceStructure(hitInfo.point, particle);
+            haveWePlacedFirstBuildingStage = true;
+        }
+
+        #endif
     }
 
 
@@ -178,6 +216,9 @@ public class Build : MonoBehaviour
 
     void DragStructureAround()
     {
+
+        #if UNITY_ANDROID
+
         if (Input.touchCount > 0)
         {
             touch = Input.GetTouch(0);
@@ -188,6 +229,64 @@ public class Build : MonoBehaviour
                 GO.transform.position = gridPos;
             }
         }
+
+        #endif
+
+
+        #if UNITY_EDITOR
+
+        ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+
+        if (Physics.Raycast(ray, out hitInfo))
+        {
+            var gridPos = GetNearestPointOnGrid(hitInfo.point);
+            GO.transform.position = gridPos;
+        }
+
+        // for desktop we finalize building by clicking - we could also tap for the mobile version
+
+        if (Input.GetMouseButtonDown(0))
+        {
+            FinalizeBuilding();
+        }
+
+        // likewise we want to cancel the building with the right click
+
+        if (Input.GetMouseButtonDown(1))
+        {
+            // DestroyBuilding();
+        } 
+
+        #endif
+
+
+        #if UNITY_STANDALONE_OSX
+
+        ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+
+        if (Physics.Raycast(ray, out hitInfo))
+        {
+            var gridPos = GetNearestPointOnGrid(hitInfo.point);
+            GO.transform.position = gridPos;
+        }
+
+        // for desktop we finalize building by clicking - we could also tap for the mobile version
+
+        if (Input.GetMouseButtonDown(0))
+        {
+            FinalizeBuilding();
+        }
+
+        // likewise we want to cancel the building with the right click
+
+        if (Input.GetMouseButtonDown(1))
+        {
+            // DestroyBuilding();
+        }
+
+        #endif
+
+       
     }
 
 
