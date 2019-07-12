@@ -24,3 +24,12 @@ The games that left an impression on me as a child all had a strong soul:
 - Mortal Kombat
 
 
+XCOM did the same thing with the "filled" design logo!
+
+https://imgur.com/a/hKZBHB8
+
+
+
+Rokenbok
+
+https://imgur.com/a/sTssEYS
