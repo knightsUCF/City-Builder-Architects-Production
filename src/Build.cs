@@ -73,6 +73,13 @@ public class Build : MonoBehaviour
         startedBuild = false;
     }
 
+    void CancelBuildingNonMobile()
+    {
+        Destroy(GO);
+        allowBuild = false;
+        startedBuild = false;
+    }
+
 
     // a second messy copy of FinalizeBuilding() since we don't have access to the game object in ButtonHandler.cs, might be a cleaner solution here
     public void FinalizeBuildingOnConfirm()
@@ -134,6 +141,17 @@ public class Build : MonoBehaviour
 
             if (!doneBuilding && GO != null) DragStructureAround();
         }
+
+        // just for non mobile - cancel building with right click
+
+        if (Input.GetMouseButtonDown(1))
+        {
+            if (GO != null)
+            {
+                CancelBuildingNonMobile();
+            }
+        }
+        
         
         #endif
 
@@ -369,4 +387,3 @@ public class Build : MonoBehaviour
     }
 
 }
-
