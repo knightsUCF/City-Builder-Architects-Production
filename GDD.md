@@ -40,3 +40,6 @@ Rokenbok
 
 https://imgur.com/a/sTssEYS
 
+
+
+In XCOM the game decided whether to give you more or less funding based on progress
