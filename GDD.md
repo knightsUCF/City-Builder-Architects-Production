@@ -15,4 +15,12 @@ Make the most innovative city builder, and the one that feels most like a game.
 
 Study box cover art of classic games from the 90s.
 
+The games that left an impression on me as a child all had a strong soul:
+
+- XCOM: Enemy Unknown 1994
+- Polanie
+- Three Vikings
+- Doom
+- Mortal Kombat
+
 
