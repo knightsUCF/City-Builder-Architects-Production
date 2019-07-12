@@ -10,3 +10,9 @@ Collect physical bouncing blocks as resources, yellow - energy, blue - ?, green 
 
 
 Have a nice grid glowing outline of the powergrid and water systems in one of the preview screenshots on the app store. 
+
+Make the most innovative city builder, and the one that feels most like a game. 
+
+Study box cover art of classic games from the 90s.
+
+
