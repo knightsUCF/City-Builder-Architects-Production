@@ -73,20 +73,27 @@ public class ButtonHandler : MonoBehaviour
         audio.PlayOneShot(select, volume);
 
         // these two lines begin a new building cycle
-        build.doneBuilding = false;
-        build.haveWePlacedFirstBuildingStage = false;
+        // build.doneBuilding = false;
+        // build.haveWePlacedFirstBuildingStage = false;
 
         // here we will also pass the object type, or set the object type in the data.cs class
         Data.structureSelection = Data.StructureSelection.house;
-
+        build.allowBuild = true;
 
         // toggle = true;
+
+        #if UNITY_ANDROID
+
         confirmButton.SetActive(true);
         cancelButton.SetActive(true);
-        // toggle = !toggle;
-        homeActive = true;
+
         confirmActive = true;
         cancelActive = true;
+
+        #endif
+
+        // toggle = !toggle;
+        homeActive = true;
         
     }
 
@@ -96,20 +103,29 @@ public class ButtonHandler : MonoBehaviour
         audio.PlayOneShot(select, volume);
 
         // these two lines begin a new building cycle
-        build.doneBuilding = false;
-        build.haveWePlacedFirstBuildingStage = false;
+        // build.doneBuilding = false;
+        // build.haveWePlacedFirstBuildingStage = false;
 
         // here we will also pass the object type, or set the object type in the data.cs class
         Data.structureSelection = Data.StructureSelection.road;
+        build.allowBuild = true;
 
 
         // toggle = true;
+
+        #if UNITY_ANDROID
+
         confirmButton.SetActive(true);
         cancelButton.SetActive(true);
-        // toggle = !toggle;
-        roadActive = true;
+
         confirmActive = true;
         cancelActive = true;
+
+        #endif
+
+        // toggle = !toggle;
+        roadActive = true;
+        
     }
 
 
@@ -117,10 +133,21 @@ public class ButtonHandler : MonoBehaviour
     public void OnConfirmClick()
     {
         audio.PlayOneShot(select, volume);
-        events.EventEndBuilding();
+        // events.EventEndBuilding();
+        // build.FinalizeBuilding();
         confirmButton.SetActive(false);
         cancelButton.SetActive(false);
         toggle = true;
+        // build.allowBuild = false;
+        
+        // not sure if this is breaking the mobile build...
+        build.FinalizeBuildingOnConfirm();
+        build.allowBuild = false; // probably can go in the above build.FnalizedBuildingOnConfirm() scope
+
+        roadButton.SetActive(false);
+        homeButton.SetActive(false);
+
+
     }
 
 
@@ -135,6 +162,9 @@ public class ButtonHandler : MonoBehaviour
         confirmButton.SetActive(false);
         cancelButton.SetActive(false);
         toggle = true;
+
+        roadButton.SetActive(false);
+        homeButton.SetActive(false);
         
         
     }
