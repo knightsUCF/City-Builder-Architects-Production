@@ -163,6 +163,12 @@ public class ButtonHandler : MonoBehaviour
         cancelButton.SetActive(false);
         toggle = true;
 
+        // some are needed for android, can probably take out two
+        build.allowBuild = false; // might not need this
+        build.startedBuild = false; // might not need this
+        build.haveWePlacedFirstBuildingStage = false;
+        build.doneBuilding = false;
+
         roadButton.SetActive(false);
         homeButton.SetActive(false);
         
