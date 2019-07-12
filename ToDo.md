@@ -18,6 +18,9 @@
 
 - fine tune build code
 - allow for placing different colored cubes
+- slight bug: when we collapse the build menu, the cube gets left behind, still draggable with no confirm
+  so the solution would be to get the state of the building, and check and modify this when we toggle the build button
+  not sure yet how to handle this anyway
 
 
 07 / 12
