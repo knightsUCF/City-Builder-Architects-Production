@@ -1,104 +1,45 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 
 
-
-/*
-
-okay, so we want to place an object, on a grid [ X ]
-
-drag the object around [ X ]
-
-finalize the object [ X ]
-
-
-
-So now we want to create a small and simple build process
-
-
-- every time the user clicks on the build icon (other than in progress build) we want to generate a new cube (build routine)
-
-- once the user presses the finalization check we set the cube
-
-- the checkmark and x will appear at all times when we are dragging the cube around
-
-- once we press x we will destroy the GO cube game object
-
-- once the process is working, the build icon will eventually be a house icon, which will be a child of the build icon
-
-
-
-
-
-Okay, so two major things:
-
-
-1) When we click on the build icon, we want to start the build routine cycle
-2) If we click on the x, then we want to end the build routine cycle
-
-What happens when the player presses the build routine cycle right after already pressing the build button?
-
-Need a separate state button, so we only generate 1 structure at the beginning of the build routine, and then set a progress state to unfinished build routine,
-so we can only create a new building once the build routine is finished
-
-bool buildCycleRoutineFinished = false;
-
-if the button is pressed we will send out an event which ends the current buildCycleRoutineFinished
-
-
-
-Nitty Gritty To Do
-
-
-1) when clicking the build icon intialize the state of the start of the build routine cycle
-2) If we click cancel, create a listener in this Build script to destroy the game object, and set the build routine cycle to a fresh start
-
-
-
-
-
-*/
 
 
 public class Build : MonoBehaviour
 {
 
     public float gridSize = 10.0f;
-    public GameObject particle;
 
-    public GameObject home; // will add start stage later, or perhaps a custom prefab which "grows", but still need outline prefab...
+    public GameObject home;
     public GameObject road;
 
     private GameObject buildSelection;
+    private GameObject GO;
+    private GameObject finalGO;
 
-
-
-    RaycastHit hitInfo;
     Ray ray;
-    GameObject GO;
+    RaycastHit hitInfo;
     Touch touch;
     Vector3 result;
 
-    // the two gatekeepers to starting a new building routine cycle
+    public Text logText;
+
+
+
     public bool haveWePlacedFirstBuildingStage = false;
     public bool doneBuilding = true; // set to true because normal state is not building (for moving the camera around)
 
+    public bool allowBuild = false;
+    public bool allowDrag = false;
+    public bool finalized = false;
 
-    // public bool newBuildCycleRoutine = false;
-
-    // so to keep things simple, let's have the build button spawn a new object, then we will worry about concurrent objects, one thing at time
-
-    // so the two variables to reset are: doneBuilding = false (which might have to be adjusted later for concurrent buildings), and haveWePlaceFirstBuildingStage t0 false also
-
-
-    // so that works, the last thing we need to do is prevent building another building if we are still not done building
+    public bool startedBuild = false;
 
 
 
-
-
+    /*
     void OnEnable ()
     {
         EventManager.endBuilding += FinalizeBuilding;
@@ -108,43 +49,111 @@ public class Build : MonoBehaviour
     {
         EventManager.endBuilding -= FinalizeBuilding;
     }
+    */
 
-
-
-    void FinalizeBuilding()
-    {
-        doneBuilding = true;
-    }
 
 
     /*
-    void BuildingRoutine()
+    public void FinalizeBuilding()
     {
-        if (!doneBuilding)
-        {
-            if (!haveWePlacedFirstBuildingStage) SetStartingPlacement();
-            DragStructureAround();
-        }
+        // doneBuilding = true;
+        finalized = true;
     }
     */
 
 
-    // so for the camera drag functionality for now, let's just activate that functionality
-    // if we detect that both haveWePlacedFirstBuildingStage, and doneBuilding are both true
-
-
-    void BuildingRoutine()
+    void FinalizeBuilding(GameObject gameObject)
     {
-        if (!haveWePlacedFirstBuildingStage) SetStartingPlacement();
-        if (!doneBuilding && GO != null) DragStructureAround(); // hacky solution for destroyed game object but works for now
+        Vector3 finalizedPosition; // not to be confused with finalPosition
+        finalizedPosition = GO.transform.position;
+        Destroy(GO);
+        finalGO = (GameObject)Instantiate(gameObject, finalizedPosition, Quaternion.identity, this.transform);
+        // isLastObjectInProgress = false; // perhaps a better name for this, we are just resetting the queue
+        allowBuild = false;
+        startedBuild = false;
     }
+
+
+    // a second messy copy of FinalizeBuilding() since we don't have access to the game object in ButtonHandler.cs, might be a cleaner solution here
+    public void FinalizeBuildingOnConfirm()
+    {
+
+        if (Data.structureSelection == Data.StructureSelection.house)
+        {
+            buildSelection = home;
+        }
+
+        if (Data.structureSelection == Data.StructureSelection.road)
+        {
+            buildSelection = road;
+        }
+
+        Vector3 finalizedPosition; // not to be confused with finalPosition
+        finalizedPosition = GO.transform.position;
+        Destroy(GO);
+        finalGO = (GameObject)Instantiate(buildSelection, finalizedPosition, Quaternion.identity, this.transform);
+        // isLastObjectInProgress = false; // perhaps a better name for this, we are just resetting the queue
+        allowBuild = false;
+        startedBuild = false;
+
+
+        // for android / mobile
+
+        haveWePlacedFirstBuildingStage = false;
+        doneBuilding = false;
+
+
+        // also reset the selection to none (include this in FinalizeBuilding() also if works)
+
+        //  Data.structureSelection = Data.StructureSelection.none;
+    }
+
+    
+
+
+    void BuildingRoutine() 
+    {
+        // if (!haveWePlacedFirstBuildingStage) SetStartingPlacement();
+        // if (!doneBuilding && GO != null) DragStructureAround(); // hacky solution for destroyed game object but works for now
+        
+
+        // checking for object not null in case we finalize the building with the check mark in the desktop version
+        // since clicking finalizes building, and afterwards there is nothing to finalize by the checkmark
+        // potentially can be fixed by taking away the checkmark confirmation option in both the editor and desktop version
+
+
+        
+        #if UNITY_EDITOR || UNITY_STANDALONE_OSX
+
+        if (allowBuild) 
+        {
+            if (!startedBuild)
+            {
+                SetStartingPlacement();
+            }
+
+            if (!doneBuilding && GO != null) DragStructureAround();
+        }
+        
+        #endif
+
+
+
+        #if UNITY_ANDROID
+
+
+        if (!haveWePlacedFirstBuildingStage && allowBuild) SetStartingPlacement();
+        if (!doneBuilding && GO != null) DragStructureAround(); // hacky solution for destroyed game object but works for now
+
+        #endif
+
+    }
+
 
 
     void Start()
     {
-        // bug -- we are instantiating an object right away 
-
-        buildSelection = home;
+        buildSelection = home; // we will set to none after the "build right away" bug
     }
 
 
@@ -157,7 +166,14 @@ public class Build : MonoBehaviour
 
     void SetStartingPlacement()
     {
+
+
+        
         doneBuilding = false;
+
+        startedBuild = true;
+
+
 
 
 
@@ -174,24 +190,36 @@ public class Build : MonoBehaviour
 
         #if UNITY_ANDROID
 
-        if (Input.touchCount > 0)
-        {
-            touch = Input.GetTouch(0);
-            ray = Camera.main.ScreenPointToRay(touch.position);
-            if (touch.phase == TouchPhase.Began)
+        // if (GO != null)
+        // {
+            if (Input.touchCount > 0)
             {
-                if (Physics.Raycast(ray, out hitInfo)) 
+                // reaching this scope
+                // logText.text = "reached input touch count scope";
+                // Debug.LogError("reached input touch count scope");
+                touch = Input.GetTouch(0);
+                ray = Camera.main.ScreenPointToRay(touch.position);
+                if (touch.phase == TouchPhase.Began)
                 {
-                    PlaceStructure(hitInfo.point, buildSelection);
-                    haveWePlacedFirstBuildingStage = true;
+                    // logText.text = "touch phase began scope";
+                    // not reaching this scope
+                    if (Physics.Raycast(ray, out hitInfo)) 
+                    {
+                        // logText.text = "Reached PlaceStructure() scope";
+                        // not reaching this scope
+                        PlaceStructure(hitInfo.point, buildSelection);
+                        startedBuild = true;
+                        haveWePlacedFirstBuildingStage = true;
+                    }
                 }
             }
-        }
+        // }
 
         #endif
 
 
         #if UNITY_EDITOR
+
 
         ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         if (Physics.Raycast(ray, out hitInfo))
@@ -242,18 +270,33 @@ public class Build : MonoBehaviour
     void DragStructureAround()
     {
 
+        if (Data.structureSelection == Data.StructureSelection.house)
+        {
+            buildSelection = home;
+        }
+
+        if (Data.structureSelection == Data.StructureSelection.road)
+        {
+            buildSelection = road;
+        }
+
+
+
         #if UNITY_ANDROID
 
-        if (Input.touchCount > 0)
-        {
-            touch = Input.GetTouch(0);
-            ray = Camera.main.ScreenPointToRay(touch.position);
-            if (Physics.Raycast(ray, out hitInfo))
+        // if (GO != null)
+        // {
+            if (Input.touchCount > 0)
             {
-                var gridPos = GetNearestPointOnGrid(hitInfo.point);
-                GO.transform.position = gridPos;
+                touch = Input.GetTouch(0);
+                ray = Camera.main.ScreenPointToRay(touch.position);
+                if (Physics.Raycast(ray, out hitInfo))
+                {
+                    var gridPos = GetNearestPointOnGrid(hitInfo.point);
+                    GO.transform.position = gridPos;
+                }
             }
-        }
+        // }
 
         #endif
 
@@ -272,10 +315,15 @@ public class Build : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0))
         {
-            FinalizeBuilding();
+            FinalizeBuilding(buildSelection); // buildSelection will be replaced with end stage
+
+            // allowBuild = false;
+            // DestroyBuilding(); // ? are we destroying a copy?
         }
 
         // likewise we want to cancel the building with the right click
+
+        // doing this automatically?
 
         if (Input.GetMouseButtonDown(1))
         {
