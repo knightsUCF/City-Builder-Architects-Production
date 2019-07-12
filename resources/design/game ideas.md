@@ -8,3 +8,6 @@ if so can have ships going around port, delivering stuff, and doing other stuff,
 
 4. Graphics are everything to a potential customer!
 
+
+5. Reward cycle, build, get stuff, hire resesearch, manufacture, finance, simple by themselves, but together you get emergent complexity
+
