@@ -29,7 +29,14 @@ XCOM did the same thing with the "filled" design logo!
 https://imgur.com/a/hKZBHB8
 
 
+Nice colors for the grid of XCOM
+
+https://imgur.com/a/q0G7kbc
+
+Use a nice color scheme similar to this
+
 
 Rokenbok
 
 https://imgur.com/a/sTssEYS
+
