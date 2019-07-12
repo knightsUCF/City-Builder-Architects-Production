@@ -1,0 +1,12 @@
+"EYO" - a unique name, maybe some short Japanese name, maybe something that means something, doesn't have to mean anything like Starbucks
+
+Can do a campaign on Fiver. Nothing to lose.
+
+
+If the name is short, the icon logo could be the outline of the words, and inside the buildings, and outside just white, with a nice outline or shine for the app.
+
+
+Collect physical bouncing blocks as resources, yellow - energy, blue - ?, green - money
+
+
+Have a nice grid glowing outline of the powergrid and water systems in one of the preview screenshots on the app store. 
