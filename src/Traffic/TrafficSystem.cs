@@ -6,6 +6,21 @@ using UnityEngine;
 
 public class TrafficSystem : MonoBehaviour
 {
+
+
+    Build build;
+
+
+    Vector2 startJunction;
+    Vector2 endJunction;
+
+
+    void Awake()
+    {
+        build = FindObjectOfType<Build>();
+    }
+
+
     
     public void UpdateTrafficSystem()
     {
@@ -31,7 +46,49 @@ public class TrafficSystem : MonoBehaviour
         // also how will the systme react if we add new roads while the cars are already moving
 
 
+        foreach (KeyValuePair<int, Vector2> value in Data.roadMap)
+        {
+            Debug.Log("key: " + value.Key);
+            Debug.Log("value: " + value.Value);
+        }
+
+
+
+        // so here we are going to update the junction vector segment, by taking the position of the x at 0, up to x at last index
+
+
+
+        // get the key at value 0
+
         
+
+        startJunction = Data.roadMap[0];
+
+
+        Debug.Log("start junction: " + startJunction);
+
+
+        endJunction = Data.roadMap[build.roadTileIndex];
+
+        
+        Debug.Log("end junction: " + endJunction);
+
+
+
+        // the difference in x, (y is constant), is our vector junction
+
+
+        
+
+
+
+
+    
+
+
+
+
+
 
 
 
