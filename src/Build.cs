@@ -16,8 +16,8 @@ public class Build : MonoBehaviour
     public GameObject road;
 
     private GameObject buildSelection;
-    private GameObject GO;
-    private GameObject finalGO;
+    GameObject GO;
+    GameObject finalGO;
 
     Ray ray;
     RaycastHit hitInfo;
@@ -36,6 +36,17 @@ public class Build : MonoBehaviour
     public bool finalized = false;
 
     public bool startedBuild = false;
+
+
+
+    private TrafficSystem trafficSystem;
+
+
+
+    void Awake()
+    {
+        trafficSystem = FindObjectOfType<TrafficSystem>();
+    }
 
 
 
@@ -67,10 +78,29 @@ public class Build : MonoBehaviour
         Vector3 finalizedPosition; // not to be confused with finalPosition
         finalizedPosition = GO.transform.position;
         Destroy(GO);
-        finalGO = (GameObject)Instantiate(gameObject, finalizedPosition, Quaternion.identity, this.transform);
+
+
+        if (gameObject.GetComponentInChildren<IsBuildingAllowed>().allowed == true)
+        {
+            finalGO = (GameObject)Instantiate(gameObject, finalizedPosition, Quaternion.identity, this.transform);
+            finalGO.GetComponentInChildren<IsBuildingAllowed>().finalized = true;
+            allowBuild = false;
+            startedBuild = false;
+            trafficSystem.UpdateTrafficSystem();
+        }
+        
+
+        
+        // Debug.Log("Calling finalize building");
+        // GameObject testGO = Instantiate(gameObject, finalizedPosition, Quaternion.identity, this.transform);
         // isLastObjectInProgress = false; // perhaps a better name for this, we are just resetting the queue
-        allowBuild = false;
-        startedBuild = false;
+
+        // gameObject.finalize = true;
+        
+
+        
+
+        
     }
 
     void CancelBuildingNonMobile()
@@ -82,6 +112,8 @@ public class Build : MonoBehaviour
 
 
     // a second messy copy of FinalizeBuilding() since we don't have access to the game object in ButtonHandler.cs, might be a cleaner solution here
+    
+    /*
     public void FinalizeBuildingOnConfirm()
     {
 
@@ -114,6 +146,7 @@ public class Build : MonoBehaviour
 
         //  Data.structureSelection = Data.StructureSelection.none;
     }
+    */
 
     
 
@@ -155,8 +188,9 @@ public class Build : MonoBehaviour
         
         #endif
 
+        // this was getting double called for some reason... ? need to take this out for now... ? 
 
-
+        /*
         #if UNITY_ANDROID
 
 
@@ -164,6 +198,7 @@ public class Build : MonoBehaviour
         if (!doneBuilding && GO != null) DragStructureAround(); // hacky solution for destroyed game object but works for now
 
         #endif
+        */
 
     }
 
@@ -333,7 +368,10 @@ public class Build : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0))
         {
-            FinalizeBuilding(buildSelection); // buildSelection will be replaced with end stage
+            
+            FinalizeBuilding(buildSelection); 
+            
+            // buildSelection will be replaced with end stage
 
             // allowBuild = false;
             // DestroyBuilding(); // ? are we destroying a copy?
@@ -365,7 +403,8 @@ public class Build : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0))
         {
-            FinalizeBuilding();
+            // not sure if GO is the parameter
+            // FinalizeBuilding(GO); // took this out because might be duplicating
         }
 
         // likewise we want to cancel the building with the right click
