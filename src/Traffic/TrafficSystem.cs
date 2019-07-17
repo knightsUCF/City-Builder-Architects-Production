@@ -46,11 +46,13 @@ public class TrafficSystem : MonoBehaviour
         // also how will the systme react if we add new roads while the cars are already moving
 
 
+        /*
         foreach (KeyValuePair<int, Vector2> value in Data.roadMap)
         {
             Debug.Log("key: " + value.Key);
             Debug.Log("value: " + value.Value);
         }
+        */
 
 
 
@@ -74,11 +76,18 @@ public class TrafficSystem : MonoBehaviour
         Debug.Log("end junction: " + endJunction);
 
 
-
         // the difference in x, (y is constant), is our vector junction
 
 
+        // here we can also make a requirement to have a min number of road tiles before populating traffic
+
+        // start vector: startJunction.x
+        // end vector: endJunction.x
+
         
+
+
+
 
 
 
