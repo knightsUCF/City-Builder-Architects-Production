@@ -47,3 +47,5 @@ In XCOM the game decided whether to give you more or less funding based on progr
 
 
 As we have more traffic roads, including on both sides of the building, and more tiles in general, and more turns around the building, we get more points from the traffic there, for example more customers around the shops, we get points for that
+
+This introduces a lot of strategy, since we can maximize resources, in a small space by strategically arranging the available roads (for money), around the shops, and etc, for example focus on shops, or on one thing in the early game, goes along with the concept of many strategies to play
