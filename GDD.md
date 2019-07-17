@@ -43,3 +43,7 @@ https://imgur.com/a/sTssEYS
 
 
 In XCOM the game decided whether to give you more or less funding based on progress
+
+
+
+As we have more traffic roads, including on both sides of the building, and more tiles in general, and more turns around the building, we get more points from the traffic there, for example more customers around the shops, we get points for that
