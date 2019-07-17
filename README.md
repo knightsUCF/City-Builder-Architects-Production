@@ -1,5 +1,16 @@
 # City-Builder-Architects-Production
 
+
+
+
+"We consistently touted SimCity as a “bottom up” simulation (meaning that the
+high level simulation was not predetermined, but happened organically based on the aggregate actions of
+each individual citizens). However the entire design process was heavily “top down”. We started with this
+overview document and over the course of the project continuously drilled down into the details of each
+section."
+
+
+
 MAXIS SIM
 GAME REQUIREMENTS
 
