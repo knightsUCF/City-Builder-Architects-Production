@@ -86,6 +86,18 @@ public class Build : MonoBehaviour
             finalGO.GetComponentInChildren<IsBuildingAllowed>().finalized = true;
             allowBuild = false;
             startedBuild = false;
+
+            Vector2 tileMapPos = new Vector2(finalizedPosition.x, finalizedPosition.z);
+
+            if (!Data.map.ContainsKey(tileMapPos))
+            {
+                // will need some extra code here to determine if we are adding a building or a road, etc
+                Data.map.Add(tileMapPos, 1); // 1 - road
+            }
+
+            else Debug.Log("Uh oh, already added this data to the map");
+
+
             trafficSystem.UpdateTrafficSystem();
         }
         
