@@ -82,6 +82,25 @@ http://www.stonetronix.com/gdc-2013/SimCity-OnePage.pdf
 
 
 
+# Simulating a Sim City
+
+- Starting Out
+
+- Harvesting Resources
+
+- Simulating a City
+
+- Trading with Neighbors
+
+- Constructing Buildings
+
+- Manufacturing Goods
+
+- Global Markets
+
+
+
+
 # Set up production ready project to do
 
 - touch screen mobile controls, guided camera
