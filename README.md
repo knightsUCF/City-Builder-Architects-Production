@@ -78,6 +78,10 @@ disaster after disaster, and bulldoze like crazy.
 
 https://donhopkins.com/home/TheSimsDesignDocuments/
 
+http://www.stonetronix.com/gdc-2013/SimCity-OnePage.pdf
+
+
+
 # Set up production ready project to do
 
 - touch screen mobile controls, guided camera
