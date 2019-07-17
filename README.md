@@ -10,6 +10,29 @@ overview document and over the course of the project continuously drilled down i
 section."
 
 
+Selecting a Region
+
+- Game starts by letting the player select a region
+
+Page 11 shows different road types: http://www.stonetronix.com/gdc-2013/SimCity-OnePage.pdf
+
+# Gameplay Timeline
+
+"This is one of my favorite diagrams from the project. It describes play patterns in more detail and how they
+change through time. I strongly believe that every game designer should make a timeline like this early in
+the development process. At this phase in the project we didn’t have exact timings figured out, but we can
+still approximate it by breaking up the gameplay into early, mid, late and end game phases."
+
+"Most games have a very linear structure, which means that it will be simpler to create a traditonal timeline.
+Unfortunately, there is no “right way” to play SimCity which made the process much more difficult. One
+timeline can’t represent the thousands of ways that a player can construct a city.
+
+To get around that problem, I decided to show off two extreme cases as book ends. If we can understand
+the extremes then we can assume that most cities will be shades of these extremes in varying proportions."
+
+
+
+
 
 MAXIS SIM
 GAME REQUIREMENTS
