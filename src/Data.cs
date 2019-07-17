@@ -60,7 +60,7 @@ public class Data : Singleton<Data>
     */
 
 
-    public static Dictionary <Vector2, int> map = new Dictionary<Vector2, int>();
+    public static Dictionary <int, Vector2> roadMap = new Dictionary<int, Vector2>();
 
 
 
@@ -68,7 +68,7 @@ public class Data : Singleton<Data>
     public static bool[] unlockedTechnologies;
 
 
-    
+
 
 
 
