@@ -27,6 +27,9 @@ public class Build : MonoBehaviour
     public Text logText;
 
 
+    public int roadTileIndex = 0; // tracks consecutive order of road tiles, will need to be stored if the users shuts off the app
+
+
 
     public bool haveWePlacedFirstBuildingStage = false;
     public bool doneBuilding = true; // set to true because normal state is not building (for moving the camera around)
@@ -89,16 +92,21 @@ public class Build : MonoBehaviour
 
             Vector2 tileMapPos = new Vector2(finalizedPosition.x, finalizedPosition.z);
 
-            if (!Data.map.ContainsKey(tileMapPos))
+            if (!Data.roadMap.ContainsKey(roadTileIndex))
             {
                 // will need some extra code here to determine if we are adding a building or a road, etc
-                Data.map.Add(tileMapPos, 1); // 1 - road
+                // Data.roadMap.Add(tileMapPos, roadTileIndex); // 1 - road
+                Data.roadMap.Add(roadTileIndex, tileMapPos); // 1 - road
             }
 
             else Debug.Log("Uh oh, already added this data to the map");
 
 
             trafficSystem.UpdateTrafficSystem();
+
+            // placed here, after we update traffic, because if we send +1, that value does not exist yet in the dictionary
+            roadTileIndex += 1; // will need to be stored in case user shuts off, or somehow add to last addition in dictionary
+
         }
         
 
