@@ -49,3 +49,8 @@ In XCOM the game decided whether to give you more or less funding based on progr
 As we have more traffic roads, including on both sides of the building, and more tiles in general, and more turns around the building, we get more points from the traffic there, for example more customers around the shops, we get points for that
 
 This introduces a lot of strategy, since we can maximize resources, in a small space by strategically arranging the available roads (for money), around the shops, and etc, for example focus on shops, or on one thing in the early game, goes along with the concept of many strategies to play
+
+
+# Purchasing Land
+
+Purchasing land could be a strategic element. We could present the player with the ability to purchase how much land they want up to their resources max. Or up to map max we can support on their device. (Determine through testing). Well, the strategic element comes into play depending on how fast they spend on land in the beginning, they have to manage to not be greedy and buy too much land, although they can restart the game at any time if they mess up or put themselves in a corner.
