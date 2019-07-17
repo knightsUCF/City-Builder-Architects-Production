@@ -141,7 +141,8 @@ public class ButtonHandler : MonoBehaviour
         // build.allowBuild = false;
         
         // not sure if this is breaking the mobile build...
-        build.FinalizeBuildingOnConfirm();
+        // build.FinalizeBuildingOnConfirm(); // took this out for now... will need to add back in when building on mobile
+
         build.allowBuild = false; // probably can go in the above build.FnalizedBuildingOnConfirm() scope
 
         roadButton.SetActive(false);
