@@ -5,6 +5,7 @@ GAME REQUIREMENTS
 
 
 SUMMARY
+
 The Maxis marketing department recently studied customer expectations
 of Maxis Sim games. The study revealed seven descriptions of what the
 Maxis Sim player thought a Sim game should be. While the “Seven Points
