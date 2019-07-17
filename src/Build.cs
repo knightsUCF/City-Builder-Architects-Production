@@ -90,22 +90,33 @@ public class Build : MonoBehaviour
             allowBuild = false;
             startedBuild = false;
 
-            Vector2 tileMapPos = new Vector2(finalizedPosition.x, finalizedPosition.z);
+            // oops, only do the below code for roads not buildings
 
-            if (!Data.roadMap.ContainsKey(roadTileIndex))
+
+            if (buildSelection.name == "Road")
             {
-                // will need some extra code here to determine if we are adding a building or a road, etc
-                // Data.roadMap.Add(tileMapPos, roadTileIndex); // 1 - road
-                Data.roadMap.Add(roadTileIndex, tileMapPos); // 1 - road
+                Vector2 tileMapPos = new Vector2(finalizedPosition.x, finalizedPosition.z);
+
+                if (!Data.roadMap.ContainsKey(roadTileIndex))
+                {
+                    // will need some extra code here to determine if we are adding a building or a road, etc
+                    // Data.roadMap.Add(tileMapPos, roadTileIndex); // 1 - road
+                    Data.roadMap.Add(roadTileIndex, tileMapPos); // 1 - road
+                }
+
+                else Debug.Log("Uh oh, already added this data to the map");
+
+                // only start up the traffic after 3 tiles or so...
+                if (roadTileIndex > 2) trafficSystem.UpdateTrafficSystem();
+
+                // placed here, after we update traffic, because if we send +1, that value does not exist yet in the dictionary
+                roadTileIndex += 1; // will need to be stored in case user shuts off, or somehow add to last addition in dictionary
+
             }
 
-            else Debug.Log("Uh oh, already added this data to the map");
+            
 
-
-            trafficSystem.UpdateTrafficSystem();
-
-            // placed here, after we update traffic, because if we send +1, that value does not exist yet in the dictionary
-            roadTileIndex += 1; // will need to be stored in case user shuts off, or somehow add to last addition in dictionary
+            
 
         }
         
