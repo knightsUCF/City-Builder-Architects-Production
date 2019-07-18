@@ -21,3 +21,7 @@ Person
 https://www.iconexperience.com/v_collection/icons/?icon=user_generic2
 
 
+Power
+
+https://www.iconexperience.com/v_collection/icons/?icon=flash_yellow
+
