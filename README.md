@@ -13,6 +13,8 @@ Need a tech tree! Even a simple one!
 
 Resource chains, pg 77: http://www.stonetronix.com/gdc-2013/SimCity-OnePage.pdf
 
+Good resource chains on page 78.
+
 Player unlocks buildings over time. Classic.
 
 
