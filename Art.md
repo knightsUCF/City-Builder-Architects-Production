@@ -15,3 +15,9 @@ Mobile UI
 
 https://assetstore.unity.com/packages/2d/gui/icons/simple-ui-103969
 
+
+Person
+
+https://www.iconexperience.com/v_collection/icons/?icon=user_generic2
+
+
