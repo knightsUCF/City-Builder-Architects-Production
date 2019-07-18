@@ -9,7 +9,9 @@ each individual citizens). However the entire design process was heavily “top 
 overview document and over the course of the project continuously drilled down into the details of each
 section."
 
-Need a tech tree! Even a simple one! 
+Need a tech tree! Even a simple one!
+
+Player unlocks buildings over time. Classic.
 
 
 Selecting a Region
