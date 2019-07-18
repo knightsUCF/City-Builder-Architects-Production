@@ -69,6 +69,71 @@ Perfect Farm / Barn
 https://poly.google.com/view/5wrqegJ4NzT
 
 
+Hotel
+
+https://poly.google.com/view/3ZMq1s7B76q
+
+Apartment Buildings
+
+https://poly.google.com/view/bGsmc1_k5MB
+
+Another nice barn
+
+https://poly.google.com/view/dSsUaUlaxHk
+
+Bar
+
+https://poly.google.com/view/cr_gfObT2-R
+
+Some nice models here for trees, parking lot, street, cars, and road lamps
+
+https://poly.google.com/view/4NYtgQKdVMy
+
+https://poly.google.com/view/41hqt0pZebO
+
+
+Straightfoward Building Skyscraper
+
+https://poly.google.com/view/dzt483I8sr-
+
+Gym
+
+https://poly.google.com/view/b8qvlEWcPY6
+
+Small Shop with Apartment
+
+https://poly.google.com/view/atCBM2BYOTH
+
+Nice little shop
+
+https://poly.google.com/view/6PQ39I5-lKv
+
+Nice office building
+
+https://poly.google.com/view/e0NvYcgQABj
+
+Simple square building
+
+https://poly.google.com/view/cdkaiTRNPYB
+
+Simple square building 2
+
+https://poly.google.com/view/7zyZfQrt3ZP
+
+Another nice barn
+
+https://poly.google.com/view/0QTh_KUZRYE
+
+Diner
+
+https://poly.google.com/view/4Xlqz9IfdrV
+
+Simple building
+
+https://poly.google.com/view/17gTxK5SKWd
+
+
+
 
 
 
