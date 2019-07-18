@@ -9,6 +9,7 @@ https://www.google.com/search?q=battery+cartoon&rlz=1C5CHFA_enUS852US852&source=
 
 https://www.google.com/search?q=battery+cartoon&rlz=1C5CHFA_enUS852US852&source=lnms&tbm=isch&sa=X&ved=0ahUKEwie0dOez73jAhUmnOAKHR1wDc0Q_AUIESgB&biw=1617&bih=920#imgrc=fTCPTWmD_MhmNM:
 
+https://www.iconexperience.com/v_collection/icons/?icon=battery_green_
 
 Mobile UI
 
