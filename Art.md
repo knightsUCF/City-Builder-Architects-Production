@@ -132,6 +132,197 @@ Simple building
 
 https://poly.google.com/view/17gTxK5SKWd
 
+Nice for prototyping
+
+https://poly.google.com/view/68unrtIOrFi
+
+Simple farm barn
+
+https://poly.google.com/view/8n7KSxtET9J
+
+Very nice factory
+
+https://poly.google.com/view/3mmIBtmmkkW
+
+Power Plant
+
+https://poly.google.com/view/0Ipa29gN-iV
+
+Power Plant 2
+
+https://poly.google.com/view/5Q3p7ZA3u-d
+
+Radio Tower
+
+https://poly.google.com/view/d1zYJG7rJGY
+
+Silo, could be used for water
+
+https://poly.google.com/view/4MomdpI0Jx6
+
+Medium size simple building
+
+https://poly.google.com/view/0MQxoxLR5dd
+
+Gas station
+
+https://poly.google.com/view/7rUkCX-AIR2
+
+Storage Facility (nice road too)
+
+https://poly.google.com/view/5oKgAeAjy4L
+
+Road 1
+
+https://poly.google.com/view/a38EEOJFUlp
+
+Road 2
+
+https://poly.google.com/view/fyTYd8f1poP
+
+Sports Courtyard
+
+https://poly.google.com/view/1qa9d-lrHeP
+
+Stop sign
+
+https://poly.google.com/view/60GyU9CdZ9r
+
+Traffic Lights
+
+https://poly.google.com/view/2Qvt9hRsiMZ
+
+Lambo
+
+https://poly.google.com/view/7tPSW5UYD20
+
+Helicopter
+
+https://poly.google.com/view/cTzINMr0WdS
+
+Car 1
+
+https://poly.google.com/view/75h3mi6uHuC
+
+Cop car
+
+https://poly.google.com/view/0-j0ksmXXtz
+
+Truck
+
+https://poly.google.com/view/4qjS9tFhsJg
+
+Trailer
+
+https://poly.google.com/view/77t77GQMubf
+
+Jeep
+
+https://poly.google.com/view/36sY8cTSgKL
+
+Small Car
+
+https://poly.google.com/view/9Fq2kmgvk8f
+
+Forklift
+
+https://poly.google.com/view/0hvf_-9mdsX
+
+Stationwagon
+
+https://poly.google.com/view/aT_24cDaW1a
+
+Ambulance
+
+https://poly.google.com/view/8NOFImgkI5N
+
+Firetruck
+
+https://poly.google.com/view/eqsqytb0uPG
+
+Sportscar
+
+https://poly.google.com/view/5JY6p2CZkmT
+
+Sandtruck (good for construction sites)
+
+https://poly.google.com/view/1BpGYg14QGD
+
+
+Dodge Charger
+
+https://poly.google.com/view/4b80hRVxqvv
+
+Ambulance 2
+
+https://poly.google.com/view/fssOg3PmDpY
+
+Ambulance 3
+
+https://poly.google.com/view/beDwEv9UB7x
+
+Nissan regular car
+
+https://poly.google.com/view/a_HKCtYAv2W
+
+Ambulance 4
+
+https://poly.google.com/view/6_vPhq__Ga3
+
+Toyota Truck
+
+https://poly.google.com/view/8-0nFArehjd
+
+Delorean
+
+https://poly.google.com/view/1uZKezeldGG
+
+Palm Tree
+
+https://poly.google.com/view/0wynxxLgrpX
+
+Palm Tree 2
+
+https://poly.google.com/view/ficLBIjGliK
+
+Nice log
+
+https://poly.google.com/view/dkRLlPSdgdR
+
+Date palm tree
+
+https://poly.google.com/view/f9HQ8FJxn-o
+
+Sunflower (for farm)
+
+https://poly.google.com/view/ce4GXw3VYE5
+
+Palm tree
+
+https://poly.google.com/view/bjGeBbKhAVN
+
+Nice tree group
+
+https://poly.google.com/view/2_fv3tn3NG_
+
+Radiotower 2
+
+https://poly.google.com/view/5qe3Ddnvmr_
+
+Wheat (farm)
+
+https://poly.google.com/view/cNX9BRNG6ep
+
+Nice tree that would go along well with what we have now
+
+https://poly.google.com/view/7rTNpk6j01O
+
+Palm tree
+
+https://poly.google.com/view/2RUnO1Yi99P
+
+
+
 
 
 
