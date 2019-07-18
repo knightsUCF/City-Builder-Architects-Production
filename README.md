@@ -1,5 +1,9 @@
 # City-Builder-Architects-Production
 
+
+Main issue with the sim city games is that they get old after the first 10 hours or so, even with Cities Skylines, one of the few ways to solve this is to introduce multiplayer. Or some increasingly hard puzzle aspect. Or make the sims like Tamagotchis for replayability. 
+
+
 The entire SimCity design is based heavily around the fact that there is no “right
 answer”. Every option has positive and negative consequences.
 
