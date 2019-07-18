@@ -35,4 +35,40 @@ Gear
 
 https://www.vectorportal.com/StockVectors/Icons/Gear-icon-vector-image/30207.aspx#
 
+Factory (need to credit)
+
+https://poly.google.com/view/fCiJW5Qdgbf
+
+Farmhouse
+
+https://poly.google.com/view/bHyQe5jzdiQ
+
+Ship
+
+https://poly.google.com/view/bzRjbJ74JCr
+
+Apartments
+
+https://poly.google.com/view/01lqee-dZAr
+
+House
+
+https://poly.google.com/view/75V_MLvKMqM
+
+House with Driveway
+
+https://poly.google.com/view/bnZkUs4qEdG
+
+Skyscraper
+
+https://poly.google.com/view/dIsZyy2FUY-
+
+
+Perfect Farm / Barn
+
+https://poly.google.com/view/5wrqegJ4NzT
+
+
+
+
 
