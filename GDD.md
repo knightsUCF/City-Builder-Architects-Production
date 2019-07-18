@@ -1,5 +1,7 @@
 "EYO" "Io" - a unique name, maybe some short Japanese name, maybe something that means something, doesn't have to mean anything like Starbucks
 
+Cutting down wood for resources, can also be good in that we have the player waiting longer for things to happen
+
 Can do a campaign on Fiver. Nothing to lose.
 
 
