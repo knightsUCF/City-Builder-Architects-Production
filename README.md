@@ -1,13 +1,15 @@
 # City-Builder-Architects-Production
 
-
-
+The entire SimCity design is based heavily around the fact that there is no “right
+answer”. Every option has positive and negative consequences.
 
 "We consistently touted SimCity as a “bottom up” simulation (meaning that the
 high level simulation was not predetermined, but happened organically based on the aggregate actions of
 each individual citizens). However the entire design process was heavily “top down”. We started with this
 overview document and over the course of the project continuously drilled down into the details of each
 section."
+
+Need a tech tree! Even a simple one! 
 
 
 Selecting a Region
@@ -29,6 +31,32 @@ timeline can’t represent the thousands of ways that a player can construct a c
 
 To get around that problem, I decided to show off two extreme cases as book ends. If we can understand
 the extremes then we can assume that most cities will be shades of these extremes in varying proportions."
+
+
+In mid game players are starting to specialize.
+
+
+Remember that your designs don’t need to be complex to be effective. They only need
+to be as complex as the idea you are trying to communicate
+
+Great flow on agents and resources on page 33: http://www.stonetronix.com/gdc-2013/SimCity-OnePage.pdf
+
+Agent types:
+
+- workers
+- commuters
+- shoppers
+
+Buildings:
+
+- factories
+- stores
+- houses
+- (also offices)
+- and others
+
+
+Another good sim flow on page 38: http://www.stonetronix.com/gdc-2013/SimCity-OnePage.pdf
 
 
 
