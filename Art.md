@@ -25,3 +25,10 @@ Power
 
 https://www.iconexperience.com/v_collection/icons/?icon=flash_yellow
 
+
+Bar Graph Icon
+
+https://www.google.com/search?q=bar+graph+icon&rlz=1C5CHFA_enUS852US852&source=lnms&tbm=isch&sa=X&ved=0ahUKEwjn8O_71r3jAhXGaM0KHYTxBykQ_AUIESgB&biw=1248&bih=827&dpr=1.6#imgdii=QwEwMOY80_NH_M:&imgrc=nUCtML4d92x4AM:
+
+
+
