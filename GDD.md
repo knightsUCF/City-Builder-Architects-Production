@@ -1,5 +1,7 @@
 "EYO" "Io" - a unique name, maybe some short Japanese name, maybe something that means something, doesn't have to mean anything like Starbucks
 
+Something happens every ten seconds, and you can see the event coming. What makes Civilization by Sid Meier addictiing.
+
 Names: megalopolitan, Cityopolis
 
 Cutting down wood for resources, can also be good in that we have the player waiting longer for things to happen
