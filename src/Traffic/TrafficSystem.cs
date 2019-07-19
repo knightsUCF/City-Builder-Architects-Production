@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 
 
@@ -21,6 +22,9 @@ public class TrafficSystem : MonoBehaviour
 
     public GameObject waypoint1;
     public GameObject waypoint2;
+    public GameObject waypoint3;
+    public GameObject waypoint4;
+
 
     float startX, startZ, endX, endZ;
 
@@ -30,9 +34,12 @@ public class TrafficSystem : MonoBehaviour
     public GameObject car2;
 
 
+    List<Vector2> segmentTiles = new List<Vector2>();
+
+
 
     // will eventually be a Vector3 array, since we will have many junction segments
-    
+
     Vector3 startPos;
     Vector3 endPos;
 
@@ -69,6 +76,8 @@ public class TrafficSystem : MonoBehaviour
 
         foreach (KeyValuePair<int, Vector2> value in Data.roadMap)
         {
+            // also will have to check that the z value is unchanging to make sure we are getting the straight line segment
+
             if (value.Value.x < lowestValue)
             {
                 lowestValue = value.Value.x;
@@ -101,11 +110,349 @@ public class TrafficSystem : MonoBehaviour
     }
 
 
+    /* working without z column alignment
+    void FindSegment()
+    {
+        int index;
+        bool run = true;
+        float tileConsecutiveOffset = 8.0f;
+        Vector2 startVector = Data.roadMap[GetLowestIndexValue()];
+        float lastConsecutiveValue = startVector.x + tileConsecutiveOffset;
+
+        while (run)
+        {
+            index = Data.roadMap.FirstOrDefault(x => x.Value.x == lastConsecutiveValue).Key;
+            Debug.Log("next consecutive index: " + index);
+            lastConsecutiveValue += tileConsecutiveOffset;
+
+            if (Data.roadMap.FirstOrDefault(x => x.Value.x == lastConsecutiveValue).Key == 0)
+            {
+                run = false;
+                Debug.Log("Reached the end of the sidewalk");
+            }
+        }
+    }
+    */
+
+
+    Vector3 GetSegment(Vector2 startPos)
+    {
+        int index = 0;
+        
+        float tileConsecutiveOffset = 8.0f;
+        float lastConsecutiveValue = startPos.x;
+        bool check = true;
+
+        while (check)
+        {
+            if (Data.roadMap[index].y == startPos.y) // z
+            {
+                index = Data.roadMap.FirstOrDefault(x => x.Value.x == lastConsecutiveValue).Key;
+                lastConsecutiveValue += tileConsecutiveOffset;
+                Debug.Log("Next consecutive value: " + Data.roadMap[index]);
+                segmentTiles.Add(Data.roadMap[index]);
+            }
+
+            // not sure if this should go in the above if scope
+
+            if (Data.roadMap.FirstOrDefault(x => x.Value.x == lastConsecutiveValue).Key == 0)
+            {
+                Debug.Log("REACHED THE END OF THE SIDEWALK");
+                check = false;
+            }
+        }
+
+        // check contents of list
+
+        float minValue = 10000.0f; // will need to be changed to boundaries of world
+        float maxValue = -10000.0f; 
+
+        foreach (Vector2 item in segmentTiles)
+        {
+            Debug.Log(item);
+
+            if (item.x > maxValue) maxValue = item.x;
+            if (item.x < minValue) minValue = item.x;
+        }
+
+        Vector3 startEndPos = new Vector3(minValue, maxValue, startPos.y);
+        return startEndPos;
+    }
+
+
+
+    void FindSegment()
+    {
+        
+
+        // float lastConsecutiveValue = startVector.x + tileConsecutiveOffset;
+
+        // float zAlignment = startVector.y;
+
+        Vector2 startVector = Data.roadMap[GetLowestIndexValue()];
+
+        Vector3 segmentStartAndEnd = GetSegment(startVector);
+
+        Vector2 start = new Vector2(segmentStartAndEnd.x, segmentStartAndEnd.z); // z is just the aligment
+        Vector2 end = new Vector2(segmentStartAndEnd.y, segmentStartAndEnd.z);
+
+
+        // startWaypoint = Data.roadMap[GetLowestIndexValue()];
+        // endWaypoint = Data.roadMap[GetHighestIndexValue()];
+
+        startWaypoint = end;
+        endWaypoint = start;
+
+        Debug.Log("start: " + start);
+        Debug.Log("end: " + end);
+
+    }
+
+
+    /*
+    void FindSegment()
+    {
+        int index = 1;
+        bool run = true;
+        float tileConsecutiveOffset = 8.0f;
+        Vector2 startVector = Data.roadMap[GetLowestIndexValue()];
+        float lastConsecutiveValue = startVector.x + tileConsecutiveOffset;
+
+        // here value might be arbitary to start:
+
+        float zAlignment = startVector.y; // y = z
+
+        // we can test this by building roads out of alignment, and check whether traffic populates there
+
+        while (run)
+        {
+            index = Data.roadMap.FirstOrDefault(x => x.Value.x == lastConsecutiveValue).Key;
+
+            if (Data.roadMap[index].y == zAlignment) // y = z
+            {
+                Debug.Log("next consecutive index: " + index);
+                lastConsecutiveValue += tileConsecutiveOffset;
+            }
+            
+
+            if (Data.roadMap.FirstOrDefault(x => x.Value.x == lastConsecutiveValue).Key == 0)
+            {
+                run = false;
+                Debug.Log("Reached the end of the sidewalk");
+            }
+        }
+
+        // here we can set the starting traffic point at the startVector
+
+        startWaypoint = Data.roadMap[GetLowestIndexValue()]; // this will eventually require cross checking with an array list, to start up the next time at the next UNUSED lowest value
+        endWaypoint = Data.roadMap[index]; // last index?
+
+        Debug.Log("end index: " + index);
+        Debug.Log("pos at end index: " + Data.roadMap[index]);
+
+
+        // the end of the traffic point will be the lastConsecutiveValue
+
+
+        // startWaypoint = Data.roadMap[GetLowestIndexValue()];
+        // endWaypoint = Data.roadMap[GetHighestIndexValue()];
+
+        // startPos = new Vector3(startWaypoint.x, 0.0f, startWaypoint.y);
+        // endPos = new Vector3(endWaypoint.x, 0.0f, endWaypoint.y);
+
+        // waypoint1.transform.position = startPos;
+        // waypoint2.transform.position = endPos;
+
+        
+    }
+
+    */
+
+
+    
+
+    void FindSegments()
+    {
+        float tileConsecutiveOffset = 8.0f;
+        Vector2 startVector = Data.roadMap[GetLowestIndexValue()];
+        
+        Debug.Log("start vector: " + startVector);
+
+        // find the next key that is the next consecutive value
+
+        // int index = types.FirstOrDefault(Data.roadMap => Data.roadMap.Value == (lastConsecutiveValue + tileConsecutiveOffset)).Key;
+
+        float lastConsecutiveValue = startVector.x + tileConsecutiveOffset;
+
+        // int index = types.FirstOrDefault(Data.roadMap => Data.roadMap.Value.x == value).Key;
+
+        int index = Data.roadMap.FirstOrDefault(x => x.Value.x == lastConsecutiveValue).Key;
+
+        Debug.Log("Next consecutive index: " + index);
+
+        // now increment the value to the next consecutive offset
+
+        lastConsecutiveValue += tileConsecutiveOffset;
+
+        // and do the process again...
+
+        index = Data.roadMap.FirstOrDefault(x => x.Value.x == lastConsecutiveValue).Key;
+
+        Debug.Log("Next consecutive index: " + index);
+
+
+        // and again until we reach the end (maybe put this in a while loop)
+
+        // how do we tell when we reached the end?
+
+        // we can tell when we reach the end when the first or default method does not return a next consecutive value
+
+        // let's get some value out of range to check how the app breaks / stops
+
+        lastConsecutiveValue = 10000.0f;
+
+        index = Data.roadMap.FirstOrDefault(x => x.Value.x == lastConsecutiveValue).Key;
+
+        Debug.Log("Next consecutive index (breaks?): " + index);
+
+        // so we return as a break point
+
+        // so...
+
+        if (Data.roadMap.FirstOrDefault(x => x.Value.x == lastConsecutiveValue).Key == 0)
+        {
+            Debug.Log("REACHED THE END OF THE SIDEWALK");
+        }
+
+
+
+
+        // we can add all these values to an array, so that next time when finding the lowest value to continue the bottom to top approach,
+        // we can skip all the values already added, and find the lowest value that is not added
+        // by this time when we find the next parallel segment, we can assume the road traffic network is connected
+    }
+
+
+    /*
+    void FindSegment()
+    {
+        float tileConsecutiveOffset = 8.0f; // will later connect to grid size?
+        Vector2 startVector = Data.roadMap[GetLowestIndexValue()];
+
+        bool run = false;
+
+
+        while (run)
+        {
+            if ()
+            {
+                int index = types.FirstOrDefault(Data.roadMap => Data.roadMap.Value == (lastConecutiveValue + tileConsecutiveOffset)).Key;
+                Debug.Log();
+            }
+
+            else run = false;
+
+            
+        }
+        
+    }
+    */
+
+
+    /*
+    void FindSegments()
+    {
+        float tileConsecutiveOffset = 8.0f; // will later connect to grid size?
+        Vector2 startVector = Data.roadMap[GetLowestIndexValue()];
+        float lastConsecutiveValue = startVector.x;
+
+        foreach (KeyValuePair<int, Vector2> value in Data.roadMap)
+        {
+            if (value.Value.x == lastConsecutiveValue + tileConsecutiveOffset)
+            {
+                Debug.Log("Next consecutive value: " + value.Value.x);
+                lastConsecutiveValue = value.Value.x;
+            }
+        }
+    }
+    */
+
+
+
+
+
+    /*
+    void FindStraightRoadSegments()
+    {
+        List<float> segment = new List<float>();
+
+
+        float tileConsecutiveOffset = 8.0f; // will later connect to grid size?
+
+
+        // we need a starting point first - we could iterate from bottom up all over the map, first find the lowest, and then find the second lowest starting point, etc
+        int lowestStartingIndex = GetLowestIndexValue();
+
+        // then we would have to check the next lowest segment which has consecutive connections
+
+        // problem is our traffic can't connect in two unconnected road segments, so we might have to do a turn first
+
+        float lastPosition;
+
+        // get the z component of the lowest startingIndex
+
+        Vector2 startCoords = Data.roadMap[lowestStartingIndex];
+
+        float z = startCoords.z;
+
+
+        Vector2 startVector = Data.roadMap[GetLowestIndexValue()];
+
+        // find consecutive offsets of 8
+
+        foreach (KeyValuePair<int, Vector2> value in Data.roadMap)
+        {
+
+            if (value.Value.x == startVector.x + tileConsecutiveOffset)
+
+        }
+
+
+
+
+        startVector.x
+        
+
+
+
+
+        foreach (KeyValuePair<int, Vector2> value in Data.roadMap)
+        {
+            // only get values in the same column
+
+            if (value.Value.z == z)
+            {
+                // we will just need to be adding these values to a Vector2 list
+
+
+                
+
+            }
+
+
+
+        }
+
+    }
+    */
+
+
 
     void UpdateStraightRoadSegment()
     {
-        startWaypoint = Data.roadMap[GetLowestIndexValue()];
-        endWaypoint = Data.roadMap[GetHighestIndexValue()];
+        // temporarily moved to FindSegments(), just make sure FindSegments() is called before UpdateStrightRoadSegment()
+        // startWaypoint = Data.roadMap[GetLowestIndexValue()];
+        // endWaypoint = Data.roadMap[GetHighestIndexValue()];
 
         startPos = new Vector3(startWaypoint.x, 0.0f, startWaypoint.y);
         endPos = new Vector3(endWaypoint.x, 0.0f, endWaypoint.y);
@@ -118,6 +465,10 @@ public class TrafficSystem : MonoBehaviour
     
     public void UpdateTrafficSystem()
     {
+
+        // OutputRoadMapData();
+
+        FindSegment();
         
         // now this updates the startWayPoint and endWayPoint
 
