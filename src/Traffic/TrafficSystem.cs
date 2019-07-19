@@ -4,6 +4,10 @@ using UnityEngine;
 
 
 
+
+
+
+
 public class TrafficSystem : MonoBehaviour
 {
 
@@ -27,6 +31,15 @@ public class TrafficSystem : MonoBehaviour
 
 
 
+    // will eventually be a Vector3 array, since we will have many junction segments
+    
+    Vector3 startPos;
+    Vector3 endPos;
+
+
+    // old way
+    // startWaypoint = Data.roadMap[0];
+    // endWaypoint = Data.roadMap[build.roadTileIndex];
 
 
 
@@ -36,59 +49,80 @@ public class TrafficSystem : MonoBehaviour
     }
 
 
-    
-    public void UpdateTrafficSystem()
+    void OutputRoadMapData()
     {
-        // gets called every time we finalize a traffic tile
-
-        // we want to recalculate the traffic paths, and then run the appropriate traffic methods
-
-        // all of our data is in Data.map
-
-        // so now we want to trace this map data to determine the vectors of traffic
-
-
-        // like Carmack said, there is no secret efficient algo, so just write this from scratch
-
-
-        // first let's determine a simple line, the simplest traffic lane we can build
-
-
-        // let's determine, the start, the middle, and the end, and then populate traffic
-
-        // we will have to do intersections next, but just one thing at a time for now
-
-        // also how will the systme react if we add new roads while the cars are already moving
-
-
-        /*
         foreach (KeyValuePair<int, Vector2> value in Data.roadMap)
         {
             Debug.Log("key: " + value.Key);
             Debug.Log("value: " + value.Value);
         }
-        */
+    }
 
 
 
-        // so here we are going to update the junction vector segment, by taking the position of the x at 0, up to x at last index
+    // start
+
+    int GetLowestIndexValue()
+    {
+        float lowestValue = 100000.0f; // some large number, careful with large maps or traffic will get messed up
+        int index = 0;
+
+        foreach (KeyValuePair<int, Vector2> value in Data.roadMap)
+        {
+            if (value.Value.x < lowestValue)
+            {
+                lowestValue = value.Value.x;
+                index = value.Key;
+            }
+        }
+
+        return index;
+    }
 
 
 
-        // get the key at value 0
+    // end
 
-        
+    int GetHighestIndexValue()
+    {
+        float highestValue = -100000.0f; // some large number, careful with large maps or traffic will get messed up
+        int index = 0;
 
-        startWaypoint = Data.roadMap[0];
+        foreach (KeyValuePair<int, Vector2> value in Data.roadMap)
+        {
+            if (value.Value.x > highestValue)
+            {
+                highestValue = value.Value.x;
+                index = value.Key;
+            }
+        }
 
-        endWaypoint = Data.roadMap[build.roadTileIndex];
+        return index;
+    }
 
-        
-        Vector3 startPos = new Vector3(startWaypoint.x, 0.0f, startWaypoint.y);
-        Vector3 endPos = new Vector3(endWaypoint.x, 0.0f, endWaypoint.y);
+
+
+    void UpdateStraightRoadSegment()
+    {
+        startWaypoint = Data.roadMap[GetLowestIndexValue()];
+        endWaypoint = Data.roadMap[GetHighestIndexValue()];
+
+        startPos = new Vector3(startWaypoint.x, 0.0f, startWaypoint.y);
+        endPos = new Vector3(endWaypoint.x, 0.0f, endWaypoint.y);
 
         waypoint1.transform.position = startPos;
         waypoint2.transform.position = endPos;
+    }
+
+
+    
+    public void UpdateTrafficSystem()
+    {
+        
+        // now this updates the startWayPoint and endWayPoint
+
+        UpdateStraightRoadSegment();
+
 
         // let's activate the cars
 
@@ -103,38 +137,6 @@ public class TrafficSystem : MonoBehaviour
 
 
         }
-
-
-
-
-        /*
-        startX = waypoint1.transform.position.x;
-        startZ = waypoint1.transform.position.z;
-
-        endX = waypoint2.transform.position.x;
-        endZ = waypoint2.transform.position.z;
-
-        startX = startWaypoint.x;
-        startZ = startWaypoint.y;
-
-        endX = endWaypoint.x;
-        endZ = endWaypoint.y;
-        */
-
-
-
-
-
-        
-
-
-
-
-
-
-
-
-
 
 
 
