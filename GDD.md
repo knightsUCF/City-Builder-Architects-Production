@@ -1,5 +1,12 @@
 "EYO" "Io" - a unique name, maybe some short Japanese name, maybe something that means something, doesn't have to mean anything like Starbucks
 
+
+Have two worker types, one type is generic worker types same color, and the other are hero type workers
+
+Perhaps the player can customize their figures with hair and sunglasses, for example? What about clothes? No clothes for now
+
+Can sell cosmetic stuff in the store, like for example sun glasses, not sure about the hair yet though
+
 Something happens every ten seconds, and you can see the event coming. What makes Civilization by Sid Meier addictiing.
 
 Names: megalopolitan, Cityopolis
