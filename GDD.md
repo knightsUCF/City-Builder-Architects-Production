@@ -7,6 +7,9 @@ Perhaps the player can customize their figures with hair and sunglasses, for exa
 
 Can sell cosmetic stuff in the store, like for example sun glasses, not sure about the hair yet though
 
+When purchase the glasses that is only for one pair
+
+
 Something happens every ten seconds, and you can see the event coming. What makes Civilization by Sid Meier addictiing.
 
 Names: megalopolitan, Cityopolis
