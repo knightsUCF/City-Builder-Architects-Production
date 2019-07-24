@@ -108,3 +108,14 @@ Jay Abraham
 
 
 Ready, Fire, Aim and Pumpkin Plan. Mike Machalowicz in particular is hilarious on Audiobooks.
+
+Perry Marshall books on Facebook and Google
+ 
+ Marketing Management - By Phillip Kotler
+ 
+ Vincent Dignan, author of "Secret Sauce" and founder of facebook group Traffic and Copy. 
+ 
+ Influence: Science and Practice by Robert Cialdini is the best book I’ve read on marketing. Especially when trying to understand why people make purchasing decisions. Great for CRO.
+ 
+ 
+ 
