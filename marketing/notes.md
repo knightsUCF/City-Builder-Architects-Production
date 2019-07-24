@@ -11,3 +11,8 @@ build up email list, very important
 
 "Head on over to Mailchimp, and set up an account there. Mailchimp is going to be your friend – it collects emails, creates landing pages, and does a bunch of legally-compliancey stuff that you won’t want to worry about.
 If you head over to their Landing Page creator, you can set up something quick and dirty to start capturing e-mail leads. Here’s the one I made, for example. I’m not going to pretend to be an expert on the matter, but you want to give people a preview of what you are doing, some cool graphics to draw them in, and then a call to action and motivation to join your community."
+
+"What can you offer? Think about what you would want from someone else. Would you give an email out for nothing? How about a print and play? Honestly? Probably not. Most people don’t bother printing out PNP files, and even if they do, getting them to play it is a whole ‘nother battle.
+An easy thing to offer is a copy of your game, or a unique perk, or some exclusivity. You want to create the atmosphere of a members-only club, and that idea that they are helping become a part of something bigger. Because that’s what we are doing – building something more than the sum of its’ parts."
+
+perhaps we could offer a free desktop version of the game in exchange for the email, at least offer something
