@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using System.Linq;
 
 
 
@@ -11,6 +11,12 @@ public class TrafficSystem3 : MonoBehaviour
     public int offset = 8;
     public int mapStart = -2;
     public int mapEnd = 100;
+
+    
+
+
+    int endpoint = 1;
+    int lastEndpoint = 0;
 
 
     void Start()
@@ -37,6 +43,18 @@ public class TrafficSystem3 : MonoBehaviour
         Vector2 v11 = new Vector2(-10.0f, 20.0f);
         Vector2 v12 = new Vector2(-2.0f, 22.0f);
 
+        Vector2 v13 = new Vector2(-100.0f, 30.0f);
+        Vector2 v14 = new Vector2(-92.0f, 30.0f);
+        Vector2 v15 = new Vector2(-84.0f, 30.0f);
+        Vector2 v16 = new Vector2(-76.0f, 30.0f);
+
+        Vector2 v17 = new Vector2(6.0f, 22.0f);
+        Vector2 v18 = new Vector2(14.0f, 22.0f);
+        Vector2 v19 = new Vector2(22.0f, 22.0f);
+        Vector2 v20 = new Vector2(30.0f, 22.0f);
+
+
+
         Data.roadMap.Add(0, v1);
         Data.roadMap.Add(1, v2);
         Data.roadMap.Add(2, v3);
@@ -55,19 +73,121 @@ public class TrafficSystem3 : MonoBehaviour
 
 
 
-    void GetSequences(List<int> list)
+    void CreateJunction(int start, int end, int rowOrColumn)
     {
-        List<int> aSequence = new List<int>();
-        if (list == null) return;
+        // 1. Vector2(start, rowOrColumn)
+        // 2. Vector2(end, rowOrColumn)
+
+        // Instantiate prefab with pos parameters of above
+
+        Debug.Log("Junction start: " + start + " " + rowOrColumn);
+        Debug.Log("Junction end: " + end + " " + rowOrColumn);
+    }
+
+
+
+
     
-        for (int i = 0; i < list.Count; i++)
+    int GetIndexOfItem(List<int> list, int item)
+    {
+        return list.IndexOf(item);
+    }
+    
+
+
+    void ResetIterator()
+    {
+        endpoint = 1;
+    }
+
+
+
+    bool GetSequences(List<int> list, int column)
+    {
+        bool done = false; // return true when done iterating over sequences
+
+        int minSequence = 1;
+        int endOfLastSequence;
+        List<int> aSequence = new List<int>();
+        // if (list == null) return;
+    
+        for (int i = endpoint; i < list.Count; i++)
         {
-            if (i != 0)
+            if (list[i] == ((list[i - 1]) + offset))
             {
-                if (list[i] == ((list[i - 1]) + offset)) aSequence.Add(list[i]);
-                // if (current != last - offset)
+                aSequence.Add(list[i]);
             }
         }
+
+        
+        if (aSequence.Count > minSequence)
+        {
+            CreateJunction(aSequence.FirstOrDefault(), aSequence.LastOrDefault(), column);
+            endpoint = GetIndexOfItem(aSequence, aSequence.LastOrDefault()); // becomes the beginning of our next iteration, should start at 1
+            Debug.Log("index endpoint: " + endpoint);
+            // also remember to reset back to one
+        }
+
+        Debug.Log("endpoint == lastEndpoint >>>  endpoint: " + endpoint + " lastEndpoint" + lastEndpoint);
+        
+        if (endpoint == lastEndpoint) done = true;
+
+        lastEndpoint = endpoint;
+
+
+
+        // how to tell we are at the end of the map
+
+        // well what if the last element is not past the map end? TODO
+        // well we will want to exit once we reach the last element, and then break the while loop
+
+
+
+        if (list.LastOrDefault() >= mapEnd)
+        {
+            ResetIterator(); // resets back to one
+            // at the end of the sequence endpoint will be reset back to one for each next column, and then also when we move over to rows
+
+            // also want to close out the while loop TODO
+            
+        }
+        
+
+                // if (current != last - offset)
+
+
+                /*
+                if (i != list.Count - 1 && list[i] != (list[i + 1] + offset))
+                {
+                    aSequence.Add(list[i]);
+                    endOfLastSequence = list[i];
+                    return;
+                }
+                */
+                    // compare this to the end of the map
+                    
+                    // also start here for the next sequence
+            // }
+
+            // waiting on help - https://discordapp.com/channels/493510779866316801/493511037421879316
+
+            // we can proceed for now without the last element
+
+
+            /*
+            aSequence.Add(list[i]); this gives me the second item to last item
+            aSequence.Add(list[i - 1]); gives me the first item to next to last item
+            i would like to get the first to the last item
+            */
+
+        
+
+
+
+    return done; // return true when done
+
+        
+        
     }
 
 
@@ -82,11 +202,10 @@ public class TrafficSystem3 : MonoBehaviour
             justXs.Add((int)item.x);
         }
 
-        GetSequences(justXs);
+        bool done = GetSequences(justXs, column);
 
-        return true;
+        return done;
     }
-
 
 
 
@@ -104,7 +223,7 @@ public class TrafficSystem3 : MonoBehaviour
 
             counter += 1;
 
-            if (counter > 1000) 
+            if (counter > 100) 
             {
                 Debug.Log("Reached over 10000 in while loop... breaking...");
                 return; // prevent crashing in any case
