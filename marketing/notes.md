@@ -16,3 +16,6 @@ If you head over to their Landing Page creator, you can set up something quick a
 An easy thing to offer is a copy of your game, or a unique perk, or some exclusivity. You want to create the atmosphere of a members-only club, and that idea that they are helping become a part of something bigger. Because that’s what we are doing – building something more than the sum of its’ parts."
 
 perhaps we could offer a free desktop version of the game in exchange for the email, at least offer something
+
+great article on landing page design
+https://brandonthegamedev.com/how-to-build-a-mailing-list-and-send-newsletters-as-a-board-game-dev/?source=post_page---------------------------
