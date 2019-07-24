@@ -129,7 +129,7 @@ public class TrafficSystem3 : MonoBehaviour
         }
 
         Debug.Log("endpoint == lastEndpoint >>>  endpoint: " + endpoint + " lastEndpoint" + lastEndpoint);
-        
+
         if (endpoint == lastEndpoint) done = true;
 
         lastEndpoint = endpoint;
@@ -142,7 +142,7 @@ public class TrafficSystem3 : MonoBehaviour
         // well we will want to exit once we reach the last element, and then break the while loop
 
 
-
+        /*
         if (list.LastOrDefault() >= mapEnd)
         {
             ResetIterator(); // resets back to one
@@ -151,6 +151,7 @@ public class TrafficSystem3 : MonoBehaviour
             // also want to close out the while loop TODO
             
         }
+        */
         
 
                 // if (current != last - offset)
