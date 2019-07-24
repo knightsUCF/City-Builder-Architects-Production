@@ -8,7 +8,109 @@ Do this for every book, then decide which ones to jump in, also try to find some
 
 Also read Amazon reviews, and take notes from those, to get through the entire list
 
+Books worth their weight in gold. (top 1%)
+books that will help you immensely.
 
+Playing to win - bulls eye strategy
+Persuasion code - brains 'buy' signal
+Breakthrough advertising - tapping into primal desire
+Primal branding - make a cult
+Jobs to be done - serving people's exact needs
+Contagious - making a viral product
+Building a story brand - structured advertising like a movie plot
+Structures in five + the structures of organization - a breakdown of a structure of fortune 500.
+
+Just finished 'Never Split the Difference' by Chris Voss. Brilliant book on negotiation and dealing with conflict. Would highly recommend to anyone, entrepreneur or no.
+
+Also, 'Deep Work' by Cal Newport is an excellent read as well. Talks about the importance of deep focus and concentration on tasks/projects that will add the most value and get you ahead in an increasingly distracted, always-connected world.
+
+
+
+Tranche 1 - without a summary (However, well recommended) :
+
+The Black Swan
+
+Thinking Fast and Slow
+
+From Zero to One
+
+Never split the difference
+
+Think and grow rich by Napoleon Hill
+
+As a Man thinketh by James Allen
+
+Science of Getting Rich by Waace D Wattles
+
+Man's Search for Meaning by Viktor Frankl
+
+Biology of Belief by Bruce Lipton
+
+Start With Why by Simon Sinek
+
+Build a Story Brand by Don Miller
+
+How to Get Rich - Dennis Felix
+
+Profit First by Mike Michalowicz
+
+
+Zero to One
+
+by Blake Masters and Peter Thiel.
+
+The Hard Thing About Hard Things
+
+Book by Ben Horowitz
+
+
+Never Split the Difference – Chris Voss
+
+The most important book on this list. It outlines and reinforces the fact that business, negotiation and any human interaction is inherently very emotional. It’s centered around negotiation but this book has so many solid management and leadership principles. Mirroring, tactical empathy, starting with no and labeling are all phenomenal.
+
+The E-Myth Revisited – Michael Gerber
+
+The first stop for any beginner. This is a great book about the importance of creating a business that can thrive without you. Preaches a lot of my favorite business principles like working on the things that are important for the long term but not necessarily urgent or pressing. Can be a little satire / elementary at times (the hotel description and Sarah’s “all about pies” are poor examples) for the more accomplished entrepreneurs but the principles are rock solid.
+
+Entreleadership – Dave Ramsey
+
+This book just has non stop quality advice about how to build a business the right way.  Dave doesn’t preach about politics or religion. He just tells it like it is and tells the stories of what worked for him. Phenomenal read.
+
+Ego is the Enemy – Ryan Holiday
+
+Ryan studies and preaches Stoicism and how to handle emotions, rejection and stress. Managing that split second between an event and your reaction is what life is all about. The Ego is the Enemy shows the incredible importance of remaining humble and the dangers of overconfidence and an inflated ego. I also recommend The Obstacle is the Way and The Daily Stoic by the same author.
+
+Built to Sell – John Warrillow
+
+This book talks about how to get your life back once your business takes over. How to specialize in your niche and do it really well. Make it scalable an take yourself out of the equation so that it is valuable to a potential buyer. Story format. Very good.
+
+The Goal – Eliyahu Goldratt
+
+Also in story format this is all about removing bottlenecks from your business. Find out what is holding you back and really focus on fixing that issue so you can break through and expand. The owner of the small business is almost always the bottleneck.
+
+Company of One – Paul Jarvis
+
+Large scalable companies aren’t likely and aren’t the goal of many entrepreneurs. Starting small and specializing is the key to building a great lifestyle business and then an asset that produces money while you live the life you want to be living. This book helps you question if growth is really the goal.
+
+The Greatest Salesman in the World – Og Mandino
+
+Life is all about being comfortable in uncomfortable situations. Everyone is a salesman and sales is uncomfortable. This book is a pump up about determination and perseverance and its importance. Its not always going to be fun. Its not always going to be easy.
+
+2019 Small Business Taxes – JK Lasser
+
+The best tax resource there is for small businesses. Reads like a text book but for some reason I absorbed it quickly and it was an enjoyable read. Explains all the important concepts around deductions and how to make sure Uncle Sam only gets what is actually his. A good accountant is critical but its even more critical that you understand this yourself.
+
+High output Management – Andy Grove (founder of Intel)
+
+More on the techy side of things but this book is a great way to think about building a business. A little older (1983 originally) but a look into the mind of one of the greatest entrepreneurs of all time. Everything is a process. Focus on data and other measurable variables. How to run meetings. How to make great decisions. Long term plans and short term objectives. And so much more.
+
+Good to Great – Jim Collins
+
+How so many companies get complacent and turn over in our economic lifecycle by failing to constantly improve and stay on the cutting edge. Its easy to stop looking at the big picture when you are winning. Then all of the sudden its too late.
+
+The Lean Startup – Eric Ries
+
+The business plan is just a hypothesis until you get out and prove it. Get out and interact with your customers and be ready to shift gears at a moments notice. As Steve Blank says “there are no 
 So last year (2017), I read 100 books, 95% of them on marketing, business, or self-development (as related to business).
 
 I found some gems, some that were NOT as good as advertised, and then some all-around cool, informative texts.
