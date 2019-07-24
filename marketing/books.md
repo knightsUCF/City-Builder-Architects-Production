@@ -6,6 +6,9 @@ Then outline the book with amazon reviews and youtube reviews
 
 Do this for every book, then decide which ones to jump in, also try to find some cliffnotes
 
+Slight Edge, a concept popularised by Jeff Olson, and his book called ‘The Slight Edge’, (must read btw)
+
+
 Also read Amazon reviews, and take notes from those, to get through the entire list
 The Magic of Thinking Big, a classic but worth all the praise if you're into self help kind of thing.
 
