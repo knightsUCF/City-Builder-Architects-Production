@@ -425,3 +425,192 @@ $4450 in Revenue for $165 in Ad Spend (26x ROI) https://i.imgsafe.org/5fbc0fa.pn
 7700 leads for $2.70/lead: https://i.imgsafe.org/717e9bf.png
 
 3500+ New Email Contacts in 30 days https://i.imgsafe.org/70c22f9.png
+
+
+11 lessons from running a webinar funnel that brought in over $200,000 in front end revenue using Facebook ads
+Hey r/entrepreneur - hope you're doing well!
+
+It's been some time since I shared something here, and my friend and a fellow Facebook Advertiser has a killer blog post I though you guys would like - he's not on reddit so I'm publishing it from my personal account.
+
+He's a Facebook advertising pro that's running campaigns mostly for info-products, live events, consulting and software - this post is a case study/educational post he wrote about running/managing Facebook ads and a funnel for a real estate info product that brought in over $200,000 ($237,000) in sales on the front end (back end sales are not counted in here) with about $80,000 in ad spend.
+
+If you're selling anything online with paid advertising, you can learn something from this post.
+
+Full post is published below - formatting is a bit messed up here on reddit so you can also read it directly on his blog here:
+http://www.dominikkrizic.com/blog/11-lessons-webinar/
+In case you missed my older posts on reddit (which are awesome) you can read them here:
+
+(Reddit) Here's exactly how to grow your service business and get a 5-15x return with Facebook Ads
+(Reddit) I'm a 22yo that's making $8,000-10,000/month doing Facebook Ads and consulting for clients. AMA!
+The days of selling high or middle-ticket informational products to cold traffic, using long-copy sales pages, are gone.
+I don't claim that you still can't make money doing that - of course you can, and there are many people who are still doing it. But you need to consider one thing - customer behavior has changed as well as the information industry, so you need to adapt to those changes and learn how to dominate.
+
+In the next couple of paragraphs – I'm going to share what I learned helping my client to dominate the real estate info market. How he went from $500-1000/week to $5000-6000/week using the power of Facebook Advertising.
+
+Let's get started.
+
+Webinar marketing is the name of the game. Webinars became popular back in 2012. Frank Kern taught how to use them to make more sales. Everyone was crazy about them. It was the thing of the year.
+
+But the real questions is - How many people actually make money using them?
+
+Last summer I met a client who was struggling with his webinar marketing funnel. He was selling informational products at $497 each. The webinar presentation was solid, but the entire system was not working properly. I was only a Facebook Advertising guy back then and didn't know a lot about webinars and complex processes.
+
+We agreed on a one week test trial which was very successful. I tested 10 different interests as well as different ages and placements, got the cost-per-lead that was lowered by 40%, and made the first week profitable.
+
+A few weeks later we started running a couple thousand a week in ad spend - which was awesome, but it brought a new set of problems with it.
+
+I'll summarize the entire journey in 11 key takeaways and keep it simple. The whole article is going to be non-technical, so everyone can understand it and benefit from it.
+
+1. Carefully Choose Your Market
+When you're starting out with a new business - the first thing you need to do is research. Many entrepreneurs will tell you "Just do it". But if you create something that nobody needs - you'll lose your time and money. It happens all the time. So here are a few simple questions you can ask yourself.
+
+The same principle works for people who already have businesses. I know it might sound as a cliche - but you'd be surprised how many people don't do it correctly and it costs them a lot of time, money, and energy.
+
+Questions to ask:
+
+Who is your target market?
+
+How many people exist there?
+
+What's your product going to do for them? Is it going to make their life easier?
+
+Do they really need/want it?
+
+Are they ready to pay for it?
+
+We had an audience of 500,000 people and 90% of them needed something similar to what we offered.
+
+If you plan to get 1000 registrants per week to your webinar - with this audience size, you'll be fine for a year. I know it's hard to find something like that, but we did it. And it worked. In case you have a much smaller audience - better prepare yourself to provide them with new content over some period of time, otherwise you will make them feel bored, or even worse, make them angry.
+
+Choose the market that needs a solution that you have, for the problem they have. You should know the number of people there and put a strategy in place if you didn't so far.
+
+2. Understand Your Audience
+If you did everything above and still didn't get a clear picture of their needs - I suggest you to run a few ads and send people to a survey funnel to learn more about them.
+
+If you're tight with your marketing budget, you can always email them and ask about the problems they're facing. Many people will answer because they will assume that you can help them solve their problems.
+
+At the end of this step you should have a clear and deep understanding of needs of your prospects. Create a customer avatar and go through it again to make sure you know everything.
+
+It is crucial for you to record a webinar that will inspire action and also to target your audience precisely on Facebook. Make sure you do it the right way.
+
+3. Choose The Right Platforms To Host Your Business On
+Once you have a recorded webinar it's time to upload it and automate your business. I'd recommend you to use these tools to get the most out of your automated webinar funnel:
+
+Everwebinar – There are many automated webinar platforms out there and we've used a few of them. I'd separate this one as the best solution to start with.
+
+Clickfunnels – Drag and drop platform that you'll use to create the entire funnel. It allows you to test everything easily so you can find out what brings in the most money for you.
+
+ActiveCampaign – If you don't have a budget that is big enough for InfusionSoft – go with this one.
+
+Trust me, you don't want to use a simple e-mail marketing platform, like Mailchimp. You need to have a CRM system for your business, as well as the possibility to make automations.
+
+4. Initial Campaign Setup
+There's one simple rule I follow every single time when I set-up a new campaign. Spend 70% of the time doing the research and other 30% creating and optimizing the campaign.
+
+When you find out best competitors, magazines, communities, software, influencers in that niche and popular blogs – you did 70% of the initial job. Spend other 30% testing ages, genders, placements, devices, etc. until you crack the code.
+
+When I logged into the account for the first time, there were just a few campaigns with a very bad performance. Just 16 days later, I successfully reduced the price by 65% and found out what we need to do if we want to scale those campaigns.
+
+This is what I had when I logged into the account for the first time: http://imgur.com/dMl5zUY
+
+216 days later... 1500+ webinar registrations: http://imgur.com/a/rR2VS
+
+5. A/B Test Everything
+Keep testing, because Facebook is a b**ch and your cost per click/lead/registration can go up quickly. A little change to your headline can reduce cost per lead by 20-50% which is a few thousand $ a month saved.
+
+A few examples of things you should test:
+
+interests
+
+ages
+
+genders
+
+placements
+
+devices
+
+copy
+
+images
+
+The biggest piece of advice I can give you, when it comes to split testing, is to put each ad separately into an ad set and track its unique performance during the next 48 hours.
+
+Find out the winners and get a flood of prospects right into your business. It's time to scale!
+
+Results I achieved 45 days later:5,684 registrations - $2.64/registration: http://imgur.com/WWnmGVV
+
+6. Scale Your Campaigns Slowly To Keep CPC & CPL The Same
+Scale it as slow as you can. Increase your daily budget by 50% of the previous budget and keep an eye on your CPL. When you notice that your price went too high – you can either decide to kill that ad OR lower the budget to what it was before the costs started to increase.
+
+When you have a killer ad – increase your daily budget even more – up to 100-120%, but don't go over that. I did it and Facebook screwed my ads every time. Instead of that, duplicate the ad set and keep an eye again to see how it will perform.
+
+Watch your ads frequently (every 3-4 hours each day) and you'll be fine.
+
+If you do it the right way - you might expect this kind of results; 28,174 registrations at $2.93 each: http://imgur.com/a/pFUoQ
+
+7. Do Retargeting The Right Way
+Throwing everything in front of everyone is not the smartest thing to do when it comes to retargeting. If you do a webinar campaign, then you'll most likely have these 3 segments:
+
+people who didn't register
+
+people who registered but did not attend
+
+people who attended but did not buy
+
+Each of these segments requires a different treatment if your end goal is to successfully convert them into clients. What you want to do here is next:
+
+People who didn't register – send them back to the webinar using text and video ads. Place videos that will make them feel sorry for not attending your webinar because they're missing out on something amazing.
+
+Registrants – provide them with additional valuable content using Facebook ads to build trust and make them feel excited about the webinar because they'll learn how to solve something that bothers them. Place your ads into news feed to make as many people as possible see them. Remind them that the webinar seats are limited and not everyone will be able to attend.
+
+Registered but didn't attend – Place ads that will call them out to watch the replay. If your replay will be available only for 72 hours – make sure to create at least 3 different ads and target that segment with the countdown sequence.
+
+Attended but didn't buy – keep placing valuable content using Facebook Ads in the retargeting sequence as well as the countdown sequence. Most of the people who didn't buy your products will do it during the last few hours, so pump your retargeting sequence up on that day and increase your conversions. Thank me later!
+
+Retargeting segmentation: http://imgur.com/WYAfAFp
+
+8. Tracking Is The Most Important Thing
+Implement Google Analytics & Facebook pixel into all the ads you run so you can exactly know where your buyers are coming from.
+
+We struggled for a few months until we revealed that almost 80% of the total sales are coming from just ONE interest. The 80/20 rule in action.
+
+9. Listen To Your Prospects & Customers
+When you're getting almost 1000 registrants a week – pay attention to what prospects are talking about in comments or what they're telling you directly. When it comes to your customers – 10X your attention because if you don't do it and you do not deliver what they expected – they might leave you hanging with empty hands.
+
+When your customers achieve desired results using your program/course – share those testimonials with the community by creating an ad and target the hottest prospects that you have on the list. It can encourage someone who is close to buying your product to make the final decision.
+
+Happened behind the scene: There were a few people who bought and canceled after a few days. Your obligation is to call them and find out why they decided to do it, so you can prevent that from happening and improve your product/service for future clients.
+
+Listen what your prospects are telling you: http://imgur.com/a/GGCE2
+
+10. Never Stop Providing Additional Value
+Never ever stop providing additional value to people who are interested in something you were/are selling but didn't buy it. If they didn't do it then – it's very likely that they'll do it in the near future.
+
+Serve your community at the highest level you can. There are plenty of positive examples of people who are doing it successfully.
+
+Another reason why you want to do it to the people who already bought something from you is that it is much easier to sell to existing customers than to acquire new ones. Their CPA was $200-$210, but their customer lifetime value is 10 times higher.
+
+Give your prospects the reason to stay around you:http://imgur.com/a/ZXQm7
+
+11. Invest Into Your Brand
+And last but not least important thing is – invest time, money, and energy in creating a brand.
+
+It's pretty simple. When you're growing your business in one industry and have a great solution for people who are happy to buy it – you want to help as many possible people as you can. If you build a brand – you'll make that a lot easier for everyone . Reputation is considered to be one of the most valuable company assets. Your future depends on building public awareness and customer loyalty.
+
+Tools that make things easier:
+https://www.clickfunnels.com/ - for fast creation of landing/lead capture pages and even blog posts
+http://www.qwaya.com/ - for advanced ad optimization/scheduling
+https://www.canva.com/ - kickass tool for simple creation of ad images
+https://leadquizzes.com/ - awesome tool for creating quizzes
+http://www.callrail.com/ - for tracking calls so you know which of your ads work
+https://www.eztexting.com/ - automatic text messaging
+
+Other resources
+Web Copy That Sells
+Influence: The Psychology of Persuasion
+On Facebook Ads
+Top Facebook Ads Blogger
+
+
+
