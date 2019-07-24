@@ -114,3 +114,6 @@ Those are just a couple offhand.
 The Culture Code: The Secrets of Highly Successful Groups
 
 The Best Team Wins: The New Science of High Performance
+
+
+Start With Why by Simon Sinek should be number 1 on any list of marketing books imo.
