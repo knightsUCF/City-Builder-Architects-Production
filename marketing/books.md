@@ -90,3 +90,10 @@ Built To Sell
 
 Duct Tape Marketing by John Jantsch is probably one of my personal favorites in the marketing category
 
+On a Clear Day You Can See General Motors -Great insight to all facets of business. After I read it, was very interesting to see how often it was brought up in business school.
+
+Iaccoca -Won't lie, I've got a thing for the auto industry. Another great look at how every department comes together to make a company successful
+
+Let my people go surfing -Interesting look how Patagonia grew without sacrificing their values
+
+Blue Water Strategy -Always look for where new opportunities are.
