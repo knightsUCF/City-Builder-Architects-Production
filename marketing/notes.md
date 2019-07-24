@@ -19,3 +19,6 @@ perhaps we could offer a free desktop version of the game in exchange for the em
 
 great article on landing page design
 https://brandonthegamedev.com/how-to-build-a-mailing-list-and-send-newsletters-as-a-board-game-dev/?source=post_page---------------------------
+
+
+"If you want, you can even buy a domain through Mailchimp, but it’s a bit pricey. I’d recommend going to another domain provider and redirecting your traffic to a landing page. This costs only a few bucks a year."
