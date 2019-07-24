@@ -32,3 +32,6 @@ https://brandonthegamedev.com/how-to-build-a-mailing-list-and-send-newsletters-a
 offer in game currency for inviting 10 friends from fb
 
 read the kickstarter book from jamey steigmeyer
+
+
+scan the top posts of all time on /r/marketing, /r/advertising, and the linked relevant subreddits
