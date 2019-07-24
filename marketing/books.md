@@ -1,3 +1,7 @@
+Watch YouTube video reviews of the books to get the most important information
+
+Also read Amazon reviews, and take notes from those, to get through the entire list
+
 
 So last year (2017), I read 100 books, 95% of them on marketing, business, or self-development (as related to business).
 
@@ -79,3 +83,10 @@ Start With Why by Simon Sinek should be number 1 on any list of marketing books 
 Not a top 10 list my top 2 are probably: Start with Why, and The Zappos Experience.
 
  For the freelance copywriters I mentor, I start with John Caples' "Tested Advertising Methods", Bond Halbert's "The Halbert Copywriting Method Part III", Robert Bly's "The Copywriter's Handbook", and if you're a freelancer too, I strongly recommend Steven Slaunwhite's "Start and Run a Copywriting Business". Also check out Ogilvy's "On Advertising" and "Ca$hvertising" (although I'm not too fond of the latter). Be sure to read Cialdini's "Influence" if you're also interested in persuasion marketing and psychology. Anything in the field of behavioral economics is also golden. "Positioning" is worth checking out in general (it's been useful for copywriting, but especially consulting), but do take it with a grain of salt. I know I'm missing loads of good ones, but these should keep you busy. Do start with these before moving onto the classics like Eugene Schwartz and Claude Hopkins. Just my two cents.
+
+Missing spin selling
+
+Built To Sell
+
+Duct Tape Marketing by John Jantsch is probably one of my personal favorites in the marketing category
+
