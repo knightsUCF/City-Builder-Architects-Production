@@ -1,5 +1,11 @@
 Watch YouTube video reviews of the books to get the most important information
 
+create a # heading for each book here
+
+Then outline the book with amazon reviews and youtube reviews
+
+Do this for every book, then decide which ones to jump in, also try to find some cliffnotes
+
 Also read Amazon reviews, and take notes from those, to get through the entire list
 
 
@@ -99,3 +105,6 @@ Let my people go surfing -Interesting look how Patagonia grew without sacrificin
 Blue Water Strategy -Always look for where new opportunities are.
 
 Jay Abraham 
+
+
+Ready, Fire, Aim and Pumpkin Plan. Mike Machalowicz in particular is hilarious on Audiobooks.
