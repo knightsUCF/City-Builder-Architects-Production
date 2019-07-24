@@ -7,6 +7,8 @@ Can show off assets with this camera rotation code: https://www.youtube.com/watc
 
 get mailchimp and facebook ads https://medium.com/@adamhwilk/100-list-subscribers-with-facebook-ads-part-1-75afd64e176b
 
+(new article part 2 coming out soon)
+
 build up email list, very important
 
 "Head on over to Mailchimp, and set up an account there. Mailchimp is going to be your friend – it collects emails, creates landing pages, and does a bunch of legally-compliancey stuff that you won’t want to worry about.
