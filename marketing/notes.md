@@ -1,5 +1,7 @@
 this is the Internet, take advantage of instant communication
 
+scan the top posts of all time on /r/marketing, /r/advertising, /r/entrepreneur and the linked relevant subreddits
+
 create an excel sheet of all the youtube and twitch gamers to contact, and status, send out to at least 1000
 
 Send out to major mobile review sites:
@@ -38,5 +40,5 @@ offer in game currency for inviting 10 friends from fb
 read the kickstarter book from jamey steigmeyer
 
 
-scan the top posts of all time on /r/marketing, /r/advertising, and the linked relevant subreddits
+
 
