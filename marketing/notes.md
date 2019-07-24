@@ -109,3 +109,8 @@ Everybody Lies
 Black Box Thinking
 
 Those are just a couple offhand.
+
+
+The Culture Code: The Secrets of Highly Successful Groups
+
+The Best Team Wins: The New Science of High Performance
