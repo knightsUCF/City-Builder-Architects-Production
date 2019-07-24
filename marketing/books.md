@@ -7,6 +7,54 @@ Then outline the book with amazon reviews and youtube reviews
 Do this for every book, then decide which ones to jump in, also try to find some cliffnotes
 
 Also read Amazon reviews, and take notes from those, to get through the entire list
+The Magic of Thinking Big, a classic but worth all the praise if you're into self help kind of thing.
+
+4HWW
+
+Crossing the Chasm
+
+Hard things about hard things
+
+Never Split the Difference
+
+Secrets of Sandhill Road
+
+Dictator's handbook and predictioneers game.
+
+Those books are like my holy books of human behavior.
+
+Shoe Dog - Phil Knight.
+
+“UNSCRIPTED: Life, Liberty, and the Pursuit of Entrepreneurship” by MJ DeMarco
+
+Atomic Habits by James Clear!
+
+One up on wall street, peter lynch
+
+Methods for persuasion - By Nick Kolenda.
+
+
+Fanatical Prospecting & Sales EQ - Jeb Blount
+
+New Sales Simplified - Mike Weinberg
+
+The Little Red Book of Selling, The Sales Manifesto, The Sales Bible - Jeffrey Gitomer
+
+
+The Four - Scott Galloway Competition Demystified - Bruce Greenwald Traction - Gabriel Weinberg The Mom Test - Rob Fitzpatrick
+
+
+Blink: The power of thinking without thinking by Malcolm Gladwell.
+
+
+The Fifth Discipline
+
+Naked Economica
+
+
+Founders Dilemma by Wasserman.
+
+
 
 Books worth their weight in gold. (top 1%)
 books that will help you immensely.
