@@ -96,3 +96,16 @@ All these books are so good at teaching you well-rounded business development an
 NOTE: If you're not much of a reader, then reading those first two will get you really, really far.
 
 If you want to check out the rest, I've got them listed at: www.brandonstiles.com/100books
+
+
+Predictive Marketing For Markerters
+
+Team Of Teams
+
+Find Your Why
+
+Everybody Lies
+
+Black Box Thinking
+
+Those are just a couple offhand.
