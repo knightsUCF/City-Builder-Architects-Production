@@ -1,5 +1,7 @@
 this is the Internet, take advantage of instant communication
 
+create an excel sheet of all the youtube and twitch gamers to contact, and status, send out to at least 1000
+
 Send out to major mobile review sites:
 
 https://mobilefreetoplay.com/top-10-game-mechanics-for-hyper-casual-games/
