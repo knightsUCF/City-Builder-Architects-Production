@@ -22,3 +22,9 @@ https://brandonthegamedev.com/how-to-build-a-mailing-list-and-send-newsletters-a
 
 
 "If you want, you can even buy a domain through Mailchimp, but it’s a bit pricey. I’d recommend going to another domain provider and redirecting your traffic to a landing page. This costs only a few bucks a year."
+
+
+"Regardless of your tone, a good ad will almost always be: concise, clean, and convincing. You want to get your idea across quickly and in a few sentences. Text needs to be easy to digest, and focus on what makes your offering unique. Clean means no spelling or grammar mistakes because those stick out like a sore thumb. And for your ad to be convincing, you need to have a call to action and a reason for them to click through."
+
+
+offer in game currency for inviting 10 friends from fb
