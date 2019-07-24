@@ -97,3 +97,5 @@ Iaccoca -Won't lie, I've got a thing for the auto industry. Another great look a
 Let my people go surfing -Interesting look how Patagonia grew without sacrificing their values
 
 Blue Water Strategy -Always look for where new opportunities are.
+
+Jay Abraham 
