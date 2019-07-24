@@ -9,4 +9,5 @@ get mailchimp and facebook ads https://medium.com/@adamhwilk/100-list-subscriber
 
 build up email list, very important
 
-
+"Head on over to Mailchimp, and set up an account there. Mailchimp is going to be your friend – it collects emails, creates landing pages, and does a bunch of legally-compliancey stuff that you won’t want to worry about.
+If you head over to their Landing Page creator, you can set up something quick and dirty to start capturing e-mail leads. Here’s the one I made, for example. I’m not going to pretend to be an expert on the matter, but you want to give people a preview of what you are doing, some cool graphics to draw them in, and then a call to action and motivation to join your community."
