@@ -17,8 +17,10 @@ public class SequenceTest : MonoBehaviour
     int lastEndpoint = 0;
     int minSequence = 1;
     bool done = false;
+    int indexEndpointOfList = 1;
 
     bool isLastPosInList = false;
+    
 
 
     /*
@@ -37,39 +39,37 @@ public class SequenceTest : MonoBehaviour
     64  11
     
     
-    
-    
-    
-    
     */
 
-
+    
     void ScanSequences()
     {
-        for (int i = endpoint; i < list.Count; i++)
+        for (int i = indexEndpointOfList; i < list.Count; i++)
         {
             if (list[i] == ((list[i - 1]) + offset))
             {
                 aSequence.Add(list[i]);
             }
-            else break;
+            else break; 
         }
 
 
         if (aSequence.Count > minSequence)
         {
             CreateJunction(aSequence.FirstOrDefault(), aSequence.LastOrDefault());
-            endpoint = 1 + GetIndexOfItem(aSequence, aSequence.LastOrDefault());
-            // Debug.Log("updated endpoint: " + endpoint);
-            // clear the last sequence, so we don't keep adding to the same sequence
+            indexEndpointOfList = 1 + GetIndexOfItem(list, aSequence.LastOrDefault());
             aSequence.Clear();
         }
 
-        // if (endpoint == lastEndpoint) done = true; // for breaking out of a while loop
 
-        // lastEndpoint = endpoint;
+        if (list.Count == indexEndpointOfList)
+        {
+            done = true;
+        }
 
-        // OutputList(aSequence);
+
+
+        // two ways of breaking out of the future while loop:
 
         if (list[endpoint] == list.LastOrDefault())
         {
@@ -83,65 +83,62 @@ public class SequenceTest : MonoBehaviour
 
         lastEndpoint = endpoint;
     }
+    
 
 
-
+    
     void Start()
     {
-        // can't just add one, have to add one after the
         ScanSequences();
-        endpoint += 1;
-        Debug.Log("endpoint: " + endpoint);
+        indexEndpointOfList += 1;
+        Debug.Log("indexEndpointOfList: " + indexEndpointOfList);
         ScanSequences();
-        endpoint += 1;
-        Debug.Log("endpoint: " + endpoint);
+        indexEndpointOfList += 1;
+        Debug.Log("indexEndpointOfList: " + indexEndpointOfList);
         ScanSequences();
-        endpoint += 1;
-        Debug.Log("endpoint: " + endpoint);
+        indexEndpointOfList += 1;
+        Debug.Log("indexEndpointOfList: " + indexEndpointOfList);
         ScanSequences();
-        endpoint += 1;
-        Debug.Log("endpoint: " + endpoint);
+        indexEndpointOfList += 1;
+        Debug.Log("indexEndpointOfList: " + indexEndpointOfList);
         ScanSequences();
-        endpoint += 1;
-        Debug.Log("endpoint: " + endpoint);
+        indexEndpointOfList += 1;
+        Debug.Log("indexEndpointOfList: " + indexEndpointOfList);
         ScanSequences();
-        endpoint += 1;
-        Debug.Log("endpoint: " + endpoint);
+        indexEndpointOfList += 1;
+        Debug.Log("indexEndpointOfList: " + indexEndpointOfList);
         ScanSequences();
-        endpoint += 1;
-        Debug.Log("endpoint: " + endpoint);
+        indexEndpointOfList += 1;
+        Debug.Log("indexEndpointOfList: " + indexEndpointOfList);
         ScanSequences();
-        endpoint += 1;
-        Debug.Log("endpoint: " + endpoint);
+        indexEndpointOfList += 1;
+        Debug.Log("indexEndpointOfList: " + indexEndpointOfList);
         ScanSequences();
-        endpoint += 1;
-        Debug.Log("endpoint: " + endpoint);
+        indexEndpointOfList += 1;
+        Debug.Log("indexEndpointOfList: " + indexEndpointOfList);
         ScanSequences();
-        endpoint += 1;
-        Debug.Log("endpoint: " + endpoint);
-        ScanSequences();
-        endpoint += 1;
-        Debug.Log("endpoint: " + endpoint);
-        ScanSequences();
-        endpoint += 1;
-        Debug.Log("endpoint: " + endpoint);
-        ScanSequences();
-        endpoint += 1;
-        Debug.Log("endpoint: " + endpoint);
-        ScanSequences();
+        indexEndpointOfList += 1;
+        Debug.Log("indexEndpointOfList: " + indexEndpointOfList);
+
+        
+
+    
+        
+        // make sure the indexEndPointOfList does not go out of the lists index range, so something like if (indexendpointlist < list.count index) break
  
-  
 
-
-        if (isLastPosInList)
+        if (isLastPosInList || done)
         {
             Debug.Log("DONE!");
         }
+
+        
         
     }
+    
 
 
-
+    
     void OutputList(List<int> list)
     {
         foreach (int i in list)
@@ -163,6 +160,7 @@ public class SequenceTest : MonoBehaviour
         Debug.Log("Junction start: " + start);
         Debug.Log("Junction end: " + end);
     }
+    
 
 
     
