@@ -16,6 +16,70 @@ using System.Linq;
 
 - Sid Meier
 
+
+How to make an RTS without combat? Economic RTS!
+
+You do well in the game by figuring by what the resources have the highest demand and the least supply, look at what the opponents are producting the least of,
+game ends with a hostile take over, the aggression of the game is in the stock market, and then eventually win by taking that money and buying the stock of your opponents
+
+Economic RTS is the sub genre
+
+Every element of the game, Offworld Trading Company was taken from other games:
+
+Belter 1979
+
+Going out exploring different resources with different levels, low medium or high resources, basic idea for resources
+
+Mule 1983
+
+Claims. Have to make a tough choice, are you going to invest in food, ore, resources, versus claiming resources everywhere
+
+Also borrowed auctions. Have to have auctions!
+
+
+Board games!
+
+Transparancy. One unit of iron = one unit of steel.
+
+Cubes on the map are iron - like euro games with chunkys
+
+
+Railroad Tycoon
+
+Shipping lanes
+
+Get resources from one place, and then ship, take fule and then turn into chemicals, engine building
+
+Resource chart in railroad tycoon, how you turn one resource into another (Brass Birmingham)
+
+Resource chart in offworld -- look up, copy this
+
+
+Age of Empires 2
+
+One building has huge influence, the Market
+
+You can sell, and buy at the market
+
+Food, stone, gold, wood
+
+Can trade those resources at anytime, using gold
+
+The wonderful thing is that the prices are global, the price goes up for everyone if you get wood
+
+If someone notices the price of wood is high that and wants to take advantage they produce a lot of wood, and sell that for gold, which is very valuable
+
+Right at 9:28 of: https://www.youtube.com/watch?v=o2C4z_apu2I
+
+
+
+
+
+
+
+
+
+
 */
 
 
@@ -48,11 +112,24 @@ public class TrafficSystem3 : MonoBehaviour
     public GameObject cars;
 
     public GameObject car1;
-    public GameObject car2;
+    // public GameObject car2;
 
     Vector3 startPos;
 
-    public GameObject waypoint;
+    public GameObject waypoint; // child
+    public GameObject waypoints; // parent
+
+
+
+    // globale experimental waypoints
+
+
+    GameObject waypointGOStart;
+    GameObject cubeStart;
+    GameObject waypointGOEnd;
+    GameObject cubeEnd;
+
+
 
 
 
@@ -62,6 +139,8 @@ public class TrafficSystem3 : MonoBehaviour
     {
         // Test();
         // UpdateTrafficSystem();
+
+        CreateGlobalWaypoints();
     }
 
 
@@ -164,8 +243,21 @@ public class TrafficSystem3 : MonoBehaviour
 
 
 
-    void CreateRowJunction(int start, int end, int row)
+    void FindAssociatedWaypoints()
     {
+        // finds the 2 associated waypoint game objects per sequence
+
+        // if can't find creates them
+
+        
+    }
+
+
+
+    void CreateRowWaypoint(int start, int end, int row)
+    {
+
+        Debug.Log("Creating row waypoint!");
 
 
         // 1. Vector2(start, rowOrColumn)
@@ -185,16 +277,41 @@ public class TrafficSystem3 : MonoBehaviour
         // Debug.Log("Junction start: " + start + " " + row);
         // Debug.Log("Junction end: " + end + " " + row);
 
-        Vector3 junctionStart = new Vector3((float)start, 0.0f, (float)row);
-        Vector3 junctionEnd = new Vector3((float)end, 0.0f, (float)row);
+        Vector3 waypointStart = new Vector3((float)start, 0.0f, (float)row);
+        Vector3 waypointEnd = new Vector3((float)end, 0.0f, (float)row);
 
-        GameObject junction = Instantiate(waypoint, new Vector3(0,0,0), Quaternion.identity);
-        GameObject waypointStart = junction.transform.GetChild(0);
-        GameObject waypointEnd = junction.transform.GetChild(1);
+        GameObject waypointGOStart = Instantiate(waypoint, waypointStart, Quaternion.identity);
+        waypointGOStart.transform.parent = waypoints.transform;
 
-        waypointStart.transform.position = junctionStart;
-        waypointEnd.transform.position = junctionEnd;
+        GameObject cubeStart = GameObject.CreatePrimitive(PrimitiveType.Cube);
+        cubeStart.transform.position = waypointStart;
 
+
+        GameObject waypointGOEnd = Instantiate(waypoint, waypointEnd, Quaternion.identity);
+        waypointGOEnd.transform.parent = waypoints.transform;
+
+        GameObject cubeEnd = GameObject.CreatePrimitive(PrimitiveType.Cube);
+        cubeEnd.transform.position = waypointEnd;
+
+
+        /*
+        Transform waypointStart = waypoint.transform.GetChild(0);
+        Transform waypointEnd = waypoint.transform.GetChild(1);
+
+        waypointStart.transform.position = waypointStart;
+        waypointEnd.transform.position = waypointEnd;
+        */
+
+
+        /*
+        GameObject cubeStart = GameObject.CreatePrimitive(PrimitiveType.Cube);
+        cubeStart.transform.position = waypointStart;
+        cubeStart.GetComponent<Renderer>().material.color = Color.blue;
+
+        GameObject cubeEnd = GameObject.CreatePrimitive(PrimitiveType.Cube);
+        cubeEnd.transform.position = waypointEnd;
+        cubeEnd.GetComponent<Renderer>().material.color = Color.magenta;
+        */
 
 
         // modify the child objects of the junction prefab with the above parameters
@@ -202,8 +319,29 @@ public class TrafficSystem3 : MonoBehaviour
 
 
 
-    void CreateColumnJunction(int start, int end, int column)
+    void CreateGlobalWaypoints()
     {
+        waypointGOStart = Instantiate(waypoint, Vector3.zero, Quaternion.identity);
+        waypointGOStart.transform.parent = waypoints.transform;
+
+        cubeStart = GameObject.CreatePrimitive(PrimitiveType.Cube);
+        cubeStart.transform.position = Vector3.zero;
+
+        waypointGOEnd = Instantiate(waypoint, Vector3.zero, Quaternion.identity);
+        waypointGOEnd.transform.parent = waypoints.transform;
+
+        cubeEnd = GameObject.CreatePrimitive(PrimitiveType.Cube);
+        cubeEnd.transform.position = Vector3.zero;
+
+
+    }
+
+
+
+    void CreateColumnWaypoint(int start, int end, int column)
+    {
+
+        Debug.Log("Creating column junction!");
 
         // 1. Vector2(start, rowOrColumn)
         // 2. Vector2(end, rowOrColumn)
@@ -216,16 +354,45 @@ public class TrafficSystem3 : MonoBehaviour
         // Debug.Log("Junction start: " + start + " " + column);
         // Debug.Log("Junction end: " + end + " " + column);
 
-        Vector3 junctionStart = new Vector3((float)column, 0.0f, (float)start);
-        Vector3 junctionEnd = new Vector3((float)column, 0.0f, (float)end);
+        // Vector3 waypointStart = new Vector3((float)column, 0.0f, (float)start);
+        // Vector3 waypointEnd = new Vector3((float)column, 0.0f, (float)end);
 
-        GameObject junction = Instantiate(waypoint, new Vector3(0,0,0), Quaternion.identity);
-        GameObject waypointStart = junction.transform.GetChild(0);
-        GameObject waypointEnd = junction.transform.GetChild(1);
+        Vector3 waypointStart = new Vector3((float)start, 0.0f, (float)column);
+        Vector3 waypointEnd = new Vector3((float)end, 0.0f, (float)column);
 
-        waypointStart.transform.position = junctionStart;
-        waypointEnd.transform.position = junctionEnd;
 
+        waypointGOStart.transform.position = waypointStart;
+        cubeStart.transform.position = waypointStart;
+
+        waypointGOEnd.transform.position = waypointEnd;
+        cubeEnd.transform.position = waypointEnd;
+
+
+
+        
+
+        
+
+
+
+        /*
+        Transform waypointStart = waypoint.transform.GetChild(0);
+        Transform waypointEnd = waypoint.transform.GetChild(1);
+
+        waypointStart.transform.position = waypointStart;
+        waypointEnd.transform.position = waypointEnd;
+        */
+
+
+        /*
+        GameObject cubeStart = GameObject.CreatePrimitive(PrimitiveType.Cube);
+        cubeStart.transform.position = waypointStart;
+        cubeStart.GetComponent<Renderer>().material.color = Color.blue;
+
+        GameObject cubeEnd = GameObject.CreatePrimitive(PrimitiveType.Cube);
+        cubeEnd.transform.position = waypointEnd;
+        cubeEnd.GetComponent<Renderer>().material.color = Color.magenta;
+        */
 
     }
 
@@ -281,7 +448,7 @@ public class TrafficSystem3 : MonoBehaviour
         if (aSequence.Count > minSequence)
         {
             // CreateJunction(aSequence.FirstOrDefault(), aSequence.LastOrDefault());
-            CreateRowJunction(GetBeforeLastItem(list, aSequence.FirstOrDefault()), aSequence.LastOrDefault(), row);
+            CreateRowWaypoint(GetBeforeLastItem(list, aSequence.FirstOrDefault()), aSequence.LastOrDefault(), row);
             indexEndpointOfList = 1 + GetIndexOfItem(list, aSequence.LastOrDefault());
             aSequence.Clear();
         }
@@ -316,6 +483,8 @@ public class TrafficSystem3 : MonoBehaviour
 
     void GetColumnSequences(List<int> list, int column)
     {
+        Debug.Log("Getting column sequences");
+
         for (int i = indexEndpointOfList; i < list.Count; i++)
         {
             if (list[i] == ((list[i - 1]) + offset))
@@ -329,7 +498,7 @@ public class TrafficSystem3 : MonoBehaviour
         if (aSequence.Count > minSequence)
         {
             // CreateJunction(aSequence.FirstOrDefault(), aSequence.LastOrDefault());
-            CreateColumnJunction(GetBeforeLastItem(list, aSequence.FirstOrDefault()), aSequence.LastOrDefault(), column);
+            CreateColumnWaypoint(GetBeforeLastItem(list, aSequence.FirstOrDefault()), aSequence.LastOrDefault(), column);
             indexEndpointOfList = 1 + GetIndexOfItem(list, aSequence.LastOrDefault());
             aSequence.Clear();
         }
@@ -387,24 +556,27 @@ public class TrafficSystem3 : MonoBehaviour
 
     void ScanColumns(List<Vector2> positionsByColumn, int column)
     {
+        Debug.Log("Scanning columns");
 
         positionsByColumn.Sort((a, b) => a.x.CompareTo(b.x));
         List<int> justXs = new List<int>();
 
         foreach (Vector2 item in positionsByColumn)
         {
+            Debug.Log("LORAX");
             justXs.Add((int)item.x);
         }
 
         foreach (int i in justXs) // justXs list here?
         {
+            Debug.Log("WILLY WONKA");
             GetColumnSequences(justXs, column);
             indexEndpointOfList += 1;
         }
         // reset index endpoint?
         indexEndpointOfList = 1;
 
-        Debug.Log("End of columns");
+        // Debug.Log("End of columns");
     }
 
 
@@ -428,7 +600,7 @@ public class TrafficSystem3 : MonoBehaviour
 
         indexEndpointOfList = 1;
 
-        Debug.Log("End of rows");
+        // Debug.Log("End of rows");
     }
 
 
@@ -440,6 +612,7 @@ public class TrafficSystem3 : MonoBehaviour
 
     void GetAllSegmentsInColumn(List<Vector2> posByColumn, int column)
     {
+        Debug.Log("getting all segments in column");
         ScanColumns(posByColumn, column);
     }
 
@@ -499,6 +672,7 @@ public class TrafficSystem3 : MonoBehaviour
 
     void ScanColumnLine(int column)
     {
+        Debug.Log("Scanning column lines");
         List<Vector2> positionsByColumn = PullOutVectorsByColumn((float)column);
         GetAllSegmentsInColumn(positionsByColumn, column);
     }
@@ -507,17 +681,19 @@ public class TrafficSystem3 : MonoBehaviour
 
     void DetermineJunctions()
     {
-
+        Debug.Log("running determine junctions");
 
         for (int i = mapStart; i < mapEnd; i += offset)
         {
             ScanColumnLine(i);
         }
 
+        /*
         for (int i = mapStart; i < mapEnd; i += offset)
         {
             ScanRowLine(i);
         }
+        */
 
         // and here we have to do something about the intersections
     }
@@ -525,25 +701,57 @@ public class TrafficSystem3 : MonoBehaviour
 
     // public minRoadTilesForTraffic = 3;
 
+    void PlaceCubesAtRoadTiles()
+    {
+        
+    }
+
+
+    public Vector3 roadTile1Pos;
+
+
+    void UpdateLog()
+    {
+        roadTile1Pos = Data.roadMap[0];
+    }
+
 
     public void UpdateTrafficSystem()
     {
 
+        UpdateLog();
+        // map start is y for columns, so might be x for rows, if so need to change the map start beginning iterator for both columns and rows which will be different, unless picking a 1:1 grid
+
+        mapStart = (int)Data.roadMap[0].y; // hacky of starting out, so we get even offset that are divisible from the beginning of the first tile
+        // end case scenario; will the first tile be determined where the player sets? how will this work in multiplayer, perhaps will need to have the tiles snap to a 1:1 grid, so the multiplayer roadds also connect
+
+
+
         DetermineJunctions();
 
+
+    
         if (cars.activeSelf == false)
         {
             cars.SetActive(true);
 
             // set starting pos of the cars
             Vector3 startVector = new Vector3(Data.roadMap[0].x, 0.0f, Data.roadMap[0].y);
+            
             // startPos = Data.roadMap[0]; // hacky way for now
             Debug.Log("Start pos: " + startVector);
 
+            GameObject cube = GameObject.CreatePrimitive(PrimitiveType.Cube);
+            cube.transform.position = startVector;
+
+            PlaceCubesAtRoadTiles();
+
             car1.transform.position = startVector;
-            car2.transform.position = startVector;
+            // car2.transform.position = startVector;
 
         }
+        
+        
 
 
         
