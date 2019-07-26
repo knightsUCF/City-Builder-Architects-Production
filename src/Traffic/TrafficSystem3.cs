@@ -5,9 +5,16 @@ using System.Linq;
 
 /*
 
-"Doesn't cost anymore to make a game epic rather than non epic" - Sid Meier
-"Our gift was knowing what to steal from other games" - Sid Meier
+"Doesn't cost anymore to make a game epic rather than non epic"
+"Our gift was knowing what to steal from other games" 
+"Tech tree and diplomacy, fairly uncommon in games"
+"Did research in children's library section, things that everyone knows about and feels smart about because they're familiar with them"
+"Don't take the agency away from the player, let the player have the fun, not the designer having the fun"
+"Educaintment!"
+"Education is a dirty word, but learning is a secret aspect that brings you back to bring more to learn more about yourself"
+"one third is core game, cities, wonders, pieces, another third is taking ideas experimented with before esponiage, combat, and making that better, and then another third is things we haven't put in the game, that is what guides the next iteration, enough novelty, and enough core  of the tested gameplay"
 
+- Sid Meier
 
 */
 
@@ -37,9 +44,24 @@ public class TrafficSystem3 : MonoBehaviour
     int lastEndpoint = 0;
 
 
+
+    public GameObject cars;
+
+    public GameObject car1;
+    public GameObject car2;
+
+    Vector3 startPos;
+
+    public GameObject waypoint;
+
+
+
+
+
     void Start()
     {
-        Test();
+        // Test();
+        // UpdateTrafficSystem();
     }
 
 
@@ -141,21 +163,70 @@ public class TrafficSystem3 : MonoBehaviour
     }
 
 
-    public int CreateJunction_count = 0;
 
-    void CreateJunction(int start, int end, int rowOrColumn)
+    void CreateRowJunction(int start, int end, int row)
     {
-        CreateJunction_count += 1;
+
 
         // 1. Vector2(start, rowOrColumn)
         // 2. Vector2(end, rowOrColumn)
 
         // Instantiate prefab with pos parameters of above
 
-        Debug.Log("Junction start: " + start + " " + rowOrColumn);
-        Debug.Log("Junction end: " + end + " " + rowOrColumn);
+        // for a row 
 
-        junctionCount += 1;
+        // a row will be going 
+
+        // so the start pos will be: start, 0, row  -->   end, 0, row
+
+        // start x, y, z:  start, 0, row
+        // end   x, y, z:  end, 0, row
+
+        // Debug.Log("Junction start: " + start + " " + row);
+        // Debug.Log("Junction end: " + end + " " + row);
+
+        Vector3 junctionStart = new Vector3((float)start, 0.0f, (float)row);
+        Vector3 junctionEnd = new Vector3((float)end, 0.0f, (float)row);
+
+        GameObject junction = Instantiate(waypoint, new Vector3(0,0,0), Quaternion.identity);
+        GameObject waypointStart = junction.transform.GetChild(0);
+        GameObject waypointEnd = junction.transform.GetChild(1);
+
+        waypointStart.transform.position = junctionStart;
+        waypointEnd.transform.position = junctionEnd;
+
+
+
+        // modify the child objects of the junction prefab with the above parameters
+    }
+
+
+
+    void CreateColumnJunction(int start, int end, int column)
+    {
+
+        // 1. Vector2(start, rowOrColumn)
+        // 2. Vector2(end, rowOrColumn)
+
+        // Instantiate prefab with pos parameters of above
+
+        // start x, y, z:  column, 0, start
+        // end   x, y, z:  column, 0, end
+
+        // Debug.Log("Junction start: " + start + " " + column);
+        // Debug.Log("Junction end: " + end + " " + column);
+
+        Vector3 junctionStart = new Vector3((float)column, 0.0f, (float)start);
+        Vector3 junctionEnd = new Vector3((float)column, 0.0f, (float)end);
+
+        GameObject junction = Instantiate(waypoint, new Vector3(0,0,0), Quaternion.identity);
+        GameObject waypointStart = junction.transform.GetChild(0);
+        GameObject waypointEnd = junction.transform.GetChild(1);
+
+        waypointStart.transform.position = junctionStart;
+        waypointEnd.transform.position = junctionEnd;
+
+
     }
 
 
@@ -195,8 +266,7 @@ public class TrafficSystem3 : MonoBehaviour
 
 
 
-
-    void GetSequences(List<int> list, int column)
+    void GetRowSequences(List<int> list, int row)
     {
         for (int i = indexEndpointOfList; i < list.Count; i++)
         {
@@ -211,7 +281,7 @@ public class TrafficSystem3 : MonoBehaviour
         if (aSequence.Count > minSequence)
         {
             // CreateJunction(aSequence.FirstOrDefault(), aSequence.LastOrDefault());
-            CreateJunction(GetBeforeLastItem(list, aSequence.FirstOrDefault()), aSequence.LastOrDefault(), column);
+            CreateRowJunction(GetBeforeLastItem(list, aSequence.FirstOrDefault()), aSequence.LastOrDefault(), row);
             indexEndpointOfList = 1 + GetIndexOfItem(list, aSequence.LastOrDefault());
             aSequence.Clear();
         }
@@ -242,7 +312,54 @@ public class TrafficSystem3 : MonoBehaviour
     }
 
 
-    public int GetNextConsecutiveSegment_count = 0;
+
+
+    void GetColumnSequences(List<int> list, int column)
+    {
+        for (int i = indexEndpointOfList; i < list.Count; i++)
+        {
+            if (list[i] == ((list[i - 1]) + offset))
+            {
+                aSequence.Add(list[i]);
+            }
+            else break; 
+        }
+
+
+        if (aSequence.Count > minSequence)
+        {
+            // CreateJunction(aSequence.FirstOrDefault(), aSequence.LastOrDefault());
+            CreateColumnJunction(GetBeforeLastItem(list, aSequence.FirstOrDefault()), aSequence.LastOrDefault(), column);
+            indexEndpointOfList = 1 + GetIndexOfItem(list, aSequence.LastOrDefault());
+            aSequence.Clear();
+        }
+
+
+        if (list.Count == indexEndpointOfList)
+        {
+            done = true;
+        }
+
+
+
+        // two ways of breaking out of the future while loop:
+
+        /*
+        if (list[endpoint] == list.LastOrDefault())
+        {
+            // Debug.Log("Reached the end: " + list[endpoint]);
+            isLastPosInList = true;
+        }
+        */
+
+        // Debug.Log("list[endpoint] " + list[endpoint]);
+
+        if (endpoint == lastEndpoint) isLastPosInList = true; // done
+
+        lastEndpoint = endpoint;
+    }
+
+
 
 
     // runs 228 times, everything runs 13 times at most, once per column
@@ -281,7 +398,7 @@ public class TrafficSystem3 : MonoBehaviour
 
         foreach (int i in justXs) // justXs list here?
         {
-            GetSequences(justXs, column);
+            GetColumnSequences(justXs, column);
             indexEndpointOfList += 1;
         }
         // reset index endpoint?
@@ -292,7 +409,7 @@ public class TrafficSystem3 : MonoBehaviour
 
 
 
-    void ScanRows(List<Vector2> positionsByColumn, int column)
+    void ScanRows(List<Vector2> positionsByColumn, int row)
     {
 
         positionsByColumn.Sort((a, b) => a.y.CompareTo(b.y));
@@ -305,7 +422,7 @@ public class TrafficSystem3 : MonoBehaviour
 
         foreach (int i in justYs) // justXs list here?
         {
-            GetSequences(justYs, column);
+            GetRowSequences(justYs, row);
             indexEndpointOfList += 1;
         }
 
@@ -406,9 +523,30 @@ public class TrafficSystem3 : MonoBehaviour
     }
     
 
+    // public minRoadTilesForTraffic = 3;
+
 
     public void UpdateTrafficSystem()
     {
+
+        DetermineJunctions();
+
+        if (cars.activeSelf == false)
+        {
+            cars.SetActive(true);
+
+            // set starting pos of the cars
+            Vector3 startVector = new Vector3(Data.roadMap[0].x, 0.0f, Data.roadMap[0].y);
+            // startPos = Data.roadMap[0]; // hacky way for now
+            Debug.Log("Start pos: " + startVector);
+
+            car1.transform.position = startVector;
+            car2.transform.position = startVector;
+
+        }
+
+
+        
 
     }
 
