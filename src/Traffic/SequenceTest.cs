@@ -9,6 +9,8 @@ public class SequenceTest : MonoBehaviour
     
 
     List<int> list = new List<int> {0, 8, 16, 24, 31, 32, 33, 34, 40, 48, 56, 64, 65, 70, 71, 80, 88, 96, 104, 112};
+    // List<int> list = new List<int> {0, 1, 2, 3, 6, 9, 12, 15, 16, 17, 20, 23, 26, 27, 30, 33, 34, 46, 104, 112};
+
 
     List<int> aSequence = new List<int>();
 
@@ -41,7 +43,16 @@ public class SequenceTest : MonoBehaviour
     
     */
 
+
+    int GetBeforeLastItem(List<int> list, int startItem)
+    {
+        int i = list.IndexOf(startItem);
+        i -= 1;
+        return list[i];
+    }
+
     
+
     void ScanSequences()
     {
         for (int i = indexEndpointOfList; i < list.Count; i++)
@@ -56,7 +67,8 @@ public class SequenceTest : MonoBehaviour
 
         if (aSequence.Count > minSequence)
         {
-            CreateJunction(aSequence.FirstOrDefault(), aSequence.LastOrDefault());
+            // CreateJunction(aSequence.FirstOrDefault(), aSequence.LastOrDefault());
+            CreateJunction(GetBeforeLastItem(list, aSequence.FirstOrDefault()), aSequence.LastOrDefault());
             indexEndpointOfList = 1 + GetIndexOfItem(list, aSequence.LastOrDefault());
             aSequence.Clear();
         }
