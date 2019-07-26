@@ -12,6 +12,18 @@ public class TrafficSystem3 : MonoBehaviour
     public int mapStart = -2;
     public int mapEnd = 100;
 
+    public int junctionCount = 0;
+
+    int indexEndpointOfList = 1;
+
+    int minSequence = 1;
+
+    List<int> aSequence = new List<int>();
+
+
+    bool done = false;
+    bool isLastPosInList = false;
+
     
 
 
@@ -53,6 +65,18 @@ public class TrafficSystem3 : MonoBehaviour
         Vector2 v19 = new Vector2(22.0f, 22.0f);
         Vector2 v20 = new Vector2(30.0f, 22.0f);
 
+        Vector2 v21 = new Vector2(0.0f, -2.0f);
+        Vector2 v22 = new Vector2(8.0f, -2.0f);
+        Vector2 v23 = new Vector2(16.0f, -2.0f);
+        Vector3 v24 = new Vector2(24.0f, -2.0f);
+
+        Vector2 v25 = new Vector2(31.0f, -2.0f);
+        Vector2 v26 = new Vector2(41.0f, -2.0f);
+        Vector2 v27 = new Vector2(48.0f, -2.0f);
+        Vector3 v28 = new Vector2(56.0f, -2.0f);
+        Vector3 v29 = new Vector2(64.0f, -2.0f);
+        Vector3 v30 = new Vector2(72.0f, -2.0f);
+
 
 
         Data.roadMap.Add(0, v1);
@@ -67,14 +91,38 @@ public class TrafficSystem3 : MonoBehaviour
         Data.roadMap.Add(9, v10);
         Data.roadMap.Add(10, v11);
         Data.roadMap.Add(11, v12);
+        
+        Data.roadMap.Add(12, v21);
+        Data.roadMap.Add(13, v22);
+        Data.roadMap.Add(14, v23);
+        Data.roadMap.Add(15, v24);
+
+        Data.roadMap.Add(16, v25);
+        Data.roadMap.Add(17, v26);
+        Data.roadMap.Add(18, v27);
+        Data.roadMap.Add(19, v28);
+        Data.roadMap.Add(20, v29);
+        Data.roadMap.Add(21, v30);
 
         DetermineJunctions(); 
     }
 
 
+    void OutputList(List<int> list)
+    {
+        foreach (int i in list)
+        {
+            Debug.Log(i);
+        }
+    }
+
+
+    public int CreateJunction_count = 0;
 
     void CreateJunction(int start, int end, int rowOrColumn)
     {
+        CreateJunction_count += 1;
+
         // 1. Vector2(start, rowOrColumn)
         // 2. Vector2(end, rowOrColumn)
 
@@ -82,6 +130,8 @@ public class TrafficSystem3 : MonoBehaviour
 
         Debug.Log("Junction start: " + start + " " + rowOrColumn);
         Debug.Log("Junction end: " + end + " " + rowOrColumn);
+
+        junctionCount += 1;
     }
 
 
@@ -102,99 +152,81 @@ public class TrafficSystem3 : MonoBehaviour
 
 
 
+    /*
     bool GetSequences(List<int> list, int column)
     {
-        bool done = false; // return true when done iterating over sequences
 
-        int minSequence = 1;
-        int endOfLastSequence;
-        List<int> aSequence = new List<int>();
-        // if (list == null) return;
-    
-        for (int i = endpoint; i < list.Count; i++)
+        
+    }
+    */
+
+
+
+    int GetBeforeLastItem(List<int> aList, int startItem)
+    {
+        int i = aList.IndexOf(startItem);
+        i -= 1;
+        return aList[i];
+    }
+
+
+
+
+    void GetSequences(List<int> list, int column)
+    {
+        for (int i = indexEndpointOfList; i < list.Count; i++)
         {
             if (list[i] == ((list[i - 1]) + offset))
             {
                 aSequence.Add(list[i]);
             }
+            else break; 
         }
 
-        
+
         if (aSequence.Count > minSequence)
         {
-            CreateJunction(aSequence.FirstOrDefault(), aSequence.LastOrDefault(), column);
-            endpoint = GetIndexOfItem(aSequence, aSequence.LastOrDefault()); // becomes the beginning of our next iteration, should start at 1
-            Debug.Log("index endpoint: " + endpoint);
-            // also remember to reset back to one
+            // CreateJunction(aSequence.FirstOrDefault(), aSequence.LastOrDefault());
+            CreateJunction(GetBeforeLastItem(list, aSequence.FirstOrDefault()), aSequence.LastOrDefault(), column);
+            indexEndpointOfList = 1 + GetIndexOfItem(list, aSequence.LastOrDefault());
+            aSequence.Clear();
         }
 
-        Debug.Log("endpoint == lastEndpoint >>>  endpoint: " + endpoint + " lastEndpoint" + lastEndpoint);
 
-        if (endpoint == lastEndpoint) done = true;
+        if (list.Count == indexEndpointOfList)
+        {
+            done = true;
+        }
+
+
+
+        // two ways of breaking out of the future while loop:
+
+        if (list[endpoint] == list.LastOrDefault())
+        {
+            // Debug.Log("Reached the end: " + list[endpoint]);
+            isLastPosInList = true;
+        }
+
+        // Debug.Log("list[endpoint] " + list[endpoint]);
+
+        if (endpoint == lastEndpoint) isLastPosInList = true; // done
 
         lastEndpoint = endpoint;
-
-
-
-        // how to tell we are at the end of the map
-
-        // well what if the last element is not past the map end? TODO
-        // well we will want to exit once we reach the last element, and then break the while loop
-
-
-        /*
-        if (list.LastOrDefault() >= mapEnd)
-        {
-            ResetIterator(); // resets back to one
-            // at the end of the sequence endpoint will be reset back to one for each next column, and then also when we move over to rows
-
-            // also want to close out the while loop TODO
-            
-        }
-        */
-        
-
-                // if (current != last - offset)
-
-
-                /*
-                if (i != list.Count - 1 && list[i] != (list[i + 1] + offset))
-                {
-                    aSequence.Add(list[i]);
-                    endOfLastSequence = list[i];
-                    return;
-                }
-                */
-                    // compare this to the end of the map
-                    
-                    // also start here for the next sequence
-            // }
-
-            // waiting on help - https://discordapp.com/channels/493510779866316801/493511037421879316
-
-            // we can proceed for now without the last element
-
-
-            /*
-            aSequence.Add(list[i]); this gives me the second item to last item
-            aSequence.Add(list[i - 1]); gives me the first item to next to last item
-            i would like to get the first to the last item
-            */
-
-        
-
-
-
-    return done; // return true when done
-
-        
-        
     }
 
 
+    public int GetNextConsecutiveSegment_count = 0;
 
+
+    // runs 228 times, everything runs 13 times at most, once per column
+    // 228 / 13 = 17, perhaps this runs 17 times per column
+
+    /*
     bool GetNextConsecutiveSegment(List<Vector2> positionsByColumn, int column)
     {
+        GetNextConsecutiveSegment_count += 1;
+
         positionsByColumn.Sort((a, b) => a.x.CompareTo(b.x));
         List<int> justXs = new List<int>();
 
@@ -207,35 +239,42 @@ public class TrafficSystem3 : MonoBehaviour
 
         return done;
     }
+    */
 
 
-
-    void GetAllSegmentsInColumn(List<Vector2> posByColumn, int column)
+    void Scan(List<Vector2> positionsByColumn, int column)
     {
-        bool run = true;
-        bool done = false;
-        int counter = 0;
 
-        while (run)
+        positionsByColumn.Sort((a, b) => a.x.CompareTo(b.x));
+        List<int> justXs = new List<int>();
+
+        foreach (Vector2 item in positionsByColumn)
         {
-            done = GetNextConsecutiveSegment(posByColumn, column);
+            justXs.Add((int)item.x);
+        }
 
-            if (done) return; // close out when we reach the end
-
-            counter += 1;
-
-            if (counter > 100) 
-            {
-                Debug.Log("Reached over 10000 in while loop... breaking...");
-                return; // prevent crashing in any case
-            }   
+        foreach (int i in justXs) // justXs list here?
+        {
+            GetSequences(justXs, column);
+            indexEndpointOfList += 1;
         }
     }
 
 
 
+
+    void GetAllSegmentsInColumn(List<Vector2> posByColumn, int column)
+    {
+        Scan(posByColumn, column);
+    }
+
+
+    public int PullOutVectorsByColumn_count = 0;
+
     List<Vector2> PullOutVectorsByColumn(float column)
     {
+        PullOutVectorsByColumn_count += 1;
+
         List<Vector2> posVectorsByColumn = new List<Vector2>();
         int addCount = 0;
 
@@ -257,17 +296,22 @@ public class TrafficSystem3 : MonoBehaviour
     }
 
 
+    public int ScanColumnLine_count = 0;
 
     void ScanColumnLine(int column)
     {
+        ScanColumnLine_count += 1;
         List<Vector2> positionsByColumn = PullOutVectorsByColumn((float)column);
         GetAllSegmentsInColumn(positionsByColumn, column);
     }
 
 
+    public int DetermineJunctions_count = 0;
 
     void DetermineJunctions()
     {
+        DetermineJunctions_count += 1;
+
         for (int i = mapStart; i < mapEnd; i += offset)
         {
             ScanColumnLine(i);
