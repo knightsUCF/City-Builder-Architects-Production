@@ -3,7 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 
+/*
 
+"Doesn't cost anymore to make a game epic rather than non epic" - Sid Meier
+"Our gift was knowing what to steal from other games" - Sid Meier
+
+
+*/
 
 
 public class TrafficSystem3 : MonoBehaviour
@@ -78,6 +84,17 @@ public class TrafficSystem3 : MonoBehaviour
         Vector3 v30 = new Vector2(72.0f, -2.0f);
 
 
+        // testing for rows - x must be the same, and also at one of the offsets
+
+        Vector2 v31 = new Vector2(-2.0f, -2.0f);
+        Vector3 v32 = new Vector2(-2.0f, 6.0f);
+        Vector3 v33 = new Vector2(-2.0f, 14.0f);
+        Vector3 v34 = new Vector2(-2.0f, 22.0f);
+
+
+
+
+
 
         Data.roadMap.Add(0, v1);
         Data.roadMap.Add(1, v2);
@@ -103,6 +120,13 @@ public class TrafficSystem3 : MonoBehaviour
         Data.roadMap.Add(19, v28);
         Data.roadMap.Add(20, v29);
         Data.roadMap.Add(21, v30);
+
+        // rows
+
+        Data.roadMap.Add(22, v31);
+        Data.roadMap.Add(23, v32);
+        Data.roadMap.Add(24, v33);
+        Data.roadMap.Add(25, v34);
 
         DetermineJunctions(); 
     }
@@ -202,11 +226,13 @@ public class TrafficSystem3 : MonoBehaviour
 
         // two ways of breaking out of the future while loop:
 
+        /*
         if (list[endpoint] == list.LastOrDefault())
         {
             // Debug.Log("Reached the end: " + list[endpoint]);
             isLastPosInList = true;
         }
+        */
 
         // Debug.Log("list[endpoint] " + list[endpoint]);
 
@@ -242,7 +268,7 @@ public class TrafficSystem3 : MonoBehaviour
     */
 
 
-    void Scan(List<Vector2> positionsByColumn, int column)
+    void ScanColumns(List<Vector2> positionsByColumn, int column)
     {
 
         positionsByColumn.Sort((a, b) => a.x.CompareTo(b.x));
@@ -258,23 +284,59 @@ public class TrafficSystem3 : MonoBehaviour
             GetSequences(justXs, column);
             indexEndpointOfList += 1;
         }
+        // reset index endpoint?
+        indexEndpointOfList = 1;
+
+        Debug.Log("End of columns");
     }
+
+
+
+    void ScanRows(List<Vector2> positionsByColumn, int column)
+    {
+
+        positionsByColumn.Sort((a, b) => a.y.CompareTo(b.y));
+        List<int> justYs = new List<int>();
+
+        foreach (Vector2 item in positionsByColumn)
+        {
+            justYs.Add((int)item.y);
+        }
+
+        foreach (int i in justYs) // justXs list here?
+        {
+            GetSequences(justYs, column);
+            indexEndpointOfList += 1;
+        }
+
+        indexEndpointOfList = 1;
+
+        Debug.Log("End of rows");
+    }
+
+
+
+
 
 
 
 
     void GetAllSegmentsInColumn(List<Vector2> posByColumn, int column)
     {
-        Scan(posByColumn, column);
+        ScanColumns(posByColumn, column);
     }
 
 
-    public int PullOutVectorsByColumn_count = 0;
+
+    void GetAllSegmentsInRow(List<Vector2> posByRow, int row)
+    {
+        ScanRows(posByRow, row);
+    }
+
+
 
     List<Vector2> PullOutVectorsByColumn(float column)
     {
-        PullOutVectorsByColumn_count += 1;
-
         List<Vector2> posVectorsByColumn = new List<Vector2>();
         int addCount = 0;
 
@@ -291,26 +353,44 @@ public class TrafficSystem3 : MonoBehaviour
 
 
 
-    void ScanRowLine(int row)
+    List<Vector2> PullOutVectorsByRow(float row)
     {
+        List<Vector2> posVectorsByRow = new List<Vector2>();
+        int addCount = 0;
+
+        foreach (KeyValuePair<int, Vector2> value in Data.roadMap)
+        {
+            if (value.Value.x == row) // x? - come back here to check if get an error
+            {
+                posVectorsByRow.Add(value.Value);
+                addCount += 1;
+            }
+        }
+        return posVectorsByRow;
     }
 
 
-    public int ScanColumnLine_count = 0;
+
+    void ScanRowLine(int row)
+    {
+        List<Vector2> positionsByRow = PullOutVectorsByRow((float)row);
+        GetAllSegmentsInRow(positionsByRow, row);
+    }
+
+
+
 
     void ScanColumnLine(int column)
     {
-        ScanColumnLine_count += 1;
         List<Vector2> positionsByColumn = PullOutVectorsByColumn((float)column);
         GetAllSegmentsInColumn(positionsByColumn, column);
     }
 
 
-    public int DetermineJunctions_count = 0;
 
     void DetermineJunctions()
     {
-        DetermineJunctions_count += 1;
+
 
         for (int i = mapStart; i < mapEnd; i += offset)
         {
