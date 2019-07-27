@@ -6,6 +6,10 @@ An interesting mechanic, is when you offer a player an option, which benefits or
 
 Another version of this is, if players build shopping malls together in one location, then they will all collectively benefit from the increased traffic. There could be further strategies here, like buying out the competition so you can gain a monolopy on the traffic, but things are not so simple, like Offworld Trading Company, where if you monopolize one thing, and price goes up too high, your stock can crash if there are no buyers. That would be very interesting. For each business that you buy, for each franchise, or some, you are awarded company stock. And if bad things happen to your company the stock crashes and your company becomes worthless. Investigate how Offshore Trading Company does this.
 
+An even further micromanagement strategy of this is, that you could select custom goods for sale at each shop. So you can pay attention to the supply and demand, and focus on buying up (from a global supplier, everyone has access to, the market, like in Offshore Trading Company). We could start off with simple 3 or 4 items for sale. Some nice icons when you click on the store. Nothing too overwhelming. At the same time the player has the option to just generically populate the stores with goods, so the game allows for micromanagement, but doesn't force micromanagement.
+
+The price offered at the stores should be set 1:1 everywhere. So we can't decide to sell for more directly by changing the price. But we can try to raise prices by buying up goods in the market, thus increasing the demand by lowering the supply. Again study how Offshore Trading Company does this, namely how do they set a global supply, how much of this global supply is there, and what determines when something goes up or down in price, what is this mechanism. 
+
 
 AS there is more traffic established around an area, the shops, and other commercial structures begin to earn more money, since there is more business. This is easy to do, since we are just going to be increasing traffic, and detecting the increase and rewarding with money. 
 
