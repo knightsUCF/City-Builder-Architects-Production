@@ -4,6 +4,8 @@ Machi Koro city building card game! https://www.idwgames.com/wp-content/uploads/
 
 An interesting mechanic, is when you offer a player an option, which benefits or does something to all players on that action. So if they choose that, then all players benefit, but that might not be a good thing, depending on the strategy of the current or future situation.
 
+Another version of this is, if players build shopping malls together in one location, then they will all collectively benefit from the increased traffic. There could be further strategies here, like buying out the competition so you can gain a monolopy on the traffic, but things are not so simple, like Offworld Trading Company, where if you monopolize one thing, and price goes up too high, your stock can crash if there are no buyers. That would be very interesting. For each business that you buy, for each franchise, or some, you are awarded company stock. And if bad things happen to your company the stock crashes and your company becomes worthless. Investigate how Offshore Trading Company does this.
+
 
 AS there is more traffic established around an area, the shops, and other commercial structures begin to earn more money, since there is more business. This is easy to do, since we are just going to be increasing traffic, and detecting the increase and rewarding with money. 
 
