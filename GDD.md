@@ -1,5 +1,6 @@
 "EYO" "Io" - a unique name, maybe some short Japanese name, maybe something that means something, doesn't have to mean anything like Starbucks
 
+AS there is more traffic established around an area, the shops, and other commercial structures begin to earn more money, since there is more business. This is easy to do, since we are just going to be increasing traffic, and detecting the increase and rewarding with money. 
 
 Have two worker types, one type is generic worker types same color, and the other are hero type workers
 
