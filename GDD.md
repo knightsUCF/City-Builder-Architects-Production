@@ -1,5 +1,26 @@
 "EYO" "Io" - a unique name, maybe some short Japanese name, maybe something that means something, doesn't have to mean anything like Starbucks
 
+
+On OffPlanet Trading Company
+
+"This game is an economic masterpiece
+
+Like seriously this game is fantastic and i recommend it to all my classmates in the econ department. It teaches you so many practical things about markets.
+
+Supply and Demand - This game models this perfectly at basic level, more demand while quantity supplied remains the same, price increases. More producers enter the market while demand remains the same, price goes down. Perfect modeling of supply and demand at a conceptual level.
+
+Monopolies are bad - In economics a monopoly or an oligopoly will always produce less then the socially optimal quantity and above the equilibrium price level. For example, lets say you have a water monopoly, you are incentivezed in this game to under-supply to the market in order to keep profits high.
+
+Barganing- Auctions are a great example of the Coase Therom, or that efficient outcomes can be reached when parties have zero transaction costs
+
+Economies of scale - Production is more efficient in some industries when you expand the size of operations, this is shown through adjacency bonuses.
+
+Patents - Good example of how firms compete by trying to gain a technical edge over rivals.
+
+You could give this game to a freshmen and it would teach them everything they would learn in an econ 101 class. Keep up the good work!!!. I would love to see a longer game-mode available, one where there are multiple cities and firms enter and exit the market over 100s of sols. And maybe a mechanic to prevent snowballing so that the game stays strategic to the very end."
+
+
+
 Machi Koro city building card game! https://www.idwgames.com/wp-content/uploads/2015/02/Machi-RULES-reduced.pdf
 
 An interesting mechanic, is when you offer a player an option, which benefits or does something to all players on that action. So if they choose that, then all players benefit, but that might not be a good thing, depending on the strategy of the current or future situation.
