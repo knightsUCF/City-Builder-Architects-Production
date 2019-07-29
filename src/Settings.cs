@@ -1,14 +1,23 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using System.Collections;
+
+
+
 
 public class Settings : Singleton<Settings>
 {
 
 
+
+
+    public static int startingMoney = 100;
+    public static int startingEnergy = 0;
+
+    public static int hireWorkerCost = 10;
+
+
     // building costs
 
-    public static int BuildingCost = 10;
 
 
 
@@ -21,24 +30,5 @@ public class Settings : Singleton<Settings>
             Destroy(gameObject);
         DontDestroyOnLoad(gameObject);
     }
-    
-
-
-    void Start()
-    {
-        #if UNITY_ANDROID
-        
-        QualitySettings.vSyncCount = 0;
-        Application.targetFrameRate = 60;
-        QualitySettings.antiAliasing = 0;
-        Screen.sleepTimeout = SleepTimeout.NeverSleep;
-        
-        #endif
-    }
-
 
 }
-
-
-
-
