@@ -30,18 +30,12 @@ public class Sim
     public int residentialID;
     public string name;
     public int level;
-
-
-    public enum Workplace
-    {
-        None,
-        PowerPlant
-    }
-
-    public Workplace workplace;
+    public int workplace; // look up table 
 
 
 
+
+    /*
     public Sim(int newID, int newAvatarID, int newResidentialID, string newName, int newLevel, Workplace newWorkplace)
     {
         ID = newID;
@@ -50,6 +44,14 @@ public class Sim
         name = newName;
         level = newLevel;
         workplace = newWorkplace;
+    }
+    */
+
+    public Sim(int newID, string newName, int newLevel)
+    {
+        ID = newID;
+        name = newName;
+        level = newLevel;
     }
 
 }
