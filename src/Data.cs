@@ -32,6 +32,27 @@ if (!Data.map.ContainsKey(roadTileMapPos))
 public class Data : Singleton<Data>
 {
 
+    // tokens
+
+    public static int money = Settings.startingMoney;
+    public static int energy = Settings.startingEnergy;
+
+    
+    // costs
+
+    public static int hireWorkerCost = Settings.hireWorkerCost;
+
+
+
+    // sims
+
+    public static List<Sim> sims = new List<Sim>();
+    public static int currentSimID = 0; // easily increment the ID when creating a new worker, might have to change for multiplayer
+
+
+
+
+    // structures
 
 
     public enum StructureSelection
