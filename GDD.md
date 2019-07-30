@@ -3,6 +3,7 @@
 
 Upgrading structures! Structures give special abilities. What if most structures we have three or four upgrades to select like in LOTR, and then only some structures actually have outward upgrades. Definitley for the first version like Sid Meier, said, make the game bigger than seems to the player, so on the upgradse have a few\, 3 or 4 upgrades per building, they also have to be done in order, to time the build mechanisms.
 
+Players can choose different starting characters. Each have special abilities, or start with a different resource amount for major replayability. Since these will be just mathematical operations, and we can just call the player "Entrepreneur", or whatever, we don't necessarily need any extra graphics for the first version. Each of these will give some sort of bonus ugprade. Perhaps when we are selecting the different abilities we could have a vector icon, stylish, for each of the different "starting factions". This could be on a black background, and the icons could really pop. Also color code this part. Make sure the icons and the black are part of some sort of color scheme.
 
 
 On OffPlanet Trading Company
