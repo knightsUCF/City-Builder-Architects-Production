@@ -8,7 +8,7 @@ Players can choose different starting characters. Each have special abilities, o
 
 When beginning have to only build along a road, or within some sort of required radius, that way there is some order. 
 
-Can't destroy the players structures, but can place your workers there to get bonuses.
+Can't destroy the player's structures, but can place your workers there to get bonuses.
 
 On OffPlanet Trading Company
 
