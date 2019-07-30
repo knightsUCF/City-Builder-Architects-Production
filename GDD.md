@@ -1,6 +1,10 @@
 "EYO" "Io" - a unique name, maybe some short Japanese name, maybe something that means something, doesn't have to mean anything like Starbucks
 
 
+Upgrading structures! Structures give special abilities. What if most structures we have three or four upgrades to select like in LOTR, and then only some structures actually have outward upgrades. Definitley for the first version like Sid Meier, said, make the game bigger than seems to the player, so on the upgradse have a few\, 3 or 4 upgrades per building, they also have to be done in order, to time the build mechanisms.
+
+
+
 On OffPlanet Trading Company
 
 "This game is an economic masterpiece
