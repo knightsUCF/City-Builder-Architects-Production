@@ -1,3 +1,7 @@
+Seems like a huge element for Tom Vasel's favorite board game, Project Elite, is the time element of 2 minutes, so actions have to be taken fast. Same sort of thing why people love to play 1 minute chess games, because of the time element. A very long chess game is not nearly as enjoyable, and even tiring as a short chess, where all sorts of things can occur under the time element.
+
+This is perhaps why this singular board game climbed up so high on Tom's list, because most board games are slow, but here you have two minutes to get everything done, almost like speed chess, so likewise increase the pace in the game so actions have to be taken quickly.
+
 "EYO" "Io" - a unique name, maybe some short Japanese name, maybe something that means something, doesn't have to mean anything like Starbucks
 
 
