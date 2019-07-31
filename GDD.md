@@ -1,5 +1,7 @@
 Playtest for emotions, not just mechanics!
 
+Start off the intro music slow to get into the atmosphere, like the beginning of the "Pacific" album. 
+
 Seems like a huge element for Tom Vasel's favorite board game, Project Elite, is the time element of 2 minutes, so actions have to be taken fast. Same sort of thing why people love to play 1 minute chess games, because of the time element. A very long chess game is not nearly as enjoyable, and even tiring as a short chess, where all sorts of things can occur under the time element.
 
 This is perhaps why this singular board game climbed up so high on Tom's list, because most board games are slow, but here you have two minutes to get everything done, almost like speed chess, so likewise increase the pace in the game so actions have to be taken quickly. Perhaps there is even a speed bonus for workers walking. This might be too much not sure. But a type of game where in multiplayer, even when playing on the same team versus AI, there is a frenzy pace inside of 1 / 2 minutes. This could even be done in phases. While LOTR has this kind of speed all throughout the game. So basically just keep the pace up.
