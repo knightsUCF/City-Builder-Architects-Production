@@ -1,5 +1,7 @@
 Playtest for emotions, not just mechanics!
 
+The way to avoid a "greedy Monopoly capitalism" type game, is to only make a few pieces of land available for sale throughout the game, that way the win condition comes before a full big huge monopoly can be established. 
+
 Start off the intro music slow to get into the atmosphere, like the beginning of the "Pacific" album. 
 
 Seems like a huge element for Tom Vasel's favorite board game, Project Elite, is the time element of 2 minutes, so actions have to be taken fast. Same sort of thing why people love to play 1 minute chess games, because of the time element. A very long chess game is not nearly as enjoyable, and even tiring as a short chess, where all sorts of things can occur under the time element.
