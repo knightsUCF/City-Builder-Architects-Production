@@ -3,6 +3,326 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
+
+
+
+
+
+
+
+public class Worker2 : MonoBehaviour
+{
+
+
+    // variables
+
+    // [SerializeField] private Transform woodNodeTransform;
+    // [SerializeField] private Transform woodStorageTransform;
+
+    // private Transform woodPos;
+    
+    NavMeshAgent agent;
+
+    Ray ray;
+    RaycastHit hitInfo;
+
+    private Animator anim;
+
+    float timer;
+    Vector3 velocityVector;
+    float durationOfLerp = 0.1f;
+
+
+    public int ID = -1; // unassigned
+
+
+    float distance;
+
+
+    GameObject buildMenu; 
+    bool buildMenuSelect = true;
+
+
+    bool isSelected = false;
+
+
+
+
+    enum State {
+        Idle,
+        Build,
+        MovingToResourceNode,
+        GatheringResources,
+        MovingToStorage,
+        ReachedDestination,
+        StartMoveToDestination,
+        MovingTowardDestination,
+        InProgress,
+        RevealBuildMenu
+    }
+
+    private State state;
+
+
+
+    void Awake()
+    {
+        agent = this.GetComponent<NavMeshAgent>();
+        CreateWorker();
+        anim = this.GetComponent<Animator>();
+        state = State.Idle;
+    }
+
+
+
+    void Start()
+    {
+        buildMenu = GameObject.Find("UI/HUD/Canvas/Build Menu");
+    }
+
+
+
+    bool clickedOnWorker = false;
+
+    void OnMouseDown()
+    {
+        isSelected = true;
+        
+        clickedOnWorker = true;
+        // state = State.RevealBuildMenu;
+        Debug.Log("Clicking worker");
+        ToggleBuildMenu();
+        // state = State.InProgress;
+        clickedOnWorker = false;
+    }
+
+
+
+    void CreateWorker()
+    {
+        Data.currentSimID += 1;
+        Data.sims.Add(new Sim(Data.currentSimID, "John", 50));
+        ID = Data.currentSimID;
+    }
+
+
+
+    void MoveWorker()
+    {
+        // will need something to toggle mouse movement off and on based on some conditions, such as clicking on the game menu
+
+        if (Input.GetMouseButtonDown(0) && clickedOnWorker == false) // state != State.RevealBuildMenu)
+        {
+            state = State.StartMoveToDestination;
+            ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            if (Physics.Raycast(ray, out hitInfo))
+            {
+                agent.destination = hitInfo.point;
+            }
+        }
+
+    }
+
+
+
+
+    bool IsIdle()
+    {
+        return false;
+    }
+
+
+    /*
+    void MoveTo(Vector3 position, float stopDistance, Action onArrivedAtPosition)
+    {
+        // take transform position of: woodNodeTransform
+        // also set action once get to wood Transform: play the animation
+        // once gold is mined move to the storageTransform.position
+    }
+
+
+
+    void PlayAnimationMine(Vector3 lookAtPosition, Action onAnimationCompleted)
+    {
+
+    }
+    */
+
+
+    /*
+    Transform GetResourceNode()
+    {
+        return woodNodeTransform;
+    }
+    */
+
+
+
+
+    
+
+
+    void ManageState()
+    {
+        /*
+        switch (state)
+        {
+            case State.Idle:
+                woodPos = GetResourceNode();
+                state = State.MovingToResourceNode;
+                break;
+            
+            case State.MovingToResourceNode:
+                if (unit.IsIdle())
+                {
+                    unit.MoveTo(resourceNodeTransform.position, 10f);
+                    state = State.GatheringResources;
+                }
+                break;
+
+            case State.GatheringResources:
+                if (unit.IsIdle())
+                {
+                    // play animation
+                }
+        }
+        */
+
+
+        switch (state)
+        {
+            case State.ReachedDestination:
+                
+                agent.velocity = Vector3.zero;
+                anim.Play("idle");
+                Debug.Log("idling");
+                state = State.Idle;
+                
+                break;
+
+            case State.Idle:
+                agent.velocity = Vector3.zero;
+
+                break;
+
+            case State.StartMoveToDestination:
+                state = State.MovingTowardDestination;
+                break;
+
+            case State.MovingTowardDestination:
+                anim.Play("walk");
+                Debug.Log("walking");
+                // so that we only play the animation once
+                state = State.InProgress;
+                break;
+
+            case State.Build:
+                anim.Play("build");
+                Debug.Log("building");
+                // so that we only play the animation once
+                // state = State.InProgress; 
+                state = State.InProgress;
+                
+                break;
+
+            case State.InProgress:
+                break;
+
+            case State.RevealBuildMenu:
+                break;
+        }
+
+        // currently will drop everything and move
+
+        MoveWorker();
+
+        // CheckWhetherWorkerArrived();
+
+        // GetCurrentPos();
+
+        GetDistanceFromDestination();
+    }
+
+
+    void CheckWhetherWorkerArrived()
+    {
+        if (agent.destination == hitInfo.point)
+        {
+            Debug.Log("ARRIVED!");
+            // set the destination here to idle
+
+            // although when the worker arrives at a resource or building thing, their state will not be idle but building
+        }
+    }
+
+
+    void GetCurrentPos()
+    {
+        Debug.Log(this.transform.position);
+    }
+
+
+    bool runOnce = false;
+
+    void GetDistanceFromDestination()
+    {
+        distance = Vector3.Distance(this.transform.position, hitInfo.point);
+        // Debug.Log(distance);
+
+        // the stopping distance should also be affected if there are other agents nearby, so we don't keep walking just to take
+        // their spot when many are selected
+
+        if (distance < 1 && state == State.InProgress) // && runOnce == false) 
+        {
+            // Debug.Log("REACHED DESTINATION!");
+            // agent.velocity = Vector3.zero;
+
+            // velocityVector = Vector3.Lerp(agent.velocity, Vector3.zero, timer);
+            // timer -= Time.deltaTime*durationOfLerp;
+
+            // agent.velocity = velocityVector;
+
+            
+
+            // anim.Play("idle");
+
+            // state = State.ReachedDestination; // previous one, now we are going to go straight to build, which will need an intermediate check
+            // ... to determine whether we are building, or just arriving at a positional destination
+
+            state = State.Build;
+            runOnce = true;
+        }
+    }
+
+
+    void ToggleBuildMenu()
+    {
+        buildMenu.SetActive(buildMenuSelect);
+        buildMenuSelect = !buildMenuSelect;
+    }
+
+
+
+    void Update()
+    {
+        ManageState();
+    }
+
+
+
+
+
+
+
+
+
+}
+
+
+
+
+// Setting up NavMesh
+
 // https://www.youtube.com/watch?v=vK6DlWkG4po
 
 // 1. Click on all the objects, preferrably under a parent object
@@ -13,103 +333,3 @@ using UnityEngine.AI;
 // For dynamic objects
 // 1. Add "Nav Mesh Obstacle" component to object, will be added on prefab of buildings, and other objects that will be dynamic on the nav mesh
 // 2. Check "carve"
-
-
-
-
-/*
-    public Transform home;
-    NavMeshAgent agent;
-
-
-    void Start()
-    {
-        agent = this.GetComponent<NavMeshAgent>();
-        agent.SetDestination(home.position);
-    }
-
-
-*/
-
-
-public class Worker : MonoBehaviour
-{
-
-    // UnityEngine.AI.NavMeshAgent agent;
-
-    NavMeshAgent agent;
-
-    public int ID = -1; // unassigned
-    bool workerSelect = false;
-    public GameObject workerSelection;
-
-    Ray ray;
-    RaycastHit hitInfo;
-
-
-    void Start()
-    {
-        // agent = this.GetComponent<UnityEngine.AI.NavMeshAgent>();
-
-        agent = this.GetComponent<NavMeshAgent>();
-
-        Data.currentSimID += 1;
-        Data.sims.Add(new Sim(Data.currentSimID, "John", 50));
-
-        ID = Data.currentSimID;
-    }
-
-
-    void OnMouseDown()
-    {
-        Debug.Log("Clicked on worker!");
-        ToggleWorkerSelection();
-    }
-
-
-    void ToggleWorkerSelection()
-    {
-        workerSelection.SetActive(workerSelect);
-        workerSelect = !workerSelect;
-    }
-
-
-    void MoveWorker()
-    {
-        /*
-        if (Input.GetMouseButtonDown(0)) {
-                RaycastHit hit;
-                
-                if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 100)) {
-                    agent.destination = hit.point;
-                }
-            }
-        */
-
-        if (Input.GetMouseButtonDown(0))
-        {
-            ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        
-            if (Physics.Raycast(ray, out hitInfo))
-            {
-                agent.destination = hitInfo.point;
-            }
-        }
-
-    }
-
-
-    void Update()
-    {
-        MoveWorker();
-    }
-
-
-    // Next up, animating and moving agent: https://docs.unity3d.com/Manual/nav-CouplingAnimationAndNavigation.html
-
-
-
-
-
-
-}
