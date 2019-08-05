@@ -43,7 +43,7 @@ public class Worker2 : MonoBehaviour
     bool buildMenuSelect = true;
 
 
-    bool isSelected = false;
+    public bool isSelected = false;
 
 
 
@@ -80,14 +80,20 @@ public class Worker2 : MonoBehaviour
         buildMenu = GameObject.Find("UI/HUD/Canvas/Build Menu");
     }
 
+    
+    public void SetSelectedState()
+    {
+
+    }
+
 
 
     bool clickedOnWorker = false;
 
     void OnMouseDown()
     {
-        isSelected = true;
-        
+ 
+
         clickedOnWorker = true;
         // state = State.RevealBuildMenu;
         Debug.Log("Clicking worker");
@@ -111,13 +117,16 @@ public class Worker2 : MonoBehaviour
     {
         // will need something to toggle mouse movement off and on based on some conditions, such as clicking on the game menu
 
-        if (Input.GetMouseButtonDown(0) && clickedOnWorker == false) // state != State.RevealBuildMenu)
+        if (Input.GetMouseButtonDown(0) && clickedOnWorker == false && isSelected == true) // state != State.RevealBuildMenu)
         {
             state = State.StartMoveToDestination;
             ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             if (Physics.Raycast(ray, out hitInfo))
             {
-                agent.destination = hitInfo.point;
+                if (hitInfo.transform.gameObject.tag != "Worker") // prevent still moving to another worker spot, when the user is actually trying to switch workers
+                {
+                    agent.destination = hitInfo.point;
+                }
             }
         }
 
