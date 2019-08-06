@@ -24,6 +24,9 @@ public class MouseManager : MonoBehaviour
     Worker2 workerScript;
 
 
+    public int currentlySelectedWorkerID = -1;
+
+
     void Update()
     {
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -61,6 +64,7 @@ public class MouseManager : MonoBehaviour
 
         workerScript = selectedObject.GetComponent<Worker2>();
         workerScript.isSelected = true;
+        currentlySelectedWorkerID = workerScript.ID;
 
         // here is where we affect the image of the selected object
 
@@ -75,7 +79,8 @@ public class MouseManager : MonoBehaviour
     {
         workerScript = selectedObject.GetComponent<Worker2>();
         workerScript.isSelected = false;
-        
+        currentlySelectedWorkerID = workerScript.ID;
+
         selectedObject = null;
         // selectedObject.SetSelectedState();
         // selectionBox.SetActive(false);
