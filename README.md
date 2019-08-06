@@ -1,5 +1,8 @@
 # City-Builder-Architects-Production
 
+
+Kind of cool effect when we place the first starting building structure a few units above y. And then with gravity when the player sets down the building, they come sliding down from slightly above.
+
 We could create a very simple tornado effect, by turning off gravity for rigid bodies, they will (float up), and even apply some circular force to spin them, and push them farther, and then we could simply get a tornado effect off the asset store. Not sure if we want to destroy the player's work, but the effect looks cool.
 
 When we buy new land, we also get the trees along with the new land, which we can turn into wood... don't necessarily need a sawmill, can just click and select on the trees to harvest them, perhaps need a sawmill to convert the wood, but can still click on them wherever they are on the map, with the click-enlarge features from the camera code store asset. 
