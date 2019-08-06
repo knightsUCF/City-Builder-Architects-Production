@@ -40,15 +40,17 @@ public class Build : MonoBehaviour
 
     public bool startedBuild = false;
 
+    public bool setDownStartingBuilding = false; // for HouseBuilding stages
 
 
-    private TrafficSystem trafficSystem;
+
+    private TrafficSystem3 trafficSystem;
 
 
 
     void Awake()
     {
-        trafficSystem = FindObjectOfType<TrafficSystem>();
+        trafficSystem = FindObjectOfType<TrafficSystem3>();
     }
 
 
@@ -76,6 +78,14 @@ public class Build : MonoBehaviour
     */
 
 
+    /*
+    void IsBuildingAllowed()
+    {
+        return gameObject.GetComponentInChildren<IsBuildingAllowed>().allowed;
+    }
+    */
+
+
     void FinalizeBuilding(GameObject gameObject)
     {
         Vector3 finalizedPosition; // not to be confused with finalPosition
@@ -83,13 +93,13 @@ public class Build : MonoBehaviour
         Destroy(GO);
 
 
-        if (gameObject.GetComponentInChildren<IsBuildingAllowed>().allowed == true)
-        {
+        // if (gameObject.GetComponentInChildren<IsBuildingAllowed>().allowed == true)
+        // {
             finalGO = (GameObject)Instantiate(gameObject, finalizedPosition, Quaternion.identity, this.transform);
-            finalGO.GetComponentInChildren<IsBuildingAllowed>().finalized = true;
+            // finalGO.GetComponentInChildren<IsBuildingAllowed>().finalized = true;
             allowBuild = false;
-            startedBuild = false;
-
+            startedBuild = false; // was false hopefully nothing messes up, yup messed up here
+            setDownStartingBuilding = true;
             // oops, only do the below code for roads not buildings
 
 
@@ -107,7 +117,7 @@ public class Build : MonoBehaviour
                 else Debug.Log("Uh oh, already added this data to the map");
 
                 // only start up the traffic after 3 tiles or so...
-                if (roadTileIndex > 2) trafficSystem.UpdateTrafficSystem();
+                if (roadTileIndex > 3) trafficSystem.UpdateTrafficSystem();
 
                 // placed here, after we update traffic, because if we send +1, that value does not exist yet in the dictionary
                 roadTileIndex += 1; // will need to be stored in case user shuts off, or somehow add to last addition in dictionary
@@ -118,7 +128,7 @@ public class Build : MonoBehaviour
 
             
 
-        }
+        // } // is building allowed
         
 
         
