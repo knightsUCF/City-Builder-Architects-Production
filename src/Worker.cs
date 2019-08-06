@@ -74,6 +74,19 @@ public class Worker2 : MonoBehaviour
     }
 
 
+    // From a script write this to add the "listener" of the event:
+
+    void OnEnable ()
+    {
+        EventManager.workerArrivedAtBuilding += WorkerArrived;
+    }
+
+    void OnDisable()
+    {
+        EventManager.workerArrivedAtBuilding -= WorkerArrived;
+    }
+
+
 
     void Start()
     {
@@ -85,6 +98,13 @@ public class Worker2 : MonoBehaviour
     {
 
     }
+
+
+    void WorkerArrived()
+    {
+        state = State.Build;
+    }
+
 
 
 
@@ -204,7 +224,7 @@ public class Worker2 : MonoBehaviour
                 
                 agent.velocity = Vector3.zero;
                 anim.Play("idle");
-                Debug.Log("idling");
+                // Debug.Log("idling");
                 state = State.Idle;
                 
                 break;
@@ -220,14 +240,14 @@ public class Worker2 : MonoBehaviour
 
             case State.MovingTowardDestination:
                 anim.Play("walk");
-                Debug.Log("walking");
+                // Debug.Log("walking");
                 // so that we only play the animation once
                 state = State.InProgress;
                 break;
 
             case State.Build:
                 anim.Play("build");
-                Debug.Log("building");
+                // Debug.Log("building");
                 // so that we only play the animation once
                 // state = State.InProgress; 
                 state = State.InProgress;
@@ -257,7 +277,7 @@ public class Worker2 : MonoBehaviour
     {
         if (agent.destination == hitInfo.point)
         {
-            Debug.Log("ARRIVED!");
+            // Debug.Log("ARRIVED!");
             // set the destination here to idle
 
             // although when the worker arrives at a resource or building thing, their state will not be idle but building
