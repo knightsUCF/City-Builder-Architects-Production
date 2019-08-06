@@ -79,7 +79,7 @@ public class MouseManager : MonoBehaviour
     {
         workerScript = selectedObject.GetComponent<Worker2>();
         workerScript.isSelected = false;
-        currentlySelectedWorkerID = workerScript.ID;
+        currentlySelectedWorkerID = -1;
 
         selectedObject = null;
         // selectedObject.SetSelectedState();
