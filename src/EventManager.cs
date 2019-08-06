@@ -12,7 +12,8 @@ public class EventManager : MonoBehaviour
 
     /*
     
-    - so for now we want to listen to the event, "endBuilding" and finalize the cube structure in the Build class
+    - so for now we want to listen to the event, 
+    "endBuilding" and finalize the cube structure in the Build class
     
     
     */
@@ -44,6 +45,24 @@ public class EventManager : MonoBehaviour
     public delegate void EndBuilding();
     public static event EndBuilding endBuilding;
 
+    public delegate void EndBuildingCycleRoutine();
+    public static event EndBuildingCycleRoutine endBuildingCycleRoutine;
+
+
+    // worker events
+
+    public delegate void WorkerArrivedAtBuilding();
+    public static event WorkerArrivedAtBuilding workerArrivedAtBuilding;
+
+
+    public void EventWorkerArrivedAtBuilding()
+    {
+        if (workerArrivedAtBuilding != null) workerArrivedAtBuilding(); // prevents null reference errors if no one is subscribed to event
+    }
+
+
+
+
 
     public void EventStartBuilding()
     {
@@ -53,6 +72,11 @@ public class EventManager : MonoBehaviour
     public void EventEndBuilding()
     {
         endBuilding();
+    }
+
+    public void EventEndBuildingCycleRoutine()
+    {
+        endBuildingCycleRoutine();
     }
 
 
