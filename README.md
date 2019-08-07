@@ -11,7 +11,9 @@
 
 - these different ingredient recipes are cool because they are like a puzzle onto themselves, so if we have x wood, and x steel, should we build this structure, or should we save up a little more wood for that structure, test gameplay just to bring out this puzzle aspect, and also how much time will this require to build, and what kind of worker do we have, and how leveled up they are for this construction, like in LOTR, probably just one worker per structure
 
+# Race for the Galacy
 
+- how are you going to manage your hand of cards? How are you going to manage your city and workers? Because things can give you choices? But again, give players good choices, a good choice versus a better choice like La Havre. 
 
 # Alhambra + expansion
 
