@@ -141,11 +141,6 @@ public class Worker : MonoBehaviour
 
     float GetDistanceFromDestination()
     {
-        // if (mm.currentlySelectedWorkerID == ID)
-        // {
-
-        // }
-        // return Vector3.Distance(this.transform.position, hitInfo.point);
         return Vector3.Distance(this.transform.position, hitInfoForThisWorker.point);
     }
 
