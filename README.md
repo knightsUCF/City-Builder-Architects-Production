@@ -1,6 +1,10 @@
 # City-Builder-Architects-Production
 
 
+# Game Titles
+
+- like Castles of Ludvig, can do a title such as: Cities of X, there have to be many possibilities here
+
 # Starting Capital
 
 - can adjust starting capital amount in settings for tight and different gameplay like in LOTR
