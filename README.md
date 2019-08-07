@@ -1,5 +1,7 @@
 # City-Builder-Architects-Production
 
+Like players often say, once you build everything in a city builder there is nothing to do and the game gets boring. Well, be a completely different game than this. Focus on involved social simulation, worker sim management like Tamagotchi, and multiplayer.
+
 Perhaps even create a feature where you can place a swimming pool on top of a building.
 
 Have random lights flash on and off in buildings during the night. Perhaps even some lights might flicker? Or at least they will shut off. And then as the dead of the night comes most lights will be off. The player will be able to build street lamps anywhere to light up the world. And there will be moonlight of course to light up the rest.
