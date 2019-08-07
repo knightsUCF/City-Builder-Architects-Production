@@ -17,6 +17,7 @@ public class Worker : MonoBehaviour
     NavMeshAgent agent;
     Ray ray;
     RaycastHit hitInfo;
+    RaycastHit hitInfoForThisWorker;
     private Animator anim;
     float timer;
     Vector3 velocityVector;
@@ -27,6 +28,7 @@ public class Worker : MonoBehaviour
     bool buildMenuSelect = true;
     public bool isSelected = false;
     MouseManager mm;
+    bool InRoute = false;
 
 
 
@@ -40,7 +42,8 @@ public class Worker : MonoBehaviour
         StartMoveToDestination,
         MovingTowardDestination,
         InProgress,
-        RevealBuildMenu
+        RevealBuildMenu,
+        Walk
     }
 
     private State state;
@@ -124,27 +127,153 @@ public class Worker : MonoBehaviour
     }
 
 
+    /*
+    void DistanceGreaterThanCurrentLocation()
+    {
+        if (distanceOfClickedPoint > Location)
+        {
+            MoveWorker()
+        }
+    }
+    */
 
+    // last hitInfo.point
+
+    float GetDistanceFromDestination()
+    {
+        // if (mm.currentlySelectedWorkerID == ID)
+        // {
+
+        // }
+        // return Vector3.Distance(this.transform.position, hitInfo.point);
+        return Vector3.Distance(this.transform.position, hitInfoForThisWorker.point);
+    }
+
+
+    // bool weirdFirstTimeDistanceReturn = true;
+
+    /*
     void MoveWorker()
     {
         // will need something to toggle mouse movement off and on based on some conditions, such as clicking on the game menu
 
-        if (Input.GetMouseButtonDown(0) && clickedOnWorker == false 
-            && isSelected == true 
-            && mm.currentlySelectedWorkerID == ID) // not sure why we need both isSelected and to compare worker IDs, // state build prevents moving worker when building && state != State.Build) // state != State.RevealBuildMenu)
+        // if (Input.GetMouseButtonDown(0) && clickedOnWorker == false && isSelected == true && mm.currentlySelectedWorkerID == ID) // not sure why we need both isSelected and to compare worker IDs, // state build prevents moving worker when building && state != State.Build) // state != State.RevealBuildMenu)
+        if (Input.GetMouseButtonDown(0) && mm.currentlySelectedWorkerID == ID) // not sure why we need both isSelected and to compare worker IDs, // state build prevents moving worker when building && state != State.Build) // state != State.RevealBuildMenu)
         {
-            state = State.StartMoveToDestination;
-            ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            if (Physics.Raycast(ray, out hitInfo))
+            // Debug.Log(GetDistanceFromDestination()); // why does this return 0.08 the first time?!
+            // Debug.Log(this.transform.position);
+            // if (weirdFirstTimeDistanceReturn || GetDistanceFromDestination() > 3.0) // no clue
+            // {
+                Debug.Log(GetDistanceFromDestination());
+                state = State.Walk;
+                InRoute = true;
+                SetDestination();
+                // weirdFirstTimeDistanceReturn = false;
+            // }
+        }
+    }
+    */
+
+
+
+    void MoveWorker()
+    {
+        if (Input.GetMouseButtonDown(0) && mm.currentlySelectedWorkerID == ID)
+        {
+            state = State.Walk;
+            InRoute = true;
+            SetDestination();
+        }
+    }
+
+
+
+    void SetDestination()
+    {
+        ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        if (Physics.Raycast(ray, out hitInfo))
+        {
+            if (hitInfo.transform.gameObject.tag != "Worker" && hitInfo.transform.gameObject.tag != "Building") // prevent still moving to another worker spot, when the user is actually trying to switch workers
             {
-                if (hitInfo.transform.gameObject.tag != "Worker" &&
-                    hitInfo.transform.gameObject.tag != "Building") // prevent still moving to another worker spot, when the user is actually trying to switch workers
-                {
-                    agent.destination = hitInfo.point;
-                }
+                agent.destination = hitInfo.point;
+                hitInfoForThisWorker.point = hitInfo.point;
             }
         }
+    }
 
+    // Vector3 maxVelocity = new Vector3(1.0f, 1.0f, 1.0f);
+
+
+    /*
+    void HackyFixForMovement()
+    {
+        // Debug.Log(agent.velocity);
+        
+        if (agent.velocity.x < 1.0f &&
+            agent.velocity.y < 1.0f &&
+            agent.velocity.z < 1.0f &&
+            InRoute)
+        {
+            state = State.Idle;
+        }
+    }
+    */
+
+
+    /*
+    Vector3 previousVelocity = Vector3.zero;
+    Vector3 currentVelocity = Vector3.zero;
+
+    
+    void HackyFixForMovement()
+    {
+        if (state == State.Walk)
+        {
+            currentVelocity = agent.velocity;
+
+            if (currentVelocity.Distance < previousVelocity.Distance && currentVelocity == Vector3.zero)
+            {
+                state = State.Idle;
+            }
+
+            if (currentVelocity != previousVelocity)
+            {
+                previousVelocity = currentVelocity;
+            }
+        }
+        */
+        
+
+        /*
+        if (state == State.Walk && speed < 0.01)
+        {
+            state = State.Idle;
+        }
+
+        if (state == State.Walk) //  && agent.velocity == Vector3.zero)
+        {
+            // state = State.Idle;
+            // Debug.Log(agent.velocity);
+            Debug.Log(this.transform.position);
+        }
+        */
+    // }
+
+
+    void CheckIfArrived()
+    {
+        if (InRoute)
+        {
+            // Debug.Log(GetDistanceFromDestination());
+
+            if (GetDistanceFromDestination() < 3.0)
+            {
+                // arrived
+                agent.destination = this.transform.position; // break agent navigation if we arrive within perimeter of destination
+                state = State.Idle;
+                InRoute = false;
+            }
+        }
     }
 
 
@@ -225,7 +354,8 @@ public class Worker : MonoBehaviour
                 break;
 
             case State.Idle:
-                agent.velocity = Vector3.zero;
+                // agent.velocity = Vector3.zero;
+                anim.Play("idle");
 
                 break;
 
@@ -238,6 +368,10 @@ public class Worker : MonoBehaviour
                 // Debug.Log("walking");
                 // so that we only play the animation once
                 state = State.InProgress;
+                break;
+
+            case State.Walk:
+                anim.Play("walk");
                 break;
 
             case State.Build:
@@ -260,11 +394,15 @@ public class Worker : MonoBehaviour
 
         MoveWorker();
 
+        CheckIfArrived(); // only runs when bool is set to InRoute
+
+        // HackyFixForMovement();
+
         // CheckWhetherWorkerArrived();
 
         // GetCurrentPos();
 
-        GetDistanceFromDestination();
+        // GetDistanceFromDestination();
     }
 
 
@@ -288,7 +426,13 @@ public class Worker : MonoBehaviour
 
     bool runOnce = false;
 
-    void GetDistanceFromDestination()
+
+
+    
+
+
+
+    void GetDistanceFromDestination2()
     {
         distance = Vector3.Distance(this.transform.position, hitInfo.point);
         // Debug.Log(distance);
@@ -296,7 +440,7 @@ public class Worker : MonoBehaviour
         // the stopping distance should also be affected if there are other agents nearby, so we don't keep walking just to take
         // their spot when many are selected
 
-        if (distance < 1 && state == State.InProgress) // && runOnce == false) 
+        if (distance < 1) // && state == State.InProgress) // && runOnce == false) 
         {
             // Debug.Log("REACHED DESTINATION!");
             // agent.velocity = Vector3.zero;
@@ -313,7 +457,10 @@ public class Worker : MonoBehaviour
             // state = State.ReachedDestination; // previous one, now we are going to go straight to build, which will need an intermediate check
             // ... to determine whether we are building, or just arriving at a positional destination
 
-            state = State.Build;
+            // state = State.Build;
+
+            state = State.Idle;
+
             runOnce = true;
         }
     }
