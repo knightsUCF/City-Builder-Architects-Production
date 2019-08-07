@@ -1,6 +1,306 @@
 # City-Builder-Architects-Production
 
 
+# Relatively Old
+
+URBAN ARCHITECT 
+
+Gameplay Manual 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Game Overview
+
+Urban Architect is a city engine building and worker management sim game. Players can build structures, recruit workers, and manage their urban centers.
+
+
+Basic Resource List
+
+Capital
+Land
+Energy (power plants)
+Water (water filtering plant)
+Food (grocery markets)
+Work (workplaces that can hire workers)
+Entertainment (all sorts of buildings can contribute)
+Market Resources (tradeable)
+
+
+Some planning for implementation
+
+Even simpler core loop
+
+Build house - get access to worker
+Build factory
+Click on house - click on worker that pops up
+Assign worker to factory
+Get factory resource generating
+
+
+
+Simple core loop
+
+Generate a worker and deduct cost
+Generating worker requirements:
+Need to build a residence
+Perhaps we don’t need money to generate a worker, just the residence requirement
+The worker then has some sort of saving they use to start paying for the residence, maybe the first month, but then they need employment for their bills
+In the beginning the worker residence will be indicated just like the employment vacancy, with a LOTR circle
+Allow to place worker at building (need to build the power plant building first as an example)
+We click on the power plant and then the vacant spots open up, in which we can place the worker
+We place the worker there and then they begin to generate power according to the end of the day night cycle
+
+
+Worker Placement Core Mechanisms
+
+WORKER GENERATION
+Randomized stats when generating a new worker
+TENSION of a potential vs future action, we don’t want to overzealously generate too many workers and cramp our resources, best way is to adapt to how our workers are performing and how many resources they are bringing in, just like in urban development theory try to adapt instead of trying to predict
+Can get workers cheaper if x mechanic
+Can only put workers out a little at a time (Viticulture)
+Sometimes we will also lose workers, leveled up workers are a precious resource
+Some structures / resources can be used to get workers at a discount, perhaps some keep on giving bonuses 
+WORKER PLACEMENT
+TENSION: There is more decision and risk going on with worker placement (Viticulture)
+TENSION: can spend something x number of times to get something or wait to spend another x number of times to get something better, nice tension of should we wait to maximize resources or need resources right away, nice tension of the potential of a present vs future action (Viticulture seasons)
+As workers level up and specialize by their history of their worker placement, the player can thematically place workers in specific places and or areas (area bonus for other workers, and even structures)
+We can unlock special building abilities based on how many workers we place there. (Example: 3 workers unlocks ability x or bonus y.) We also are able to unlock another ability at let’s say 10 workers. Good to categorize actions to the player by the number of workers required. This is interesting in creating TENSION where we have to decide whether to increase the bonus by placing the required number of workers there or spread out elsewhere and get other good stuff. Give the player many good choices vs better choices.
+Study Tzolkin for tough choices, has a wonderful decision space
+Two levels of cost (Tzolkin), some buildings will level up workers faster but they might not initially really pay that well
+TENSION Tough choices of how long to place workers there, maybe they get old, or more experience and are underpaid for their skills and should be moved elsewhere, maybe there are negative points, when a worker should be fired, or perhaps managed as they adapt and move to another area that suits more of their skill, and then we take along this experience and bonuses the workers learned from a building
+Buildings have their own requirements, so to place workers there not only do we need workers of certain level, but perhaps also requirement X
+Can pick something better later if have patience, could be a good mechanism to not waste workers right away, somehow try to convey this intuitively to the player, so they can easily grasp the required mechanics and strategy on the first few playthroughs, leave lots of the game to be explored
+TENSION building up what you can, powers and abilities which manipulate what you can do (Lewis and Clar)
+Perhaps we have to take something “off the board” when we place a worker down, some choices
+Lots of places to place workers (Viticulture Essential Edition)
+Perhaps when we fire a worker, we can get the money back for the budget we planned for that year’s end to pay those workers, perhaps we have to even fire a batch of good workers in times of crisis if we have mismanaged the funds TENSION
+Resource mechanism: place worker at spot to get resources, and use those specific resources to get other things (Scythe). TENSION: resources to utilize later on and not immediately
+WORKER DIFFERENTIATION
+Workers with different and varied skills which can be leveled up and focused on particulars
+Putting out a worker does multiple things, affects different parameters (Automania)
+Leveling up workers
+We want to strategically level up workers along with the random stats that were generated for us
+We can build up skills in certain workers, almost like in Pokemon
+Workers in an area can all level up based on some sort of area bonus that is performed by a worker (which is cool TENSION when we recall that worker and put them in another area to level up another set of workers, can even be used as a single strategy to win the game), or the area bonus can come from an inanimate resource, or even both, this is a big one BIG ONE
+Can get workers cheaper if X mechanic
+Unlike Agricula, Caverna doesn't force you to balance things, so don’t force the player to play the game a kind of gray balanced way, but instead give them choices to play how they want
+WORKER ACTIONS
+Actions get better the more workers you have, provides a nice progression (can also get other people’s workers in multiplayer mode)
+Reacting to what is going on is a big one
+Also have to choose one action at the exclusion of other abilities for a Sim, or perhaps there is a timer mechanism cool down, so we can only just one ability out of these 4, and then the timer mechanism runs to when we can reset
+Placing new buildings unlocks new potential worker actions there (study Rajas of the Ganges, has very different and lots of action spots, require specific things, very nice variety of actions)
+Placing a worker at a spot requires special things, which are not just straightforward
+Workers get available actions once placed in building
+Types of actions affected by worker level and special abilities
+More workers, more actions
+Actions and workers work together
+Workers can perform actions that other workers can use, and affect other workers in area
+A number of different actions per worker like in Automania
+MATING WORKERS
+Workers have families and generate workers for us for free, since generating a worker can be pretty expensive, make the mating part worth the time
+EMERGENT BEHAVIOUR
+If somethings are left unchecked they can spiral out of control and have emergent behaviour effects, like for example if the cost of living is too high for the worker and they are not getting paid enough, that could disrupt the whole supply chain
+Not to say this conflicts with restricting the player on how to play the game, they can still play how they want and choose their own assortment of strategies, but certain things still have to be managed like in urban planning, such as distance to work, (as more work areas rise up perhaps the cost of rent has to go up to a certain minimum), and also cost of rent factors, quality of life, or if we don’t supply the power plant with the right type of workers we could lose power to our city, where that would lose us the game
+AREA BONUS
+WEIRD BONUSES
+Can have artificial upgrade requirements: 2 workers of level type x, and a structure of level y that produces x, will give this certain unlockable bonus
+Can also have “weird bonuses” combined with worker vs worker interactions, and even interactions that cannot be forced, but instead induced, so bringing a number of workers into an area with another, and then eventually at the roll of the dice they will unlock some sort of special ability, area bonus, etc
+Perhaps these bonus requirements are randomly generated each game
+So generate a special ability unlock by giving the player a recipe: icon x of 2, and 3 of icon y will give this kind of bonus, and this changes every game to make every game unique, and uniquely exploitable with strategy, perhaps this might seem like a gimmick to some players, but should be received well if the icons are fresh and clear, so perhaps we just simply present them with icons, something that is rather doable, but of course something that they don’t have to do
+FEEDING / TAKING CARE OF WORKERS
+Need a high enough of a salary for their level, give the player a range the worker will usually stay in, but nothing is guaranteed, workers have a mind of their own! Tell the player. Perhaps we can detect this with some sort of meter or gauge.
+Workers need enough grocery stores in area
+In turn, we can specialize workers at the grocery stores to make them more efficient
+Perhaps we can show the workers there with circles around the building like in LOTR, we can even do the circles with a worker icon for the prototype
+Workers also need water and electric plants, and also entertainment, these are general things all workers need
+Workers also need a normal rent, we can set the custom rent on the tenements, we will get more money up to a point, where workers will leave if the cost of living is too high, perhaps if rent is more than 30% / 50% of their income
+TENSION: the interesting thing is that we can adapt to our population needs like in u urban theory, so if we see workers struggling we can temporarily lower the cost of rent so we will not lose workers (which will deterministically happen to let the player know that’s how things are), and then as the workers make more money we raise the price of rent. We can raise the price of rent per building area. So we can place the workers that we want to level up faster or in a different way at a lower cost of living area, while we keep our other workers at a higher cost of living area, since raising the cost of living is a perfectly valid strategy, and just one of the ways in which the game can be won. Lots of TENSION here.
+WORKER VS WORKER INTERACTIONS
+Bonus interactions with workers
+TIMER MECHANISM
+Workers leave because of too high stress
+When there are not enough workers at their job
+When they are not making enough money
+Their quality of life suffers
+
+
+
+
+Worker Placement Strategies
+
+Many Strategies
+Gotta spend money to make money
+Worker investment
+With proper amount of slow planning all of a sudden you can get a lot in a turn
+Open, do whatever you want, no guidance (A Feast for Odin)
+Fun to do step 1 2 3 4 to get to 5 (Viticulture), lots of ways to work your vineyard
+Big puzzles
+elegant
+
+
+
+
+Engine Building
+
+
+
+
+Buying Land
+
+First we need to buy land to build structures and then hire workers. Structures also require to be placed near roads. 
+
+
+Generating Income
+
+Income is generated by workers. Resources which affect income are generated by structures. Not sure yet how to convert the income generated by a worker to the player’s bank capital. Leave as 1:1 for now. 
+
+Workers generate income plus resources, and even have skills, which are a kind of resource. So in the game Architects of the West Kingdom, a Woodcutter worker generates 1 wood. So for example at a power plant, a worker with level 4 would help generate power on top of the base power generated by the power plant. Or perhaps there is no base value. So the power is helped being generated by the worker, which makes sense like real life, a building doesn’t just produce stuff on their own, we need workers to power up the building. OR perhaps we need x out of required workers to work there for the power plant to generate resources. So the workers are a requirement for the power plant to work. Perhaps we need 5 workers. We might not need to label them as engineers and get too specific.
+
+Sims
+
+Not all sims (NPCS) are workers, but many are. A sim can be a worker if they are 18+. In apartment and house buildings we can have families of sims up to 5 people. A house will give us 5 units available and 
+
+
+Inhabitable Buildings
+
+A house can have a maximum occupancy of 5. And an apartment / condo building can vary x 5 per unit.
+
+
+
+
+Worker Recruitment
+
+If workers do not have the proper food, energy, water, entertainment, and work resources, they will slowly begin to move out. And leave the buildings vacant. 
+
+Building and Technology Upgrades
+
+
+Networks of Production
+
+
+
+
+
+CASE STUDIES: WORKER PLACEMENT
+
+Some Case Studies for worker placement
+
+Viticulture Essential Edition
+
+https://www.youtube.com/watch?v=FueNctM_RMA
+
+
+Game end can be simply reaching a number of victory points, which can be acquired through a number of ways, in Viticulture this is 20 victory points, perhaps we can have 100 victory points
+Big aspect of Viticulture is the TENSION generated by choosing (player choice!) between present and future actions of which season to place a worker in
+Can have artificial upgrade requirements: 2 workers of level type x, and a structure of level y that produces x, will give this certain unlockable bonus
+Big thing is also that there is no major competition / sabotage going on, so all players can enjoy
+Also another big thing is that Viticulture has “mature” art, which any adult can be not ashamed to like vs a kid looking game, something that might not be so obvious
+Big focus on replayability, seems like this is almost essential for a game, huh. You start with different resources (different abilities in our game)
+Seems like the art is very mature, something that perhaps we can emulate with a combination of Brass Birmingham, and Anno the older games, they also seem to have this endearing but mature art style that transport us into the world of the game
+The different paths to victory are well balanced
+And seems like the author of the game is acutely aware of the worker placement mechanism, which really generates the core of the game, because he has even said this is his favorite mechanism, next to engine building, and cut the deck, and also he even made a video on youtube listing his favorite worker placement games, so there must be something there
+The game can usually just take 30 minutes to play, which is also nice for my game, in that we can win and then replay, but somehow we need to incorporate in app purchases, whether this is through expansions, ads, or combinations, look up the guy from trees and tents, he said his monetization went through the roof when he from simple ads to monetizing the in game currency
+The game is not nasty, competitive without being cut throat
+There is more decision and risk going on with worker placement
+Like a reviewer said, the game is classy as fuck!
+Realistic art also has to have more of a staying power than cartoony fashionable designs
+At 1:51:40 this track is very classy, would sound superb arranged for orchestra: 
+https://youtu.be/ZE0So9z9QCM?t=6711
+Chill Out Cafe Music 10 Hours - Soft Jazz and Bossa Nova for Coffee Break, Studying, Relax, would sound great with this sort of bossa nova beat, a very relaxing game for people, where we don’t stress them, but still give them healthy competition
+
+
+
+Manhattan Project Energy Empire
+
+Can send out workers, which gather a specific type of resource
+Start off with a different ability class, not starting vanilla is important
+Can recall workers also, to place them at more strategic points, and use them to level up there and acquire abilities on their worker journey
+Basically an energy resource worker placement game
+
+
+
+
+
+Automania 
+
+Great combination of engine building and worker placement
+Accessible so you can do something right away on turn 1, this is important, don’t have to go in debt, or wait
+Good game to study intricate engine building along with worker placement interactions
+
+
+Charterstone
+
+
+
+
+
+Everdell
+
+
+
+Lewis and Clark
+
+Don’t punish the player with slowness by the things they acquire, not fun
+
+
+Anachrony
+
+
+Tzolkin
+
+
+
+
+Relaxing Music
+
+https://youtu.be/ZE0So9z9QCM?t=25073
+
+
+At 6:58, seems like a nice theme, could do something like this with guitar
+
+Chill Out Cafe Music 10 Hours - Soft Jazz and Bossa Nova for Coffee Break, Studying, Relax
+
+
+
+
 # Newer Old Stuff
 
 # Scope / Focus
