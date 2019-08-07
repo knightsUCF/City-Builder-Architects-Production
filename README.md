@@ -1,5 +1,11 @@
 # City-Builder-Architects-Production
 
+
+# Starting Capital
+
+- can adjust starting capital amount in settings for tight and different gameplay like in LOTR
+
+
 # Worker Inventory
 
 - one thing that is easy to pass over just by studying board games, is worker inventory like in an rpg
@@ -21,6 +27,27 @@
 
 - set the prices on your turn, and people pay you the money, trying to find the right price so not to low, not to high, powerful mechanism
 
+- each building gives you all sorts of different stuff, think lateraly here about all the possibilities
+
+- some buildings could even score you negative points, but not sure if should punish the player
+
+- once you complete some buildings will get a bonus, this is a cool idea, different bonuses for different buildings complete, or even different abilities, and definitely worker actions
+
+- can even get two bonuses for one building!
+
+- can get bonuses for collections of buildings! perhaps somehow this is indicated somehwere so the player knows
+
+- or perhaps combine this with research trees, so to reach a next level in a research tree, perhaps we have to build a combination of buildings
+
+- four unique victory point conditions, this could be used as a winning mode: 
+  - most buildings of X type
+  - most money
+  - biggest square footage
+  - having the most round rooms
+  - there are all different sorts of victory conditions that can be combined into 4 combinations! huge replayability
+  - and this is just one way to get points
+- 
+
 
 # Suburbia 
 
@@ -28,6 +55,10 @@
 
 - study the proximity bonus, and how the designers ideas evolved into Castles of Ludvig proximity bonus
 
+
+# Between Two Cities
+
+- city building game to study 
 
 # Five Tribes - artisants expansion
 
