@@ -27,6 +27,8 @@
 
 - how are you going to manage your hand of cards? How are you going to manage your city and workers? Because things can give you choices? But again, give players good choices, a good choice versus a better choice like La Havre. 
 
+- great tension in what you want to deplete, whether to spend money quickly, or to save up money for something, likewise with different resources
+
 # Alhambra + expansion
 
 
