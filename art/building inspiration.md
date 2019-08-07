@@ -6,6 +6,10 @@ More Houses - turn the above houses 3D but give them nice shading and window inl
 
 https://www.123rf.com/stock-photo/vector_house.html?&sti=lmcqwx5gmoorq1gr59|&mediapopup=79080565
 
+These houses have a very modern aesthetic 
+
+https://www.123rf.com/stock-photo/vector_house.html?&sti=lmcqwx5gmoorq1gr59|&mediapopup=41959775
+
 
 Birds flying:
 
