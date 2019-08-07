@@ -1,5 +1,241 @@
 # City-Builder-Architects-Production
 
+
+# Newer Old Stuff
+
+# Scope / Focus
+
+* favorite games growing up where always building toys, like Lego, K'Nex, Playmobil, and also evolving toys like Pokemon, and Tamagotchi, along with RTS computers games like Age of Empires and Battle for Middle Earth, this game is inspired by these toys, also the game is more of a "toy" rather than a game
+* focus on a simple mobile game like Crossy Road but a building simulator
+* a mix between Crossy Road, Tamagotchi, and Sim City
+
+# Monetization
+
+* study the monetization techniques of Crossy Road -- this might influence character design, since perhaps characters will be unlockable through watching video ads, etc, perhaps we can play as a different hero character, architect, mayor, etc, and these will give different abilities / advantages in the game. The hero character could have a detailed design as the avatar, but then the NPCs roaming around could have a generic design. 
+
+* a free mobile game is almost guaranteed to get downloads, can put on resume 50K downloads
+
+* research the monetization of the below games sooner rather than later. Some players in the reviews are very upset about having to pay money to play the game. So find a balance. Play the games and take notes. 
+
+
+# Examples
+
+* Designer City: building game
+* Megapolis: city building simulator. Urban strategy
+* SimCity Mobile
+* Little Big City 2
+* Research as many as you can find on the App Store, and also Steam
+
+
+Two key things to take from examples:
+
+1) What inspirations can be expanded upon
+2) What can be done different to stand out?
+
+Create a list. 
+
+Some of the things that will be different with the game will be the synthetic intelligence, Tamagotchi simulation aspect. Where each person has their own life they go on about.
+
+The player can search for people by name, perhaps they can access a list of all their character to check where they are. The characters will have ages, (they will even die), and new characters will be born in the city, or move in. This is a big thing. So more of a combination of Sims and Tamagotchi.
+
+One thing that can go into both categories, is the art. All the popular apps have superior art, and many models. So follow that but raise the bar a notch, and create even more appealing buildings. How to do that? Study lots of architecture. Get good at modeling, lol. Wish I could use some post processing effects. Maybe that will be allowed in the future. Maybe will be able to push out an update once the technology arrives, or check the system requirements for post processing. Perhaps there is also a way to activate that on mobile currently.
+
+
+# MVP Features
+
+
+* build out entire prototype with simple shapes
+
+* perhaps also provide a AR experience on OS X, and maybe Google phones if can get the hardware to test on, write them an email to get free hardware to test on?
+
+
+# Building types
+
+* Commercial
+* Residential
+
+
+# Other objects
+
+* road tiles
+* cars 
+* possibly people (represented as moving capsules, maybe too much for MVP, or maybe worth including)
+
+
+# Toward an MVP
+
+These things will make a good first prototype
+
+* building menu system
+* placing down different buildings
+* inventory, subtracting money for placing buildings
+* zoning areas?
+* roads, and traffic
+
+# Roads
+
+* can use raycasts to check how to connect a road, so each tile will have four sides, we can send a raycast to check the segment, and then decide whether we can connect that segment
+
+# Traffic System
+
+* need some sort of self organizing traffic system, use boxes for cars
+* perhaps use capsules for pedestrians, and have them wait for the cars before crossing the street, perhaps they will also disappear into the buildings
+
+# Zoning Mechanism
+
+* we want to be able to zone residential and commercial? 
+
+# Aesthetic
+
+* go for a simulation type aesthetic, where the pedestrians will not have that many features, and will disappear into buildings
+
+# Data
+
+* use a GameManager.cs or the singleton method to create the data file, GameManager, might be simple enough and fine
+* here we store tokens, and other state info
+* make sure all data is separated and lives here
+
+# Non Functional Decorations
+
+* clouds
+* sounds of nature, city
+* score
+* sound fx
+
+# Game Strategy and Mechanics
+
+* go through the urban planning book to determine how to arrange the strategy, example: per 3 commercial buildings we want 10 residential buildings
+
+# Advertising
+
+* create media press kit to send out to all the major reviewers, look up the wikipedia page of successful games like Crossy Road for where the reviews are coming from
+
+# MVP Steps
+
+Phase 1 - Basics
+
+* create grid building system
+* create menu building selection
+* create road system and populate with traffic
+* create little walking people, they can randomly go into buildings, will probably need a navmesh, everytime we place something down we could update the navmesh - these people could have state info, easy to do and could make a big impact, so we click on them and get their profession, their networth, their randomized name, etc, kind of like in the space simulation game, perhaps some could say "unemployed", these people will also evolve over time just like Tamagotchis
+
+Phase 2 - UI / Game State
+
+* show how many tokens are available and subtract based on building
+* adjust the population counter
+* create a Tamagotchi type simulation system, where we can leave the simulation alone, and the city will go about their own business
+* create some starter rules, so need x number of residential buildings for population, happier population with certain types of ratios, etc, study the urban development book
+
+Phase 3 - Monetization
+
+Phase x - 
+
+Phase 4 - Models
+
+* drop in the models, go for Crossy Road style 
+
+Phase 5 - ?
+
+Phase 6 - ? 
+
+Phase 8 - Polish & Testing
+
+Phase 9 - Deployment
+
+
+# Detailed Steps 
+
+Phase 1 - Create Building System
+
+* test the grid system from the tutorial
+
+* can the grid system be applied to a mini grid, meaning we can drag the buildings irregularly
+
+* create a simple menu selection system, by pressing 1 or 2, to select the building type, then place that building
+
+* we already have some code written to place buildings from the space game, only ensure buildings don't get placed perpendicularly 
+
+* when selecting a building we want an albedo outline (simply apply a glow material to the object), this material will flash green if we can build there, and perhaps grey (or blue) if we cannot build there, number one reason being there is already a building there
+
+* how to check whether we can build there? well we could create a data structure, or send out a raycast, perhaps the data structure might be easier? we could also simply place a collider on the structure. the collider might be the easiest solution, we could place a slightly larger collider to indicate this. will there be any speed concerns by checking for a collider in the update method?
+
+* based on the collider response we can either apply the material or instantiate that prefab there at runtime, perhaps easiest to just apply that texture, since we don't want to keep instantiating, even though we could (and should) do a check for already instantiated 
+
+* so in the end of this part we want to be able to select different buildings, check whether they can be placed, and place them
+
+* also before we do the traffic system below, perhaps get the state machine going, and keep track of what buildings we are placing, we can just do this through a GameManager -- how to tally up the points -- perhaps once the turn comes, we can add up the points with a simple decoupled system, of searching all the objects in the scene by tag, if we don't do this in udpate we will be fine, the advantage of this, this is a very simple system, of course we could also make a data structure that we add, a JSON list, or some type of dictionary array, perhaps even an array would be better, and then just subtract and add as we place / destroy. Yes, the dictionary might be the best, a string identifier, and the number of buildings. We also probably don't want to increment all the resources at the same time on one turn, so simply create an illusion behind the scenes by setting up different time cycles for each resource, and maybe even randomize some time cycles within a range, so the player doesn't catch on to the logic, but they will still be vaguely aware of the resorouces generating. Perhaps the resrouce time cycle starts when we place the building down, so the time cycles will naturally be offset from one another. This is probably the correct solution, and what Battle for Middle Earth does. 
+
+* on the whole grid issue whether to snap 1:1 or 1:10, or whatever, wait with that, and just create the basic grid snapping mechanism first, even in the 1:1 snapping, the buildings base might be 1:1 equal to others, but the actual structure placed on the prefab (smaller than the base), can have an irregular size
+
+ * we also want to be able to plant trees, and at least start with a tree landscape, with which we contruct, and mow down trees
+ 
+ * when we build we will want smoke and some building posts going up to simbolize building, these can just be wooden shapes, does not have to be complicated, but this will really add an extra level of dimension -- "game feel / juice", so we could simply create rectangular objects, and put a wooden material on them, then arrange them to the shape of the building, in 3 stages, so this would actually be very doable, so first build the base, then the supports, and then the structure, and then show the building, with some pleasant building noises, on building, and on completing the building, also perhaps some flash of the outline of the building to signalize to the player the building is done
+
+
+Phase 1 - Create Traffic System
+
+* this might be the most difficult part of the entire game
+
+* we want to be able to smoothly run our finger (the mouse cursor in the meantime) and "paint" the road on, along with smart curves, meaning if we move our finger perpendicularly then curve the road
+
+* first be able to move the cursor along, and paint (instantiate) the tiles flat on the plane surface
+
+* we also want a mechanism of course to detect where legally the roads can be placed
+
+* roads are the first essential thing to build, since we can only place buildings along roads
+
+* the first main road should stretch out beyond the horizon, so the cars can drive out into the darkness (fog of war)
+
+* then we can connect roads to the main road, so automatically if we build another road, that road will smoothly connect (the appropriate connector tile will be instantiated)
+
+* resources for road making: https://github.com/MicroGSD/RoadArchitect
+* and https://github.com/JPBotelho/Unity-Road-Generator
+
+* more examples:
+
+"I ran into this problem a couple of months ago. What I do is create a quad (4 vertices) and then only move two of those to follow the mouse. I limit the direction to 0, 90, 180 or 270 degrees only so only straight roads are allowed, my scripts wouldn't work for anything else. Basically I draw the road in realtime with a texture, the problem is it doesn't look or blend with the terrain very well. Once the player releases the mouse button the road is painted directly on the terrain alphamap, it blends flawlessly and really looks good."
+
+Here is the BuildRoad class that I made: http://pastebin.com/m1F4tJUX
+
+And here is the UpdateTextureWithinBounds function: http://pastebin.com/vMeF3pa1
+
+Phase 1 - Avatars and NPCs
+
+* essential to study the monetization mechanics of Crossy Road and other free to play games
+
+* the core mechanic of free to play games seems like "unlocking" things in the game -- research if there are other monetization mechanics that are not based on unlocking mechanisms 
+
+* we can either unlock features in the game by paying money, (or watching video ads), or by leveling up in the game
+
+* so we want to be able to provide all content to be unlockable by the players if they just grind and don't pay
+
+* but if the player wants to spend money they can unlock characters with in game currency
+
+* (unrelated: thoroughly study the game mechanics book, since seems like most of that book while aiming to be a general book on game mechanis, seems to be drawn to in game economies as a way of creating gameplay, there are also many notes done before on Cityopoly, so definitely go through that, and also provide different tokens in the game for variety and interesting gameplay, so even things that might not seem like tokens, but are resources collected by the player, humans are naturally hoarders so use this to create addictive gameplay) 
+
+* creating custom avatars (maybe 10?) will of course require extra modeling work, but that will go a huge way in terms of monetization. Crossy Road made 10M in 3 months of release, probably mostly with unlockable content, so again study Crossy Road and other games. Could we even make the game multiplayer? Maybe in version 2.0. So we would create gang type of mentality like in Eve and Clash of Clans, at that point we might have more money to pay an artist to create really appealing unlockable content
+
+* we want to give the player full interaction with the avatar they purchase to get their money's worth, so the avatar can walk around, etc -- now does this mean we will provide extra detail for the random NPCs or make them generic, and risk the avatar standing out too much, in either case we want the avatar to walk around, and occupy buildings, so we will build the avatar a home, (this is starting to seem like SIMS - oh, study the monetization techniques of SIMS since they also offer a free to play model on mobile), so then we want the avatar to have their own house, and even their own building they work at. Of course once the player reaches a certain milestone(s) and beats the game (perhaps the game can be beaten, or unlocked with different metrics.) So the player does not necessarily beat the game, but just reach a checkpoint, at which they unlock a character. Make this difficult enough where the player will be tempted to spend money on unlockable content. 
+
+* as the avatar occupies different buildings there is interaction there, where being in different buildings gives them different upgrades, perhaps they go to work, like the mayor would be working in city hall, etc
+
+* also offer a skill element, so a player without money can still feel like they are improving at unlocking content in the game, also time this scientifically, how many hours are players willing to grind for unlockable content, research some stuff on this 
+
+* now we also have NPCs, which will be generic characters roaming around, they have names, and levels, professions, ages, etc, and they take on a life of their own, a type of synthetic intelligence like in the book Tricks of the Programming Gurus. Just like the book says, even to this day, this is an area rarely taken advantage of, while the programming is not that difficult. So seems like one of the main types of mechanics is to create these probability functions, like for type of character A, they have a 30% of doing something, etc. This goes toward the Tamagotchi simulation and would be a very fun type of mechanic.
+
+
+# ToDo
+
+- create the basic core gameplay MVP, which allows building and road placement
+
+- this will involve first getting Road.cs to work, if this works we can proceed, if not we have to explore other options, either purchasing the $36 asset pack Road Creator, or creating a solution from scratch
+
+- if we can get Road.cs to work, then move on to Grid.cs and incorporate that with the Road, not sure yet how to make the road building snap to grid
+
+- in the end of this phase we want to have road building and building placement, this will be huge
+
+
+
 # Very Old Stuff
 
 POCKET CITIES 1 (2-D)
