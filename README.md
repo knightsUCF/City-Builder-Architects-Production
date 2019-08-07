@@ -1,7 +1,8 @@
 # City-Builder-Architects-Production
 
+Also study Alhambra. 
 
-Really stufdy Peurto Rico for the classic elements.
+Really study Peurto Rico for the classic elements.
 
 Also have random birds flying. Even do flocks of birds flying.
 
