@@ -1,7 +1,16 @@
 # City-Builder-Architects-Production
 
 
-alchemists.
+# Alchemists
+
+- worker placement.
+
+- have different recipes / ingredients for building
+
+- so for a building we might need 2 wood and 3 steel, low quantities like in FTL, but perhaps we might just up to 10 wood, and 20 steel
+
+- these different ingredient recipes are cool because they are like a puzzle onto themselves, so if we have x wood, and x steel, should we build this structure, or should we save up a little more wood for that structure, test gameplay just to bring out this puzzle aspect
+
 
 
 Also study Alhambra, plus expansion.
