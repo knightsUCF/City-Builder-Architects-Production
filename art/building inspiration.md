@@ -1,3 +1,12 @@
+Houses
+
+https://www.123rf.com/stock-photo/vector_house.html?&sti=lmcqwx5gmoorq1gr59|&mediapopup=47155144
+
+More Houses - turn the above houses 3D but give them nice shading and window inline dimensions like the below
+
+https://www.123rf.com/stock-photo/vector_house.html?&sti=lmcqwx5gmoorq1gr59|&mediapopup=79080565
+
+
 Birds flying:
 
 https://assetstore.unity.com/packages/3d/characters/animals/flying-birds-15373
