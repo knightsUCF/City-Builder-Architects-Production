@@ -1,5 +1,8 @@
 # City-Builder-Architects-Production
 
+
+Really stufdy Peurto Rico for the classic elements.
+
 Also have random birds flying. Even do flocks of birds flying.
 
 When you have tall skyscrapers, have the clouds move through them. 
