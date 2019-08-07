@@ -3,6 +3,11 @@
 
 # Cityopoly
 
+# App store description
+
+- "Grow your realm, build alliances, and explore one of the deepest idle RPGs ever!" from realm grinder
+
+- also use this kind of language, "explore one of the deepest city builders ever!"
 
 # Japanese Gamemaking
 
