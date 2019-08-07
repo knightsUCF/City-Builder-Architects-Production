@@ -21,33 +21,87 @@ public class MouseManager : MonoBehaviour
 {
 
     public GameObject selectedObject;
-    Worker2 workerScript;
+    Worker workerScript;
+    Ray ray;
+    RaycastHit hitInfo;
 
 
     public int currentlySelectedWorkerID = -1;
 
+    GameObject previouslySelected;
+
+
+
 
     void Update()
     {
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        RaycastHit hitInfo;
+        CheckSelection(); 
+    }
 
+
+
+    void SelectWorker(GameObject obj)
+    {
+        workerScript = obj.GetComponent<Worker>();
+        workerScript.isSelected = true;
+        currentlySelectedWorkerID = workerScript.ID;
+    }
+
+
+
+    void DeselectWorker(GameObject obj)
+    {
+        workerScript = obj.GetComponent<Worker>();
+        workerScript.isSelected = false;
+    }
+
+
+
+    void CheckSelection()
+    {
         if (Input.GetMouseButtonDown(0))
         {
+            ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+
+            if (Physics.Raycast(ray, out hitInfo))
+            {
+                // store reference to previously selected object so we can clear out
+                if (selectedObject != null)
+                {
+                    previouslySelected = selectedObject;
+                }
+
+                if (hitInfo.transform.gameObject.tag == "Worker")
+                {
+                    selectedObject = hitInfo.transform.gameObject;
+                    SelectWorker(selectedObject);
+                    if (previouslySelected != null) DeselectWorker(previouslySelected);
+                }
+            }
+        }
+    }
+
+
+
+
+    /*
+    void Update()
+    {
+        if (Input.GetMouseButtonDown(0))
+        {
+            ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+
             if (Physics.Raycast(ray, out hitInfo))
             {
                 if (hitInfo.transform.gameObject.tag == "Worker")
                 {
-                    GameObject hitObject = hitInfo.transform.gameObject;
+                    hitObject = hitInfo.transform.gameObject;
                     Debug.Log(hitInfo.transform.gameObject);
                     SelectObject(hitObject);
                 }
             }
-            
-            else ClearSelection();
-
+            else ClearSelection(hitObject);
         }
-        
     }
 
 
@@ -58,12 +112,16 @@ public class MouseManager : MonoBehaviour
         {
             if (obj == selectedObject)
                 return;
-            ClearSelection(); // otherwise clear the previous selection, 12:48 of Quill video
+            ClearSelection(obj); // otherwise clear the previous selection, 12:48 of Quill video
         }
         selectedObject = obj;
 
-        workerScript = selectedObject.GetComponent<Worker2>();
+        // workerScript = selectedObject.GetComponent<Worker>();
+        // workerScript.isSelected = true;
+
+        workerScript = obj.GetComponent<Worker>();
         workerScript.isSelected = true;
+
         currentlySelectedWorkerID = workerScript.ID;
 
         // here is where we affect the image of the selected object
@@ -75,19 +133,24 @@ public class MouseManager : MonoBehaviour
 
 
 
-    void ClearSelection()
+    void ClearSelection(GameObject obj)
     {
-        workerScript = selectedObject.GetComponent<Worker2>();
+        // workerScript = selectedObject.GetComponent<Worker>();
+        // workerScript.isSelected = false;
+
+        workerScript = obj.GetComponent<Worker>();
         workerScript.isSelected = false;
+
         currentlySelectedWorkerID = -1;
 
         selectedObject = null;
         // selectedObject.SetSelectedState();
         // selectionBox.SetActive(false);
     }
+
+    */
     
 }
 
 
 // Quill video: https://www.youtube.com/watch?v=OOkVADKo0IM
-
