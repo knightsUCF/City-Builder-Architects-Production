@@ -1,7 +1,7 @@
 # City-Builder-Architects-Production
 
 
-# Alchemists
+# Alchemists + expansion
 
 - worker placement.
 
@@ -13,7 +13,7 @@
 
 
 
-# Alhambra + Expansion
+# Alhambra + expansion
 
 
 # Puerto Rico
