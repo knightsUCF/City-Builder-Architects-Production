@@ -39,6 +39,10 @@
 
 - or perhaps combine this with research trees, so to reach a next level in a research tree, perhaps we have to build a combination of buildings
 
+- perhaps can even choose own rewards for completing buildings of certain types
+
+- biggest fun is watching the castle grow, same sort of fun with city building
+
 - four unique victory point conditions, this could be used as a winning mode: 
   - most buildings of X type
   - most money
