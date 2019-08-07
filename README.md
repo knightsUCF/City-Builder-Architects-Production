@@ -13,9 +13,10 @@
 
 
 
-Also study Alhambra, plus expansion.
+# Alhambra + Expansion
 
-Really study Peurto Rico for the classic elements.
+
+# Puerto Rico
 
 Also have random birds flying. Even do flocks of birds flying.
 
