@@ -1,6 +1,187 @@
 # City-Builder-Architects-Production
 
 
+# Old Stuff
+
+Magic of Brass Birmingham
+
+
+- contained art in box
+
+- building upgrades, like technology, sequential
+
+- networks of production
+
+- likeable avatars, and different ones to choose from
+
+- markets we can sell goods to, if the demand is there
+
+- first time when you have no networks you can place your resource anywhere, but then have to connect next to networks
+
+- costs money to place anything
+
+- then the resource generates things for you, per turn
+
+- the market then can buy what you're producing right away, if there is space / demand, and then the market pays you the going price
+
+- can establish a link  as an action
+
+- at the end of the action draw up to 11 cards
+
+- final step is getting income
+
+
+
+Architects of the West Kingdom
+
+- intro: "Players will need to collect raw materials, hire apprecentices and keep and a watchful eye on their workforce."
+
+- placing worker at different buildings generates different resources
+
+- need money to recruit apprecentices, might need not just money but a combination of resources and or requirements
+
+- also have different choices of different workers to recruit, more dimensional worker recruitment
+
+- Resources: "Clay, Wood, Stone, Silver, Gold, Marble"
+
+- have lots of different resources
+
+
+MAKE THE TOY FIRST
+
+TO UNDERSTAND A GAME'S PLAY UNDERSTAND THE ECONOMY
+
+START BY IDENTIFYING RESOURCES
+
+
+
+Abstract Resources
+
+- time
+- research upgrades
+- character skills
+
+
+
+Concrete Resources
+
+- capital
+- mining resources
+    - gold
+    - electricity (energy)
+    - nuclear energy
+    - food (grocery market)
+
+- building abilities
+- trading market acquired resources
+- 
+
+
+
+Basic Resource List
+
+- Capital
+- Energy (power plants)
+- Food (grocery markets)
+- Water (water filtering plant)
+- Entertainment (all sorts of builldings contribute)
+- Work (workplaces that can hire workers)
+- Market Resources (tradable)
+
+
+
+Worker Investment
+
+
+
+Capturing Workers
+
+- recruitment
+- differement methods of recruitment to spice up gameplay
+
+
+
+
+
+
+
+Character Employment
+
+
+
+
+
+
+
+
+
+- To get the mechanics right you must build them
+- build prototypes and iterate as much as you can
+- ask power games to break game
+- players have to adapt and switch between strategies as the game progresses
+
+
+Game Mechanicss
+
+Transactions
+
+- collected, consumed, traded
+
+Tokens
+
+- not limited to just money
+
+
+Deriving Gameplay
+
+- economy
+- tactics (maneuvering)
+- strategy (long term)
+- social dynamics
+
+
+Economy
+
+- power ups
+- collectibles
+- lives
+
+
+Economy Resources
+
+- health
+- skill
+- experience
+- money
+- goods
+- services (characters can offer unique services that are like power ups, which can also be temporary)
+
+All Economies Revolve Around the Flow of Resources
+
+- Money
+- Energy
+- Time
+- Unit's under player's control
+- Items
+- Power Ups
+- Enemies
+
+Not all resourc es are under player's control (time)
+
+
+
+
+
+
+
+Decrypto
+Sheriff of Nottingham
+Kemet
+Food Chain Magnate
+Infinity
+
+
+
 # Game Titles
 
 - like Castles of Ludvig, can do a title such as: Cities of X, there have to be many possibilities here
