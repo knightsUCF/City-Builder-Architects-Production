@@ -1,3 +1,12 @@
+Low poly city
+
+https://assetstore.unity.com/packages/3d/environments/urban/low-poly-epic-city-pack-56138
+
+Nice low poly beach
+
+https://assetstore.unity.com/packages/3d/props/low-poly-ultimate-pack-54733
+
+
 Landscape environment
 
 Low poly trees and rocks
