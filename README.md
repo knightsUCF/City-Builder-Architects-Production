@@ -1,6 +1,6 @@
 # City-Builder-Architects-Production
 
-Also study Alhambra. 
+Also study Alhambra, plus expansion.
 
 Really study Peurto Rico for the classic elements.
 
