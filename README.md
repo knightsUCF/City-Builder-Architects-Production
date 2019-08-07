@@ -4,6 +4,33 @@
 # Cityopoly
 
 
+# Japanese Gamemaking
+
+“The most important thing I want a player to experience when playing our games is a sense of achievement.” - Eichi Nakajima,, Senior Managing Director FromSoftware
+
+“From software’s philosophy is not to get caught up chasing what’s popular, but rather make games based on what we value. This is the most basic principle. We put enormous emphasis on simply making the kinds of games we want to make.”
+
+“Focus on creating an experience that user will enjoy. Have tunnel vision and don’t even be aware of how other games are received.”
+
+“For me the West is polarized between super AAA titles and indie games, whereas in Japan, as we’re not in a position to create AAA games, the best we could do is fall into this middle ground. I think we’re lucky in that sense.” - Ebb and Flow documentary
+
+“I value atmosphere over realism.”
+
+“When I make a game I don’t try to rely on something Japanese or European, but rather on the roots or the essence of what makes us human. But I may have adopted that Japanese way of thinking. There may be aspects of zen or haiku. We often say draw between the lines. We are told to imagine something by reading between the lines in the blank spaces. How to spur imagination with the fewest words possible, in a very high context. There may be that aspect.”
+
+“Americans think in terms of logic and reason. But we tried to include many unreasonable elements. 
+
+For example there is a choice you have to make, based solely for the purpose of entertainment. 
+
+I think one thing that’s important is your ideas and what you want to create. I feel the players won’t enjoy games without these preferences and peculiarities. So that’s something I keep in mind when making games.
+
+ON the polar opposite end, there needs to objectivity. You can’t completely ignore what the players want. When I’m create a game, I hav eto be aware of what we want to do with our ideas. , and what the fans want and maintain a balance between the two. 
+
+We may be inferior in terms of scale, but attention to detail is a different evaluation point. I think that’s what makes japanese games appealing.
+
+The development in the West is more systematic than in Japan. Every job is clearly assigned, middleware is streamlined. Level designers know exactly what to do. Japan has failed to form this kind of systematic environment. We’re still in the stages of trial and error. In japan the director encourages the team to use old fashioned elbow grease to get the job done. Directors have to be prideful and selfish or else the final stages will never be reached. In the end I think that’s what makes the difference. In a positive sense you could say we have a lot of freedom in our work. 
+
+For the struggle against big worlds, we focused density, where you find objects that would advance the gameplay. 
 
 
 
