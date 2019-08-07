@@ -43,6 +43,8 @@
 
 - biggest fun is watching the castle grow, same sort of fun with city building
 
+- also gameplay of competing intermediate steps, like needing X and Y building, which don't give you any bonuses to get to Z building which will give you a bonus
+
 - four unique victory point conditions, this could be used as a winning mode: 
   - most buildings of X type
   - most money
