@@ -1,5 +1,9 @@
 # City-Builder-Architects-Production
 
+One way of getting around, "how come we don't have hundreds of workers populating offices", perhaps we will have a large number up to 50, or however many we can support on the mobile device. Run tests to determine. So we are an entrepreneur, so we are hiring and recruiting workers at the employment office. 
+
+Also on the rounded workers, and how come they don't drive cars: well, we want to go for an almost whimsical style like Machi Koro, and there are hardly any city building games that are just "fun", and even less so any that are focused on worker placement. Also there are even less games that have sheer "gameplay". The kind of involved management we find in board games. And definitely none that are multiplayer. 
+
 
 Kind of cool effect when we place the first starting building structure a few units above y. And then with gravity when the player sets down the building, they come sliding down from slightly above. But don't do this with the initial outline, since that will show where the final thing go. Do this only with the final structure. And then with the intermediate structure, use some gravity and force to wobble them around as they are being built.
 
