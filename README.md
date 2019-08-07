@@ -19,7 +19,15 @@
 
 - study how buildings come together to gain points for proximity bonus
 
-- set the prices on your turn, and people pay you the money, trying to find the right price so not to low, not to high, powerful mechanism 
+- set the prices on your turn, and people pay you the money, trying to find the right price so not to low, not to high, powerful mechanism
+
+
+# Suburbia 
+
+- from the makers of Castles of Ludvig, (came after)
+
+- study the proximity bonus, and how the designers ideas evolved into Castles of Ludvig proximity bonus
+
 
 # Five Tribes - artisants expansion
 
