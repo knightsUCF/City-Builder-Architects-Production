@@ -1,5 +1,17 @@
 # City-Builder-Architects-Production
 
+# Worker Inventory
+
+- one thing that is easy to pass over just by studying board games, is worker inventory like in an rpg
+
+- so have an inventory for each worker
+
+- when beginning the game, if want the worker to be a construction worker, have to purchase a hammer, and place into their inventory
+
+- we can change out limitless inventory like in many RPG games with make belief no limits, or large limits
+
+- this will be also useful for placing all the worker items there, like sunglasses and hats
+
 
 # Alchemists + expansion
 
