@@ -1,5 +1,8 @@
 # City-Builder-Architects-Production
 
+
+When you have tall skyscrapers, have the clouds move through them. 
+
 Like players often say, once you build everything in a city builder there is nothing to do and the game gets boring. Well, be a completely different game than this. Focus on involved social simulation, worker sim management like Tamagotchi, and multiplayer.
 
 Perhaps even create a feature where you can place a swimming pool on top of a building.
