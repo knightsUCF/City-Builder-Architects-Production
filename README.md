@@ -1,5 +1,6 @@
 # City-Builder-Architects-Production
 
+Perhaps even create a feature where you can place a swimming pool on top of a building.
 
 Have random lights flash on and off in buildings during the night. Perhaps even some lights might flicker? Or at least they will shut off. And then as the dead of the night comes most lights will be off. The player will be able to build street lamps anywhere to light up the world. And there will be moonlight of course to light up the rest.
 
