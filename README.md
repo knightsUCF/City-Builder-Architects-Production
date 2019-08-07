@@ -12,6 +12,22 @@
 
 - this will be also useful for placing all the worker items there, like sunglasses and hats
 
+
+# Castles of Ludvig
+
+- major puzzly aspects of putting rooms next to each other for scoring points
+
+- study how buildings come together to gain points for proximity bonus
+
+- set the prices on your turn, and people pay you the money, trying to find the right price so not to low, not to high, powerful mechanism 
+
+# Five Tribes - artisants expansion
+
+- how to maximize stuff - nice timed almost chaotic possibility space, "OMG This is the best option ever, i will get 40 points!" 
+
+- mankala mechanism of placing meeples
+
+
 # Time Stories
 
 - more of an experience than a game
