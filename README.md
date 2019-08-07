@@ -12,6 +12,22 @@
 
 - this will be also useful for placing all the worker items there, like sunglasses and hats
 
+# Time Stories
+
+- more of an experience than a game
+
+- experiences that will really elevate game play could include:
+
+  - beautiful score
+  
+  - birds flying, clouds
+  
+  - ocean sounds, forest sounds, night sounds
+  
+  - night time mode with buildings lighting up
+  
+  - any others?
+
 # Dominion
 
 - all the choices are available to the players
