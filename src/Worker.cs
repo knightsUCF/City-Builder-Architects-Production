@@ -10,41 +10,23 @@ using UnityEngine.AI;
 
 
 
-public class Worker2 : MonoBehaviour
+public class Worker : MonoBehaviour
 {
 
-
-    // variables
-
-    // [SerializeField] private Transform woodNodeTransform;
-    // [SerializeField] private Transform woodStorageTransform;
-
-    // private Transform woodPos;
     
     NavMeshAgent agent;
-
     Ray ray;
     RaycastHit hitInfo;
-
     private Animator anim;
-
     float timer;
     Vector3 velocityVector;
     float durationOfLerp = 0.1f;
-
-
-    public int ID = -1; // unassigned
-
-
+    public int ID = -1;
     float distance;
-
-
     GameObject buildMenu; 
     bool buildMenuSelect = true;
-
-
     public bool isSelected = false;
-
+    MouseManager mm;
 
 
 
@@ -67,6 +49,7 @@ public class Worker2 : MonoBehaviour
 
     void Awake()
     {
+        mm = FindObjectOfType<MouseManager>();
         agent = this.GetComponent<NavMeshAgent>();
         CreateWorker();
         anim = this.GetComponent<Animator>();
@@ -79,11 +62,13 @@ public class Worker2 : MonoBehaviour
     void OnEnable ()
     {
         EventManager.workerArrivedAtBuilding += WorkerArrived;
+        EventManager.workerCanStartBuilding += StartBuilding;
     }
 
     void OnDisable()
     {
         EventManager.workerArrivedAtBuilding -= WorkerArrived;
+        EventManager.workerCanStartBuilding -= StartBuilding;
     }
 
 
@@ -102,6 +87,13 @@ public class Worker2 : MonoBehaviour
 
     void WorkerArrived()
     {
+        state = State.ReachedDestination;
+        // state = State.Build;
+    }
+
+
+    void StartBuilding()
+    {
         state = State.Build;
     }
 
@@ -116,7 +108,7 @@ public class Worker2 : MonoBehaviour
 
         clickedOnWorker = true;
         // state = State.RevealBuildMenu;
-        Debug.Log("Clicking worker");
+        // Debug.Log("Clicking worker");
         ToggleBuildMenu();
         // state = State.InProgress;
         clickedOnWorker = false;
@@ -137,13 +129,16 @@ public class Worker2 : MonoBehaviour
     {
         // will need something to toggle mouse movement off and on based on some conditions, such as clicking on the game menu
 
-        if (Input.GetMouseButtonDown(0) && clickedOnWorker == false && isSelected == true) // state != State.RevealBuildMenu)
+        if (Input.GetMouseButtonDown(0) && clickedOnWorker == false 
+            && isSelected == true 
+            && mm.currentlySelectedWorkerID == ID) // not sure why we need both isSelected and to compare worker IDs, // state build prevents moving worker when building && state != State.Build) // state != State.RevealBuildMenu)
         {
             state = State.StartMoveToDestination;
             ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             if (Physics.Raycast(ray, out hitInfo))
             {
-                if (hitInfo.transform.gameObject.tag != "Worker") // prevent still moving to another worker spot, when the user is actually trying to switch workers
+                if (hitInfo.transform.gameObject.tag != "Worker" &&
+                    hitInfo.transform.gameObject.tag != "Building") // prevent still moving to another worker spot, when the user is actually trying to switch workers
                 {
                     agent.destination = hitInfo.point;
                 }
@@ -250,7 +245,7 @@ public class Worker2 : MonoBehaviour
                 // Debug.Log("building");
                 // so that we only play the animation once
                 // state = State.InProgress; 
-                state = State.InProgress;
+                // state = State.InProgress;
                 
                 break;
 
