@@ -7,7 +7,7 @@
 
 - "Grow your realm, build alliances, and explore one of the deepest idle RPGs ever!" from realm grinder
 
-- also use this kind of language, "explore one of the deepest city builders ever!"
+- also use this kind of language, "explore one of the deepest city builders ever!" The kind of descriptions that makes the player's adrenaline race... 
 
 # Japanese Gamemaking
 
