@@ -12,6 +12,11 @@
 
 - this will be also useful for placing all the worker items there, like sunglasses and hats
 
+# Dominion
+
+- all the choices are available to the players
+
+- up to the player in which direction they want to go
 
 # Alchemists + expansion
 
