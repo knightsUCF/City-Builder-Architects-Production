@@ -18,7 +18,7 @@ public class GarbageCollect : MonoBehaviour {
 
 
 	void Start ()
-    {
+        {
 		Invoke ("SelfDestruct", timeUntilDestruction);
 	}
 
