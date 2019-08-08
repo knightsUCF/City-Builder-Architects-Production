@@ -50,6 +50,10 @@ public class Data : Singleton<Data>
     public static int currentSimID = 0; // easily increment the ID when creating a new worker, might have to change for multiplayer
 
 
+    // AI
+
+    public static int currentAISimID = 1000; // starting at 1000 to separate AI workers, perhaps later we can do the same thing for multiplayer
+
 
 
     // structures
