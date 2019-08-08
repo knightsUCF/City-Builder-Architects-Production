@@ -29,6 +29,9 @@ public class WorkerAI : MonoBehaviour
     public bool isSelected = false;
     MouseManager mm;
     bool InRoute = false;
+    bool Arrived = false; // for AI to know when arrived
+
+    EventManager eventManager;
 
 
 
@@ -57,6 +60,7 @@ public class WorkerAI : MonoBehaviour
         CreateWorker();
         anim = this.GetComponent<Animator>();
         state = State.Idle;
+        eventManager = FindObjectOfType<EventManager>();
     }
 
 
@@ -90,8 +94,7 @@ public class WorkerAI : MonoBehaviour
 
     void WorkerArrived()
     {
-        state = State.ReachedDestination;
-        // state = State.Build;
+        // this will run when the worked arrived at the building
     }
 
 
@@ -205,6 +208,7 @@ public class WorkerAI : MonoBehaviour
 
     public void Move(Vector3 destination) // , int ID)
     {
+        Arrived = false;
         state = State.Walk;
         InRoute = true;
         agent.destination = destination;
@@ -225,6 +229,8 @@ public class WorkerAI : MonoBehaviour
                 agent.destination = this.transform.position; // break agent navigation if we arrive within perimeter of destination
                 state = State.Idle;
                 InRoute = false;
+                // Arrived = true;
+                eventManager.EventWorkerArrivedAtBuilding();
             }
         }
     }
@@ -457,3 +463,6 @@ public class WorkerAI : MonoBehaviour
 // For dynamic objects
 // 1. Add "Nav Mesh Obstacle" component to object, will be added on prefab of buildings, and other objects that will be dynamic on the nav mesh
 // 2. Check "carve"
+
+
+// make sure to have WorkerAI tag on worker so that MouseManager doesn't get confused
