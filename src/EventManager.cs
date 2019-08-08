@@ -19,17 +19,30 @@ public class EventManager : MonoBehaviour
     */
 
     /* Use
+
+    From the script that is SENDING event:
+
+    EventManager eventManager;
+    eventManager = FindObjectOfType<EventManager>();
+    eventManager.EventWorkerArrivedAtBuilding();
+
+    From the script that is RECEIVING the event:
     
     From a script write this to add the "listener" of the event:
 
     void OnEnable ()
     {
-        EventManager.startBuilding += MethodYouWantToTriggerFromChildScript;
+        EventManager.startBuilding += MethodYouWantToTriggerFromReceivingScript;
     }
 
     void OnDisable()
     {
-        EventManager.startBuilding -= MethodYouWantToTriggerFromChildScript;
+        EventManager.startBuilding -= MethodYouWantToTriggerFromReceivingScript;
+    }
+
+    void MethodYouWantToTriggerFromReceivingScript()
+    {
+        // run once on event
     }
 
     
@@ -54,11 +67,33 @@ public class EventManager : MonoBehaviour
     public delegate void WorkerArrivedAtBuilding();
     public static event WorkerArrivedAtBuilding workerArrivedAtBuilding;
 
+    public delegate void WorkerCanStartBuilding();
+    public static event WorkerCanStartBuilding workerCanStartBuilding;
+
 
     public void EventWorkerArrivedAtBuilding()
     {
         if (workerArrivedAtBuilding != null) workerArrivedAtBuilding(); // prevents null reference errors if no one is subscribed to event
     }
+
+    public void EventWorkerCanStartBuilding()
+    {
+        if (workerCanStartBuilding != null) workerCanStartBuilding(); // prevents null reference errors if no one is subscribed to event
+    }
+
+
+    // Employment Office done building - for generating new workers by AI ////////////////////
+
+    public delegate void EmploymentOfficeFinishedBuilding();
+    public static event EmploymentOfficeFinishedBuilding employmentOfficeFinishedBuilding;
+
+
+    public void EventEmploymentOfficeFinishedBuilding()
+    {
+        employmentOfficeFinishedBuilding(); 
+    }
+
+    //////////////////////////////////////////////////////////////////////////////////////////
 
 
 
