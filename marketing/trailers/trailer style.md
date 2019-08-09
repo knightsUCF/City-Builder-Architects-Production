@@ -46,3 +46,5 @@ If this works for Fortnite, why not for this game? People punch in their credit 
 
 Will need to study the process over the desktop experience.
 
+Zero pay to win mechanics will win a lot of positive reviews. Only do cosmetics and ads.
+
