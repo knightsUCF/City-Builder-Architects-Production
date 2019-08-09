@@ -60,5 +60,6 @@ So the key question is will Steam allow ads on mobile and not on desktop even th
 
 If not have to indepently release PC game outside of Steam.
 
+If Steam allows this, might be better to only offer cosmetic items in the desktop version, and cosmetic items and ads in the mobile version. 
 
 
