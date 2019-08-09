@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
+// get code from pixel 3D game for OnValue change we can send out an event
+
 
 public class AIFSM : Singleton<Data>
 {
