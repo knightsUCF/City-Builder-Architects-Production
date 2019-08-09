@@ -3,3 +3,5 @@
 1. Publish on same day in China
 2. Make in app purchases go get verified through central server
 3. Obfuscate code
+
+Research other best practices
