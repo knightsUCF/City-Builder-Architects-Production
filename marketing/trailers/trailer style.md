@@ -48,3 +48,17 @@ Will need to study the process over the desktop experience.
 
 Zero pay to win mechanics will win a lot of positive reviews. Only do cosmetics and ads.
 
+
+# Desktop Ads
+
+https://developer.microsoft.com/en-us/store/monetize/ads-in-apps
+
+https://forum.unity.com/threads/pc-ads.426791/
+
+
+So the key question is will Steam allow ads on mobile and not on desktop even though the prices of the app (free) will be the same?
+
+If not have to indepently release PC game outside of Steam.
+
+
+
