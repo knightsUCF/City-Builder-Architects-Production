@@ -1,4 +1,4 @@
-A combination between Machi Koro, "Game Concept Starter Pack" on the Asset store, and Quadropolis.
+A combination between Machi Koro, "Game Concept Starter Pack" on the Asset store, Quadropolis, and Kingdoms and Castles.
 
 This is the kind of style that cna work with the workers and the low poly world.
 
