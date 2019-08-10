@@ -10,6 +10,8 @@ Deciding on the different is a mechanic that is similar to Offworld Trading Comp
 
 Playtest for emotions, not just mechanics!
 
+# Midgame Resource Mining
+
 As we enter the mid to late game, perhaps make resource mining not as important, at that point the player might have enough resources, or enough gold to just buy them off the market. So we would always have an option to buy resources off the market. Perhaps like Offworld Trading Company resource cost could fluctuate depending on demand and supply, although perhaps not as drastic, but still make an impact in strategy. A huge drastic impact like in Offworld Trading Company is not needed.
 
 The way to avoid a "greedy Monopoly capitalism" type game, is to only make a few pieces of land available for sale throughout the game, that way the win condition comes before a full big huge monopoly can be established. 
