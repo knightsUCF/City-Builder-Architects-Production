@@ -1,3 +1,7 @@
+# Chopping Wood
+
+Simply shake the tree. (Google shaking wobbling code.) And then have the tree disappear with some slight animation like in Kingdoms and Castles: https://www.fig.co/campaigns/kingdoms-and-castles
+
 # Building Skyscrapers
 
 Perhaps a meeple building a skyscraper might seem silly. So perhaps we can use the crane asset from "Game Concept Starter Pack". In that case the player places the worker into the crane. Purchasing a crane could be required for building tall buildings. In that case perhaps we could still just use one worker. Or maybe more workers. 
