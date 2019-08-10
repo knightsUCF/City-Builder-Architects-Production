@@ -11,11 +11,20 @@ also pay coins to get those levels.
 
 What are other ways of giving out progress for gold?
 
+The other thing about unlocking a map for gold required, is that players will grind for that by watching ads, with even a much higher chance than cosmetic items, if they are not intersted in those. So they watch ads, get gold, save gold to unlock another map. Perhaps new maps also have unlockable buildings. This would all count toward progress. Eventually all players will get tired of playing on one map, and they will want to unlock another map. Make each unlock more difficult. So for the second unlock require x gold, for the third unlock x * 2 gold, and so on.
+
+Perhaps these new maps could be procedurally generated.
+
+Crossy Road had 50 unlockable characters, so need something on that magnitude. Those players that were grinding for 24 hours, that must have been to unlock those characters, because there is no other purpose to the game, other than an infinite runner.
+
+
 Afterwards when the players are maxed out, can no longer sell progress, but consumables. Faster healing times, and faster
 build times seem so cheap. Not sure how to get around this. Study clash of clans.
 
 
 Offer gifts so players can gift each other (reciprocity) and increase sells of cosmetic stuff.
+
+
 
 
 
