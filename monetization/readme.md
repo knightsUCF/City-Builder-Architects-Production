@@ -30,6 +30,8 @@ Offer gifts so players can gift each other (reciprocity) and increase sells of c
 
 Torulf Jernstrom - “Let’s Go Whaling”
 
+https://docs.google.com/document/d/1ZaN_GZPk2VOUafBq88A0OcxsaY5zDEaJvkHjJkjiu04/edit
+
 
 A lot of spending comes from high paying guys “whales”
 The very best way is to get two rich competitive guys to fight each other and tell them I’ll give you a slight upside to pay me
