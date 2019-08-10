@@ -1,3 +1,6 @@
+The optimal solution is to offer both chances to pay to play, and also just free play, so players who don't play can have continous flow playing the game for fun, while not be bothered, or minimally bothered by pay to play mechanics, and also capture the whales for the chances to pay to play.
+
+
 Going over the document, "Let's Go Whaling", the author mentions that only 1% is sold by hats.
 
 This goes against what Crossy Road did.
