@@ -1,5 +1,21 @@
 The optimal solution is to offer both chances to pay to play, and also just free play, so players who don't play can have continous flow playing the game for fun, while not be bothered, or minimally bothered by pay to play mechanics, and also capture the whales for the chances to pay to play.
 
+https://www.pocketgamer.biz/feature/66339/20-mobile-games-that-have-made-more-than-1-billion/entry/1/
+
+News Aug 1st, 2019
+Toy Blast dev Peak Games blasts past $1 billion in player spending
+
+ASNews Mar 15th, 2019
+Honor of Kings has made $4.5 billion since launching in October 2015
+
+ASNews Dec 17th, 2018
+Honor of Kings skips past $4 billion in lifetime revenue
+
+News Aug 8th, 2018
+Candy Crush developer King has made more than $1 billion so far this year
+
+ASNews Aug 6th, 2018
+Lineage 2 Revolution follows Lineage M in breaking $1 billion barrier
 
 Going over the document, "Let's Go Whaling", the author mentions that only 1% is sold by hats.
 
