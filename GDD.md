@@ -1,3 +1,8 @@
+# Deciding the Best Place for the Buildings
+
+Quadropolis
+
+
 # Beach Real Estate
 
 Each player can have some beach real estate, which is valuable, and can be taken over by other players later, or the beach real estate could be sold if the player is in trouble and needs funds. So they can put that on the market for any price they desire, and then get offers. Of course if they just wait with their high desired price, then they will lose time if they need the money.
