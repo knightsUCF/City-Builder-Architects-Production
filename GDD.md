@@ -158,3 +158,19 @@ Purchasing land could be a strategic element. We could present the player with t
 When purchasing land the board lights up with even square grids, like in a water system. Perhaps this is in a glowing yellow type grid. Then the player can choose which land to purchase. Not all land is equal. Some land might have resources. Some land might be too far way and mess up proximity bonuses.
 
 Starting off the player gets one parcel of land on which to build their base. Then they can purchase more land as they get more money.
+
+```
+ // class members
+ public Transform gridPrefab;
+ int row = 4;
+ int col = 4;
+ 
+ // some function that builds the grid
+ for (int r = 0; r < row; r++)
+ {
+     for (int c = 0; c < col; c++)
+     {
+         Instantiate (gridPrefab, new Vector3(row, 0, col), Quaternion.Identity) as Transform;
+     }
+ }
+ ```
