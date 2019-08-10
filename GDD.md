@@ -1,3 +1,8 @@
+# Mining Resources
+
+Chopping wood and gathering stone afterall should be a part in the game. This is what players love in the RTS. Interacting with the world map and gathering resources. Perhaps we could also add oil mining. To test whether oil is found they will have to first take the risk and buy land. Not sure if should include this. But if we do, the oil rig model, and the programming aspect will be minimalistic compared to the rewards.
+
+
 # Chopping Wood
 
 Simply shake the tree. (Google shaking wobbling code.) And then have the tree disappear with some slight animation like in Kingdoms and Castles: https://www.fig.co/campaigns/kingdoms-and-castles
