@@ -25,6 +25,7 @@ build times seem so cheap. Not sure how to get around this. Study clash of clans
 Offer gifts so players can gift each other (reciprocity) and increase sells of cosmetic stuff.
 
 
+One solution to pay to play would be to make the core game free, and then perhaps the higher levels are pay to play, where we unlock new items. Need something that will make whales spend money on cosumables (can we even make this work?) and progress without bothering the others that the game is pay to play and effect reviews negatively.
 
 
 
