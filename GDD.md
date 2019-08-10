@@ -2,6 +2,8 @@
 
 Chopping wood and gathering stone afterall should be a part in the game. This is what players love in the RTS. Interacting with the world map and gathering resources. Perhaps we could also add oil mining. To test whether oil is found they will have to first take the risk and buy land. Not sure if should include this. But if we do, the oil rig model, and the programming aspect will be minimalistic compared to the rewards.
 
+With oil we can power factories to sell a generic type of product "plastic goods", or "plastic", or "plastic manufacturing" 
+
 
 # Chopping Wood
 
