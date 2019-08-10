@@ -1,3 +1,13 @@
+# Choosing Goods for Sale based on Supply and Demand
+
+
+When the player builds a "shop" this can be a generic shop, at which they can choose to sell any sorts of items, arranged in a neat square grid from a nice gray blackish panel with borders. When they click on the item, or even displaying right away, they can see how much those items are selling for based on supply and demand.
+
+So we can keep things simple if we have a simple shop, and that way we simplify the number of shops, and then the player has complete choice what to sell there, no restrictions. But we can have a few different shop models to keep things interesting, even add more models after game release, and then still the player choose what to sell, in the sense that is decoupled from the model, all we care about is that the model is a shop class object.
+
+Deciding on the different is a mechanic that is similar to Offworld Trading Company. 
+
+
 Playtest for emotions, not just mechanics!
 
 As we enter the mid to late game, perhaps make resource mining not as important, at that point the player might have enough resources, or enough gold to just buy them off the market. So we would always have an option to buy resources off the market. Perhaps like Offworld Trading Company resource cost could fluctuate depending on demand and supply, although perhaps not as drastic, but still make an impact in strategy. A huge drastic impact like in Offworld Trading Company is not needed.
