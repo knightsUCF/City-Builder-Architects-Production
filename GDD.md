@@ -1,3 +1,7 @@
+# Building Skyscrapers
+
+Perhaps a meeple building a skyscraper might seem silly. So perhaps we can use the crane asset from "Game Concept Starter Pack". In that case the player places the worker into the crane. Purchasing a crane could be required for building tall buildings. In that case perhaps we could still just use one worker. Or maybe more workers. 
+
 # Deciding the Best Place for the Buildings
 
 Quadropolis
