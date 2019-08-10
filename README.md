@@ -4096,6 +4096,13 @@ Infinity
 
 - city building game to study 
 
+
+# Chinatown
+
+- players try to negotiate with other players to trade OR to purchase their tiles, so they can build up multiple building units of the same thing for some special bonus
+
+- this is a fun mechanic which could be used
+
 # Five Tribes - artisants expansion
 
 - how to maximize stuff - nice timed almost chaotic possibility space, "OMG This is the best option ever, i will get 40 points!" 
