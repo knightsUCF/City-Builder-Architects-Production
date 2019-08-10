@@ -154,3 +154,7 @@ This introduces a lot of strategy, since we can maximize resources, in a small s
 # Purchasing Land
 
 Purchasing land could be a strategic element. We could present the player with the ability to purchase how much land they want up to their resources max. Or up to map max we can support on their device. (Determine through testing). Well, the strategic element comes into play depending on how fast they spend on land in the beginning, they have to manage to not be greedy and buy too much land, although they can restart the game at any time if they mess up or put themselves in a corner.
+
+When purchasing land the board lights up with even square grids, like in a water system. Perhaps this is in a glowing yellow type grid. Then the player can choose which land to purchase. Not all land is equal. Some land might have resources. Some land might be too far way and mess up proximity bonuses.
+
+Starting off the player gets one parcel of land on which to build their base. Then they can purchase more land as they get more money.
