@@ -15,6 +15,8 @@ for purchasing in game characters.
 Give the player a few gifts as they progress. Also do the thing from "Let's go Whaling" where the first purchase is made easier,
 look up the details.
 
+Further these cosmetic upgrades might be even more powerful than Crossy Road's unlockable characters, since they can be
+mixed and match to allow the player to be creative in expressing their character style.
 
 # Hats
 
