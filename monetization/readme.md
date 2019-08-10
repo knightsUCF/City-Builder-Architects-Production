@@ -5,7 +5,7 @@ Going over the document, "Let's Go Whaling", the author mentions that only 1% is
 
 This goes against what Crossy Road did.
 
-But perhaps that is different because they were selling you characters.
+But perhaps that is different because they were selling you characters. We could also sell different character shapes. 
 
 In any case keep offering the cosmetic, but since he mentions that progress is the main one, perhaps there is some way of
 giving out progress for money, that is not entirely pay to play. So perhaps the player can purchase gold, which can then be used
