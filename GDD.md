@@ -1,8 +1,22 @@
+# Water and Electrical / Power Grid System
+
+Even if this takes too much effor still include. Scope down the effort to something doable, because we can create an MVP water and power just with a simple grid code, and some simple lines. At the most basic the player just simply expands their water, and electrical systems as simple "pipe" lines, (transparent and neon collored, blue and yellow perhaps, blue for water, and yellow for power.) 
+
+So to complete the city simulation, at least have a basic MVP of this since the basic form is doable. Then we can go from there, decide how to route things. Even that we can have the player simply place the lines on the grid, and the lines will show the area bonus, meaning where the water will reach to power the homes. Doesn't have to be mega involved to work.
+
+And these will cost in game gold, so this gives the player an extra goal to save up money.
+
+The in game gold, and the purchasing gold for the in app purchases will be a different kind of tokens. Perhaps we use gold in the game, and then City Science tokens / gems for purchasing in app purchases. Study how other games do this.
+
+
+
 # Mining Resources
 
 Chopping wood and gathering stone afterall should be a part in the game. This is what players love in the RTS. Interacting with the world map and gathering resources. Perhaps we could also add oil mining. To test whether oil is found they will have to first take the risk and buy land. Not sure if should include this. But if we do, the oil rig model, and the programming aspect will be minimalistic compared to the rewards.
 
 With oil we can power factories to sell a generic type of product "plastic goods", or "plastic", or "plastic manufacturing" 
+
+When we mine stone we could have three different prefabs for the stone size. As we mine more the stone size shrinks over time.
 
 
 # Chopping Wood
