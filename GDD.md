@@ -1,3 +1,15 @@
+# Replayability - Starting Classes
+
+An amazing way to do starting classes is to simply give the option of what you're starting with as a text element, 
+so Entrepreneur, etc (find where the classes were)
+
+And then next to the class we show a simple count next to each of the starting elements.
+
+So if choosing Entrepreneur: 3 x (workers icon), 100 x gold icon, etc, essentially showing the starting resources for that class type.
+
+This way we can easily set up the fun of replayability and vary the strategy.
+
+
 # Water and Electrical / Power Grid System
 
 Even if this takes too much effor still include. Scope down the effort to something doable, because we can create an MVP water and power just with a simple grid code, and some simple lines. At the most basic the player just simply expands their water, and electrical systems as simple "pipe" lines, (transparent and neon collored, blue and yellow perhaps, blue for water, and yellow for power.) 
