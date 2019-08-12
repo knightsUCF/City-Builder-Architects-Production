@@ -30,6 +30,8 @@ public class MouseManager : MonoBehaviour
 
     GameObject previouslySelected;
 
+    Touch touch;
+
 
 
 
@@ -56,29 +58,67 @@ public class MouseManager : MonoBehaviour
     }
 
 
+    void CheckObjectByTag()
+    {
+        if (selectedObject != null)
+        {
+            previouslySelected = selectedObject;
+        }
+
+        if (hitInfo.transform.gameObject.tag == "Worker")
+        {
+            selectedObject = hitInfo.transform.gameObject;
+            SelectWorker(selectedObject);
+            if (previouslySelected != null) DeselectWorker(previouslySelected);
+        }
+    }
+
+
+
 
     void CheckSelection()
     {
+        #if UNITY_EDITOR
+
         if (Input.GetMouseButtonDown(0))
         {
             ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
             if (Physics.Raycast(ray, out hitInfo))
             {
-                // store reference to previously selected object so we can clear out
-                if (selectedObject != null)
-                {
-                    previouslySelected = selectedObject;
-                }
+                CheckObjectByTag(); // same method for any type of interface
+            }
+        }
 
-                if (hitInfo.transform.gameObject.tag == "Worker")
+        if (Input.GetMouseButtonDown(1))
+        {
+            // deselect all, for now we are just going to deselect the current worker
+            // DeselectWorker(selectedObject);
+            // DeselectWorker(previouslySelected);
+        }
+
+        #endif
+        
+
+        #if UNITY_ANDROID
+
+
+        if (Input.touchCount > 0)
+        {
+            touch = Input.GetTouch(0);
+            ray = Camera.main.ScreenPointToRay(touch.position);
+
+            if (touch.phase == TouchPhase.Began)
+            {
+                if (Physics.Raycast(ray, out hitInfo)) 
                 {
-                    selectedObject = hitInfo.transform.gameObject;
-                    SelectWorker(selectedObject);
-                    if (previouslySelected != null) DeselectWorker(previouslySelected);
+                    CheckObjectByTag(); // same method for any type of interface
                 }
             }
         }
+
+
+        #endif
     }
 
 
