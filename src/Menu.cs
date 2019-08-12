@@ -13,7 +13,18 @@ public class Menu : MonoBehaviour
 
 
 
+    public Text loadingText;
+
+
+
     public void NewGame()
+    {
+        loadingText.text = "Loading...";
+        Invoke("LoadGame", 2);
+    }
+
+
+    void LoadGame()
     {
         SceneManager.LoadScene("Game", LoadSceneMode.Single);
     }
