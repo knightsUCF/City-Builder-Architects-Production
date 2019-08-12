@@ -30,6 +30,9 @@ public class Build : MonoBehaviour
     RaycastHit hitInfo;
 
 
+    BitBenderGames.MobileTouchCamera mobileTouchCamera;
+
+
     // do we need these
     public bool startedBuild = false;
     public bool doneBuilding = true; // set to true because normal state is not building (for moving the camera around)
@@ -59,6 +62,14 @@ public class Build : MonoBehaviour
     }
 
     private BuildingType buildingType;
+
+
+
+    void Awake()
+    {
+        // BitBenderGames
+        mobileTouchCamera = FindObjectOfType<BitBenderGames.MobileTouchCamera>();
+    }
 
 
 
@@ -92,6 +103,7 @@ public class Build : MonoBehaviour
 
     void SetBuilding()
     {
+        Debug.Log("Calling Set Building");
         if (Physics.Raycast(ray, out hitInfo)) 
         {
             PlaceBuilding(hitInfo.point, buildSelection);
@@ -104,16 +116,70 @@ public class Build : MonoBehaviour
 
     void PlaceStartingBuilding()
     {
+
+
         #if UNITY_ANDROID
+
 
         if (Input.touchCount > 0)
         {
             touch = Input.GetTouch(0);
+
+            Debug.Log("Inside touch");
+            Debug.Log("touch position: " + touch.position);
+
+
+            if (Physics.Raycast(ray, out hitInfo)) 
+            {
+                mobileTouchCamera.lockCamera = true;
+
+                PlaceBuilding(hitInfo.point, buildSelection);
+                // startedBuild = true; // come back to this
+                // haveWePlacedFirstBuildingStage = true;
+            }
+
+
+
+            if (touch.phase == TouchPhase.Began)
+            {
+                Debug.Log("Touch phase began");
+                // Debug.Log("Touch position: " + touch2.position);
+            }
+        }
+
+
+        #endif
+
+
+
+        /*
+        #if UNITY_ANDROID
+        Debug.Log("Calling PlaceStartingBuilding()");
+
+        // stopping here
+
+        if (Input.touchCount > 0)
+        {
+            Debug.Log("Reached Input.touchCount > 0");
+
+            touch = Input.GetTouch(0);
             ray = Camera.main.ScreenPointToRay(touch.position);
-            if (touch.phase == TouchPhase.Began) SetBuilding();
+            if (touch.phase == TouchPhase.Began) 
+            {
+                Debug.Log("Reached SetBuilding() Scope!!!");
+                // SetBuilding();
+                if (Physics.Raycast(ray, out hitInfo)) 
+                {
+                    PlaceBuilding(hitInfo.point, buildSelection);
+                    // startedBuild = true; // come back to this
+                    // haveWePlacedFirstBuildingStage = true;
+                }
+            }
         }
 
         #endif
+
+        */
 
         #if UNITY_EDITOR
 
@@ -158,8 +224,10 @@ public class Build : MonoBehaviour
 
     Vector2 PlaceBuilding(Vector3 clickPoint, GameObject gameObject)
     {
+        Debug.Log("Calling Place Building!!!");
         var finalPosition = GetNearestPointOnGrid(clickPoint);
-        GO = (GameObject)Instantiate(gameObject, finalPosition, Quaternion.identity, this.transform);
+        GO = Instantiate(gameObject, finalPosition, Quaternion.identity, this.transform);
+        Debug.Log("Instantiating GO object");
         return (Vector2)finalPosition;
     }
 
@@ -171,6 +239,7 @@ public class Build : MonoBehaviour
         {
             var gridPos = GetNearestPointOnGrid(hitInfo.point);
             GO.transform.position = gridPos;
+
         }
     }
 
@@ -184,7 +253,21 @@ public class Build : MonoBehaviour
         {
             touch = Input.GetTouch(0);
             ray = Camera.main.ScreenPointToRay(touch.position);
-            MoveBuildingToDragPoint();
+            // if (touch.phase == TouchPhase.Began) MoveBuildingToDragPoint();
+            if (GO != null) MoveBuildingToDragPoint();
+
+
+            // this will finalize the building no matter where we double tap
+
+            if(Input.touches[0].tapCount == 2)
+            {
+                Debug.Log("double tapped!");
+                FinalizeBuilding(buildSelection);
+                mobileTouchCamera.lockCamera = false;
+            } 
+
+
+            // if (double tap) FinalizeBuilding(buildSelection);
         }
   
         #endif
