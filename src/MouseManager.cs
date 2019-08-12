@@ -22,6 +22,8 @@ public class MouseManager : MonoBehaviour
 
     public GameObject selectedObject;
     Worker workerScript;
+    UIManager uiManager;
+
     Ray ray;
     RaycastHit hitInfo;
 
@@ -31,6 +33,13 @@ public class MouseManager : MonoBehaviour
     GameObject previouslySelected;
 
     Touch touch;
+
+
+
+    void Awake()
+    {
+        uiManager = FindObjectOfType<UIManager>();
+    }
 
 
 
@@ -58,6 +67,7 @@ public class MouseManager : MonoBehaviour
     }
 
 
+
     void CheckObjectByTag()
     {
         if (selectedObject != null)
@@ -67,6 +77,12 @@ public class MouseManager : MonoBehaviour
 
         if (hitInfo.transform.gameObject.tag == "Worker")
         {
+
+            // so here if we click on a worker we will want to reveal the build menu, any worker can build even office workers
+
+            uiManager.RevealHouseIcon();
+
+            // find game object by tag and set to active, if workers are deselect (later since we can't deselect now, then get hide)
             selectedObject = hitInfo.transform.gameObject;
             SelectWorker(selectedObject);
             if (previouslySelected != null) DeselectWorker(previouslySelected);
