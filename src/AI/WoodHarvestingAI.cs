@@ -22,10 +22,13 @@ public class WoodHarvestingAI : MonoBehaviour
 
     public GameObject wood;
 
-    // dummy values for
+    // dummy values
 
     public GameObject woodResource;
     public GameObject lumberMill;
+
+    GameObject woodResourceGO;
+    GameObject lumberMillGO;
 
     public Vector3 woodPos;
     public Vector3 lumberMillPos;
@@ -43,47 +46,52 @@ public class WoodHarvestingAI : MonoBehaviour
 
     void Awake()
     {
-        woodResourceCode = FindObjectOfType<WoodResource>();
-        lumberMillCode = FindObjectOfType<LumberMill>();
+        
+        woodResourceGO = GameObject.FindGameObjectWithTag("AI Wood Resource");
+        lumberMillGO = GameObject.FindGameObjectWithTag("AI Lumber Mill");
+
+        woodResourceCode = woodResourceGO.GetComponent<WoodResource>(); // FindObjectOfType<WoodResource>();
+        lumberMillCode = lumberMillGO.GetComponent<LumberMill>(); // FindObjectOfType<LumberMill>();
     }
 
 
 
     void OnEnable()
     {
-        EventManager.StartListening ("ArrivedAtWoodResource", ArrivedAtWoodResourceEvent);
-        EventManager.StartListening ("ArrivedAtLumberMill", ArrivedAtLumberMillEvent);
+        EventManager.StartListening ("AIWorkerArrivedAtWoodResource", AIWorkerArrivedAtWoodResourceEvent);
+        EventManager.StartListening ("AIWorkerArrivedAtLumberMill", AIWorkerArrivedAtLumberMillEvent);
     }
 
 
 
     void OnDisable()
     {
-        EventManager.StopListening ("ArrivedAtWoodResource", ArrivedAtWoodResourceEvent);
-        EventManager.StopListening ("ArrivedAtLumberMill", ArrivedAtLumberMillEvent);
+        EventManager.StopListening ("AIWorkerWorkerArrivedAtWoodResource", AIWorkerArrivedAtWoodResourceEvent);
+        EventManager.StopListening ("AIWorkerArrivedArrivedAtLumberMill", AIWorkerArrivedAtLumberMillEvent);
     }
 
 
 
-    void ArrivedAtWoodResourceEvent()
+    void AIWorkerArrivedAtWoodResourceEvent()
     {
+        Debug.Log("AI worker arrived at wood resource event");
         carryingWood = true;
         destination = lumberMillPos;
         wood.SetActive(true);
         workerAI.Move(destination);
-        lumberMillCode.callOnce = true; // be kind rewind, reset the opposite destination -- any problems when they are too close?
+        lumberMillCode.callOnceAIWorker = true; // be kind rewind, reset the opposite destination -- any problems when they are too close?
     }
 
 
 
-    void ArrivedAtLumberMillEvent()
+    void AIWorkerArrivedAtLumberMillEvent()
     {
         // increment data wood tokens
         carryingWood = false;
         destination = woodPos;
         wood.SetActive(false);
         workerAI.Move(destination);
-        woodResourceCode.callOnce = true; // be kind rewind
+        woodResourceCode.callOnceAIWorker = true; // be kind rewind
     }
 
     
