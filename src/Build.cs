@@ -92,18 +92,25 @@ public class Build : MonoBehaviour
 
     bool start = false;
 
+    // this is a lumber mill for now, will need a separate method
+
     void BuildHouseEvent()
     {
-        Debug.Log ("Build house event called!");
+        // Debug.Log ("Build house event called!");
+        
         start = true;
+
+        
+
         PlaceStartingBuilding();
+
+        
     }
 
 
 
     void SetBuilding()
     {
-        Debug.Log("Calling Set Building");
         if (Physics.Raycast(ray, out hitInfo)) 
         {
             PlaceBuilding(hitInfo.point, buildSelection);
@@ -125,26 +132,13 @@ public class Build : MonoBehaviour
         {
             touch = Input.GetTouch(0);
 
-            Debug.Log("Inside touch");
-            Debug.Log("touch position: " + touch.position);
-
-
             if (Physics.Raycast(ray, out hitInfo)) 
             {
                 mobileTouchCamera.lockCamera = true;
-
                 PlaceBuilding(hitInfo.point, buildSelection);
-                // startedBuild = true; // come back to this
-                // haveWePlacedFirstBuildingStage = true;
             }
 
-
-
-            if (touch.phase == TouchPhase.Began)
-            {
-                Debug.Log("Touch phase began");
-                // Debug.Log("Touch position: " + touch2.position);
-            }
+            // touch phase began doesn't work here?
         }
 
 
@@ -224,10 +218,8 @@ public class Build : MonoBehaviour
 
     Vector2 PlaceBuilding(Vector3 clickPoint, GameObject gameObject)
     {
-        Debug.Log("Calling Place Building!!!");
         var finalPosition = GetNearestPointOnGrid(clickPoint);
         GO = Instantiate(gameObject, finalPosition, Quaternion.identity, this.transform);
-        Debug.Log("Instantiating GO object");
         return (Vector2)finalPosition;
     }
 
@@ -261,7 +253,7 @@ public class Build : MonoBehaviour
 
             if(Input.touches[0].tapCount == 2)
             {
-                Debug.Log("double tapped!");
+                EventManager.TriggerEvent("LumberMillEstablished");
                 FinalizeBuilding(buildSelection);
                 mobileTouchCamera.lockCamera = false;
             } 
@@ -277,7 +269,12 @@ public class Build : MonoBehaviour
         ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         MoveBuildingToDragPoint();
         
-        if (Input.GetMouseButtonDown(0)) FinalizeBuilding(buildSelection); // for desktop we finalize building by clicking - we could also tap for the mobile version
+        if (Input.GetMouseButtonDown(0))
+        {
+            EventManager.TriggerEvent("LumberMillEstablished");
+            FinalizeBuilding(buildSelection); // for desktop we finalize building by clicking - we could also tap for the mobile version
+        }
+        
         if (Input.GetMouseButtonDown(1)) DestroyBuilding(); // cancel
 
         #endif       
@@ -324,4 +321,3 @@ public class Build : MonoBehaviour
 
 
 }
-
