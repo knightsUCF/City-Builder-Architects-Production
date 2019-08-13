@@ -23,6 +23,7 @@ public class MouseManager : MonoBehaviour
     public GameObject selectedObject;
     Worker workerScript;
     UIManager uiManager;
+    WoodHarvesting woodHarvesting; // this will need to move to worker ID instance call, like the below obj.getcurrentworker.script, once we have more workers
 
     Ray ray;
     RaycastHit hitInfo;
@@ -39,6 +40,7 @@ public class MouseManager : MonoBehaviour
     void Awake()
     {
         uiManager = FindObjectOfType<UIManager>();
+        woodHarvesting = FindObjectOfType<WoodHarvesting>();
     }
 
 
@@ -86,6 +88,18 @@ public class MouseManager : MonoBehaviour
             selectedObject = hitInfo.transform.gameObject;
             SelectWorker(selectedObject);
             if (previouslySelected != null) DeselectWorker(previouslySelected);
+        }
+
+        if (hitInfo.transform.gameObject.tag == "Tree Resources")
+        {
+            // Debug.Log("Clicked on tree resources!");
+            // Debug.Log("Tree location: " + hitInfo.point);
+
+            // here we will only want to update the position if the worker is selected TODO
+
+            woodHarvesting.woodPos = hitInfo.point;
+            EventManager.TriggerEvent ("SetTreeResourcePos");
+            
         }
     }
 
@@ -210,4 +224,3 @@ public class MouseManager : MonoBehaviour
 
 
 // Quill video: https://www.youtube.com/watch?v=OOkVADKo0IM
-
