@@ -1,4 +1,10 @@
 
+
+# Mid Game Value of Wood Decreasing Due to Supply and Demand
+
+Another way to make wood less relevant mid game, so that we can save some trees around, would be decrease the value of wood on the market as supply because more common with all of the players, even in single player mode with the AI.
+
+
 # Gold Digging
 
 Perhaps gold could be a minable resource. If so, then that would take care of not cutting down all the trees post mid game, since gold is more valuable.
