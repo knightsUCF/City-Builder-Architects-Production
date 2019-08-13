@@ -36,6 +36,7 @@ public class Data : Singleton<Data>
 
     public static int money = Settings.startingMoney;
     public static int energy = Settings.startingEnergy;
+    public static int wood = Settings.startingWood;
 
     
     // costs
