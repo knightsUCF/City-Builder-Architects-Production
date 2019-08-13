@@ -12,17 +12,28 @@ public class LumberMill : MonoBehaviour
 {
 
 
-    public bool callOnce = true;
+    public bool callOnceAIWorker = true;
+    public bool callOncePlayerWorker = true;
 
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "AIWorker" && callOnce)
+        if (other.tag == "AIWorker" && callOnceAIWorker)
         {
             Debug.Log("AI worker entering lumber mill!");
-            callOnce = false;
+            callOnceAIWorker = false;
 
-            EventManager.TriggerEvent("ArrivedAtLumberMill");
+            EventManager.TriggerEvent("AIWorkerArrivedAtLumberMill");
+
+            // reset callOnce in the WoodHarvest script
+        }
+
+        if (other.tag == "Worker" && callOncePlayerWorker)
+        {
+            Debug.Log("Player worker entering lumber mill!");
+            callOncePlayerWorker = false;
+
+            EventManager.TriggerEvent("PlayerWorkerArrivedAtLumberMill");
 
             // reset callOnce in the WoodHarvest script
         }
