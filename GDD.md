@@ -1,3 +1,9 @@
+
+# Gold Digging
+
+Perhaps gold could be a minable resource. If so, then that would take care of not cutting down all the trees post mid game, since gold is more valuable.
+
+
 # Replayability - Starting Classes
 
 An amazing way to do starting classes is to simply give the option of what you're starting with as a text element, 
