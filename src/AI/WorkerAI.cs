@@ -31,7 +31,7 @@ public class WorkerAI : MonoBehaviour
     bool InRoute = false;
     bool Arrived = false; // for AI to know when arrived
 
-    EventManager eventManager;
+    // EventManager eventManager;
 
 
 
@@ -60,12 +60,13 @@ public class WorkerAI : MonoBehaviour
         CreateWorker();
         anim = this.GetComponent<Animator>();
         state = State.Idle;
-        eventManager = FindObjectOfType<EventManager>();
+        // eventManager = FindObjectOfType<EventManager>();
     }
 
 
     // From a script write this to add the "listener" of the event:
 
+    /*
     void OnEnable ()
     {
         EventManager.workerArrivedAtBuilding += WorkerArrived;
@@ -77,6 +78,7 @@ public class WorkerAI : MonoBehaviour
         EventManager.workerArrivedAtBuilding -= WorkerArrived;
         EventManager.workerCanStartBuilding -= StartBuilding;
     }
+    */
 
 
 
@@ -230,7 +232,7 @@ public class WorkerAI : MonoBehaviour
                 state = State.Idle;
                 InRoute = false;
                 // Arrived = true;
-                eventManager.EventWorkerArrivedAtBuilding();
+                // eventManager.EventWorkerArrivedAtBuilding();
             }
         }
     }
