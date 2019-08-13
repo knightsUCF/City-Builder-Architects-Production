@@ -28,7 +28,16 @@ public class Worker : MonoBehaviour
     bool buildMenuSelect = true;
     public bool isSelected = false;
     MouseManager mm;
+    WoodHarvesting woodHarvesting; // probably have to get the one for the selected worker
+
     bool InRoute = false;
+
+    Touch touch;
+
+
+    bool Arrived = false; // for auto pilot to know when arrived
+
+    bool autopilot = false;
 
 
 
@@ -56,12 +65,14 @@ public class Worker : MonoBehaviour
         agent = this.GetComponent<NavMeshAgent>();
         CreateWorker();
         anim = this.GetComponent<Animator>();
+        woodHarvesting = this.GetComponent<WoodHarvesting>();
         state = State.Idle;
     }
 
 
     // From a script write this to add the "listener" of the event:
 
+    /*
     void OnEnable ()
     {
         EventManager.workerArrivedAtBuilding += WorkerArrived;
@@ -73,6 +84,8 @@ public class Worker : MonoBehaviour
         EventManager.workerArrivedAtBuilding -= WorkerArrived;
         EventManager.workerCanStartBuilding -= StartBuilding;
     }
+
+    */
 
 
 
@@ -170,21 +183,32 @@ public class Worker : MonoBehaviour
     */
 
 
+    Vector3 currentWorkerDestination = Vector3.zero;
 
-    void MoveWorker()
+    public void Move(Vector3 destination) // , int ID)
     {
-        if (Input.GetMouseButtonDown(0) && mm.currentlySelectedWorkerID == ID)
-        {
-            state = State.Walk;
-            InRoute = true;
-            SetDestination();
-        }
+        Debug.Log("Calling Worker.Move()");
+
+        Arrived = false;
+        state = State.Walk;
+        InRoute = true;
+        agent.destination = destination;
+        currentWorkerDestination = destination; // will need to be rewritten to manage different workers by IDs, or maybe not since we are only managing the code on this prefab instance
     }
 
 
 
-    void SetDestination()
+    public void MoveWorker2(Vector3 xDestination)
     {
+
+        Debug.Log("Calling MoveWorker2");
+
+        autopilot = true;
+
+        state = State.Walk;
+        InRoute = true;
+
+        /*
         ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         if (Physics.Raycast(ray, out hitInfo))
         {
@@ -194,6 +218,157 @@ public class Worker : MonoBehaviour
                 hitInfoForThisWorker.point = hitInfo.point;
             }
         }
+        */
+
+        agent.destination = xDestination;
+        // agent.SetDestination(xDestination);
+    }
+
+    public float GetDistanceFromAutopilotDestination()
+    {
+        return Vector3.Distance(this.transform.position, woodHarvesting.destination);
+    }
+
+    
+
+
+    public void CheckIfAutoPilotArrived()
+    {
+        if (InRoute && autopilot)
+        {
+
+            // Debug.Log("woodHarvesting.destination: " + woodHarvesting.destination);
+
+            // Debug.Log(GetDistanceFromDestination());
+
+            if (GetDistanceFromAutopilotDestination() < 3.0)
+            {
+                // arrived
+                agent.destination = this.transform.position; // break agent navigation if we arrive within perimeter of destination
+                state = State.Idle;
+                InRoute = false;
+                
+                Debug.Log("Autopilot arrived!");
+
+                EventManager.TriggerEvent("WoodDeposited");
+
+
+                // possibly send out an event here
+            }
+        }
+
+
+    }
+
+
+
+    void MoveWorker()
+    {
+        #if UNITY_EDITOR
+        
+        if (Input.GetMouseButtonDown(0) && mm.currentlySelectedWorkerID == ID)
+        {
+            state = State.Walk;
+            InRoute = true;
+            SetDestination();
+        }
+
+        #endif
+
+        #if UNITY_ANDROID
+
+        if (Input.touchCount > 0)
+        {
+            touch = Input.GetTouch(0);
+            ray = Camera.main.ScreenPointToRay(touch.position);
+            if (touch.phase == TouchPhase.Began)
+            {
+                if (Physics.Raycast(ray, out hitInfo)) 
+                {
+                    if (mm.currentlySelectedWorkerID == ID)
+                    {
+                        state = State.Walk;
+                        InRoute = true;
+                        SetDestination();
+                    }
+                }
+            }
+        }
+
+        #endif
+    }
+    
+
+    // for resource gathering, simple, similar to AI movement
+
+    public void MoveToVector(Vector3 vector)
+    {
+        Debug.Log("Calling MoveToVector()");
+
+        #if UNITY_EDITOR
+
+        state = State.Walk;
+        Vector3 moveTo = new Vector3(0.0f, -0.01f, 0.0f);
+        agent.destination = moveTo; // = vector;
+
+        #endif
+
+
+
+        #if UNITY_ANDROID
+        
+        state = State.Walk;
+        agent.destination = vector;
+
+        #endif
+
+    }
+
+
+    void SetDestination()
+    {
+
+        #if UNITY_EDITOR
+
+        ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        if (Physics.Raycast(ray, out hitInfo))
+        {
+            if (hitInfo.transform.gameObject.tag != "Worker" && hitInfo.transform.gameObject.tag != "Building") // prevent still moving to another worker spot, when the user is actually trying to switch workers
+            {
+                autopilot = false;
+
+                agent.destination = hitInfo.point;
+                hitInfoForThisWorker.point = hitInfo.point;
+                // Debug.Log("moving worker to: " + hitInfo.point);
+            }
+        }
+
+        #endif
+
+
+        #if UNITY_ANDROID
+
+        if (Input.touchCount > 0)
+        {
+            touch = Input.GetTouch(0);
+            ray = Camera.main.ScreenPointToRay(touch.position);
+            if (touch.phase == TouchPhase.Began)
+            {
+                if (Physics.Raycast(ray, out hitInfo)) 
+                {
+                    if (hitInfo.transform.gameObject.tag != "Worker" && hitInfo.transform.gameObject.tag != "Building") // prevent still moving to another worker spot, when the user is actually trying to switch workers
+                    {
+                        autopilot = false;
+
+                        agent.destination = hitInfo.point;
+                        hitInfoForThisWorker.point = hitInfo.point;
+                    }
+                }
+            }
+        }
+
+        #endif
+
     }
 
     // Vector3 maxVelocity = new Vector3(1.0f, 1.0f, 1.0f);
@@ -257,7 +432,7 @@ public class Worker : MonoBehaviour
 
     void CheckIfArrived()
     {
-        if (InRoute)
+        if (InRoute && !autopilot)
         {
             // Debug.Log(GetDistanceFromDestination());
 
@@ -391,6 +566,8 @@ public class Worker : MonoBehaviour
 
         CheckIfArrived(); // only runs when bool is set to InRoute
 
+        CheckIfAutoPilotArrived();
+
         // HackyFixForMovement();
 
         // CheckWhetherWorkerArrived();
@@ -472,6 +649,7 @@ public class Worker : MonoBehaviour
     void Update()
     {
         ManageState();
+        // Debug.Log("autopilot: " + autopilot);
     }
 
 
