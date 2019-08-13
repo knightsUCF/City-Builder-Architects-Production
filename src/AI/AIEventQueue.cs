@@ -71,6 +71,12 @@ so that could work
 
 
 
+so what would be a simple example
+
+- let's say we want to add a priority of 1 (have to be in order when adding to the same dictionary, can't share the same key)
+
+-
+
 */
 
 
@@ -80,13 +86,27 @@ public class AIEventQueue : MonoBehaviour
     
     // int - priority level, string - task
 
+    
     public Dictionary<int, string> masterTasksList = new Dictionary<int, string>();
+    public int currentKeyPosForMasterTasksList = 0; // += 1 when adding
+
+
     
     public Dictionary<int, string> tasks1 = new Dictionary<int, string>();
+    public int currentKeyPosTasks1 = 0;
+
     public Dictionary<int, string> tasks2 = new Dictionary<int, string>();
+    public int currentKeyPosTasks2 = 0;
+
     public Dictionary<int, string> tasks3 = new Dictionary<int, string>();
+    public int currentKeyPosTasks3 = 0;
+
     public Dictionary<int, string> tasks4 = new Dictionary<int, string>();
+    public int currentKeyPosTasks4 = 0;
+
     public Dictionary<int, string> tasks5 = new Dictionary<int, string>();
+    public int currentKeyPosTasks5 = 0;
+
 
     // add: tasks.Add(priority, task);
     // remove: tasks.Remove(priority);
