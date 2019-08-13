@@ -33,11 +33,60 @@ public class WoodHarvestingAI : MonoBehaviour
 
     WorkerAI workerAI;
 
+    WoodResource woodResourceCode; // these will need to pick the "active" wood resource the worker is mining
+    LumberMill lumberMillCode; // this will need to pick up the closest resource
+
     bool carryingWood = false;
     float distance;
 
-    
 
+
+    void Awake()
+    {
+        woodResourceCode = FindObjectOfType<WoodResource>();
+        lumberMillCode = FindObjectOfType<LumberMill>();
+    }
+
+
+
+    void OnEnable()
+    {
+        EventManager.StartListening ("ArrivedAtWoodResource", ArrivedAtWoodResourceEvent);
+        EventManager.StartListening ("ArrivedAtLumberMill", ArrivedAtLumberMillEvent);
+    }
+
+
+
+    void OnDisable()
+    {
+        EventManager.StopListening ("ArrivedAtWoodResource", ArrivedAtWoodResourceEvent);
+        EventManager.StopListening ("ArrivedAtLumberMill", ArrivedAtLumberMillEvent);
+    }
+
+
+
+    void ArrivedAtWoodResourceEvent()
+    {
+        carryingWood = true;
+        destination = lumberMillPos;
+        wood.SetActive(true);
+        workerAI.Move(destination);
+        lumberMillCode.callOnce = true; // be kind rewind, reset the opposite destination -- any problems when they are too close?
+    }
+
+
+
+    void ArrivedAtLumberMillEvent()
+    {
+        // increment data wood tokens
+        carryingWood = false;
+        destination = woodPos;
+        wood.SetActive(false);
+        workerAI.Move(destination);
+        woodResourceCode.callOnce = true; // be kind rewind
+    }
+
+    
 
     void Start()
     {
@@ -45,6 +94,8 @@ public class WoodHarvestingAI : MonoBehaviour
 
         woodPos = woodResource.transform.position;
         lumberMillPos = lumberMill.transform.position;
+
+        workerAI.Move(woodPos);
     }
 
 
@@ -58,6 +109,7 @@ public class WoodHarvestingAI : MonoBehaviour
     bool sendMoveCommandOnce = true;
 
 
+    /*
     void HarvestWood()
     {
         if (!carryingWood)
@@ -105,16 +157,18 @@ public class WoodHarvestingAI : MonoBehaviour
             }
         }
     }
+    */
 
 
-
+    /*
     void Update()
     {
     
         // if (woodHarvestState && woodPos != null && lumberMillPos != null) HarvestWood(); // only start once we have positions for both
     
-        if (woodHarvestState) HarvestWood();
+        // if (woodHarvestState) HarvestWood();
     }
+    */
 
 
 }
