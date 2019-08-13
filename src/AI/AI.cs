@@ -20,7 +20,7 @@ public class AI : MonoBehaviour
 
 
 
-
+    /*
     void OnEnable ()
     {
         EventManager.workerArrivedAtBuilding += WorkerArrived;
@@ -32,6 +32,7 @@ public class AI : MonoBehaviour
         EventManager.workerArrivedAtBuilding -= WorkerArrived;
         EventManager.employmentOfficeFinishedBuilding -= EmploymentOfficeFinishedBuilding;
     }
+    */
 
 
 
