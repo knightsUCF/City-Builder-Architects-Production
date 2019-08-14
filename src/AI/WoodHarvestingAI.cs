@@ -1,4 +1,4 @@
- using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -29,7 +29,7 @@ public class WoodHarvestingAI : MonoBehaviour
     WorkerAI workerAI;
 
     WoodResource woodResourceCode; // these will need to pick the "active" wood resource the worker is mining
-    LumberMill lumberMillCode; // this will need to pick up the closest resource
+    LumberMillAI lumberMillCode; // this will need to pick up the closest resource
 
     bool carryingWood = false;
     float distance;
@@ -41,7 +41,7 @@ public class WoodHarvestingAI : MonoBehaviour
         woodResourceGO = GameObject.FindGameObjectWithTag("AI Wood Resource");
         lumberMillGO = GameObject.FindGameObjectWithTag("AI Lumber Mill");
         woodResourceCode = woodResourceGO.GetComponent<WoodResource>(); // FindObjectOfType<WoodResource>();
-        lumberMillCode = lumberMillGO.GetComponent<LumberMill>(); // FindObjectOfType<LumberMill>();
+        lumberMillCode = lumberMillGO.GetComponent<LumberMillAI>(); // FindObjectOfType<LumberMill>();
     }
 
 
