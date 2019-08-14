@@ -20,6 +20,19 @@ public class AI : MonoBehaviour
 
 
 
+    void OnEnable()
+    {
+        EventManager.StartListening("ReachedLumberMillBuildSpot", ReachedLumberMillBuildSpotEvent);
+    }
+
+
+    void OnDisable()
+    {
+        EventManager.StopListening("ReachedLumberMillBuildSpot", ReachedLumberMillBuildSpotEvent);
+    }
+
+
+
     /*
     void OnEnable ()
     {
@@ -74,21 +87,11 @@ public class AI : MonoBehaviour
 
 
 
-
-
-
-
-
     void Awake()
     {
         // workerAIcode = FindObjectOfType<WorkerAI>();
 
     }
-
-
-
-
-
 
 
 
@@ -113,16 +116,81 @@ public class AI : MonoBehaviour
 
 
 
+    public GameObject positionEventCollider; 
+
+
+
+    void ReachedLumberMillBuildSpotEvent()
+    {
+        Debug.Log("Reached the lumber mill build spot!");
+    }
+
+    void StartBuildingSimulation()
+    {
+
+        // generate 2 workers to start
+
+        Vector3 worker1StartPos = new Vector3(-247.0f, -0.1f, -40.0f);
+        Vector3 worker2StartPos = new Vector3(-227.0f, -0.1f, -58.0f);
+
+        GameObject worker1 = GenerateWorker(worker1StartPos);
+        GameObject worker2 = GenerateWorker(worker2StartPos);
+
+
+        // build a lumber mill
+
+        WorkerAI Worker1 = worker1.GetComponent<WorkerAI>();
+
+        // we will need to generate a trigger collider at that position so we can send out an event
+        Vector3 lumberMillPos = new Vector3(-188.0f, -0.1f, -50.0f);
+
+        GameObject lumberMillMarker = Instantiate(positionEventCollider, lumberMillPos, Quaternion.identity, this.transform);
+        PositionEventCollider pec = lumberMillMarker.GetComponent<PositionEventCollider>();
+        pec.eventName = "ReachedLumberMillBuildSpot";
+
+        Worker1.Move(lumberMillPos);
+
+        // when a worker gets there we will be able to get the event
+
+
+
+
+
+
+
+
+        // Build(GameObject building, Vector3 pos)
+
+
+
+
+
+
+        // to start harvesting: worker4AIGameObject.GetComponent<WoodHarvestingAI>().enabled = true;
+
+
+        // to check if collected enough wood to go do something else
+
+        // InvokeRepeating("IfCollected4Wood", 0, 1.0f); // run once per second
+
+        // then use IfCollected4Wood()
+
+    }
+
+
+
 
     
     void Start()
     {
+        StartBuildingSimulation();
+
         // GameObject workerAIgameObject = GenerateWorker(worker1StartPos);
         // GameObject worker2AIGameObject = GenerateWorker(new Vector3(0.0f, 10.0f, 0.0f));
         // GameObject worker3AIGameObject = GenerateWorker(new Vector3(0.0f, 20.0f, 0.0f));
         
         
-        GameObject worker4AIGameObject = GenerateWorker(new Vector3(-20.0f, 0.0f, 20.0f));
+        // GameObject worker4AIGameObject = GenerateWorker(new Vector3(-20.0f, 0.0f, 20.0f));
         
         // if we don't want the worker to harvest wood, simply take off the wood script
 
@@ -140,7 +208,7 @@ public class AI : MonoBehaviour
 
         // a better way is to enable and disable, and place the start methods in enable
 
-        worker4AIGameObject.GetComponent<WoodHarvestingAI>().enabled = true;
+        // worker4AIGameObject.GetComponent<WoodHarvestingAI>().enabled = true;
 
 
         // so let's make one worker build something
@@ -158,20 +226,33 @@ public class AI : MonoBehaviour
 
         // start with two AI workers in idle mode
 
+        // first idle worker position: -247, -0.1, -40
+        // second idle worker position: -227, -0.1, -58
+
         // wait a little with the Invoke method
 
-        // have one worker build a lumber mill
+        // have one worker build a lumber mill -188, -0.1, -50
+
+        // build the lumber mill at: 
 
         // another worker builds an employment office
+
+        // build employment office at: -259, -0.1, -33
 
         // the employment office does the invoke function to generate another worker, perhaps there is some timer bar
 
         // the worker that finishes the employment office then builds a house
 
+        // build a house at -255, -0.1, -73
+
         // the worker that comes out of the employment office gathers wood
 
         // the worker that finishes building a house then builds a store, and starts the commerce part,
         // which takes us to the next session
+
+        // build a store at: -243, -0.1, -8
+
+
 
 
 
@@ -187,7 +268,9 @@ public class AI : MonoBehaviour
         // we could have the worker instance return an ID to be managed by this central AI script
         // then we can have a state machine to get the status on the worker, so perhaps take the next worker who has a state of "idle" and is closest to desired build location to build there, and then break out of that for loop once we find the first available worker
         // worker = workerAIgameObject.GetComponent<WorkerAI>();
-        InvokeRepeating("IfCollected4Wood", 0, 1.0f); // run once per second
+        
+        
+        // InvokeRepeating("IfCollected4Wood", 0, 1.0f); // run once per second
 
 
     }
