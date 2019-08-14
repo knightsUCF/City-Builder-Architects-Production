@@ -21,13 +21,15 @@ public class AI : MonoBehaviour
     GameObject worker2;
 
 
-    public GameObject employmentOffice;
+    public GameObject employmentOfficePrefab;
     public GameObject lumberMillPrefab;
 
 
 
 
+
     Vector3 lumberMillBuildSpotPos;
+    Vector3 employmentOfficeBuildSpotPos;
 
 
 
@@ -42,13 +44,25 @@ public class AI : MonoBehaviour
     {
         EventManager.StartListening("ReachedLumberMillBuildSpot", ReachedLumberMillBuildSpotEvent);
         EventManager.StartListening("LumberMillBuilt", LumberMillBuiltEvent);
+
+        EventManager.StartListening("ReachedEmploymentOfficeBuildSpot", ReachedEmploymentOfficeBuildSpotEvent);
+        // EventManager.StartListening("EmploymentOfficeBuilt", EmploymentOfficeBuiltEvent);
+
+        // EventManager.StartListening ("BuildHouse", BuildHouseEvent);
+
     }
+
 
 
     void OnDisable()
     {
         EventManager.StopListening("ReachedLumberMillBuildSpot", ReachedLumberMillBuildSpotEvent);
         EventManager.StopListening("LumberMillBuilt", LumberMillBuiltEvent);
+
+        EventManager.StopListening("ReachedEmploymentOfficeBuildSpot", ReachedEmploymentOfficeBuildSpotEvent);
+        // EventManager.StopListening("EmploymentOfficeBuilt", EmploymentOfficeBuiltEvent);
+
+        // EventManager.StopListening ("BuildHouse", BuildHouseEvent);
     }
 
 
@@ -79,7 +93,7 @@ public class AI : MonoBehaviour
 
         Debug.Log("Worked arrived!");
         Vector3 buildLocation = new Vector3(this.transform.position.x + 35, this.transform.position.y, this.transform.position.z + 4);
-        Build(employmentOffice, buildLocation);
+        // Build(employmentOffice, buildLocation);
 
         // GoBuild();
 
@@ -90,16 +104,16 @@ public class AI : MonoBehaviour
     {
         // here we need to get the employment's office position
 
-        GameObject employmentOfficeForPos = GameObject.FindWithTag("EmploymentOfficeAI");
-        Vector3 spawnPos = employmentOffice.transform.position;
-        spawnPos.x += 10.0f;
+        // GameObject employmentOfficeForPos = GameObject.FindWithTag("EmploymentOfficeAI");
+        // Vector3 spawnPos = employmentOffice.transform.position;
+        // spawnPos.x += 10.0f;
         // figure out a way to spawn consistently in front of the employment office, this might just be a constant offset depending on the building's rotation
         // later the AI might want to rotate the building, and then the spawn will rotate also
         // in that case create a spawn point simple cube marker attached to the employment office, do that soon
         // so that way when the building is rotate so is the cube marker
         // and we simply then just spawn the worker at the cube marker, unless something is in front, fine to spawn near sidewalk, but okay to spawn in the middle of traffic
         
-        GenerateWorker(spawnPos); 
+        // GenerateWorker(spawnPos); 
     }
 
     // create an event that when the employment office is built (place into the start method of the AI employment office)
@@ -166,7 +180,6 @@ public class AI : MonoBehaviour
 
     void LumberMillBuiltEvent()
     {
-        Debug.Log("Calling LumberMillBuiltEvent()");
         HarvestLumber(worker1);
     }
 
@@ -190,7 +203,6 @@ public class AI : MonoBehaviour
     void HarvestLumber(GameObject worker)
     {
         worker.GetComponent<WoodHarvestingAI>().enabled = true;
-        Debug.Log("Beginning harvesting lumber");
     }
 
 
@@ -198,6 +210,31 @@ public class AI : MonoBehaviour
     void StopHarvestingLumber(GameObject worker)
     {
         worker.GetComponent<WoodHarvestingAI>().enabled = false;
+    }
+
+
+
+    void BuildEmploymentOffice(GameObject worker)
+    {
+
+
+       // Build(GameObject building, Vector3 pos)
+
+        WorkerAI Worker2 = worker.GetComponent<WorkerAI>();
+        employmentOfficeBuildSpotPos = new Vector3(-259.0f, -0.1f, -33.0f); // we will need to generate a trigger collider at that position so we can send out an event
+        GameObject employmentOfficeMarker = Instantiate(positionEventCollider, employmentOfficeBuildSpotPos, Quaternion.identity, this.transform);
+        PositionEventCollider pec = employmentOfficeMarker.GetComponent<PositionEventCollider>();
+        pec.eventName = "ReachedEmploymentOfficeBuildSpot";
+        Worker2.Move(employmentOfficeBuildSpotPos); // when a worker gets there we will be able to get the event
+        // they begin building with the ReachedLumberBillSpotEvent()
+    }
+
+
+
+    void ReachedEmploymentOfficeBuildSpotEvent()
+    {
+        Debug.Log("ReachedEmploymentOfficeBuildSpotEvent() called");
+        Build(employmentOfficePrefab, employmentOfficeBuildSpotPos);
     }
 
 
@@ -210,7 +247,7 @@ public class AI : MonoBehaviour
 
         BuildLumberMill(worker1); // calls LumberMillBuiltEvent(), which calls HarvesLumber(worker)
 
-
+        BuildEmploymentOffice(worker2);
 
         
 
