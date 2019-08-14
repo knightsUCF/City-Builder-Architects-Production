@@ -33,7 +33,7 @@ public class WoodHarvesting : MonoBehaviour
 
 
     WoodResource woodResourceCode; // these will need to pick the "active" wood resource the worker is mining
-    LumberMill lumberMillCode; // this will need to pick up the closest resource
+    LumberMillPlayer lumberMillCode; // this will need to pick up the closest resource
 
 
     public float distanceFromDestination;
@@ -54,7 +54,7 @@ public class WoodHarvesting : MonoBehaviour
         woodResourceCode = woodResourceGO.GetComponent<WoodResource>(); // FindObjectOfType<WoodResource>();
 
         lumberMillGO = GameObject.FindGameObjectWithTag("Player Lumber Mill");
-        lumberMillCode = lumberMillGO.GetComponent<LumberMill>(); // FindObjectOfType<LumberMill>();
+        lumberMillCode = lumberMillGO.GetComponent<LumberMillPlayer>(); // FindObjectOfType<LumberMill>();
 
         worker = workerGO.GetComponent<Worker>();
 
