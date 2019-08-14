@@ -8,7 +8,7 @@ using UnityEngine;
 
 
 
-public class LumberMill : MonoBehaviour
+public class LumberMillPlayer : MonoBehaviour
 {
 
 
@@ -16,26 +16,13 @@ public class LumberMill : MonoBehaviour
     public bool callOncePlayerWorker = true;
 
 
+
     void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "AIWorker" && callOnceAIWorker)
-        {
-            Debug.Log("AI worker entering lumber mill!");
-            callOnceAIWorker = false;
-
-            EventManager.TriggerEvent("AIWorkerArrivedAtLumberMill");
-
-            // reset callOnce in the WoodHarvest script
-        }
-
         if (other.tag == "Worker" && callOncePlayerWorker)
         {
-            Debug.Log("Player worker entering lumber mill!");
             callOncePlayerWorker = false;
-
             EventManager.TriggerEvent("PlayerWorkerArrivedAtLumberMill");
-
-            // reset callOnce in the WoodHarvest script
         }
     }
 
