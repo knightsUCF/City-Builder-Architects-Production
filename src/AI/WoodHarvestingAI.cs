@@ -5,7 +5,7 @@ using UnityEngine;
 
 // We will also need some contingency checking if the lumber mill is too close to the wood, and the < 3 proximity movement gets confused
 
-
+// start with disabled on game object, and enable when needed, since start() will only run once, but enabled() will run everytime we activate the script
 
 public class WoodHarvestingAI : MonoBehaviour
 {
@@ -50,6 +50,11 @@ public class WoodHarvestingAI : MonoBehaviour
     {
         EventManager.StartListening ("AIWorkerArrivedAtWoodResource", AIWorkerArrivedAtWoodResourceEvent);
         EventManager.StartListening ("AIWorkerArrivedAtLumberMill", AIWorkerArrivedAtLumberMillEvent);
+    
+        workerAI = this.GetComponent<WorkerAI>();
+        woodPos = woodResource.transform.position;
+        lumberMillPos = lumberMill.transform.position;
+        workerAI.Move(woodPos);
     }
 
 
@@ -93,10 +98,13 @@ public class WoodHarvestingAI : MonoBehaviour
 
     void Start()
     {
+        /*
         workerAI = this.GetComponent<WorkerAI>();
         woodPos = woodResource.transform.position;
         lumberMillPos = lumberMill.transform.position;
         workerAI.Move(woodPos);
+        */
+        
     }
 
 }
