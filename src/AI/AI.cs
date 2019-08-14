@@ -11,11 +11,11 @@ public class AI : MonoBehaviour
 
 
     public GameObject workerAIprefab;
-    public Vector3 workerStartPos = new Vector3(0.0f, 4.0f, 0.0f);
+    public Vector3 worker1StartPos = new Vector3(50.0f, 0.0f, -20.0f);
+    // public Vector3 worker1StartPos = new Vector3(0.0f, 4.0f, 0.0f);
+
     WorkerAI worker;
-
     public GameObject employmentOffice;
-
     public List<string> TaskList = new List<string>();
 
 
@@ -87,27 +87,10 @@ public class AI : MonoBehaviour
 
 
 
-    public void MoveWorker(Vector3 destination)
-    {
-        // we will want to call the WorkerAI class and move a worker
-
-        // we will need two things for this, worker ID, and also the destination
-
-        // we should use a different starting ID point for the AI, so something past the max workers, perhaps starting after 1000
-    
-        // so in the scene we will have a number of workers generated under the AI
-
-        // let's generate a few
 
 
 
-    }
 
-
-
-    
-
-    
 
     GameObject GenerateWorker(Vector3 startPos)
     {
@@ -125,36 +108,102 @@ public class AI : MonoBehaviour
 
     void Build(GameObject building, Vector3 pos)
     {
-        GameObject employmentOfficeGO = (GameObject)Instantiate(building, pos, Quaternion.identity, this.transform);
+        GameObject buildingGO = Instantiate(building, pos, Quaternion.identity, this.transform);
     }
+
+
 
 
     
     void Start()
     {
-        GameObject workerAIgameObject = GenerateWorker(workerStartPos);
+        // GameObject workerAIgameObject = GenerateWorker(worker1StartPos);
+        // GameObject worker2AIGameObject = GenerateWorker(new Vector3(0.0f, 10.0f, 0.0f));
+        // GameObject worker3AIGameObject = GenerateWorker(new Vector3(0.0f, 20.0f, 0.0f));
         
+        
+        GameObject worker4AIGameObject = GenerateWorker(new Vector3(-20.0f, 0.0f, 20.0f));
+        
+        // if we don't want the worker to harvest wood, simply take off the wood script
+
+        // WoodHarvestingAI woodHarvestingScript = worker4AIGameObject.GetComponent<WoodHarvestingAI>();
+        // Destroy(woodHarvestingScript);
+
+        // let's add the wood harvesting script back in to test...
+
+        // woodHarvestingScript = worker4AIGameObject.AddComponent<WoodHarvestingAI>();
+
+
+        
+        // similarly if we want to dole out tasks to the AI worker, we should add the appropropriate script component
+        // and take off when ready
+
+        // a better way is to enable and disable, and place the start methods in enable
+
+        worker4AIGameObject.GetComponent<WoodHarvestingAI>().enabled = true;
+
+
+        // so let's make one worker build something
+
+        // this will build any building game object based on the position
+        // all we have to do is send the worker to that position
+        // Build(GameObject building, Vector3 pos);
+
+        // we could use Invoke to wait a little while and then send the worker
+
+        // well we want to start with building a lumber mill
+
+        // so what will be the general gameplay structure right now
+
+
+        // start with two AI workers in idle mode
+
+        // wait a little with the Invoke method
+
+        // have one worker build a lumber mill
+
+        // another worker builds an employment office
+
+        // the employment office does the invoke function to generate another worker, perhaps there is some timer bar
+
+        // the worker that finishes the employment office then builds a house
+
+        // the worker that comes out of the employment office gathers wood
+
+        // the worker that finishes building a house then builds a store, and starts the commerce part,
+        // which takes us to the next session
+
+
+
+        // also when generating a worker, the better method would be to add the harvesting wood script instead of deleting off every worker
+
+
+
+
+
+
+
+
         // we could have the worker instance return an ID to be managed by this central AI script
-
         // then we can have a state machine to get the status on the worker, so perhaps take the next worker who has a state of "idle" and is closest to desired build location to build there, and then break out of that for loop once we find the first available worker
+        // worker = workerAIgameObject.GetComponent<WorkerAI>();
+        InvokeRepeating("IfCollected4Wood", 0, 1.0f); // run once per second
 
 
-        worker = workerAIgameObject.GetComponent<WorkerAI>();
-
-        Vector3 destination = new Vector3(20.0f, 0.0f, 10.0f);
-
-        worker.Move(destination);
     }
 
 
 
-    void GoBuild()
+    void IfCollected4Wood()
     {
-        Vector3 destination = new Vector3(-5.0f, 0.0f, 10.0f);
-        // moves and builds employment office
-        // probably need a task list
-        worker.Move(destination);
+        if (TokensAI.wood == 2)
+        {
+            Debug.Log("Collected 2 wood!");
+            CancelInvoke();
+        }
     }
+
+
 
 
 
@@ -167,25 +216,10 @@ public class AI : MonoBehaviour
 
 
 
-
-   
-
-
-
     void GoThroughTaskList()
     {
         // List TaskList
     }
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -202,12 +236,6 @@ public class AI : MonoBehaviour
 
 
     */
-
-
-    
-
-
-
 }
 
 
