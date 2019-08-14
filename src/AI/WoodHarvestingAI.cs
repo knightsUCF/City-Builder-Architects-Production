@@ -16,7 +16,7 @@ public class WoodHarvestingAI : MonoBehaviour
 
     // dummy values
 
-    public GameObject woodResource;
+    GameObject woodResource;
     public GameObject lumberMill;
 
     GameObject woodResourceGO;
@@ -38,10 +38,12 @@ public class WoodHarvestingAI : MonoBehaviour
 
     void Awake()
     {
+        /*
         woodResourceGO = GameObject.FindGameObjectWithTag("AI Wood Resource");
         lumberMillGO = GameObject.FindGameObjectWithTag("AI Lumber Mill");
         woodResourceCode = woodResourceGO.GetComponent<WoodResource>(); // FindObjectOfType<WoodResource>();
         lumberMillCode = lumberMillGO.GetComponent<LumberMillAI>(); // FindObjectOfType<LumberMill>();
+        */
     }
 
 
@@ -51,9 +53,19 @@ public class WoodHarvestingAI : MonoBehaviour
         EventManager.StartListening ("AIWorkerArrivedAtWoodResource", AIWorkerArrivedAtWoodResourceEvent);
         EventManager.StartListening ("AIWorkerArrivedAtLumberMill", AIWorkerArrivedAtLumberMillEvent);
     
+        // let's find the wood's position by tag - in the future we should find the closest one out of the array, also on the wood resource if they've been harvested, then take them out of the array, use "FindGameObjectsByTag" to put multiple game objects into the array
+
+        woodResourceGO = GameObject.FindGameObjectWithTag("AI Wood Resource");
+        woodResourceCode = woodResourceGO.GetComponent<WoodResource>(); // FindObjectOfType<WoodResource>();
+
+        // these might have to wait until we build the lumber mill, so a lumber mill built event
+
+        lumberMillGO = GameObject.FindGameObjectWithTag("AI Lumber Mill");
+        lumberMillCode = lumberMillGO.GetComponent<LumberMillAI>(); // FindObjectOfType<LumberMill>(); // we will need to find the appropriate lumber mill later
+
         workerAI = this.GetComponent<WorkerAI>();
-        woodPos = woodResource.transform.position;
-        lumberMillPos = lumberMill.transform.position;
+        woodPos = woodResourceGO.transform.position;
+        lumberMillPos = lumberMillGO.transform.position;
         workerAI.Move(woodPos);
     }
 
