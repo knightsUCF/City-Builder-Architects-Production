@@ -14,21 +14,41 @@ public class AI : MonoBehaviour
     public Vector3 worker1StartPos = new Vector3(50.0f, 0.0f, -20.0f);
     // public Vector3 worker1StartPos = new Vector3(0.0f, 4.0f, 0.0f);
 
-    WorkerAI worker;
+    // WorkerAI worker;
+
+
+    GameObject worker1;
+    GameObject worker2;
+
+
     public GameObject employmentOffice;
+    public GameObject lumberMillPrefab;
+
+
+
+
+    Vector3 lumberMillBuildSpotPos;
+
+
+
+
     public List<string> TaskList = new List<string>();
+
+
 
 
 
     void OnEnable()
     {
         EventManager.StartListening("ReachedLumberMillBuildSpot", ReachedLumberMillBuildSpotEvent);
+        EventManager.StartListening("LumberMillBuilt", LumberMillBuiltEvent);
     }
 
 
     void OnDisable()
     {
         EventManager.StopListening("ReachedLumberMillBuildSpot", ReachedLumberMillBuildSpotEvent);
+        EventManager.StopListening("LumberMillBuilt", LumberMillBuiltEvent);
     }
 
 
@@ -109,10 +129,7 @@ public class AI : MonoBehaviour
     // let's not worry about building stages for now
 
 
-    void Build(GameObject building, Vector3 pos)
-    {
-        GameObject buildingGO = Instantiate(building, pos, Quaternion.identity, this.transform);
-    }
+    
 
 
 
@@ -120,37 +137,82 @@ public class AI : MonoBehaviour
 
 
 
+
+    void GenerateTwoStartingWorkers()
+    {
+        Vector3 worker1StartPos = new Vector3(-247.0f, -0.1f, -40.0f);
+        Vector3 worker2StartPos = new Vector3(-227.0f, -0.1f, -58.0f);
+
+        worker1 = GenerateWorker(worker1StartPos);
+        worker2 = GenerateWorker(worker2StartPos);
+    }
+
+
+
+    void Build(GameObject building, Vector3 pos)
+    {
+        GameObject buildingGO = Instantiate(building, pos, Quaternion.identity, this.transform);
+    }
+
+
+
     void ReachedLumberMillBuildSpotEvent()
     {
-        Debug.Log("Reached the lumber mill build spot!");
+        Build(lumberMillPrefab, lumberMillBuildSpotPos);
+
     }
+
+
+
+    void LumberMillBuiltEvent()
+    {
+        Debug.Log("Calling LumberMillBuiltEvent()");
+        HarvestLumber(worker1);
+    }
+
+
+
+    void BuildLumberMill(GameObject worker)
+    {
+        WorkerAI Worker1 = worker.GetComponent<WorkerAI>();
+        lumberMillBuildSpotPos = new Vector3(-188.0f, -0.1f, -50.0f); // we will need to generate a trigger collider at that position so we can send out an event
+        GameObject lumberMillMarker = Instantiate(positionEventCollider, lumberMillBuildSpotPos, Quaternion.identity, this.transform);
+        PositionEventCollider pec = lumberMillMarker.GetComponent<PositionEventCollider>();
+        pec.eventName = "ReachedLumberMillBuildSpot";
+        Worker1.Move(lumberMillBuildSpotPos); // when a worker gets there we will be able to get the event
+        // they begin building with the ReachedLumberBillSpotEvent()
+
+        // GameObject lumberMill = Instantiate(lumberMillPrefab, lumberMillBuildSpotPos, Quaternion.identity, this.transform);
+    }
+
+
+
+    void HarvestLumber(GameObject worker)
+    {
+        worker.GetComponent<WoodHarvestingAI>().enabled = true;
+        Debug.Log("Beginning harvesting lumber");
+    }
+
+
+
+    void StopHarvestingLumber(GameObject worker)
+    {
+        worker.GetComponent<WoodHarvestingAI>().enabled = false;
+    }
+
+
+    
 
     void StartBuildingSimulation()
     {
 
-        // generate 2 workers to start
+        GenerateTwoStartingWorkers();
 
-        Vector3 worker1StartPos = new Vector3(-247.0f, -0.1f, -40.0f);
-        Vector3 worker2StartPos = new Vector3(-227.0f, -0.1f, -58.0f);
-
-        GameObject worker1 = GenerateWorker(worker1StartPos);
-        GameObject worker2 = GenerateWorker(worker2StartPos);
+        BuildLumberMill(worker1); // calls LumberMillBuiltEvent(), which calls HarvesLumber(worker)
 
 
-        // build a lumber mill
 
-        WorkerAI Worker1 = worker1.GetComponent<WorkerAI>();
-
-        // we will need to generate a trigger collider at that position so we can send out an event
-        Vector3 lumberMillPos = new Vector3(-188.0f, -0.1f, -50.0f);
-
-        GameObject lumberMillMarker = Instantiate(positionEventCollider, lumberMillPos, Quaternion.identity, this.transform);
-        PositionEventCollider pec = lumberMillMarker.GetComponent<PositionEventCollider>();
-        pec.eventName = "ReachedLumberMillBuildSpot";
-
-        Worker1.Move(lumberMillPos);
-
-        // when a worker gets there we will be able to get the event
+        
 
 
 
