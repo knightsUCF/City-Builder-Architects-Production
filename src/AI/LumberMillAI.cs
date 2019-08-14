@@ -16,6 +16,14 @@ public class LumberMillAI : MonoBehaviour
     public bool callOncePlayerWorker = true;
 
 
+    void Awake()
+    {
+        Debug.Log("LumberMillAI Awake() called");
+        // perhaps will need some way later to know which lumber mill was built
+        EventManager.TriggerEvent("LumberMillBuilt");
+    }
+
+
     void OnTriggerEnter(Collider other)
     {
         if (other.tag == "AIWorker" && callOnceAIWorker)
