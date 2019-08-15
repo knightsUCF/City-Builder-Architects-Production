@@ -18,5 +18,11 @@ This looks like a very nice take on the beach shoreline, if somehow though we sm
 https://assetstore.unity.com/packages/3d/environments/geometric-landscape-tropical-island-low-poly-21608
 
 
+Another one by the same developer: https://assetstore.unity.com/packages/3d/environments/geometric-landscape-low-poly-13055
+
+The short pointy tree is nice, something that could vary up the contrast between the only tree we have right now. 
+
+
+
 
 
