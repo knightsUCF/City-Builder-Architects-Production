@@ -28,4 +28,6 @@ Carla the driving simulator, has some nice apartment buildings
 
 at 15:02 of this video: https://www.youtube.com/watch?v=J1F32aVSYaU
 
+Essentially these and other buildings are easy to create, because all we have to do is build one level, and then duplicate that level up.
+
 
