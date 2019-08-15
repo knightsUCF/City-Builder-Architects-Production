@@ -23,13 +23,17 @@ public class AI : MonoBehaviour
 
     public GameObject employmentOfficePrefab;
     public GameObject lumberMillPrefab;
+    public GameObject housePrefab;
+    // public GameObject storePrefab;
 
 
 
 
+    // these will be globally recycled for each new structure
 
     Vector3 lumberMillBuildSpotPos;
     Vector3 employmentOfficeBuildSpotPos;
+    Vector3 houseBuildSpotPos;
 
 
 
@@ -48,7 +52,8 @@ public class AI : MonoBehaviour
         EventManager.StartListening("ReachedEmploymentOfficeBuildSpot", ReachedEmploymentOfficeBuildSpotEvent);
         // EventManager.StartListening("EmploymentOfficeBuilt", EmploymentOfficeBuiltEvent);
 
-        // EventManager.StartListening ("BuildHouse", BuildHouseEvent);
+        EventManager.StartListening("ReachedHouseBuildSpot", ReachedHouseBuildSpotEvent);
+
 
     }
 
@@ -63,6 +68,8 @@ public class AI : MonoBehaviour
         // EventManager.StopListening("EmploymentOfficeBuilt", EmploymentOfficeBuiltEvent);
 
         // EventManager.StopListening ("BuildHouse", BuildHouseEvent);
+
+        EventManager.StopListening("ReachedHouseBuildSpot", ReachedHouseBuildSpotEvent);
     }
 
 
@@ -238,6 +245,30 @@ public class AI : MonoBehaviour
     }
 
 
+
+    void BuildHouse(GameObject worker)
+    {
+
+
+       // Build(GameObject building, Vector3 pos)
+
+        WorkerAI Worker2 = worker.GetComponent<WorkerAI>();
+        houseBuildSpotPos = new Vector3(-255.0f, -0.1f, -73.0f); // we will need to generate a trigger collider at that position so we can send out an event
+        GameObject houseMarker = Instantiate(positionEventCollider, houseBuildSpotPos, Quaternion.identity, this.transform);
+        PositionEventCollider pec = houseMarker.GetComponent<PositionEventCollider>();
+        pec.eventName = "ReachedHouseBuildSpot";
+        Worker2.Move(houseBuildSpotPos); // when a worker gets there we will be able to get the event
+        // they begin building with the ReachedLumberBillSpotEvent()
+    }
+
+
+
+    void ReachedHouseBuildSpotEvent()
+    {
+        // Build(housePrefab, houseBuildSpotPos);
+    }
+
+
     
 
     void StartBuildingSimulation()
@@ -248,6 +279,19 @@ public class AI : MonoBehaviour
         BuildLumberMill(worker1); // calls LumberMillBuiltEvent(), which calls HarvesLumber(worker)
 
         BuildEmploymentOffice(worker2);
+
+        // BuildHouse(worker2); // interferes with BuildEmploymentOffice(), need to wait or something, maybe the position marker is giving both signals at the same time
+
+        // BuildStore(worker2);
+
+        // build a house at -255, -0.1, -73 - we should wait until a worker is free, perhaps we can toggle a free worker state, after they're done with the employment office
+
+        // so if the worker enters the building area and starts building, we can set the flag as busy, and then set the flag as free when the building is done (in the awake() method for now)
+
+        // build a store at: -243, -0.1, -8
+
+
+
 
         
 
