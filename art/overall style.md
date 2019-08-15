@@ -12,3 +12,11 @@ Also the beach real estate could be an unlockable map.
 
 Stores, and homes built along the beach have some sort of special bonus.
 
+
+This looks like a very nice take on the beach shoreline, if somehow though we smooth out the rough polygons
+
+https://assetstore.unity.com/packages/3d/environments/geometric-landscape-tropical-island-low-poly-21608
+
+
+
+
