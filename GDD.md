@@ -14,7 +14,7 @@ What if you spawn in from the sky? Hmmm, not sure.
 
 Not sure if we need to rejoin per session, we can just have sessions that are timed to an average Fortnite session. 
 
-15 - 20 minutes. Maybe this is the best average time to have per game, so the game is streamable. 
+10 - 25 minutes. Average 15 minutes. Maybe this is the best average time to have per game, so the game is streamable. 
 
 And also somehow have longer modes if that is desired.
 
