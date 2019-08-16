@@ -30,4 +30,8 @@
 
 * create ability to purchase land (unlock tiles) 
 
-* eventually we will want to generate an extra worker at the employment office or use an idle worker to go explore the fog of war, at first we will not be able to see what the other player is doing because they will be shrouded in a fog of war, not until we send out a worker and explore the area will the fog of war lift, and this is very useful for disguising the first few minutes of what the player is doing for their strategy, because then the game would feel like rock paper scissors too quickly 
+* eventually we will want to generate an extra worker at the employment office or use an idle worker to go explore the fog of war, at first we will not be able to see what the other player is doing because they will be shrouded in a fog of war, not until we send out a worker and explore the area will the fog of war lift, and this is very useful for disguising the first few minutes of what the player is doing for their strategy, because then the game would feel like rock paper scissors too quickly
+
+* create build shortcuts, such as H for house, although might save this for a later version in early access, perhaps we would allow the worker to create their own shortcuts, also if we hover over a structure for a while, let's reveal a pop up panel to the side of the bar, perhaps on the right, or right above, a panel to show the info on the structure
+
+* not sure if should use save mode for early access, probably need save mode for MVP
