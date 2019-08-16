@@ -19,14 +19,18 @@
 
 * create a new win condition based on the demand and supply of the market, maybe based on whoever reaches an x amount of money
 
+* create a nice building panel menu, maybe at the bottom of the screen, somehow nicely flowing with the resources count
+
+* this panel will show all the available buildings we can build set against a black panel
+
+* create the basic types, house 1, 2, 3, store, office building, etc, for now just have all the types on one panel, later we will subdivide them to show by type, so if you click on the house you get all the house types, etc
 
 
 
 
 
 
-
-# ToDo
+# Features
 
 task of the AI building on snap to grid
 
