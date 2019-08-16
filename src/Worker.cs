@@ -174,7 +174,7 @@ public class Worker : MonoBehaviour
 
     void MoveWorker()
     {
-        #if UNITY_EDITOR || UNITY_EDITOR_OSX || UNITY_EDITOR_WIN
+        #if UNITY_EDITOR || UNITY_STANDALONE_OSX || UNITY_STANDALONE_WIN
         
         if (Input.GetMouseButtonDown(0) && mm.currentlySelectedWorkerID == ID)
         {
@@ -213,7 +213,7 @@ public class Worker : MonoBehaviour
     void SetDestination()
     {
 
-        #if UNITY_EDITOR || UNITY_EDITOR_OSX || UNITY_EDITOR_WIN
+        #if UNITY_EDITOR || UNITY_STANDALONE_OSX || UNITY_STANDALONE_WIN
 
         ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         if (Physics.Raycast(ray, out hitInfo))
