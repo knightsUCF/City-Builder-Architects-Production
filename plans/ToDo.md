@@ -3,7 +3,7 @@
 
 * create a simple on screen log of what the AI is doing, a nice log would have some kind of scroll, or perhaps we can just move up the last two messages to the upper two
 
-* create few houses, will run into the order of the event building problem, and also will need to set aside later task of the AI building on snap to grid
+* create a few houses for the AI, will run into the order of the event building problem, and also will need to set aside later task of the AI building on snap to grid
 
 * create a simple win condition
 
