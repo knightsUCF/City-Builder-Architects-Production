@@ -25,6 +25,7 @@
 
 * create the basic types, house 1, 2, 3, store, office building, etc, for now just have all the types on one panel, later we will subdivide them to show by type, so if you click on the house you get all the house types, etc
 
+* one simple way of creating a build panel, is to place the panel right above the resource panel, aligned to the left, and make the build panel shorter then the bottom resource panel and wider, create a gray small panel line to separate the two, Cities Skylines went through many iterations, and just something with an assortment of black rectangular panels
 
 
 
