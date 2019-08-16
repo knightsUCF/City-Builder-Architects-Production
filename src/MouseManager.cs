@@ -108,7 +108,7 @@ public class MouseManager : MonoBehaviour
 
     void CheckSelection()
     {
-        #if UNITY_EDITOR || UNITY_STANDALONE_OSX || UNITY_EDITOR_WIN
+        #if UNITY_EDITOR || UNITY_STANDALONE
 
         if (Input.GetMouseButtonDown(0))
         {
