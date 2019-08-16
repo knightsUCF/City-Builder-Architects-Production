@@ -13,3 +13,13 @@
 * create difficulty level in the game settings screen, when we create a new game, let's go through this screen first, perhaps we could have a slider from 1 to 10 for difficulty, when the slider gets to 3 the caption changes to "Medium" when the slider moves past value 6, the caption changes to "Hard", so the player can have up to 10 modes. 
 
 * create building rotation
+
+* shake the trees when chopping
+
+* deplete the trees
+
+* set huge box collider on all the trees, and set the individual ones to inactive to save on processing
+
+* then have a ResourceDepletionManager activate the relevant box colliders so we don't activate them all at once
+
+* let's find the wood's position by tag - in the future we should find the closest one out of the array, also on the wood resource if they've been harvested, then take them out of the array, use "FindGameObjectsByTag" to put multiple game objects into the array
