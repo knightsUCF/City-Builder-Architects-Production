@@ -28,6 +28,8 @@ Try to at least outdo the art in that game, since that game in half a year has m
 
 We also should have rivers that connect land as islands. Then the player will want to build a bridge to get over the water for traffic, which is not a problem for the benefit added.
 
+Check out also the texture on the Factory Towns roofs, we also want some texture on our roofs, instead of a solid black color, maybe a dark black grey textured, we want more details on those houses also, we could add some basic primitive blocks to expand on that, even create a picket fence, flowers in the yard, anything to add more detail, let's try to at least outdo Factory Town
+
 
 
 
@@ -43,3 +45,6 @@ Check out the way the lakes are laid out in factory town: https://store.steampow
 Also check out the grass, might help to have grass when zoom
 
 Perhaps we could have grass zoom in like in that one village building game
+
+
+
