@@ -22,6 +22,10 @@ This is essential to getting the game around streamers...
 
 * anything that evokes emotion
 
+"That is a very tricky question and you will get a million different answers. I personally enjoy games like Factorio, Rimworld and Prison Architects because of their heavy mechanics and deep nature. Being able to study and understand the mechanics.
+
+What makes a game good is not what the game is, but what the creator strives for. But viewer interaction is a big plus. But aside from that, there's no real good formula i'd say."
+
 
 # State of RTS on /r/gamedev
 
