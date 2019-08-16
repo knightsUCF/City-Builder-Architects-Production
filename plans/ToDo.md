@@ -27,7 +27,7 @@
 
 * one simple way of creating a build panel, is to place the panel right above the resource panel, aligned to the left, and make the build panel shorter then the bottom resource panel and wider, create a gray small panel line to separate the two, Cities Skylines went through many iterations, and just something with an assortment of black rectangular panels
 
-
+* this pane would show up whenever we click on a worker, any worker can build, unless they are inside a building working, then we first have to make them leave the building, before we can click on them to reveal the panel
 
 
 
@@ -39,6 +39,7 @@
 
 * don't allow building over other buildings, and within the area perimeter
 
+* any worker can build, unless they are inside a building working, then we first have to make them leave the building, before we can click on them to reveal the panel
 
 # Bugs
 
