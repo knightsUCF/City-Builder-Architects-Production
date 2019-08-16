@@ -36,4 +36,4 @@
 
 * not sure if should use save mode for early access, probably need save mode for MVP
 
-* will also need an in game chat for multiplayer, and team mode, also a way to message opponents (global), or to message team mates
+* will also need an in game chat for multiplayer, and team mode, also a way to message opponents (global), or to message team mates, perhaps we can reveal the chat with a space bar, and then close the chat with something other than a space bar, space bar should be used to just open chat
