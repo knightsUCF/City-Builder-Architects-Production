@@ -37,3 +37,13 @@
 * not sure if should use save mode for early access, probably need save mode for MVP
 
 * will also need an in game chat for multiplayer, and team mode, also a way to message opponents (global), or to message team mates, perhaps we can reveal the chat with a space bar, and then close the chat with something other than a space bar, space bar should be used to just open chat
+
+* create a complete state logging solution for sending back the game state when a player wins, we will need this to balanace, the game, so check how fast they won, how many resources they had starting out, starting class, the progression of their resources, the number of the different buildings they built, etc, send this back on the server which will not be a problem, since the server will run the gameplay
+
+* set up AWS server: https://www.reddit.com/r/gamedev/comments/cqvkx0/so_we_built_our_own_worldwide_matchmaking_system/
+
+https://medium.com/plapadoo/spawning-game-servers-on-aws-a391ca78e4ee
+
+They used Fargate to minimize server costs, since server is just booted up when the multiplayer game starts
+
+More in the multiplayer folder
