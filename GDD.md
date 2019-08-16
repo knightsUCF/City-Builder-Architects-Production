@@ -47,6 +47,8 @@ What makes a game good is not what the game is, but what the creator strives for
 
 People want a team based games. Like League of Legends of Fortnite, so they can talk with each other and have funny moments. So definitely include co op.
 
+"Another issue with classical RTS is visually communicating the units and action to both the players and twitch viewers. Twitch and other video platforms is so important on growing a game. If you make it easy for viewers to understand what is going on you make it easy for the players. So many players check out games based on gameplay video and if it's a slug fest of 100s of units on screen with no clear visual communication on what's going on it looks chaotic and uninteresting."
+
 
 # State of RTS on /r/gamedev
 
