@@ -1,3 +1,17 @@
+# Research what makes games good to stream? 
+
+This is essential to getting the game around streamers...
+
+* memeable moments
+
+* 20 minutes gamesplay
+
+* things that chat can commentate on 
+
+* funny animations for the workers
+
+* funny things the workers can do
+
 
 # State of RTS on /r/gamedev
 
