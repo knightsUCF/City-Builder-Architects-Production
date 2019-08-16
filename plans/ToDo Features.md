@@ -23,3 +23,5 @@
 * then have a ResourceDepletionManager activate the relevant box colliders so we don't activate them all at once
 
 * let's find the wood's position by tag - in the future we should find the closest one out of the array, also on the wood resource if they've been harvested, then take them out of the array, use "FindGameObjectsByTag" to put multiple game objects into the array
+
+* create pause mode (slow down game time to zero)
