@@ -30,7 +30,9 @@ We also should have rivers that connect land as islands. Then the player will wa
 
 Check out also the texture on the Factory Towns roofs, we also want some texture on our roofs, instead of a solid black color, maybe a dark black grey textured, we want more details on those houses also, we could add some basic primitive blocks to expand on that, even create a picket fence, flowers in the yard, anything to add more detail, let's try to at least outdo Factory Town
 
-Compare the lighting of Factory Town to Kingdoms and Castles, literally night and day. Definitely take screenshots in the highest graphic fidelity mode to get the shadows, and ambient occlusion. Review the Kingdoms and Castles video again to note which plug ins they used, and how they color corrected. Also experiment with many different light sources and take screenshots. 
+Compare the lighting of Factory Town to Kingdoms and Castles, literally night and day. Definitely take screenshots in the highest graphic fidelity mode to get the shadows, and ambient occlusion. Review the Kingdoms and Castles video again to note which plug ins they used, and how they color corrected. Also experiment with many different light sources and take screenshots.
+
+Do the Unity tutorial on 3 point lighting, and adjust those lights for night mode. The game Factory Town looks flat, seems like they didn't even get the 3 point lighting right. Look up tutorial on YouTube on how to light your game in Unity.
 
 Also night mode will do wonders to the screenshots and videos. Might need to get a higher end computer to run a demo on. Maybe we can get a computer on a monthly $50 plan.
 
