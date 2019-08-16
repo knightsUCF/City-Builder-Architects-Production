@@ -26,6 +26,6 @@
 
 * create pause mode (slow down game time to zero)
 
-* create ability to make a pond or small lake, that we can put in the center of a development, this way the player gets a "waterfront" bonus to their houses, and they bring him in more rent, each house brings the player a certain number of rent every game cycle, this will also give nice inherent emergent constrution where the player will build houses around a lake like a real suburban neighborhood, of course the player doesn't have to do this, but they will earn more money, though at the cost of more space
+* create ability to make a pond or small lake, that we can put in the center of a development, this way the player gets a "waterfront" bonus to their houses, and they bring him in more rent, each house brings the player a certain number of rent every game cycle, this will also give nice inherent emergent constrution where the player will build houses around a lake like a real suburban neighborhood, of course the player doesn't have to do this, but they will earn more money, though at the cost of more space, we would also rather have the lake be toward the back of a house, we can simply make the lake work by having colliders on the lake so there has to be a fair distance from the lake and a structure, (we can call this a retention pond), and then have a proximity bonus on the lake, that hands out bonuses, perhaps we first see this bonus when the lake is built, some sort of particle effect
 
 * create ability to purchase land (unlock tiles) 
