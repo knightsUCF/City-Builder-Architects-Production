@@ -18,6 +18,8 @@ Not sure if we need to rejoin per session, we can just have sessions that are ti
 
 And also somehow have longer modes if that is desired.
 
+This is why Fortnite has the "closing in storm", they are forcing the games to be of a certain length...
+
 
 # Mid Game Value of Wood Decreasing Due to Supply and Demand
 
