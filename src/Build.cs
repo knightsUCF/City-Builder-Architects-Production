@@ -175,7 +175,7 @@ public class Build : MonoBehaviour
 
         */
 
-        #if UNITY_EDITOR
+        #if UNITY_EDITOR || UNITY_STANDALONE
 
         ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
@@ -264,7 +264,7 @@ public class Build : MonoBehaviour
   
         #endif
 
-        #if UNITY_EDITOR || UNITY_STANDALONE_OSX
+        #if UNITY_EDITOR || UNITY_STANDALONE
 
         ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         MoveBuildingToDragPoint();
