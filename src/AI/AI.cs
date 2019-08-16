@@ -41,6 +41,9 @@ public class AI : MonoBehaviour
     public List<string> TaskList = new List<string>();
 
 
+    AILog aiLog;
+
+
 
 
 
@@ -132,6 +135,8 @@ public class AI : MonoBehaviour
     {
         // workerAIcode = FindObjectOfType<WorkerAI>();
 
+        aiLog = FindObjectOfType<AILog>(); 
+
     }
 
 
@@ -166,6 +171,8 @@ public class AI : MonoBehaviour
 
         worker1 = GenerateWorker(worker1StartPos);
         worker2 = GenerateWorker(worker2StartPos);
+
+        aiLog.LogText("generating two starting workers");
     }
 
 
@@ -188,6 +195,7 @@ public class AI : MonoBehaviour
     void LumberMillBuiltEvent()
     {
         HarvestLumber(worker1);
+        aiLog.LogText("built lumber mill"); // might have to move over to event once wait time is introduced
     }
 
 
@@ -242,6 +250,7 @@ public class AI : MonoBehaviour
     {
         Debug.Log("ReachedEmploymentOfficeBuildSpotEvent() called");
         Build(employmentOfficePrefab, employmentOfficeBuildSpotPos);
+        aiLog.LogText("built employment office"); // might have to move over to event once wait time is introduced
     }
 
 
