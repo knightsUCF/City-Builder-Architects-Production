@@ -1,3 +1,6 @@
+# Study the strategy in Starcraft 2
+
+
 # Solo Game Mode
 
 * 2 solo game modes
