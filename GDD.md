@@ -12,6 +12,16 @@ This is essential to getting the game around streamers...
 
 * funny things the workers can do
 
+* room for viewer interaction (e.g. choice making)
+
+* replay value
+
+* secrets (content that not everyone is able to find)
+
+* different ways to accomplish a goal
+
+* anything that evokes emotion
+
 
 # State of RTS on /r/gamedev
 
