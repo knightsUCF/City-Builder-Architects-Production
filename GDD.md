@@ -1,3 +1,8 @@
+# Multiplayer
+
+2 vs 2, 4 vs 4 is the sweetspot
+
+
 # Reasons for Early Access
 
 * small developer team
