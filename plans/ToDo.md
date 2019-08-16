@@ -5,6 +5,14 @@
 
 * create a simple win condition
 
+* create ability to build stores
+
+* once we click on stores show a panel of what we can sell (find some nice graphics for this)
+
+* for now make the simplest possible solution, so out of all the items we can select 2 items to sell 
+
+* create a global market condition with the AI also selling items
+
 
 
 
