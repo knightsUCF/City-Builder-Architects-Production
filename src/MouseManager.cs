@@ -108,7 +108,7 @@ public class MouseManager : MonoBehaviour
 
     void CheckSelection()
     {
-        #if UNITY_EDITOR
+        #if UNITY_EDITOR || UNITY_STANDALONE_OSX || UNITY_EDITOR_WIN
 
         if (Input.GetMouseButtonDown(0))
         {
@@ -116,6 +116,8 @@ public class MouseManager : MonoBehaviour
 
             if (Physics.Raycast(ray, out hitInfo))
             {
+                // Debug.Log(hitInfo.point); // to get mouse coordinates
+                
                 CheckObjectByTag(); // same method for any type of interface
             }
         }
