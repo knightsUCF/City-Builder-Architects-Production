@@ -1,4 +1,12 @@
 
+# State of RTS on /r/gamedev
+
+https://www.reddit.com/r/gamedev/comments/cqoyme/what_shall_we_do_with_the_rts_genre/
+
+
+@randomnine
+
+"Been thinking about this today. IMO the biggest issue with the RTS is the emphasis on intense 1v1s. Multiplayer gaming is heavily social now. I think core multiplayer game modes in modern games need to have teamplay with friends, downtime to chat, different roles for players at different skill levels, and ways to express yourself. SC2's co-op and archon modes were nice tries, but to properly update the RTS I think we need a teams-first reinvention of RTS macro mechanics from the ground up, just as DOTA et al were a teams-first reinvention of hero-based RTS micro."
 
 # Mid Game Value of Wood Decreasing Due to Supply and Demand
 
