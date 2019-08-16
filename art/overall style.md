@@ -32,7 +32,7 @@ Check out also the texture on the Factory Towns roofs, we also want some texture
 
 Compare the lighting of Factory Town to Kingdoms and Castles, literally night and day. Definitely take screenshots in the highest graphic fidelity mode to get the shadows, and ambient occlusion. Review the Kingdoms and Castles video again to note which plug ins they used, and how they color corrected. Also experiment with many different light sources and take screenshots. 
 
-Also night mode will do wonders to the screenshots and videos. Might need to get a higher end computer to run a demo on.
+Also night mode will do wonders to the screenshots and videos. Might need to get a higher end computer to run a demo on. Maybe we can get a computer on a monthly $50 plan.
 
 Carla the driving simulator, has some nice apartment buildings
 
