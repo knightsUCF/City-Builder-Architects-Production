@@ -29,7 +29,7 @@
 
 * this pane would show up whenever we click on a worker, any worker can build, unless they are inside a building working, then we first have to make them leave the building, before we can click on them to reveal the panel
 
-
+* nice color for the background frame panel of the market panel: C7FF92
 
 # ToDo
 
