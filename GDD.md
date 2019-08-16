@@ -1,3 +1,15 @@
+# Reasons for Early Access
+
+* small developer team
+
+* would like to balance game
+
+* make game better
+
+* be involved with the community
+
+
+
 # Research what makes games good to stream? 
 
 This is essential to getting the game around streamers...
