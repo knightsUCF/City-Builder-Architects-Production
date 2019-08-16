@@ -45,6 +45,8 @@
 
 * create difficulty level in the game settings screen, when we create a new game, let's go through this screen first, perhaps we could have a slider from 1 to 10 for difficulty, when the slider gets to 3 the caption changes to "Medium" when the slider moves past value 6, the caption changes to "Hard", so the player can have up to 10 modes. 
 
+* create building rotation
+
 # Bugs
 
 * investigate workers moving through buildings, need to add collider, and figure out "carving" navmesh issue
