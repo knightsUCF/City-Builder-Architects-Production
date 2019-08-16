@@ -1,3 +1,12 @@
+# Solo Game Mode
+
+* 2 solo game modes
+
+  1) versus AI 
+  
+  2) idle build (Tamagotchi)
+
+
 # Multiplayer
 
 2 vs 2, 4 vs 4 is the sweetspot
