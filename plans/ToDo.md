@@ -1,4 +1,4 @@
-# 08 / 16 / 2019
+
 
 
 * create a simple on screen log of what the AI is doing, a nice log would have some kind of scroll, or perhaps we can just move up the last two messages to the upper two
