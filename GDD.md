@@ -8,6 +8,17 @@ https://www.reddit.com/r/gamedev/comments/cqoyme/what_shall_we_do_with_the_rts_g
 
 "Been thinking about this today. IMO the biggest issue with the RTS is the emphasis on intense 1v1s. Multiplayer gaming is heavily social now. I think core multiplayer game modes in modern games need to have teamplay with friends, downtime to chat, different roles for players at different skill levels, and ways to express yourself. SC2's co-op and archon modes were nice tries, but to properly update the RTS I think we need a teams-first reinvention of RTS macro mechanics from the ground up, just as DOTA et al were a teams-first reinvention of hero-based RTS micro."
 
+What if we have a "Fortnite" mode for streamers -- meaning you can jump in even if you lose, and collect points, so whoever at the end of the round has the most points wins.
+
+What if you spawn in from the sky? Hmmm, not sure.
+
+Not sure if we need to rejoin per session, we can just have sessions that are timed to an average Fortnite session. 
+
+15 - 20 minutes. Maybe this is the best average time to have per game, so the game is streamable. 
+
+And also somehow have longer modes if that is desired.
+
+
 # Mid Game Value of Wood Decreasing Due to Supply and Demand
 
 Another way to make wood less relevant mid game, so that we can save some trees around, would be decrease the value of wood on the market as supply because more common with all of the players, even in single player mode with the AI.
