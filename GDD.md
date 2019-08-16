@@ -28,6 +28,8 @@ This is essential to getting the game around streamers...
 
 What makes a game good is not what the game is, but what the creator strives for. But viewer interaction is a big plus. But aside from that, there's no real good formula i'd say."
 
+People want a team based games. Like League of Legends of Fortnite, so they can talk with each other and have funny moments. So definitely include co op.
+
 
 # State of RTS on /r/gamedev
 
