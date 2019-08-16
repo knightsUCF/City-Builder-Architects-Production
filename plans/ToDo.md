@@ -30,9 +30,13 @@
 
 
 
-# Features
+# ToDo
 
-task of the AI building on snap to grid
+* task of the AI building on snap to grid
+
+* create large box colliders for trees and the mountains, also change color of building block to signify we can't build there
+
+* don't allow building over other buildings, and within the area perimeter
 
 
 # Bugs
