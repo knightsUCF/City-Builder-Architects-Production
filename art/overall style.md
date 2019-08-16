@@ -31,3 +31,8 @@ at 15:02 of this video: https://www.youtube.com/watch?v=J1F32aVSYaU
 Essentially these and other buildings are easy to create, because all we have to do is build one level, and then duplicate that level up.
 
 
+Check out the way the lakes are laid out in factory town: https://store.steampowered.com/app/860890/Factory_Town/
+
+Also check out the grass, might help to have grass when zoom
+
+Perhaps we could have grass zoom in like in that one village building game
