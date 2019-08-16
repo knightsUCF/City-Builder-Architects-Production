@@ -22,6 +22,13 @@ Another one by the same developer: https://assetstore.unity.com/packages/3d/envi
 
 The short pointy tree is nice, something that could vary up the contrast between the only tree we have right now. 
 
+Study the Factory Town style: https://store.steampowered.com/app/860890/Factory_Town/
+
+Try to at least outdo the art in that game, since that game in half a year has made 800K. 
+
+We also should have rivers that connect land as islands. Then the player will want to build a bridge to get over the water for traffic, which is not a problem for the benefit added.
+
+
 
 
 Carla the driving simulator, has some nice apartment buildings
