@@ -15,6 +15,10 @@
 
 * create a global market condition with the AI also selling items
 
+* create ability to buy and sell goods, there will be the goods that we manufacture that we can sell, and then there will be global market goods we can buy, review Offworld Trading Company for this
+
+* create a new win condition based on the demand and supply of the market, maybe based on whoever reaches an x amount of money
+
 
 
 
