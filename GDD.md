@@ -49,6 +49,10 @@ People want a team based games. Like League of Legends of Fortnite, so they can 
 
 "Another issue with classical RTS is visually communicating the units and action to both the players and twitch viewers. Twitch and other video platforms is so important on growing a game. If you make it easy for viewers to understand what is going on you make it easy for the players. So many players check out games based on gameplay video and if it's a slug fest of 100s of units on screen with no clear visual communication on what's going on it looks chaotic and uninteresting."
 
+"I personally view MOBAs (Dota/LoL) as being the genre shift of RTS. Even though they're single unit games mentally they tick off a lot of the same brain pathways as rts games do for me. I get my micro fix from laning, last hitting, good ability combos, etc. High and accurate APS is still rewarded but doesn't have the unlimited potential an arbitrary unit cap has. I get my "research tree"/planning fix from character skill trees and the items I purchase. Most the time I adapt my item purchases to what the other team is doing. Usually games are quick due to snowball mechanics. It's a lot more social of a game too.
+
+I view a successful modern classical RTS with multiple units should strongly consider pulling more buildup snowball mechanics from MOBAs with a few opportunities to catch up from being behind. It'll make longer games shorter and shorter games longer. I'd find ways of reducing punishment or pain points for players. Like for instance losing all your research if a key building is destroyed is probably too harsh for a modern mass market rts. Go for quality gameplay and be multiplayer only - no campaigns, no ai, focus all your resources into the best fun game possible. Avoid the cliche rock paper scissors gameplay that has been a staple of the genre. Find ways to make the genre social like MOBAs are."
+
 
 # State of RTS on /r/gamedev
 
