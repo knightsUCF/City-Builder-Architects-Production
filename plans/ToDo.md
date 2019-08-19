@@ -1,3 +1,30 @@
+* add the rest of the buildings in the build panel, get building working
+
+* set them against a dark background and then simply take a screenshot png for now, use an on screen center market to get the consistent angle
+
+* when we click on a store let's bring up a panel with the goods we can sell at the store
+
+* the goods that we select, perhaps with a simple selection box for now, will be the goods we will be selling
+
+* we will also need a global market panel, which will include wood, and power, electronics, etc, maybe for now we can have just one large panel, the goods which can be sold at the store will be above, or perhaps we don't have to make the resources fluctuate in value for now
+
+* also have the AI build a store, and select a few goods to sell
+
+* when we place the power plant, allow the worker to go work there, and start leveling up the worker and then power plant energy production
+
+* create a win condition by selling the right kind of goods
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
