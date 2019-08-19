@@ -26,4 +26,6 @@ Shopping Cart
 https://www.freepik.com/free-vector/collection-shopping-icons_811522.htm#page=1&query=cart&position=39
 
 
+Computer Chip
 
+https://www.shutterstock.com/image-vector/cpu-icon-circuit-board-1424111201
