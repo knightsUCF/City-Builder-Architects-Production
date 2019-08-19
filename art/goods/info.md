@@ -21,5 +21,9 @@ Shopping Cart 2
 https://www.freepik.com/free-vector/collection-shopping-icons_811522.htm#page=1&query=cart&position=39
 
 
+Shopping Cart
+
+https://www.freepik.com/free-vector/collection-shopping-icons_811522.htm#page=1&query=cart&position=39
+
 
 
