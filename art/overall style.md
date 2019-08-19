@@ -50,4 +50,6 @@ Also check out the grass, might help to have grass when zoom
 Perhaps we could have grass zoom in like in that one village building game
 
 
+Nice building style for a future artist
 
+https://www.freepik.com/free-vector/shop-building-cartoon-set-with-mini-store-symbols-isolated-vector-illustration_3998266.htm#page=1&query=grocery%20bag&position=18
