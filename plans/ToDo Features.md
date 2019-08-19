@@ -53,3 +53,5 @@ More in the multiplayer folder
 * night cycle, game time (turn night cycle off in features)
 
 * save mode
+
+* create town name, or generate random one so the player can replace if they're creative
