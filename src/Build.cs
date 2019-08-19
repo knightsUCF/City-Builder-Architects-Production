@@ -13,15 +13,31 @@ public class Build : MonoBehaviour
 
     public float gridSize = 10.0f;
 
-
-    // public GameObject lumberMill;
-    // public GameObject stoneMill;
-
     
-    // public for now, drag a cube in here
-    public GameObject buildSelection; // will use BuildingType switch state
     GameObject GO;
     GameObject finalGO;
+    GameObject buildingSelection;
+
+    public GameObject house1;
+    public GameObject house2;
+    public GameObject house3;
+
+    public GameObject tenament1;
+    public GameObject tenament2;
+    public GameObject tenament3;
+
+    public GameObject store;
+    public GameObject facility1;
+    public GameObject facility2;
+    public GameObject factory;
+
+    public GameObject employmentOffice;
+    public GameObject office1;
+    public GameObject office2;
+    public GameObject office3;
+    public GameObject office4;
+
+
     
     
     Ray ray;
@@ -76,14 +92,48 @@ public class Build : MonoBehaviour
 
     void OnEnable()
     {
-        EventManager.StartListening ("BuildHouse", BuildHouseEvent);
+        EventManager.StartListening("BuildHouse1", BuildHouse1Event);
+        EventManager.StartListening("BuildHouse2", BuildHouse2Event);
+        EventManager.StartListening("BuildHouse3", BuildHouse3Event);
+
+        EventManager.StartListening("BuildTenament1", BuildTenament1Event);
+        EventManager.StartListening("BuildTenament2", BuildTenament2Event);
+        EventManager.StartListening("BuildTenament3", BuildTenament3Event);
+
+        EventManager.StartListening("BuildStore", BuildStoreEvent);
+        EventManager.StartListening("BuildProductionFacility1", BuildProductionFacility1Event);
+        EventManager.StartListening("BuildProductionFacility2", BuildProductionFacility2Event);
+        EventManager.StartListening("BuildFactory", BuildFactoryEvent);
+
+        EventManager.StartListening("BuildEmploymentOffice", BuildEmploymentOfficeEvent);
+        EventManager.StartListening("BuildOffice1", BuildOffice1Event);
+        EventManager.StartListening("BuildOffice2", BuildOffice2Event);
+        EventManager.StartListening("BuildOffice3", BuildOffice3Event);
+        EventManager.StartListening("BuildOffice4", BuildOffice4Event);
     }
 
 
 
     void OnDisable()
     {
-        EventManager.StopListening ("BuildHouse", BuildHouseEvent);
+        EventManager.StopListening("BuildHouse1", BuildHouse1Event);
+        EventManager.StopListening("BuildHouse2", BuildHouse2Event);
+        EventManager.StopListening("BuildHouse3", BuildHouse3Event);
+
+        EventManager.StopListening("BuildTenament1", BuildTenament1Event);
+        EventManager.StopListening("BuildTenament2", BuildTenament2Event);
+        EventManager.StopListening("BuildTenament3", BuildTenament3Event);
+
+        EventManager.StopListening("BuildStore", BuildStoreEvent);
+        EventManager.StopListening("BuildProductionFacility1", BuildProductionFacility1Event);
+        EventManager.StopListening("BuildProductionFacility2", BuildProductionFacility2Event);
+        EventManager.StopListening("BuildFactory", BuildFactoryEvent);
+
+        EventManager.StopListening("BuildEmploymentOffice", BuildEmploymentOfficeEvent);
+        EventManager.StopListening("BuildOffice1", BuildOffice1Event);
+        EventManager.StopListening("BuildOffice2", BuildOffice2Event);
+        EventManager.StopListening("BuildOffice3", BuildOffice3Event);
+        EventManager.StopListening("BuildOffice4", BuildOffice4Event);
     }
 
 
@@ -94,26 +144,154 @@ public class Build : MonoBehaviour
 
     // this is a lumber mill for now, will need a separate method
 
-    void BuildHouseEvent()
+    void BuildHouse1Event()
     {
         // Debug.Log ("Build house event called!");
         
         start = true;
-
-        
-
-        PlaceStartingBuilding();
-
-        
+        buildingSelection = house1; 
+        PlaceStartingBuilding(house1);        
     }
 
 
 
-    void SetBuilding()
+    void BuildHouse2Event()
+    {
+        // Debug.Log ("Build house event called!");
+        
+        start = true;
+        buildingSelection = house2;
+        PlaceStartingBuilding(house2);
+
+    }
+
+
+    void BuildHouse3Event()
+    {
+        // Debug.Log ("Build house event called!");
+        
+        start = true;
+        buildingSelection = house3;
+        PlaceStartingBuilding(house3);        
+    }
+
+
+
+    void BuildTenament1Event()
+    {        
+        start = true;
+        buildingSelection = tenament1;
+        PlaceStartingBuilding(tenament1);        
+    }
+
+
+
+    void BuildTenament2Event()
+    {        
+        start = true;
+        buildingSelection = tenament2;
+        PlaceStartingBuilding(tenament2);        
+    }
+
+
+
+    void BuildTenament3Event()
+    {        
+        start = true;
+        buildingSelection = tenament3;
+        PlaceStartingBuilding(tenament3);        
+    }
+
+
+
+    void BuildStoreEvent()
+    {        
+        start = true;
+        buildingSelection = store;
+        PlaceStartingBuilding(store);        
+    }
+
+
+
+    void BuildProductionFacility1Event()
+    {        
+        start = true;
+        buildingSelection = facility1;
+        PlaceStartingBuilding(facility1);        
+    }
+
+
+
+    void BuildProductionFacility2Event()
+    {        
+        start = true;
+        buildingSelection = facility2;
+        PlaceStartingBuilding(facility2);        
+    }
+
+
+
+    void BuildFactoryEvent()
+    {        
+        start = true;
+        buildingSelection = factory;
+        PlaceStartingBuilding(factory);        
+    }
+
+
+
+    void BuildEmploymentOfficeEvent()
+    {        
+        start = true;
+        buildingSelection = employmentOffice;
+        PlaceStartingBuilding(employmentOffice);        
+    }
+
+
+
+    void BuildOffice1Event()
+    {        
+        start = true;
+        buildingSelection = office1;
+        PlaceStartingBuilding(office1);        
+    }
+
+
+
+    void BuildOffice2Event()
+    {        
+        start = true;
+        buildingSelection = office2;
+        PlaceStartingBuilding(office2);        
+    }
+
+
+
+    void BuildOffice3Event()
+    {        
+        start = true;
+        buildingSelection = office3;
+        PlaceStartingBuilding(office3);        
+    }
+
+
+
+    void BuildOffice4Event()
+    {        
+        start = true;
+        buildingSelection = office4;
+        PlaceStartingBuilding(office4);        
+    }
+
+
+
+
+
+    void SetBuilding(GameObject structure)
     {
         if (Physics.Raycast(ray, out hitInfo)) 
         {
-            PlaceBuilding(hitInfo.point, buildSelection);
+            PlaceBuilding(hitInfo.point, structure);
             // startedBuild = true; // come back to this
             // haveWePlacedFirstBuildingStage = true;
         }
@@ -121,7 +299,7 @@ public class Build : MonoBehaviour
 
 
 
-    void PlaceStartingBuilding()
+    void PlaceStartingBuilding(GameObject structure)
     {
 
 
@@ -135,7 +313,7 @@ public class Build : MonoBehaviour
             if (Physics.Raycast(ray, out hitInfo)) 
             {
                 mobileTouchCamera.lockCamera = true;
-                PlaceBuilding(hitInfo.point, buildSelection);
+                PlaceBuilding(hitInfo.point, structure);
             }
 
             // touch phase began doesn't work here?
@@ -179,7 +357,7 @@ public class Build : MonoBehaviour
 
         ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
-        SetBuilding();
+        SetBuilding(structure);
 
         #endif
     }
@@ -254,7 +432,7 @@ public class Build : MonoBehaviour
             if(Input.touches[0].tapCount == 2)
             {
                 EventManager.TriggerEvent("LumberMillEstablished");
-                FinalizeBuilding(buildSelection);
+                FinalizeBuilding(buildingSelection);
                 mobileTouchCamera.lockCamera = false;
             } 
 
@@ -272,7 +450,7 @@ public class Build : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             EventManager.TriggerEvent("LumberMillEstablished");
-            FinalizeBuilding(buildSelection); // for desktop we finalize building by clicking - we could also tap for the mobile version
+            FinalizeBuilding(buildingSelection); // for desktop we finalize building by clicking - we could also tap for the mobile version
         }
         
         if (Input.GetMouseButtonDown(1)) DestroyBuilding(); // cancel
