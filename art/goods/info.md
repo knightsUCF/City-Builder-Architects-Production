@@ -29,3 +29,8 @@ https://www.freepik.com/free-vector/collection-shopping-icons_811522.htm#page=1&
 Computer Chip
 
 https://www.shutterstock.com/image-vector/cpu-icon-circuit-board-1424111201
+
+
+Computer Chips
+
+https://www.freepik.com/free-vector/modern-cpu-collection-with-flat-design_3271936.htm#page=1&query=computer%20chip&position=18
