@@ -16,6 +16,10 @@ https://www.freepik.com/free-vector/supermarket-shopping-basket-full-healthy-foo
 https://www.freepik.com/free-vector/supermarket-set-with-realistic-food-shelves-shopping-basket-empty-trolley_2868844.htm
 
 
+Shopping Cart 2
+
+https://www.freepik.com/free-vector/collection-shopping-icons_811522.htm#page=1&query=cart&position=39
+
 
 
 
