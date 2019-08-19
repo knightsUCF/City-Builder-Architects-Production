@@ -19,11 +19,11 @@
 ///////////////////////////////////////////////////////////////////
 
 
-# Building Different Structures
+# 1) Building Different Structures
 
 * add code to instantiate another prefab, do this for a few buildings, or for all
 
-# Store Panel
+# 2) Store Panel
 
 * like the code in the Employment Office, bring up a panel when clicked for selling goods
 
@@ -39,7 +39,7 @@
 
 * have some sort of basic supply and demand mechanism
 
-# Placing Workers
+# 3) Placing Workers
 
 * place workers at power plant, they begin generating power, and start leveling up their engineering level
 
@@ -47,9 +47,16 @@
 
 * we would like to be able to click on the building, get the stats on the worker there, their updated level namely
 
-# Further Featres
+# 4) Further Features
 
 * go through GDDs and outline desired game features, such as purchasing land
+
+
+# 5) After Further Featerures are Implemented
+
+* traffic
+
+
 
 
 /////////////////////////////////////////////////////////////////////
