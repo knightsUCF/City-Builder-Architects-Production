@@ -47,3 +47,5 @@ https://medium.com/plapadoo/spawning-game-servers-on-aws-a391ca78e4ee
 They used Fargate to minimize server costs, since server is just booted up when the multiplayer game starts
 
 More in the multiplayer folder
+
+* rotate buildings on build
