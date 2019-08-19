@@ -19,6 +19,42 @@
 ///////////////////////////////////////////////////////////////////
 
 
+# Building Different Structures
+
+* add code to instantiate another prefab, do this for a few buildings, or for all
+
+# Store Panel
+
+* like the code in the Employment Office, bring up a panel when clicked for selling goods
+
+* create an "Art" folder for the png icons of goods off the Internet
+
+* create a simple transparanet panel that gets put over the selected icons, structures
+
+* each panel can have a numerical reference point, if panel 1 is togged, then we are selling bananas, etc
+
+* we will have electronics represented by chips
+
+* the question is whether we want to have separate stores, perhaps a store can sell goods in a range of items, so electronics can't be sold with bananas
+
+* have some sort of basic supply and demand mechanism
+
+# Placing Workers
+
+* place workers at power plant, they begin generating power, and start leveling up their engineering level
+
+* also worker will disapear right outside structure when entering, turn off their parent prefab to inactive, and deselect them so they cannot be moved, when a player exits a worker by clicking on the building's panel functionality, we will activate the worker near the entrance of the building
+
+* we would like to be able to click on the building, get the stats on the worker there, their updated level namely
+
+# Further Featres
+
+* go through GDDs and outline desired game features, such as purchasing land
+
+
+/////////////////////////////////////////////////////////////////////
+
+
 
 
 
