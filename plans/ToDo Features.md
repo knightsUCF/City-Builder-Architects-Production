@@ -51,3 +51,5 @@ More in the multiplayer folder
 * rotate buildings on build
 
 * night cycle, game time (turn night cycle off in features)
+
+* save mode
