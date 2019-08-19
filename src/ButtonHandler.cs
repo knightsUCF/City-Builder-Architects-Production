@@ -14,7 +14,7 @@ public class ButtonHandler : MonoBehaviour
     public AudioClip select;
     AudioSource audio;
 
-    private EventManager events;
+    // private EventManager events;
     private Build build;
 
     // drag in deactivated buttons
@@ -35,9 +35,23 @@ public class ButtonHandler : MonoBehaviour
 
 
 
+    enum BuildingType {
+
+        House,
+        LumberMill,
+        StoneMill
+
+    }
+
+    private BuildingType buildingType;
+
+
+
+
+
     void Awake()
     {
-        events = FindObjectOfType<EventManager>();
+        // events = FindObjectOfType<EventManager>();
         build = FindObjectOfType<Build>();
     }
 
@@ -49,6 +63,163 @@ public class ButtonHandler : MonoBehaviour
     }
 
 
+
+    public void OnHouse1Click()
+    {
+        audio.PlayOneShot(select, volume);
+        // we will want to indicate the type of structure clicked - we will use building type later for this
+        // EventManager.TriggerEvent ("testEvent")
+        EventManager.TriggerEvent("BuildHouse1");
+    }
+
+
+
+    public void OnHouse2Click()
+    {
+        audio.PlayOneShot(select, volume);
+        // we will want to indicate the type of structure clicked - we will use building type later for this
+        // EventManager.TriggerEvent ("testEvent")
+        EventManager.TriggerEvent("BuildHouse2");
+    }
+
+
+
+    public void OnHouse3Click()
+    {
+        audio.PlayOneShot(select, volume);
+        // we will want to indicate the type of structure clicked - we will use building type later for this
+        // EventManager.TriggerEvent ("testEvent")
+        EventManager.TriggerEvent("BuildHouse3");
+    }
+
+
+
+    public void OnTenament1Click()
+    {
+        audio.PlayOneShot(select, volume);
+        // we will want to indicate the type of structure clicked - we will use building type later for this
+        // EventManager.TriggerEvent ("testEvent")
+        EventManager.TriggerEvent("BuildTenament1");
+    }
+
+
+
+    public void OnTenament2Click()
+    {
+        audio.PlayOneShot(select, volume);
+        // we will want to indicate the type of structure clicked - we will use building type later for this
+        // EventManager.TriggerEvent ("testEvent")
+        EventManager.TriggerEvent("BuildTenament2");
+    }
+
+
+
+    public void OnTenament3Click()
+    {
+        audio.PlayOneShot(select, volume);
+        // we will want to indicate the type of structure clicked - we will use building type later for this
+        // EventManager.TriggerEvent ("testEvent")
+        EventManager.TriggerEvent("BuildTenament3");
+    }
+
+
+
+    public void OnStoreClick()
+    {
+        audio.PlayOneShot(select, volume);
+        // we will want to indicate the type of structure clicked - we will use building type later for this
+        // EventManager.TriggerEvent ("testEvent")
+        EventManager.TriggerEvent("BuildStore");
+    }
+
+
+
+    public void OnProductionFacility1Click()
+    {
+        audio.PlayOneShot(select, volume);
+        // we will want to indicate the type of structure clicked - we will use building type later for this
+        // EventManager.TriggerEvent ("testEvent")
+        EventManager.TriggerEvent("BuildProductionFacility1");
+    }
+
+
+
+    public void OnProductionFacility2Click()
+    {
+        audio.PlayOneShot(select, volume);
+        // we will want to indicate the type of structure clicked - we will use building type later for this
+        // EventManager.TriggerEvent ("testEvent")
+        EventManager.TriggerEvent("BuildProductionFacility2");
+    }
+
+
+
+    public void OnFactoryClick()
+    {
+        audio.PlayOneShot(select, volume);
+        // we will want to indicate the type of structure clicked - we will use building type later for this
+        // EventManager.TriggerEvent ("testEvent")
+        EventManager.TriggerEvent("BuildFactory");
+    }
+
+
+
+    public void OnEmploymentOfficeClick()
+    {
+        audio.PlayOneShot(select, volume);
+        // we will want to indicate the type of structure clicked - we will use building type later for this
+        // EventManager.TriggerEvent ("testEvent")
+        EventManager.TriggerEvent("BuildEmploymentOffice");
+    }
+
+
+
+    public void OnOffice1Click()
+    {
+        audio.PlayOneShot(select, volume);
+        // we will want to indicate the type of structure clicked - we will use building type later for this
+        // EventManager.TriggerEvent ("testEvent")
+        EventManager.TriggerEvent("BuildOffice1");
+    }
+
+
+
+    public void OnOffice2Click()
+    {
+        audio.PlayOneShot(select, volume);
+        // we will want to indicate the type of structure clicked - we will use building type later for this
+        // EventManager.TriggerEvent ("testEvent")
+        EventManager.TriggerEvent("BuildOffice2");
+    }
+
+
+
+    public void OnOffice3Click()
+    {
+        audio.PlayOneShot(select, volume);
+        // we will want to indicate the type of structure clicked - we will use building type later for this
+        // EventManager.TriggerEvent ("testEvent")
+        EventManager.TriggerEvent("BuildOffice3");
+    }
+
+
+
+    public void OnOffice4Click()
+    {
+        audio.PlayOneShot(select, volume);
+        // we will want to indicate the type of structure clicked - we will use building type later for this
+        // EventManager.TriggerEvent ("testEvent")
+        EventManager.TriggerEvent("BuildOffice4");
+    }
+
+
+    
+
+
+
+
+
+    /*
 
     public void OnBuildClick()
     {
@@ -175,6 +346,8 @@ public class ButtonHandler : MonoBehaviour
         
         
     }
+
+    */
 
 
 
