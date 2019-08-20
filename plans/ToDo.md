@@ -83,7 +83,7 @@
 
 
 
-# 1) Finish implement all desired game features
+# 1) Finish implementing all desired game features
 
 # 2) Fine tune enemy AI combat in the realm of these features
 
