@@ -48,7 +48,7 @@
 * we would like to be able to click on the building, get the stats on the worker there, their updated level namely
 
 
-# 3.3) Before moving on to further features
+# 3.1) Before moving on to further features
 
 * generate more workers
 
