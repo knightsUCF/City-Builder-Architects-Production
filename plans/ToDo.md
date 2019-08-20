@@ -14,6 +14,8 @@ Implementing building times and token spending will add a lot to the gameplay. S
 
 * the power is consumed every game time, perhaps if we have extra power we can sell that power back, adds another layer of specialization strategy and replayability
 
+* we could randomize some of the house colors as they are set down for variety, so have a random method which chooses the houses wall colors, the color of the roof tiles, and etc
+
 
 * add the rest of the buildings in the build panel, get building working
 
