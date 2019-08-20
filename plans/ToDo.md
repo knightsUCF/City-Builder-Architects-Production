@@ -10,6 +10,9 @@ Implementing building times and token spending will add a lot to the gameplay. S
 
 <br>
 
+<br>
+
+* the power is consumed every game time, perhaps if we have extra power we can sell that power back, adds another layer of specialization strategy and replayability
 
 
 * add the rest of the buildings in the build panel, get building working
