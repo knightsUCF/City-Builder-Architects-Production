@@ -75,7 +75,24 @@
 /////////////////////////////////////////////////////////////////////
 
 
+# End of Phase 1
 
+
+
+# Phase 2
+
+
+
+# 1) Finish implement all desired game features
+
+# 2) Fine tune enemy AI combat in the realm of these features
+
+
+
+# Phase 3
+
+
+# 1) Implement multiplayer
 
 
 
