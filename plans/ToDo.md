@@ -62,6 +62,8 @@
 
 * we also want the feature to leave the factory and get our worker back, now with their updated stats
 
+* by having the overlay info panel on the goods produced, we can quickly educate the player as to what those icons are, so if they hover the shopping cart, they will get an info graphic which mentions that this is "Food", and the other is "Electronics" and etc
+
 # 4) Further Features
 
 * go through GDDs and outline desired game features, such as purchasing land
