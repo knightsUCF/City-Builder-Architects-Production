@@ -68,6 +68,18 @@
 
 * go through GDDs and outline desired game features, such as purchasing land
 
+* building commercially zoned buildings, including tenamaents, requires concrete, these can be built in squares, under the platforms building tab, which will also include roads, houses don't need a concerte area foundation
+
+* we start off with just being able to build a few houses, roads, and maybe a store, houses require being connected to a road, like almost everything else
+
+* we also build an employment office as one of the early structures, this requires a concrete slab
+
+* building houses, generates us early game income, this income is generated every few game turns, whenever the monthly time comes for the residence to pay up, perhaps we can have a day counter, to show until when we get paid this could be in the info pie chart bar on the left, on the bottom, just have a simple day 1, when day 1 reaches 30 we get paid, or perhaps instead we could have a bar, which represents the time until we get paid
+
+* we want to get to a gameplay state early on where we can maximize the efficiency of our workers
+
+
+
 
 # 5) After Further Featerures are Implemented
 
