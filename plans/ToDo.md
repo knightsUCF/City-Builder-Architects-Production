@@ -41,6 +41,8 @@ Go through all the features, and then rank them into a ToDo list.
 
 * create a separate building menu for roads, this can be as simple as a tabbed divider for now, so we can selec the platforms tab, or the buildings tab
 
+* implement strict token rules for building, along with waiting build times for construction, also create a "cheat mode" which we can toggle with a key, perhaps show this with a circle in the corner of the screen that we enabled the cheat mode, we could also implement the cheat mode by giving us a large amount of starting resources for testing, the only other limitation for now is the build times, so have a toggle cheat mode, to get past those faster for testing
+
 
 <br>
 
