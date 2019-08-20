@@ -4,6 +4,8 @@ The goal is to just move down the list through all the features, and not to get 
 
 Once all the basic core features are implemented we can polish.
 
+Get through all the features that can be implemented. Anything can be polished further.
+
 <br>
 
 
