@@ -27,7 +27,11 @@ Go through all the features, and then rank them into a ToDo list.
 
 * manage the evolution and lives of multiple workers
 
-* create 3 point lighting, dim cameras for night mode, like in the asset store demo 
+* create 3 point lighting, dim cameras for night mode, like in the asset store demo
+
+* make the selection marker smaller, and maybe a circle
+
+* create a deselection option
 
 
 <br>
