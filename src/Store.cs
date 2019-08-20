@@ -19,13 +19,22 @@ public class Store : MonoBehaviour
     bool panelToggle = false;
 
 
-    enum Product {
+    public enum Product {
         Food,
         Apparel,
         Electronics
     }
 
-    private Product product;
+    public Product product;
+
+    Market market;
+
+
+
+    void Awake()
+    {
+        market = FindObjectOfType<Market>();
+    }
 
 
 
@@ -49,7 +58,7 @@ public class Store : MonoBehaviour
     public void OnSelectFoodSales()
     {
         product = Product.Food;
-        UpdateMarket();
+        market.UpdateMarket();
         TogglePanel();
     }
 
@@ -58,7 +67,7 @@ public class Store : MonoBehaviour
     public void OnSelectApparelSales()
     {
         product = Product.Apparel;
-        UpdateMarket();
+        market.UpdateMarket();
         TogglePanel();
     }
 
@@ -67,30 +76,14 @@ public class Store : MonoBehaviour
     public void OnSelectElectronicsSales()
     {
         product = Product.Electronics;
-        UpdateMarket();
+        market.UpdateMarket();
         TogglePanel();
     }
 
 
 
 
-    void UpdateMarket()
-    {
-        switch (product)
-        {
-            case Product.Food:
-                Market.foodProductionStructure += 1;
-                break;
-
-            case Product.Apparel:
-                Market.apparelProductionStructure += 1;
-                break;
-
-            case Product.Electronics:
-                Market.electronicsProductionStructure += 1;
-                break;
-        }
-    }
+    
 
 
 }
