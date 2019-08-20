@@ -59,3 +59,5 @@ More in the multiplayer folder
 * create some sort of status selection indicator on the store, so we know what the production of the store is, perhaps a hover over panel, will show if any workers are there, and what sort of production
 
 * do some sort of visual indicator when we click on a building and place a worker there
+
+* we want to move the camera when the mouse crosses the border of the screen
