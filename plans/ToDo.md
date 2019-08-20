@@ -1,3 +1,13 @@
+# The Goal
+
+The goal is to just move down the list through all the features, and not to get stuck on any one thing.
+
+Once all the basic core features are implemented we can polish.
+
+<br>
+
+
+
 * add the rest of the buildings in the build panel, get building working
 
 * set them against a dark background and then simply take a screenshot png for now, use an on screen center market to get the consistent angle
