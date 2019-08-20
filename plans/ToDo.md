@@ -12,7 +12,7 @@ Get through all the features that can be implemented. Anything can be polished f
 
 # Next Steps
 
-Go through all the features, and then rank them into a ToDo list.
+Go through all the features, and then rank them into a ToDo list. Use Trello to arrange in order of priority.
 
 <br>
 
