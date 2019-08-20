@@ -12,9 +12,9 @@ public class Market : MonoBehaviour
     public GameObject[] stores;
 
 
-    int totalFoodStores = 0;
-    int totalApparelStores = 0;
-    int totalElectronicsStores = 0;
+    public int totalFoodStores = 0;
+    public int totalApparelStores = 0;
+    public int totalElectronicsStores = 0;
 
 
 
