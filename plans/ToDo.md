@@ -18,6 +18,20 @@ Go through all the features, and then rank them into a ToDo list.
 
 <br>
 
+
+# Features
+
+* purchase parcels of land (that way the player has to start building in one area, instead of all over the place
+
+* zone parcels of land when purchasing them, show parces of land in highlighted outline, when we click on the object, show the outline, not sure if this should be accessible from every click, or from a menu
+
+* manage the evolution and lives of multiple workers
+
+
+<br>
+
+<br> 
+
 Implementing building times and token spending will add a lot to the gameplay. So we build a few houses, and we wait for them to complete, we build roads, wait for them to complete, receive our income from the houses, etc, this is a large component of gameplay. Perhaps workers should not build things in the beginning to speed things up. Let's focus first on placing workers at building structure, then save building for last since this will be most complicated.
 
 We also want to upgrade factories, and buildings for extending gameplay. So a factory has the ability to be upgraded to a level 2 factory, even if we don't have a visual confirmation at this point. Upgrading the factory to level 2 extends the power productions by 25% percent. Upgrading the factory to level 3, which could be a final level, increases factory production by another 25% percent, and perhaps increases worker occupancy, so the workers can get paid.
