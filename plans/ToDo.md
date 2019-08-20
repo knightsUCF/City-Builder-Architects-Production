@@ -47,6 +47,19 @@
 
 * we would like to be able to click on the building, get the stats on the worker there, their updated level namely
 
+
+# 3.3) Before moving on to further features
+
+* generate more workers
+
+* have them level up separately at different structures
+
+* allow placing a worker at a store, and level up their commerce skill
+
+* create a hover over icon over the pie charts for detailed numbers
+
+* create a hover over panel over the factory and store to view which workers are there (maybe just one worker for now), and check out their worker level, and whether there is a worker there, need a panel with a worker icon, and worker level, also show the worker's name, for this we need to figure out how to grab the worker reference and attach that to the factory, perhaps we can simply do this with GameObject worker = invisible worker
+
 # 4) Further Features
 
 * go through GDDs and outline desired game features, such as purchasing land
