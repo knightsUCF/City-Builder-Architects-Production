@@ -6,6 +6,8 @@ Once all the basic core features are implemented we can polish.
 
 Get through all the features that can be implemented. Anything can be polished further.
 
+Implementing building times and token spending will add a lot to the gameplay. So we build a few houses, and we wait for them to complete, we build roads, wait for them to complete, receive our income from the houses, etc, this is a large component of gameplay.
+
 <br>
 
 
