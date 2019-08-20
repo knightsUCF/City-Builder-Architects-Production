@@ -25,3 +25,7 @@
 * For some reason the worker keeps walking instead of stopping at idle, after we deliver the wood and then turn back at the lumber mill
 
 * All AI workers drop off wood together, the first drop off accesses the wood harvest ai component on all workers, and then clears out those values, so we should only access the components on the individual workers
+
+* when workers are placed into a building, they leave behind their selector
+
+* we want to adjust the level on the worker when they are leveling up, maybe we just need some sort of reference
