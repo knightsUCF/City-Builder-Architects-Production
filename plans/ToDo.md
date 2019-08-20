@@ -16,6 +16,12 @@ Implementing building times and token spending will add a lot to the gameplay. S
 
 * we could randomize some of the house colors as they are set down for variety, so have a random method which chooses the houses wall colors, the color of the roof tiles, and etc
 
+* adding smoke to the factories will spice things up
+
+* also adding clouds and birds, and rain, and night mode
+
+* perhaps add grass when we zoom in
+
 
 * add the rest of the buildings in the build panel, get building working
 
