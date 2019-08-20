@@ -29,7 +29,7 @@ public class EmploymentOfficeAI : MonoBehaviour
     public GameObject worker;
     public Vector3 workerStartPos = new Vector3(0.0f, 4.0f, 0.0f); // change to nearby of employment office
 
-    EventManager eventManager;
+    // EventManager eventManager; old legacy
     
     // public GameObject hireWorkerPanel;
     // public Text confirmHireWorker;
@@ -89,7 +89,7 @@ public class EmploymentOfficeAI : MonoBehaviour
 
     void Awake()
     {
-        eventManager = FindObjectOfType<EventManager>();
+        EventManager.TriggerEvent("EmploymentOfficeBuilt");
     }
 
 
@@ -116,12 +116,6 @@ public class EmploymentOfficeAI : MonoBehaviour
     */
 
 
-
-    void Start()
-    {
-        Debug.Log("New employment office generated!");
-        eventManager.EventEmploymentOfficeFinishedBuilding();
-    }
 
 
     
