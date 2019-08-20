@@ -33,3 +33,5 @@
 * sometimes the worker gets blocked and doesn't keep moving to the selected destination, to fix this observe the vector3 of the destination
 
 * failed to compute ray on camera -- if this somehow happens we should have a fail safe method to set the camera back to the nearest edge, or limit the camera movement outside of this to prevent crashing the game
+
+* turn off all selected panels when clicking on a store building, because if we click on multiple ones we will have problems closing them
