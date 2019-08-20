@@ -101,7 +101,7 @@ public class AI : MonoBehaviour
         // well we will always check if we can build there, by checking if there are any objects present
         // if there is some unknown problem we can simply randomize another location and try building there
 
-        Debug.Log("Worked arrived!");
+        // Debug.Log("Worked arrived!");
         Vector3 buildLocation = new Vector3(this.transform.position.x + 35, this.transform.position.y, this.transform.position.z + 4);
         // Build(employmentOffice, buildLocation);
 
@@ -248,7 +248,6 @@ public class AI : MonoBehaviour
 
     void ReachedEmploymentOfficeBuildSpotEvent()
     {
-        Debug.Log("ReachedEmploymentOfficeBuildSpotEvent() called");
         Build(employmentOfficePrefab, employmentOfficeBuildSpotPos);
         aiLog.LogText("built employment office"); // might have to move over to event once wait time is introduced
     }
