@@ -9,6 +9,7 @@ public class Tokens : MonoBehaviour
 {
     public Text money;
     public Text wood;
+    public Text energy;
 
 
 
@@ -16,6 +17,7 @@ public class Tokens : MonoBehaviour
     {
         money.text = Data.money.ToString();
         wood.text = Data.wood.ToString();
+        energy.text = Data.energy.ToString();
     }
 
 
@@ -25,6 +27,11 @@ public class Tokens : MonoBehaviour
     }
 
 
+
+    public void UpdateEnergy()
+    {
+        energy.text = Data.energy.ToString();
+    }
 
 
     
