@@ -31,3 +31,5 @@
 * we want to adjust the level on the worker when they are leveling up, maybe we just need some sort of reference
 
 * sometimes the worker gets blocked and doesn't keep moving to the selected destination, to fix this observe the vector3 of the destination
+
+* failed to compute ray on camera -- if this somehow happens we should have a fail safe method to set the camera back to the nearest edge, or limit the camera movement outside of this to prevent crashing the game
