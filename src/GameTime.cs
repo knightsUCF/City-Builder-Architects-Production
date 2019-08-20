@@ -15,6 +15,15 @@ public class GameTime : MonoBehaviour
 
     float delta;
 
+    PieCharts pieCharts;
+
+
+
+    void Awake()
+    {
+        pieCharts = FindObjectOfType<PieCharts>();
+    }
+
 
 
     void Start()
@@ -40,6 +49,11 @@ public class GameTime : MonoBehaviour
 
    void DoTurnActions()
    {
+
+       
+       pieCharts.Set();
+
+
        // Payout.OnResourceCycleCompletion();
 
 
