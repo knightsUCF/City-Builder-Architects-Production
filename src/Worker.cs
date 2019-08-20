@@ -78,7 +78,7 @@ public class Worker : MonoBehaviour
 
         state = State.Idle;
 
-        CreateWorker(); // ?
+        CreateWorker();
     }
 
 
