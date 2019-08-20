@@ -60,6 +60,8 @@
 
 * create a hover over panel over the factory and store to view which workers are there (maybe just one worker for now), and check out their worker level, and whether there is a worker there, need a panel with a worker icon, and worker level, also show the worker's name, for this we need to figure out how to grab the worker reference and attach that to the factory, perhaps we can simply do this with GameObject worker = invisible worker
 
+* we also want the feature to leave the factory and get our worker back, now with their updated stats
+
 # 4) Further Features
 
 * go through GDDs and outline desired game features, such as purchasing land
