@@ -30,4 +30,4 @@
 
 * we want to adjust the level on the worker when they are leveling up, maybe we just need some sort of reference
 
-* sometimes the worker gets blocked and doesn't keep moving to the selected destination
+* sometimes the worker gets blocked and doesn't keep moving to the selected destination, to fix this observe the vector3 of the destination
