@@ -6,6 +6,18 @@ Once all the basic core features are implemented we can polish.
 
 Get through all the features that can be implemented. Anything can be polished further.
 
+<br>
+
+<br>
+
+# Next Steps
+
+Go through all the features, and then rank them into a ToDo list.
+
+<br>
+
+<br>
+
 Implementing building times and token spending will add a lot to the gameplay. So we build a few houses, and we wait for them to complete, we build roads, wait for them to complete, receive our income from the houses, etc, this is a large component of gameplay. Perhaps workers should not build things in the beginning to speed things up. Let's focus first on placing workers at building structure, then save building for last since this will be most complicated.
 
 We also want to upgrade factories, and buildings for extending gameplay. So a factory has the ability to be upgraded to a level 2 factory, even if we don't have a visual confirmation at this point. Upgrading the factory to level 2 extends the power productions by 25% percent. Upgrading the factory to level 3, which could be a final level, increases factory production by another 25% percent, and perhaps increases worker occupancy, so the workers can get paid.
@@ -23,6 +35,8 @@ We also want to upgrade factories, and buildings for extending gameplay. So a fa
 * also adding clouds and birds, and rain, and night mode
 
 * perhaps add grass when we zoom in
+
+* adding building colliders for placement of structures is an important easy feature, we don't want to build on top of other buildings, and we will require a building collider for the placement of concrete
 
 
 * add the rest of the buildings in the build panel, get building working
