@@ -33,6 +33,14 @@ Go through all the features, and then rank them into a ToDo list.
 
 * create a deselection option
 
+* proximity bonus is a big one, this is what Islanders, and Suburbia are entire made out of, implement this early, study those games how they implement the proximity bonus
+
+* create a fake road tile laying down mechanism, so we can start to implement building only around roads for the required proximity requirements
+
+* create laying down slabs, which will also be part of the building menu
+
+* create a separate building menu for roads, this can be as simple as a tabbed divider for now, so we can selec the platforms tab, or the buildings tab
+
 
 <br>
 
