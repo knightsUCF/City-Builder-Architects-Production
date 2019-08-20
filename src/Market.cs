@@ -20,26 +20,31 @@ public class Market : MonoBehaviour
 
     public void UpdateMarket()
     {
-        
+
+        totalFoodStores = 0;
+        totalApparelStores = 0;
+        totalElectronicsStores = 0;
+
+
         stores = GameObject.FindGameObjectsWithTag("Store");
 
         foreach (GameObject store in stores)
         {
             if (store.GetComponent<Store>().product == Store.Product.Food)
             {
-                // totalFoodStores += 1;
+                totalFoodStores += 1;
                 Debug.Log("Incrementing food production!");
             }
 
             if (store.GetComponent<Store>().product == Store.Product.Apparel)
             {
-                // totalFoodStores += 1;
+                totalApparelStores += 1;
                 Debug.Log("Incrementing apparel production!");
             }
 
             if (store.GetComponent<Store>().product == Store.Product.Electronics)
             {
-                // totalFoodStores += 1;
+                totalElectronicsStores += 1;
                 Debug.Log("Incrementing electronics production!");
             }
         }
