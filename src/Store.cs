@@ -5,14 +5,27 @@ using UnityEngine;
 
 
 
+// even though the player might switch their production structures they are just paid out during the game time turn
+
+
+
+
+
 public class Store : MonoBehaviour
 {
 
     public GameObject panel;
 
-    bool panelToggle = true;
+    bool panelToggle = false;
 
-    int salesType = -1; // 1 - food, 2 - apparel, 3 - electronics
+
+    enum Product {
+        Food,
+        Apparel,
+        Electronics
+    }
+
+    private Product product;
 
 
 
@@ -31,23 +44,52 @@ public class Store : MonoBehaviour
 
 
 
+    // drag these into the buttons
+
     public void OnSelectFoodSales()
     {
-        salesType = 1;
+        product = Product.Food;
+        UpdateMarket();
+        TogglePanel();
     }
 
 
 
     public void OnSelectApparelSales()
     {
-        salesType = 2;
+        product = Product.Apparel;
+        UpdateMarket();
+        TogglePanel();
     }
 
 
 
     public void OnSelectElectronicsSales()
     {
-        salesType = 3;
+        product = Product.Electronics;
+        UpdateMarket();
+        TogglePanel();
+    }
+
+
+
+
+    void UpdateMarket()
+    {
+        switch (product)
+        {
+            case Product.Food:
+                Market.foodProductionStructure += 1;
+                break;
+
+            case Product.Apparel:
+                Market.apparelProductionStructure += 1;
+                break;
+
+            case Product.Electronics:
+                Market.electronicsProductionStructure += 1;
+                break;
+        }
     }
 
 
