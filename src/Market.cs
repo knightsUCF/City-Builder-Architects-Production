@@ -33,24 +33,19 @@ public class Market : MonoBehaviour
             if (store.GetComponent<Store>().product == Store.Product.Food)
             {
                 totalFoodStores += 1;
-                Debug.Log("Incrementing food production!");
             }
 
             if (store.GetComponent<Store>().product == Store.Product.Apparel)
             {
                 totalApparelStores += 1;
-                Debug.Log("Incrementing apparel production!");
             }
 
             if (store.GetComponent<Store>().product == Store.Product.Electronics)
             {
                 totalElectronicsStores += 1;
-                Debug.Log("Incrementing electronics production!");
             }
         }
     }
-
-
 }
 
 
