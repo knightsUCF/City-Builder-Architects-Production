@@ -61,7 +61,6 @@ public class GameTime : MonoBehaviour
 
     void DoMonthTurnActions()
     {
-        Debug.Log("A month has passed");
         payOut.UpdateRent();
     }
 
