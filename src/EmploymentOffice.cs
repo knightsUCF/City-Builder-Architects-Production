@@ -27,7 +27,8 @@ public class EmploymentOffice : MonoBehaviour
 {
 
     public GameObject worker;
-    public Vector3 workerStartPos = new Vector3(0.0f, 4.0f, 0.0f);
+    public Vector3 employmentOfficePos;
+    public Vector3 workerStartPos;
 
     public GameObject hireWorkerPanel;
     public Text confirmHireWorker;
@@ -38,6 +39,24 @@ public class EmploymentOffice : MonoBehaviour
     bool panelToggle = true;
 
     int balance;
+
+    MouseManager mm;
+
+
+
+    void Awake()
+    {
+        // super hacky fix for mouse manager null reference exception
+        mm = FindObjectOfType<MouseManager>();
+    }
+
+
+
+    void Start()
+    {
+        employmentOfficePos = gameObject.transform.position;
+        workerStartPos = new Vector3(employmentOfficePos.x - 20.0f, employmentOfficePos.y, employmentOfficePos.z - 5.0f);
+    }
 
 
 
@@ -65,7 +84,7 @@ public class EmploymentOffice : MonoBehaviour
     void Pay()
     {
         balance = Data.money -= Data.hireWorkerCost;
-        money.text = balance.ToString();
+        // money.text = balance.ToString(); // giving us some prefab problems, perhaps search for the money element by name
     }
 
 
@@ -73,6 +92,8 @@ public class EmploymentOffice : MonoBehaviour
     void CreateNewWorker()
     {
         GameObject workerGO = (GameObject)Instantiate(worker, workerStartPos, Quaternion.identity, this.transform);
+        // super hacky fix:
+        mm.workersPresent = true;
     }
 
 
