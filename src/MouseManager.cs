@@ -35,6 +35,8 @@ public class MouseManager : MonoBehaviour
 
     Touch touch;
 
+    public bool workersPresent; // hacky fix -- we get a null reference exception if we don't have a worker selected
+
 
 
     void Awake()
@@ -69,11 +71,13 @@ public class MouseManager : MonoBehaviour
     }
 
 
-
+    
     void CheckObjectByTag()
     {
         
-        if (selectedObject == null) return; 
+        if (!workersPresent && selectedObject == null) return;
+        // not sure how to fix this, when we select before the worker is generated we get the null exception
+        // when we don't have a worker on the board, then we fix the null selected error, but then we can't individually select workers?
 
         if (selectedObject != null)
         {
