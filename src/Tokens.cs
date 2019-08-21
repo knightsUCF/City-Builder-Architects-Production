@@ -7,30 +7,44 @@ using UnityEngine.UI;
 
 public class Tokens : MonoBehaviour
 {
-    public Text money;
-    public Text wood;
-    public Text energy;
+
+
+    public int money = 10000;
+    public int energy = 0;
+
+
+
+    public Text moneyText;
+    public Text woodText;
+    public Text energyText;
 
 
 
     void Start()
     {
-        money.text = Data.money.ToString();
-        wood.text = Data.wood.ToString();
-        energy.text = Data.energy.ToString();
+        moneyText.text = money.ToString();
+        woodText.text = Data.wood.ToString();
+        energyText.text = Data.energy.ToString();
     }
 
 
     public void UpdateWood()
     {
-        wood.text = Data.wood.ToString();
+        woodText.text = Data.wood.ToString(); // needs to be rewritten = wood.ToString() // allow this script to handle data
     }
 
 
 
     public void UpdateEnergy()
     {
-        energy.text = Data.energy.ToString();
+        energyText.text = Data.energy.ToString(); // needs to be rewritten = energy.ToString() // allow this script to handle data
+    }
+
+
+
+    public void UpdateMoney()
+    {
+        moneyText.text = money.ToString();
     }
 
 
