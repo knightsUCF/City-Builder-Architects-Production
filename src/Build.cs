@@ -45,7 +45,7 @@ public class Build : MonoBehaviour
     Vector3 closestVector;
     RaycastHit hitInfo;
 
-
+    Costs costs;
     BitBenderGames.MobileTouchCamera mobileTouchCamera;
 
 
@@ -85,6 +85,7 @@ public class Build : MonoBehaviour
     {
         // BitBenderGames
         mobileTouchCamera = FindObjectOfType<BitBenderGames.MobileTouchCamera>();
+        costs = FindObjectOfType<Costs>();
     }
 
 
@@ -146,33 +147,36 @@ public class Build : MonoBehaviour
 
     void BuildHouse1Event()
     {
-        // Debug.Log ("Build house event called!");
-        
-        start = true;
-        buildingSelection = house1; 
-        PlaceStartingBuilding(house1);        
+        if (costs.House1()) // have this return a build to check if we can build, if this returns false, have the buildCosts do the alerting that we don't have enough funds
+        {
+            start = true;
+            buildingSelection = house1; 
+            PlaceStartingBuilding(house1);
+        }        
     }
 
 
 
     void BuildHouse2Event()
     {
-        // Debug.Log ("Build house event called!");
-        
-        start = true;
-        buildingSelection = house2;
-        PlaceStartingBuilding(house2);
-
+        if (costs.House2())
+        {
+            start = true;
+            buildingSelection = house2;
+            PlaceStartingBuilding(house2);
+        }
     }
+
 
 
     void BuildHouse3Event()
     {
-        // Debug.Log ("Build house event called!");
-        
-        start = true;
-        buildingSelection = house3;
-        PlaceStartingBuilding(house3);        
+        if (costs.House3())
+        {
+            start = true;
+            buildingSelection = house3;
+            PlaceStartingBuilding(house3); 
+        }   
     }
 
 
