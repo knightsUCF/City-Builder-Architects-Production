@@ -72,6 +72,9 @@ public class MouseManager : MonoBehaviour
 
     void CheckObjectByTag()
     {
+        
+        if (selectedObject == null) return; 
+
         if (selectedObject != null)
         {
             previouslySelected = selectedObject;
