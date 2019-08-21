@@ -108,6 +108,14 @@ public class MouseManager : MonoBehaviour
             EventManager.TriggerEvent ("SetTreeResourcePos");
             
         }
+
+
+        if (hitInfo.transform.gameObject.tag == null) return; // does this fix the null problem?
+
+        
+        // what if we put this last, so we can catch the necessary stuff like the workers
+
+        if (selectedObject == null) return;
     }
 
 
