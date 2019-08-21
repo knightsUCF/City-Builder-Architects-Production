@@ -43,6 +43,18 @@ Go through all the features, and then rank them into a ToDo list. Use Trello to 
 
 * implement strict token rules for building, along with waiting build times for construction, also create a "cheat mode" which we can toggle with a key, perhaps show this with a circle in the corner of the screen that we enabled the cheat mode, we could also implement the cheat mode by giving us a large amount of starting resources for testing, the only other limitation for now is the build times, so have a toggle cheat mode, to get past those faster for testing
 
+* collect items of types or class to solve something, or complete a collection
+
+* social influence for workers, we could pay social influence for something or lose some of that resource
+
+* social influence would have positive benefits for workers
+
+* special powers for workers are unlocked when they reach a certain level
+
+* have a more precise better zoom for the workers
+
+
+
 
 <br>
 
