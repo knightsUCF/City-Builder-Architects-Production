@@ -7,6 +7,8 @@ using UnityEngine.UI;
 
 
 
+// mouse over does not work with GUI elements
+
 
 public class Tooltip : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
@@ -15,7 +17,7 @@ public class Tooltip : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     public Text text;
 
     
-    
+
     public void OnPointerEnter(PointerEventData eventData)
     {
         panel.SetActive(true);
