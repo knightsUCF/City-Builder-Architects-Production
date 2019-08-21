@@ -41,6 +41,7 @@ public class EmploymentOffice : MonoBehaviour
     int balance;
 
     MouseManager mm;
+    Costs costs;
 
 
 
@@ -48,6 +49,7 @@ public class EmploymentOffice : MonoBehaviour
     {
         // super hacky fix for mouse manager null reference exception
         mm = FindObjectOfType<MouseManager>();
+        costs = FindObjectOfType<Costs>();
     }
 
 
@@ -91,9 +93,12 @@ public class EmploymentOffice : MonoBehaviour
 
     void CreateNewWorker()
     {
-        GameObject workerGO = (GameObject)Instantiate(worker, workerStartPos, Quaternion.identity, this.transform);
-        // super hacky fix:
-        mm.workersPresent = true;
+        if (costs.Worker()) // have this return a build to check if we can build, if this returns false, have the buildCosts do the alerting that we don't have enough funds
+        {
+            GameObject workerGO = (GameObject)Instantiate(worker, workerStartPos, Quaternion.identity, this.transform);
+            // super hacky fix:
+            mm.workersPresent = true;
+        }
     }
 
 
