@@ -27,6 +27,10 @@ public class Costs : MonoBehaviour
 
 
     int workerCost = 100;
+    int house1Cost = 100;
+    int house2Cost = 200;
+    int house3Cost = 300;
+
 
 
     void Awake()
@@ -35,17 +39,20 @@ public class Costs : MonoBehaviour
     }
 
 
-    void Start()
+
+    void ShowInsufficientFundsPanel()
     {
-        GetTotalMoney();
+        insufficientFundsPanel.SetActive(true);
+        Invoke("HideInsufficientFundsPanel", 1);
     }
 
 
 
-    void GetTotalMoney()
+    void HideInsufficientFundsPanel()
     {
-        Debug.Log(tokens.money);
+        insufficientFundsPanel.SetActive(false);
     }
+
 
 
     // return bool, this way any script can check if we have sufficient funds
@@ -66,17 +73,62 @@ public class Costs : MonoBehaviour
         }
     }
 
+
+
+    public bool House1()
+    {
+        if (tokens.money >= house1Cost)
+        {
+            tokens.money -= house1Cost;
+            tokens.UpdateMoney();
+            return true;   
+        }
+
+        else
+        {
+            ShowInsufficientFundsPanel();
+            return false;
+        }
+    }
+
+
+
+    public bool House2()
+    {
+        if (tokens.money >= house2Cost)
+        {
+            tokens.money -= house2Cost;
+            tokens.UpdateMoney();
+            return true;   
+        }
+
+        else
+        {
+            ShowInsufficientFundsPanel();
+            return false;
+        }
+    }
+
+
+
+    public bool House3()
+    {
+        if (tokens.money >= house3Cost)
+        {
+            tokens.money -= house3Cost;
+            tokens.UpdateMoney();
+            return true;   
+        }
+
+        else
+        {
+            ShowInsufficientFundsPanel();
+            return false;
+        }
+    }
+
+
+
     
-    void ShowInsufficientFundsPanel()
-    {
-        insufficientFundsPanel.SetActive(true);
-        Invoke("HideInsufficientFundsPanel", 1);
-    }
-
-
-    void HideInsufficientFundsPanel()
-    {
-        insufficientFundsPanel.SetActive(false);
-    }
-
+    
 }
