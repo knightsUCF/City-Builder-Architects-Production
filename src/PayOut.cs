@@ -9,6 +9,14 @@ public class PayOut : MonoBehaviour
 {
 
     public GameObject[] factories;
+    public GameObject[] houses1;
+    public GameObject[] houses2;
+    public GameObject[] houses3;
+
+
+    public int house1rent = 100;
+    public int house2rent = 200;
+    public int house3rent = 300;
 
 
     Tokens tokens;
@@ -16,6 +24,31 @@ public class PayOut : MonoBehaviour
     void Awake()
     {
         tokens = FindObjectOfType<Tokens>();
+    }
+
+
+    public void UpdateRent()
+    {
+        houses1 = GameObject.FindGameObjectsWithTag("House1");
+        houses2 = GameObject.FindGameObjectsWithTag("House2");
+        houses3 = GameObject.FindGameObjectsWithTag("House3");
+
+        foreach (GameObject house1 in houses1)
+        {
+            tokens.money += house1rent;
+        }
+
+        foreach (GameObject house2 in houses2)
+        {
+            tokens.money += house2rent;
+        }
+
+        foreach (GameObject house3 in houses3)
+        {
+            tokens.money += house3rent;
+        }
+
+        tokens.UpdateMoney();
     }
 
 
