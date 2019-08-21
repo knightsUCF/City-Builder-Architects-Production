@@ -19,6 +19,9 @@ public class GameTime : MonoBehaviour
     PayOut payOut;
 
 
+    int dayCounter = 0;
+
+
 
     void Awake()
     {
@@ -44,7 +47,22 @@ public class GameTime : MonoBehaviour
         {
             DoTurnActions();
             currentTimeOfDay = 0;
+            dayCounter += 1;
         }
+
+        if (dayCounter > 3)
+        {
+            DoMonthTurnActions();
+            dayCounter = 0;
+        }
+
+    }
+
+
+    void DoMonthTurnActions()
+    {
+        Debug.Log("A month has passed");
+        payOut.UpdateRent();
     }
 
 
