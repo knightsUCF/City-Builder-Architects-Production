@@ -41,6 +41,10 @@ public class PayOut : MonoBehaviour
 
                 factory.GetComponent<Factory>().workerEngineeringLevel += 1;
 
+                // this also might be messy, but this is how we will update the workers levels in realtime
+
+                factory.GetComponent<Factory>().UpdateLevel();
+
 
             }
         }
