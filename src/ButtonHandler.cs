@@ -213,6 +213,49 @@ public class ButtonHandler : MonoBehaviour
     }
 
 
+
+    // R O A D S ///////////////////////////////////////////////////////////////////////////////////////////////
+
+
+    public void OnRoadShortClick()
+    {
+        audio.PlayOneShot(select, volume);
+        EventManager.TriggerEvent("BuildRoadShort");
+    }
+
+
+
+    public void OnRoadLongClick()
+    {
+        audio.PlayOneShot(select, volume);
+        EventManager.TriggerEvent("BuildRoadLong");
+    }
+
+
+
+    public void OnRoadIntersectionClick()
+    {
+        audio.PlayOneShot(select, volume);
+        EventManager.TriggerEvent("BuildRoadIntersection");
+    }
+
+
+
+    public void OnRoadCurveClick()
+    {
+        audio.PlayOneShot(select, volume);
+        EventManager.TriggerEvent("BuildRoadCurve");
+    }
+
+
+
+    public void OnRoad3WayClick()
+    {
+        audio.PlayOneShot(select, volume);
+        EventManager.TriggerEvent("BuildRoad3Way");
+    }
+
+
     
 
 
