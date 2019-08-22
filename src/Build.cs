@@ -46,6 +46,7 @@ public class Build : MonoBehaviour
     RaycastHit hitInfo;
 
     Costs costs;
+    BuildingRequirements buildingRequirements;
     BitBenderGames.MobileTouchCamera mobileTouchCamera;
 
 
@@ -63,6 +64,11 @@ public class Build : MonoBehaviour
     // so for now let's just build one structure, and then add building types
 
     public bool allowBuild = false;
+
+
+    // temporary ?
+
+    public bool start = false;
 
 
 
@@ -139,9 +145,7 @@ public class Build : MonoBehaviour
 
 
 
-    // temporary
-
-    bool start = false;
+    
 
     // this is a lumber mill for now, will need a separate method
 
@@ -402,6 +406,7 @@ public class Build : MonoBehaviour
     {
         var finalPosition = GetNearestPointOnGrid(clickPoint);
         GO = Instantiate(gameObject, finalPosition, Quaternion.identity, this.transform);
+        buildingRequirements = GO.GetComponent<BuildingRequirements>(); 
         return (Vector2)finalPosition;
     }
 
@@ -451,9 +456,9 @@ public class Build : MonoBehaviour
         ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         MoveBuildingToDragPoint();
         
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && buildingRequirements.canBuild)
         {
-            EventManager.TriggerEvent("LumberMillEstablished");
+            // EventManager.TriggerEvent("LumberMillEstablished");
             FinalizeBuilding(buildingSelection); // for desktop we finalize building by clicking - we could also tap for the mobile version
         }
         
@@ -464,15 +469,40 @@ public class Build : MonoBehaviour
 
 
 
+    void RotateBuilding()
+    {
+        if (Input.GetAxis("Mouse ScrollWheel") > 0)
+        {
+            mobileTouchCamera.lockCamera = true;
+            // GO.transform.Rotate(Vector3.up * 3.0f, Space.Self);
+            GO.transform.Rotate(0, 90, 0);
+        }
+
+        if (Input.GetAxis("Mouse ScrollWheel") < 0)
+        {
+            mobileTouchCamera.lockCamera = true;
+            // GO.transform.Rotate(Vector3.up * 3.0f, Space.Self);
+            GO.transform.Rotate(0, -90, 0);
+        }
+    }
+
+
+
     void FinalizeBuilding(GameObject gameObject)
     {
         Vector3 finalizedPosition; // not to be confused with finalPosition
         finalizedPosition = GO.transform.position;
+        Quaternion finalizedRotation = GO.transform.rotation;
+
         Destroy(GO);
 
-        finalGO = (GameObject)Instantiate(gameObject, finalizedPosition, Quaternion.identity, this.transform);
+
+
+        finalGO = (GameObject)Instantiate(gameObject, finalizedPosition, finalizedRotation, this.transform);
         
         start = false;
+
+        mobileTouchCamera.lockCamera = false;
     }
 
 
@@ -481,9 +511,10 @@ public class Build : MonoBehaviour
 
     void CancelBuildingNonMobile()
     {
-        Destroy(GO);
+        mobileTouchCamera.lockCamera = false;
         allowBuild = false;
         startedBuild = false;
+        Destroy(GO);
     }
 
 
@@ -497,7 +528,11 @@ public class Build : MonoBehaviour
 
     void Update()
     {
-        if (start) DragBuilding();
+        if (start && GO != null)
+        {
+            DragBuilding();
+            RotateBuilding();
+        }
     }
 
 
