@@ -305,15 +305,38 @@ public class BuildRoads : MonoBehaviour
 
 
 
+    void RotateBuilding()
+    {
+        if (Input.GetAxis("Mouse ScrollWheel") > 0)
+        {
+            mobileTouchCamera.lockCamera = true;
+            // GO.transform.Rotate(Vector3.up * 3.0f, Space.Self);
+            GO.transform.Rotate(0, 90, 0);
+        }
+
+        if (Input.GetAxis("Mouse ScrollWheel") < 0)
+        {
+            mobileTouchCamera.lockCamera = true;
+            // GO.transform.Rotate(Vector3.up * 3.0f, Space.Self);
+            GO.transform.Rotate(0, -90, 0);
+        }
+    }
+
+
+
     void FinalizeBuilding(GameObject gameObject)
     {
         Vector3 finalizedPosition; // not to be confused with finalPosition
         finalizedPosition = GO.transform.position;
+        Quaternion finalizedRotation = GO.transform.rotation;
+
         Destroy(GO);
 
-        finalGO = (GameObject)Instantiate(gameObject, finalizedPosition, Quaternion.identity, this.transform);
+        finalGO = (GameObject)Instantiate(gameObject, finalizedPosition, finalizedRotation, this.transform);
         
         start = false;
+
+        mobileTouchCamera.lockCamera = false;
     }
 
 
@@ -322,6 +345,7 @@ public class BuildRoads : MonoBehaviour
 
     void CancelBuildingNonMobile()
     {
+        mobileTouchCamera.lockCamera = false;
         Destroy(GO);
         allowBuild = false;
         startedBuild = false;
@@ -338,7 +362,11 @@ public class BuildRoads : MonoBehaviour
 
     void Update()
     {
-        if (start) DragBuilding();
+        if (start && GO != null)
+        {
+            DragBuilding();
+            RotateBuilding();
+        }
     }
 
 
