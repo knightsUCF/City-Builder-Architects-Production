@@ -29,7 +29,14 @@ public class PlaceWorker : MonoBehaviour
     public int workerID = -1; // will need more of these for multiple workers
 
 
-    
+    Factory factory;
+
+
+
+    void Awake()
+    {
+        factory = FindObjectOfType<Factory>();
+    }
 
 
 
@@ -44,6 +51,8 @@ public class PlaceWorker : MonoBehaviour
             other.gameObject.SetActive(false);
 
             GetComponent<Factory>().producingEnergy = true;
+
+            factory.PassWorkerGameObject(other.gameObject);
         }
     }
 }
