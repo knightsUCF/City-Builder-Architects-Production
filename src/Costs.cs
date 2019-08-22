@@ -2,19 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-/*
-
-Costs:
 
 
-Hire worker: 100
-
-House 1: 100
-House 2: 200
-House 3: 300
 
 
-*/
 
 
 
@@ -26,11 +17,17 @@ public class Costs : MonoBehaviour
     Tokens tokens;
 
 
-    int workerCost = 100;
-    int house1Cost = 100;
-    int house2Cost = 200;
-    int house3Cost = 300;
-
+    public int workerCost = 100;
+    
+    public int house1Cost = 100;
+    public int house2Cost = 200;
+    public int house3Cost = 300;
+    
+    public int roadShort = 100;
+    public int roadLong = 200;
+    public int roadIntersection = 300;
+    public int roadCurve = 100;
+    public int road3Way = 150;
 
 
     void Awake()
@@ -128,7 +125,23 @@ public class Costs : MonoBehaviour
     }
 
 
+    // rewrite the above methods to just use Purchasable()
 
-    
+    public bool Purchasable(int cost)
+    {
+        if (tokens.money >= cost)
+        {
+            tokens.money -= cost;
+            tokens.UpdateMoney();
+            return true;   
+        }
+
+        else
+        {
+            ShowInsufficientFundsPanel();
+            return false;
+        }
+    }
+
     
 }
