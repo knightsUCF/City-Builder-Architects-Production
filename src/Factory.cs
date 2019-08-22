@@ -9,7 +9,8 @@ using UnityEngine.UI;
 public class Factory : MonoBehaviour
 {
 
-    
+    public GameObject worker;
+
     public GameObject factoryInfoPanel;
     public Text level;
     
@@ -20,6 +21,17 @@ public class Factory : MonoBehaviour
 
     bool panelToggle = true;
 
+    PlaceWorker placeWorker;
+
+    public bool workerOutside = true;
+
+
+
+
+    void Awake()
+    {
+        placeWorker = FindObjectOfType<PlaceWorker>();
+    }
 
 
 
@@ -35,6 +47,12 @@ public class Factory : MonoBehaviour
     {
         UpdateLevel();
         TogglePanel();
+
+        if (workerOutside) 
+        {
+            placeWorker.callOnce = true; // we also want to reset the callOnce flag on Factory, so that we can renter the building
+            workerOutside = false;
+        }
     }
 
 
@@ -43,6 +61,25 @@ public class Factory : MonoBehaviour
     {
         level.text = "Level: " + workerEngineeringLevel.ToString();
         // this is getting updated from PayOut.cs, not sure if this is too messy
+    }
+
+
+
+
+    public void PassWorkerGameObject(GameObject workerGO)
+    {
+        worker = workerGO;
+    }
+
+
+
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.W))
+        {
+            worker.SetActive(true);
+            workerOutside = true;
+        }
     }
 
 
