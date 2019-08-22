@@ -11,6 +11,8 @@ public class MobileTouchCamera : MonoBehaviourWrapped {
     
     public void LateUpdate() {
 
+      if (lockCamera) return;
+
       if (!lockCamera)
       {
 
@@ -20,6 +22,10 @@ public class MobileTouchCamera : MonoBehaviourWrapped {
 
       //Translation.
       UpdatePosition(Time.unscaledDeltaTime);
+      }
+
+      if (lockCamera) isRotationLock = true;
+      if (!lockCamera)  isRotationLock = false;
 
       }
 }
