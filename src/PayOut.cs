@@ -60,7 +60,7 @@ public class PayOut : MonoBehaviour
         foreach (GameObject factory in factories)
         {
 
-            if (factory.GetComponent<Factory>().producingEnergy)
+            if (factory.GetComponent<Factory>().producingEnergy && !factory.GetComponent<Factory>().workerOutside)
             {
                 Debug.Log("Adding power");
                 Data.energy += 1; // move to tokens later
