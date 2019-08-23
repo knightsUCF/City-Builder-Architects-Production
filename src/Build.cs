@@ -38,6 +38,9 @@ public class Build : MonoBehaviour
     public GameObject office4;
 
 
+    int currentlySelectedBuildingCost = 0; // so that we can give back the money if the player cancels the building
+
+
     
     
     Ray ray;
@@ -144,14 +147,11 @@ public class Build : MonoBehaviour
     }
 
 
-
-    
-
-    // this is a lumber mill for now, will need a separate method
+    // rewrite the rest of the methods like this with Purchasable()
 
     void BuildHouse1Event()
     {
-        if (costs.House1()) // have this return a build to check if we can build, if this returns false, have the buildCosts do the alerting that we don't have enough funds
+        if (costs.Purchasable(costs.house1))
         {
             start = true;
             buildingSelection = house1; 
@@ -163,24 +163,28 @@ public class Build : MonoBehaviour
 
     void BuildHouse2Event()
     {
+        /*
         if (costs.House2())
         {
             start = true;
             buildingSelection = house2;
             PlaceStartingBuilding(house2);
         }
+        */
     }
 
 
 
     void BuildHouse3Event()
     {
+        /*
         if (costs.House3())
         {
             start = true;
             buildingSelection = house3;
             PlaceStartingBuilding(house3); 
-        }   
+        }
+        */   
     }
 
 
@@ -511,6 +515,9 @@ public class Build : MonoBehaviour
 
     void CancelBuildingNonMobile()
     {
+        // not sure why the above CancelBuildingNonMobile is not being called on right click at line 469, for now we will put the functions here that should really go in CancelBuildingNonMobile
+        // if there are any bad state resets, that's because we are not calling CancelBuildingNonMobile
+
         mobileTouchCamera.lockCamera = false;
         allowBuild = false;
         startedBuild = false;
@@ -521,6 +528,8 @@ public class Build : MonoBehaviour
 
     public void DestroyBuilding()
     {
+        costs.Refund(costs.currentlySelectedBuildingCost); // give back the money on canceling building
+        
         Destroy(GO);
     }
 
