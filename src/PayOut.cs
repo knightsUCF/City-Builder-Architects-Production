@@ -14,7 +14,7 @@ public class PayOut : MonoBehaviour
     public GameObject[] houses3;
 
 
-    public int house1rent = 100;
+    public int house1rent = 10000;
     public int house2rent = 200;
     public int house3rent = 300;
 
