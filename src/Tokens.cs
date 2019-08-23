@@ -9,7 +9,7 @@ public class Tokens : MonoBehaviour
 {
 
 
-    public int money = 10000;
+    public int money = 500000;
     public int energy = 0;
 
 
@@ -22,7 +22,7 @@ public class Tokens : MonoBehaviour
 
     void Start()
     {
-        moneyText.text = money.ToString();
+        moneyText.text = Shorten(money); // money.ToString();
         woodText.text = Data.wood.ToString();
         energyText.text = Data.energy.ToString();
     }
@@ -44,11 +44,41 @@ public class Tokens : MonoBehaviour
 
     public void UpdateMoney()
     {
-        moneyText.text = money.ToString();
+        moneyText.text = Shorten(money);
     }
 
 
-    
+
+    public string Shorten(int iCount)
+    {
+        float count = (float)iCount;
+
+        if (count < 1000)
+        {
+            return count.ToString();
+        }
+
+        if (count > 1000 && count < 999000)
+        {
+            count = count / 1000;
+            count = (float)System.Math.Round(count, 2);
+            
+            return count.ToString() + "K";
+        }
+
+        if (count >= 999000)
+        {
+            count = count / 1000000;
+            count = (float)System.Math.Round(count, 2);
+
+            return count.ToString() + "M"; 
+        }
+
+        else return "error";
+        
+    }
+
+
 
     
 }
