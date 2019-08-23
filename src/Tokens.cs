@@ -61,7 +61,7 @@ public class Tokens : MonoBehaviour
         if (count > 1000 && count < 999000)
         {
             count = count / 1000;
-            count = (float)System.Math.Round(count, 2);
+            count = (float)System.Math.Round(count, 0);
             
             return count.ToString() + "K";
         }
@@ -69,7 +69,7 @@ public class Tokens : MonoBehaviour
         if (count >= 999000)
         {
             count = count / 1000000;
-            count = (float)System.Math.Round(count, 2);
+            count = (float)System.Math.Round(count, 0);
 
             return count.ToString() + "M"; 
         }
