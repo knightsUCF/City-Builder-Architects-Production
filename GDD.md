@@ -2,7 +2,9 @@
 
 https://store.steampowered.com/app/898720/Kubifaktorium/
 
-Seems like I can meet this level.
+Seems like I can meet this level. Definitely need tech trees. 
+
+Study how tech trees interact with building upgrades in LOTR. 
 
 
 
