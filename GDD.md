@@ -4,7 +4,13 @@ https://store.steampowered.com/app/898720/Kubifaktorium/
 
 Seems like I can meet this level. Definitely need tech trees. 
 
-Study how tech trees interact with building upgrades in LOTR. 
+Study how tech trees interact with building upgrades in LOTR.
+
+One of the players left a bad review after "he couldn't produce exactly of one item he needed"
+
+ 
+
+"If you want to produce exactly a number of tools from a workbench, make sure you're watching the colonist the whole time because you'll end up producing far too many of the tool. The game needs some option like RimWorld which allows you to control how many of the item is produced, as this game has great logistics that could simply be enhanced with this little feature."
 
 
 
