@@ -1,5 +1,14 @@
+# Early Access Successful $19.99 that seems on the level I can meet
+
+https://store.steampowered.com/app/898720/Kubifaktorium/
+
+Seems like I can meet this level.
+
+
+
 # Study the strategy in Starcraft 2
 
+What are some of the dynamics that are used by players
 
 # Solo Game Mode
 
