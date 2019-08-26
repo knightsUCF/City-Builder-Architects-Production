@@ -63,6 +63,8 @@ public class BuildingRequirements : MonoBehaviour
 
 
     public bool canBuild = false;
+    public bool ownLand = false;
+
     public bool structureFinalized = false; // for preventing color changes when dragging over new elements with collider events on a building that's already set down
 
 
@@ -86,8 +88,16 @@ public class BuildingRequirements : MonoBehaviour
         if (c.tag == "Road" && !structureFinalized)
         {
             canBuild = true;
-            material.color = Color.grey;
+            // material.color = Color.grey;
         }
+
+        if (c.tag == "Land" && !structureFinalized)
+        {
+            ownLand = true;
+            // material.color = Color.grey;
+        }
+
+        if (canBuild && ownLand) material.color = Color.grey;
     }
 
 
@@ -97,6 +107,12 @@ public class BuildingRequirements : MonoBehaviour
         if (c.tag == "Road" && !structureFinalized) 
         {
             canBuild = false;
+            material.color = Color.magenta; // unavailable
+        }
+
+        if (c.tag == "Land" && !structureFinalized) 
+        {
+            ownLand = false;
             material.color = Color.magenta; // unavailable
         }
     }
