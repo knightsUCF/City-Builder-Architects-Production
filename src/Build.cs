@@ -5,6 +5,22 @@ using UnityEngine.Events;
 
 
 
+/*
+float volume = 1.0F;
+    
+    public AudioClip select;
+    AudioSource audio;
+
+audio.PlayOneShot(select, volume);
+
+
+void Start()
+    {
+        audio = GetComponent<AudioSource>();
+    }
+
+
+*/
 
 
 
@@ -12,6 +28,13 @@ public class Build : MonoBehaviour
 {
 
     public float gridSize = 10.0f;
+
+
+    float volume = 1.0F;
+    public AudioClip select;
+    public AudioClip finalizedBuilding;
+    public AudioClip cantBuild;
+
 
     
     GameObject GO;
@@ -432,6 +455,10 @@ public class Build : MonoBehaviour
 
 
 
+    Vector3 lastGridPos = new Vector3(0.0f, 0.0f, 0.0f);
+    Vector3 newGridPos = new Vector3(0.0f, 0.0f, 0.0f);
+
+
     void MoveBuildingToDragPoint()
     {
         if (Physics.Raycast(ray, out hitInfo))
@@ -439,6 +466,13 @@ public class Build : MonoBehaviour
             var gridPos = GetNearestPointOnGrid(hitInfo.point);
             GO.transform.position = gridPos;
 
+            newGridPos = gridPos;
+
+            if (lastGridPos != newGridPos)
+            {
+                SoundManager.instance.PlaySingle(select, 0.3f);
+                lastGridPos = newGridPos;
+            }
         }
     }
 
@@ -480,6 +514,8 @@ public class Build : MonoBehaviour
         {
             FinalizeBuilding(buildingSelection); // for desktop we finalize building by clicking - we could also tap for the mobile version
         }
+
+        // if (Input.GetMouseButtonDown(0) && !buildingRequirements.canBuild) SoundManager.instance.PlaySingle(cantBuild, 0.5f);
         
         if (Input.GetMouseButtonDown(1)) DestroyBuilding(); // cancel
 
@@ -495,6 +531,7 @@ public class Build : MonoBehaviour
             mobileTouchCamera.lockCamera = true;
             // GO.transform.Rotate(Vector3.up * 3.0f, Space.Self);
             GO.transform.Rotate(0, 90, 0);
+            SoundManager.instance.PlaySingle(select, 0.3f);
         }
 
         if (Input.GetAxis("Mouse ScrollWheel") < 0)
@@ -502,6 +539,7 @@ public class Build : MonoBehaviour
             mobileTouchCamera.lockCamera = true;
             // GO.transform.Rotate(Vector3.up * 3.0f, Space.Self);
             GO.transform.Rotate(0, -90, 0);
+            SoundManager.instance.PlaySingle(select, 0.3f);
         }
     }
 
@@ -529,6 +567,8 @@ public class Build : MonoBehaviour
         start = false;
 
         mobileTouchCamera.lockCamera = false;
+
+        GetComponent<AudioSource>().PlayOneShot(finalizedBuilding, volume);
     }
 
     
