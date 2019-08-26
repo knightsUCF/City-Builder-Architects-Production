@@ -63,7 +63,7 @@ public class BuildingRequirements : MonoBehaviour
 
 
     public bool canBuild = false;
-    public bool structureFinalized = false; // for preventing color changes when dragging over new elements with collider events
+    public bool structureFinalized = false; // for preventing color changes when dragging over new elements with collider events on a building that's already set down
 
 
     void Start()
@@ -73,7 +73,11 @@ public class BuildingRequirements : MonoBehaviour
 
         blueMaterial = (Material)Resources.Load("Blue", typeof(Material));
         pinkMaterial = (Material)Resources.Load("Pink", typeof(Material));
+
+        // a new game object is created when set down, so we should check if the structure is finalized before intializing to the unavailable color
+        if (!structureFinalized) material.color = Color.magenta; // we should start off with the unavailable material, since if starting we never have the chance to leave a collider we will get an available color
     }
+
 
 
 
@@ -90,7 +94,7 @@ public class BuildingRequirements : MonoBehaviour
 
     void OnTriggerExit(Collider c)
     {
-        if (c.tag == "Road" && !structureFinalized) // structure finalized means that we don't want to change the building's color after we have already set down the building with a new collision event
+        if (c.tag == "Road" && !structureFinalized) 
         {
             canBuild = false;
             material.color = Color.magenta; // unavailable
