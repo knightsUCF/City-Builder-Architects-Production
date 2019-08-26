@@ -406,7 +406,6 @@ public class Build : MonoBehaviour
 
         startPos.z += 100; // offset for placing the building in view position
 
-        Debug.Log(startPos);
 
         SetBuildingInView(structure, startPos);
 
