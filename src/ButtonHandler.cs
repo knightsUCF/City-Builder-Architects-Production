@@ -264,6 +264,12 @@ public class ButtonHandler : MonoBehaviour
     }
 
 
+    public void OnBuyLandGridClick()
+    {
+        audio.PlayOneShot(select, volume);
+        EventManager.TriggerEvent("BuyLandGridClicked");
+    }
+
     
 
 
