@@ -14,10 +14,18 @@ public class BuildingMenuSelector : MonoBehaviour
 
 
 
+    public AudioClip tabSelect;
+
+
+
+    
+
     public void OnSelectBuildingMenu()
     {
         PlatformsMenu.SetActive(false);
         BuildingsMenu.SetActive(true);
+        SoundManager.instance.PlaySingle(tabSelect, 1.0f);
+        
     }
 
 
@@ -26,6 +34,7 @@ public class BuildingMenuSelector : MonoBehaviour
     {
         BuildingsMenu.SetActive(false);
         PlatformsMenu.SetActive(true);
+        SoundManager.instance.PlaySingle(tabSelect, 1.0f);
     }
 
 }
