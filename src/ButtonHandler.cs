@@ -256,6 +256,14 @@ public class ButtonHandler : MonoBehaviour
     }
 
 
+
+    public void OnStandardGridClick()
+    {
+        audio.PlayOneShot(select, volume);
+        EventManager.TriggerEvent("StandardGridClicked");
+    }
+
+
     
 
 
