@@ -31,6 +31,20 @@ For this setup to work need:
 - place box collider (is trigger checked) on parent game object of the road
 - place box collider (is trigger unchecked) on parent game object of the building (house)
 - and place a rigidbody (use gravity unchecked, kinematic checked) on the parent game object of the building (house)
+
+
+so we have a bug -- if we place a new road element near an existing already built structure, then that structure's trigger collider registers,
+and the structure changes color
+
+we don't want that, 
+
+so we should have a flag which detects if this structure already has been built
+
+this will work fine, except when we later add the feature of destroying roads, which then we will need to turn the color, since a road will no
+longer be close, we will cross that bridge when we get there
+
+
+a big part of the solution here was using OnTriggerStay, instead of OnTriggerEnter
 */
 
 
@@ -41,7 +55,6 @@ For this setup to work need:
 public class BuildingRequirements : MonoBehaviour
 {
 
-
     Build build;
     Material material;
 
@@ -49,9 +62,8 @@ public class BuildingRequirements : MonoBehaviour
     Material pinkMaterial;
 
 
-
-
     public bool canBuild = false;
+    public bool structureFinalized = false; // for preventing color changes when dragging over new elements with collider events
 
 
     void Start()
@@ -61,23 +73,16 @@ public class BuildingRequirements : MonoBehaviour
 
         blueMaterial = (Material)Resources.Load("Blue", typeof(Material));
         pinkMaterial = (Material)Resources.Load("Pink", typeof(Material));
-        
-
-        // set the blue color alpha
-
-        // blueColor.a = 0.26f;
-
     }
-    
 
 
-    void OnTriggerEnter(Collider c)
+
+    void OnTriggerStay(Collider c)
     {
-        if (c.tag == "Road") // not working, TODO for later && !build.start) // check build start so we don't overwrite the material color once we set the building down
+        if (c.tag == "Road" && !structureFinalized)
         {
             canBuild = true;
-            material.color = Color.grey; // available
-            // material = blueMaterial;
+            material.color = Color.grey;
         }
     }
 
@@ -85,39 +90,15 @@ public class BuildingRequirements : MonoBehaviour
 
     void OnTriggerExit(Collider c)
     {
-        if (c.tag == "Road")
+        if (c.tag == "Road" && !structureFinalized) // structure finalized means that we don't want to change the building's color after we have already set down the building with a new collision event
         {
             canBuild = false;
             material.color = Color.magenta; // unavailable
-            // material = pinkMaterial;
         }
     }
-
-
-    /* https://answers.unity.com/questions/1010797/directly-assigning-material-through-renderermateri.html
-
-    public void SetMaterials(Material newMaterial)
-    {
-        
-        for(int i = 0; i < renderers.Length; ++i)
-        {
-            Material[] materials = new Material[renderers[i].materials.Length]; // <-- CREATING THE TEMPORARY ARRAY
-            
-            for (int j = 0; j < materials.Length; ++j)
-            {
-                materials[j] = newMaterial;
-            }
-            
-            renderers[i].materials = materials;
-        }
-    }
-
-    */
-
 
 
     // will also need a pair of enter and exit triggers for determining if we are building on land we purchased
-
 
 
 
