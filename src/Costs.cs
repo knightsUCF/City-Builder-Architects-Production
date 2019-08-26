@@ -18,16 +18,22 @@ public class Costs : MonoBehaviour
 
 
     public int workerCost = 100;
-    
-    public int house1Cost = 100;
-    public int house2Cost = 200;
-    public int house3Cost = 300;
+
+    public int house1 = 100000;
+    public int house2 = 200;
+    public int house3 = 300;
     
     public int roadShort = 100;
-    public int roadLong = 200;
+    public int roadLong = 50000;
     public int roadIntersection = 300;
     public int roadCurve = 100;
     public int road3Way = 150;
+
+
+    public int land = 500000;
+
+    public int currentlySelectedBuildingCost = 0; // so that we can give back the building cost if the player deselects a building
+    
 
 
     void Awake()
@@ -72,59 +78,6 @@ public class Costs : MonoBehaviour
 
 
 
-    public bool House1()
-    {
-        if (tokens.money >= house1Cost)
-        {
-            tokens.money -= house1Cost;
-            tokens.UpdateMoney();
-            return true;   
-        }
-
-        else
-        {
-            ShowInsufficientFundsPanel();
-            return false;
-        }
-    }
-
-
-
-    public bool House2()
-    {
-        if (tokens.money >= house2Cost)
-        {
-            tokens.money -= house2Cost;
-            tokens.UpdateMoney();
-            return true;   
-        }
-
-        else
-        {
-            ShowInsufficientFundsPanel();
-            return false;
-        }
-    }
-
-
-
-    public bool House3()
-    {
-        if (tokens.money >= house3Cost)
-        {
-            tokens.money -= house3Cost;
-            tokens.UpdateMoney();
-            return true;   
-        }
-
-        else
-        {
-            ShowInsufficientFundsPanel();
-            return false;
-        }
-    }
-
-
     // rewrite the above methods to just use Purchasable()
 
     public bool Purchasable(int cost)
@@ -133,14 +86,26 @@ public class Costs : MonoBehaviour
         {
             tokens.money -= cost;
             tokens.UpdateMoney();
+
+            currentlySelectedBuildingCost = cost;
+
             return true;   
         }
 
         else
         {
+            currentlySelectedBuildingCost = 0; // just in case but might not need
+
             ShowInsufficientFundsPanel();
             return false;
         }
+    }
+
+
+    public void Refund(int cost)
+    {
+        tokens.money += cost;
+        tokens.UpdateMoney();
     }
 
     
