@@ -29,10 +29,14 @@ public class BuildRoads : MonoBehaviour
     Ray ray;
     Touch touch;
     Vector3 closestVector;
+    Vector3 startPos; // for positioning the starting position of a building so the structure is not "under the menu"
     RaycastHit hitInfo;
 
     Costs costs;
+    Tutorial tutorial;
     BitBenderGames.MobileTouchCamera mobileTouchCamera;
+
+
 
 
     // do we need these
@@ -53,12 +57,16 @@ public class BuildRoads : MonoBehaviour
     bool start = false;
 
 
+    bool wasFirstRoadBuilt = false; // for tutorial mode
+
+
 
 
     void Awake()
     {
         mobileTouchCamera = FindObjectOfType<BitBenderGames.MobileTouchCamera>();
         costs = FindObjectOfType<Costs>();
+        tutorial = FindObjectOfType<Tutorial>();
     }
 
 
@@ -159,6 +167,15 @@ public class BuildRoads : MonoBehaviour
 
 
 
+    void SetBuildingInView(GameObject structure, Vector3 pos)
+    {
+        PlaceBuilding(pos, structure);
+    }
+
+
+
+
+
     void PlaceStartingBuilding(GameObject structure)
     {
 
@@ -217,7 +234,14 @@ public class BuildRoads : MonoBehaviour
 
         ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
-        SetBuilding(structure);
+        SetBuilding(structure); // old way
+
+        /* come back to this, not sure why not working, work on this along with the DragBuildling(<parameters>)
+        startPos = Input.mousePosition;
+        startPos.z += 400; // offset for placing the building in view position
+        Debug.Log(startPos);
+        SetBuildingInView(structure, startPos);
+        */
 
         #endif
     }
@@ -289,16 +313,28 @@ public class BuildRoads : MonoBehaviour
 
         #if UNITY_EDITOR || UNITY_STANDALONE
 
-        ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        MoveBuildingToDragPoint();
+        bool startedDragging = false;
         
-        if (Input.GetMouseButtonDown(0))
-        {
-            EventManager.TriggerEvent("LumberMillEstablished");
-            FinalizeBuilding(buildingSelection); // for desktop we finalize building by clicking - we could also tap for the mobile version
-        }
-        
-        if (Input.GetMouseButtonDown(1)) DestroyBuilding(); // cancel
+
+        // not working for now
+        // if (Input.mousePosition.y > startPos.y && !startedDragging) // to not hide the building behind the menu when starting to build
+        // {
+
+            startedDragging = true;
+
+            ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+
+            MoveBuildingToDragPoint();
+
+            
+            if (Input.GetMouseButtonDown(0))
+            {
+                EventManager.TriggerEvent("LumberMillEstablished");
+                FinalizeBuilding(buildingSelection); // for desktop we finalize building by clicking - we could also tap for the mobile version
+            }
+            
+            if (Input.GetMouseButtonDown(1)) DestroyBuilding(); // cancel
+        // }
 
         #endif       
     }
@@ -337,6 +373,14 @@ public class BuildRoads : MonoBehaviour
         start = false;
 
         mobileTouchCamera.lockCamera = false;
+
+        /*
+        if (tutorial.tutorialModeOn && !wasFirstRoadBuilt)
+        {
+            tutorial.BuiltFirstRoad();
+            wasFirstRoadBuilt = true;
+        }
+        */
     }
 
 
