@@ -509,7 +509,7 @@ public class Build : MonoBehaviour
         ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         MoveBuildingToDragPoint();
         
-        if (Input.GetMouseButtonDown(0) && buildingRequirements.canBuild)
+        if (Input.GetMouseButtonDown(0) && buildingRequirements.canBuild && buildingRequirements.ownLand)
         {
             FinalizeBuilding(buildingSelection); // for desktop we finalize building by clicking - we could also tap for the mobile version
         }
