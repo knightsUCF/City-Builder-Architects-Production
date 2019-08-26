@@ -593,7 +593,7 @@ public class Build : MonoBehaviour
     public void DestroyBuilding()
     {
         costs.Refund(costs.currentlySelectedBuildingCost); // give back the money on canceling building
-        
+        mobileTouchCamera.lockCamera = false;
         Destroy(GO);
     }
 
