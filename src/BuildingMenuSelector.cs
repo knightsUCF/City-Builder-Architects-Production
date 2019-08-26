@@ -11,6 +11,7 @@ public class BuildingMenuSelector : MonoBehaviour
 
     public GameObject BuildingsMenu;
     public GameObject PlatformsMenu;
+    public GameObject GridsMenu;
 
 
 
@@ -23,6 +24,7 @@ public class BuildingMenuSelector : MonoBehaviour
     public void OnSelectBuildingMenu()
     {
         PlatformsMenu.SetActive(false);
+        GridsMenu.SetActive(false);
         BuildingsMenu.SetActive(true);
         SoundManager.instance.PlaySingle(tabSelect, 1.0f);
         
@@ -33,7 +35,18 @@ public class BuildingMenuSelector : MonoBehaviour
     public void OnSelectPlatformsMenu()
     {
         BuildingsMenu.SetActive(false);
+        GridsMenu.SetActive(false);
         PlatformsMenu.SetActive(true);
+        SoundManager.instance.PlaySingle(tabSelect, 1.0f);
+    }
+
+
+
+    public void OnSelectGridsMenu()
+    {
+        BuildingsMenu.SetActive(false);
+        PlatformsMenu.SetActive(false);
+        GridsMenu.SetActive(true);
         SoundManager.instance.PlaySingle(tabSelect, 1.0f);
     }
 
