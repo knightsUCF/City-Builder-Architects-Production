@@ -311,6 +311,13 @@ public class Build : MonoBehaviour
 
 
 
+    void SetBuildingInView(GameObject structure, Vector3 pos)
+    {
+        PlaceBuilding(pos, structure);
+    }
+
+
+
     void PlaceStartingBuilding(GameObject structure)
     {
 
@@ -369,7 +376,16 @@ public class Build : MonoBehaviour
 
         ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
-        SetBuilding(structure);
+        // SetBuilding(structure); // old way -- placing building in starting position of mouse, but this is covered under the menu, so let's move the building up a little
+
+
+        Vector3 startPos = Input.mousePosition;
+
+        startPos.z += 100; // offset for placing the building in view position
+
+        Debug.Log(startPos);
+
+        SetBuildingInView(structure, startPos);
 
         #endif
     }
@@ -462,7 +478,6 @@ public class Build : MonoBehaviour
         
         if (Input.GetMouseButtonDown(0) && buildingRequirements.canBuild)
         {
-            // EventManager.TriggerEvent("LumberMillEstablished");
             FinalizeBuilding(buildingSelection); // for desktop we finalize building by clicking - we could also tap for the mobile version
         }
         
@@ -500,10 +515,14 @@ public class Build : MonoBehaviour
 
         Destroy(GO);
 
-
-
         finalGO = (GameObject)Instantiate(gameObject, finalizedPosition, finalizedRotation, this.transform);
+
+
+        // for preventing the structure changing colors on collider event when we have already set down the building
+        buildingRequirements = finalGO.GetComponent<BuildingRequirements>();
+        buildingRequirements.structureFinalized = true;
         
+
         start = false;
 
         mobileTouchCamera.lockCamera = false;
