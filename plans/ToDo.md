@@ -6,13 +6,22 @@ Once all the basic core features are implemented we can polish.
 
 Get through all the features that can be implemented. Anything can be polished further.
 
-<br>
+The other part of the goal is just to work on the absolute needed features like in Kingdoms and Castles.
+
 
 <br>
 
-# Next Steps
+<br>
 
-Go through all the features, and then rank them into a ToDo list. Use Trello to arrange in order of priority.
+# Must Have Features
+
+* Buildings Roads (Asset pack coming)
+
+* create just a simple tile for the world, to not worry about the environment for now
+
+* we have the monetary mechanics working for purchasing buildings, we probably need some sort of linear upgrade system soon
+
+* let's get to some very basic gameplay, where we are just building a city
 
 <br>
 
