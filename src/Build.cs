@@ -515,18 +515,23 @@ public class Build : MonoBehaviour
 
         Destroy(GO);
 
+        
+
         finalGO = (GameObject)Instantiate(gameObject, finalizedPosition, finalizedRotation, this.transform);
+
 
 
         // for preventing the structure changing colors on collider event when we have already set down the building
         buildingRequirements = finalGO.GetComponent<BuildingRequirements>();
         buildingRequirements.structureFinalized = true;
-        
+
 
         start = false;
 
         mobileTouchCamera.lockCamera = false;
     }
+
+    
 
 
 
