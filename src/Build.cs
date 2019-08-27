@@ -578,6 +578,8 @@ public class Build : MonoBehaviour
         
         // what if instead we just simply grab the build component on the object
 
+        // this way the whole building stages component will contain the different model stages attached to each building object, so we simply drag in the appropriate stages for each game object
+
         BuildingStages buildingStages;
 
         buildingStages = finalGO.GetComponent<BuildingStages>();
