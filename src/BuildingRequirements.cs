@@ -63,13 +63,32 @@ public class BuildingRequirements : MonoBehaviour
 
 
     public bool canBuild = false;
-    public bool ownLand = false;
+    public bool ownZonedLand = false;
 
     public bool structureFinalized = false; // for preventing color changes when dragging over new elements with collider events on a building that's already set down
 
 
+
+    [System.Serializable]
+    public enum landType
+    {
+        Residential,
+        Commercial,
+        Industrial
+    };
+
+    public landType zoneType;
+
+
+    string zonedLand = "Land";
+
+
+
+
+
     void Start()
     {
+
         material = GetComponentInChildren<Renderer>().material;
         build = FindObjectOfType<Build>();
 
@@ -78,6 +97,23 @@ public class BuildingRequirements : MonoBehaviour
 
         // a new game object is created when set down, so we should check if the structure is finalized before intializing to the unavailable color
         if (!structureFinalized) material.color = Color.magenta; // we should start off with the unavailable material, since if starting we never have the chance to leave a collider we will get an available color
+    
+
+        if (zoneType == landType.Residential)
+        {
+            zonedLand = "ResidentialLand";
+        }
+
+        if (zoneType == landType.Commercial)
+        {
+            zonedLand = "CommercialLand";
+        }
+
+        if (zoneType == landType.Industrial)
+        {
+            zonedLand = "IndustrialLand";
+        }
+
     }
 
 
@@ -88,16 +124,14 @@ public class BuildingRequirements : MonoBehaviour
         if (c.tag == "Road" && !structureFinalized)
         {
             canBuild = true;
-            // material.color = Color.grey;
         }
 
-        if (c.tag == "Land" && !structureFinalized)
+        if (c.tag == zonedLand && !structureFinalized)
         {
-            ownLand = true;
-            // material.color = Color.grey;
+            ownZonedLand = true;
         }
 
-        if (canBuild && ownLand) material.color = Color.grey;
+        if (canBuild && ownZonedLand) material.color = Color.grey;
     }
 
 
@@ -107,20 +141,15 @@ public class BuildingRequirements : MonoBehaviour
         if (c.tag == "Road" && !structureFinalized) 
         {
             canBuild = false;
-            material.color = Color.magenta; // unavailable
+            material.color = Color.magenta;
         }
 
-        if (c.tag == "Land" && !structureFinalized) 
+        if (c.tag == zonedLand && !structureFinalized) 
         {
-            ownLand = false;
-            material.color = Color.magenta; // unavailable
+            ownZonedLand = false;
+            material.color = Color.magenta;
         }
     }
-
-
-    // will also need a pair of enter and exit triggers for determining if we are building on land we purchased
-
-
 
 
 
