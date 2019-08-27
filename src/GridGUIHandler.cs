@@ -18,7 +18,7 @@ public class GridGUIHandler : MonoBehaviour
 
 
     public GameObject standardGrid;
-    public GameObject buyLandGrid;
+    public GameObject landParcel;
 
     GameObject GO;
     GameObject finalGO;
@@ -37,6 +37,8 @@ public class GridGUIHandler : MonoBehaviour
 
 
     Costs costs;
+    LandType landType;
+    ZoneLand zoneLand;
     
 
 
@@ -60,6 +62,7 @@ public class GridGUIHandler : MonoBehaviour
     void Awake()
     {
         costs = FindObjectOfType<Costs>();
+        zoneLand = FindObjectOfType<ZoneLand>();
     }
 
 
@@ -92,16 +95,16 @@ public class GridGUIHandler : MonoBehaviour
         {
             if (!buyLandGridToggle)
             {
-                buyLandGrid.SetActive(true);
-                // GO = buyLandGrid;
-                CreateGameObject(buyLandGrid);
+                landParcel.SetActive(true);
+                // GO = landParcel;
+                CreateGameObject(landParcel);
                 startDraggingBuyLandSelector = true;
                 destroyToggle = false;
             }
 
             else if (buyLandGridToggle)
             {
-                buyLandGrid.SetActive(false);
+                landParcel.SetActive(false);
                 startDraggingBuyLandSelector = false;
             }
 
@@ -116,7 +119,7 @@ public class GridGUIHandler : MonoBehaviour
     public void CreateGameObject(GameObject go)
     {
         GO = Instantiate(go, tempPos, Quaternion.identity, this.transform);
-        buyLandGrid.SetActive(false);
+        landParcel.SetActive(false);
     }
 
 
@@ -183,7 +186,61 @@ public class GridGUIHandler : MonoBehaviour
         Destroy(GO);
 
         
-        finalGO = (GameObject)Instantiate(buyLandGrid, finalizedPosition, finalizedRotation, this.transform);
+        finalGO = (GameObject)Instantiate(landParcel, finalizedPosition, finalizedRotation, this.transform);
+
+
+        landType = landParcel.GetComponent<LandType>();
+
+
+
+        if (zoneLand.iCurrentlySelectedZone == 1)
+        {
+            // Debug.Log("Residential!");
+            landType.zoneType = LandType.landType.Residential;
+            finalGO.tag = "ResidentialLand";
+        }
+
+        if (zoneLand.iCurrentlySelectedZone == 2)
+        {
+            // Debug.Log("Commercial!");
+            landType.zoneType = LandType.landType.Commercial;
+            finalGO.tag = "CommercialLand";
+        }
+
+        if (zoneLand.iCurrentlySelectedZone == 3)
+        {
+            // Debug.Log("Industrial!");
+            landType.zoneType = LandType.landType.Industrial;
+            finalGO.tag = "IndustrialLand";
+        }
+
+
+        
+        
+
+
+        /*
+        if (zoneLand.currentlySelectedZone == ZoneLand.CurrentlySelectedZone.Residential)
+        {
+            landType.zoneType = LandType.landType.Residential;
+            finalGO.tag = "ResidentialLand";
+        }
+
+        if (zoneLand.currentlySelectedZone == ZoneLand.CurrentlySelectedZone.Commercial)
+        {
+            landType.zoneType = LandType.landType.Commercial;
+            finalGO.tag = "CommercialLand";
+        }
+
+        if (zoneLand.currentlySelectedZone == ZoneLand.CurrentlySelectedZone.Industrial)
+        {
+            landType.zoneType = LandType.landType.Industrial;
+            finalGO.tag = "IndustrialLand";
+        }
+        */
+        
+
+
         finalGO.SetActive(true);
         
 
