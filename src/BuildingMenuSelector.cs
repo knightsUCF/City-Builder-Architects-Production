@@ -15,7 +15,7 @@ public class BuildingMenuSelector : MonoBehaviour
     public GameObject GridsMenu;
     public GameObject ResearchTree;
 
-    bool ResearchTreeToggle = false;
+    bool ResearchTreeToggle = true;
 
 
 
@@ -59,8 +59,7 @@ public class BuildingMenuSelector : MonoBehaviour
     public void OnSelectResearchTree()
     {
         SoundManager.instance.PlaySingle(tabSelect, 1.0f);
-        if (!ResearchTreeToggle) ResearchTree.SetActive(true);
-        else ResearchTree.SetActive(false);
+        ResearchTree.SetActive(ResearchTreeToggle);
         ResearchTreeToggle = !ResearchTreeToggle;
     }
 
@@ -70,6 +69,7 @@ public class BuildingMenuSelector : MonoBehaviour
     {
         SoundManager.instance.PlaySingle(tabSelect, 1.0f);
         ResearchTree.SetActive(false);
+        ResearchTreeToggle = true;
     }
 
 
