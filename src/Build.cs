@@ -568,6 +568,21 @@ public class Build : MonoBehaviour
         mobileTouchCamera.lockCamera = false;
 
         GetComponent<AudioSource>().PlayOneShot(finalizedBuilding, volume);
+
+
+        // here we will need some way to trigger build events based on building type, we could use the previous events but those are triggered when we first set the building
+        // and the purpose here is that we don't want to replace the first build stage right away when the player is still dragging the building, but only when they set the building down
+        // which will be another event, so here we will need to trigger an event, and we already have the current build selection type state set above to go by
+
+        // EventManager.TriggerEvent("House1Finalized");
+        
+        // what if instead we just simply grab the build component on the object
+
+        BuildingStages buildingStages;
+
+        buildingStages = finalGO.GetComponent<BuildingStages>();
+        buildingStages.OnFinalizeBuildingEvent(finalizedRotation);
+
     }
 
     
