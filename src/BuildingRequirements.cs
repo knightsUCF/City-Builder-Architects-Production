@@ -81,6 +81,16 @@ public class BuildingRequirements : MonoBehaviour
     public landType zoneType;
 
 
+    public enum StructureType
+    {
+        Residential,
+        WaterPipe
+    }
+
+    public StructureType structureType;
+    
+
+
     string zonedLand = "Land";
 
     
@@ -94,6 +104,8 @@ public class BuildingRequirements : MonoBehaviour
 
     void Start()
     {
+
+        
 
         material = GetComponentInChildren<Renderer>().material;
         build = FindObjectOfType<Build>();
@@ -127,63 +139,143 @@ public class BuildingRequirements : MonoBehaviour
 
     void OnTriggerStay(Collider c)
     {
-        if (c.tag == "Road" && !structureFinalized)
+        Debug.Log("Reached on Trigger Stay scope");
+
+        switch(structureType)
         {
-            canBuild = true;
+            case StructureType.Residential:
+
+
+                if (c.tag == "Road" && !structureFinalized)
+                {
+                    canBuild = true;
+                }
+
+                if (c.tag == zonedLand && !structureFinalized)
+                {
+                    ownZonedLand = true;
+                }
+
+                if (useExtraRequirement)
+                {
+                    if (c.tag == extraRequirement && !structureFinalized)
+                    {
+                        extraRequirementFlag = true;
+                    }
+                    // else extraRequirementFlag = false;
+
+                }
+
+                if (!useExtraRequirement) extraRequirementFlag = true;
+
+                if (canBuild && ownZonedLand && extraRequirementFlag) material.color = Color.grey;
+
+                // Debug.Log("canBuild: " + canBuild);
+                // Debug.Log("ownZonedLand: " + ownZonedLand);
+                // Debug.Log("extraRequirementFlag: " + extraRequirementFlag);
+
+            break;
+
+
+
+            case StructureType.WaterPipe:
+
+                Debug.Log("Reached Scope!!!");
+
+                canBuild = true; // don't have to check for roads with water pipes
+
+
+                if (( c.tag == "ResidentialLand" || c.tag == "CommercialLand" || c.tag == "IndustrialLand") && !structureFinalized)
+                {
+                    ownZonedLand = true;
+                }
+
+                if (useExtraRequirement)
+                {
+                    if (c.tag == extraRequirement && !structureFinalized)
+                    {
+                        extraRequirementFlag = true;
+                    }
+                    // else extraRequirementFlag = false;
+
+                }
+
+                if (!useExtraRequirement) extraRequirementFlag = true;
+
+                if (canBuild && ownZonedLand && extraRequirementFlag) material.color = Color.grey;
+
+
+            break; 
+
+
         }
 
-        if (c.tag == zonedLand && !structureFinalized)
-        {
-            ownZonedLand = true;
-        }
 
-        if (useExtraRequirement)
-        {
-            if (c.tag == extraRequirement && !structureFinalized)
-            {
-                extraRequirementFlag = true;
-            }
-            // else extraRequirementFlag = false;
-
-        }
-
-        if (!useExtraRequirement) extraRequirementFlag = true;
-
-        if (canBuild && ownZonedLand && extraRequirementFlag) material.color = Color.grey;
-
-        // Debug.Log("canBuild: " + canBuild);
-        // Debug.Log("ownZonedLand: " + ownZonedLand);
-        Debug.Log("extraRequirementFlag: " + extraRequirementFlag);
+        
     }
 
 
 
     void OnTriggerExit(Collider c)
     {
-        if (c.tag == "Road" && !structureFinalized) 
+        switch(structureType)
         {
-            canBuild = false;
-            material.color = Color.magenta;
+            case StructureType.Residential:
+
+
+
+                if (c.tag == "Road" && !structureFinalized) 
+                {
+                    canBuild = false;
+                    material.color = Color.magenta;
+                }
+
+                if (c.tag == zonedLand && !structureFinalized) 
+                {
+                    ownZonedLand = false;
+                    material.color = Color.magenta;
+                }
+
+                if (useExtraRequirement)
+                {
+                    if (c.tag == extraRequirement && !structureFinalized)
+                    {
+                        extraRequirementFlag = false;
+                        material.color = Color.magenta;
+                    }
+                }
+
+                // Debug.Log("canBuild: " + canBuild);
+                // Debug.Log("ownZonedLand: " + ownZonedLand);
+                // Debug.Log("extraRequirementFlag: " + extraRequirementFlag);
+
+            break;
+
+
+
+            case StructureType.WaterPipe:
+
+
+                if (( c.tag == "ResidentialLand" || c.tag == "CommercialLand" || c.tag == "IndustrialLand") && !structureFinalized)
+                {
+                    ownZonedLand = false;
+                    material.color = Color.magenta;
+                }
+
+                if (useExtraRequirement)
+                {
+                    if (c.tag == extraRequirement && !structureFinalized)
+                    {
+                        extraRequirementFlag = false;
+                        material.color = Color.magenta;
+                    }
+                }
+
+
+            break;
+
         }
 
-        if (c.tag == zonedLand && !structureFinalized) 
-        {
-            ownZonedLand = false;
-            material.color = Color.magenta;
-        }
-
-        if (useExtraRequirement)
-        {
-            if (c.tag == extraRequirement && !structureFinalized)
-            {
-                extraRequirementFlag = false;
-                material.color = Color.magenta;
-            }
-        }
-
-        // Debug.Log("canBuild: " + canBuild);
-        // Debug.Log("ownZonedLand: " + ownZonedLand);
-        Debug.Log("extraRequirementFlag: " + extraRequirementFlag);
     }
 
 
