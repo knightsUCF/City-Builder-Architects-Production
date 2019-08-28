@@ -62,6 +62,7 @@ public class Build : MonoBehaviour
     public GameObject office4;
     
     public GameObject waterPlant;
+    public GameObject waterPipe;
 
 
     int currentlySelectedBuildingCost = 0; // so that we can give back the money if the player cancels the building
@@ -148,6 +149,7 @@ public class Build : MonoBehaviour
         EventManager.StartListening("BuildOffice4", BuildOffice4Event);
 
         EventManager.StartListening("BuildWaterPlant", BuildWaterPlantEvent);
+        EventManager.StartListening("BuildWaterPipe", BuildWaterPipeEvent);
     }
 
 
@@ -174,6 +176,7 @@ public class Build : MonoBehaviour
         EventManager.StopListening("BuildOffice4", BuildOffice4Event);
 
         EventManager.StopListening("BuildWaterPlant", BuildWaterPlantEvent);
+        EventManager.StopListening("BuildWaterPipe", BuildWaterPipeEvent);
     }
 
 
@@ -318,6 +321,15 @@ public class Build : MonoBehaviour
     
 
 
+    void BuildOffice4Event()
+    {        
+        start = true;
+        buildingSelection = office4;
+        PlaceStartingBuilding(office4);        
+    }
+
+
+
     void BuildWaterPlantEvent()
     {
         start = true;
@@ -327,11 +339,11 @@ public class Build : MonoBehaviour
 
 
 
-    void BuildOffice4Event()
-    {        
+    void BuildWaterPipeEvent()
+    {
         start = true;
-        buildingSelection = office4;
-        PlaceStartingBuilding(office4);        
+        buildingSelection = waterPipe;
+        PlaceStartingBuilding(waterPipe);
     }
 
 
