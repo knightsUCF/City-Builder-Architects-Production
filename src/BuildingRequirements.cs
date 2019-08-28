@@ -64,6 +64,7 @@ public class BuildingRequirements : MonoBehaviour
 
     public bool canBuild = false;
     public bool ownZonedLand = false;
+    public bool extraRequirementFlag = false;
 
     public bool structureFinalized = false; // for preventing color changes when dragging over new elements with collider events on a building that's already set down
 
@@ -81,6 +82,11 @@ public class BuildingRequirements : MonoBehaviour
 
 
     string zonedLand = "Land";
+
+    
+
+    public bool useExtraRequirement = false;
+    public string extraRequirement = "...";
 
 
 
@@ -131,7 +137,23 @@ public class BuildingRequirements : MonoBehaviour
             ownZonedLand = true;
         }
 
-        if (canBuild && ownZonedLand) material.color = Color.grey;
+        if (useExtraRequirement)
+        {
+            if (c.tag == extraRequirement && !structureFinalized)
+            {
+                extraRequirementFlag = true;
+            }
+            // else extraRequirementFlag = false;
+
+        }
+
+        if (!useExtraRequirement) extraRequirementFlag = true;
+
+        if (canBuild && ownZonedLand && extraRequirementFlag) material.color = Color.grey;
+
+        // Debug.Log("canBuild: " + canBuild);
+        // Debug.Log("ownZonedLand: " + ownZonedLand);
+        Debug.Log("extraRequirementFlag: " + extraRequirementFlag);
     }
 
 
@@ -149,6 +171,19 @@ public class BuildingRequirements : MonoBehaviour
             ownZonedLand = false;
             material.color = Color.magenta;
         }
+
+        if (useExtraRequirement)
+        {
+            if (c.tag == extraRequirement && !structureFinalized)
+            {
+                extraRequirementFlag = false;
+                material.color = Color.magenta;
+            }
+        }
+
+        // Debug.Log("canBuild: " + canBuild);
+        // Debug.Log("ownZonedLand: " + ownZonedLand);
+        Debug.Log("extraRequirementFlag: " + extraRequirementFlag);
     }
 
 
