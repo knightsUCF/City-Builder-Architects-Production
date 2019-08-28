@@ -34,6 +34,7 @@ public class Build : MonoBehaviour
     public AudioClip select;
     public AudioClip finalizedBuilding;
     public AudioClip cantBuild;
+    public AudioClip cancelBuilding;
 
 
     
@@ -59,6 +60,8 @@ public class Build : MonoBehaviour
     public GameObject office2;
     public GameObject office3;
     public GameObject office4;
+    
+    public GameObject waterPlant;
 
 
     int currentlySelectedBuildingCost = 0; // so that we can give back the money if the player cancels the building
@@ -143,6 +146,8 @@ public class Build : MonoBehaviour
         EventManager.StartListening("BuildOffice2", BuildOffice2Event);
         EventManager.StartListening("BuildOffice3", BuildOffice3Event);
         EventManager.StartListening("BuildOffice4", BuildOffice4Event);
+
+        EventManager.StartListening("BuildWaterPlant", BuildWaterPlantEvent);
     }
 
 
@@ -167,6 +172,8 @@ public class Build : MonoBehaviour
         EventManager.StopListening("BuildOffice2", BuildOffice2Event);
         EventManager.StopListening("BuildOffice3", BuildOffice3Event);
         EventManager.StopListening("BuildOffice4", BuildOffice4Event);
+
+        EventManager.StopListening("BuildWaterPlant", BuildWaterPlantEvent);
     }
 
 
@@ -307,6 +314,15 @@ public class Build : MonoBehaviour
         start = true;
         buildingSelection = office3;
         PlaceStartingBuilding(office3);        
+    }
+    
+
+
+    void BuildWaterPlantEvent()
+    {
+        start = true;
+        buildingSelection = waterPlant;
+        PlaceStartingBuilding(waterPlant);
     }
 
 
@@ -509,7 +525,7 @@ public class Build : MonoBehaviour
         ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         MoveBuildingToDragPoint();
         
-        if (Input.GetMouseButtonDown(0) && buildingRequirements.canBuild && buildingRequirements.ownZonedLand)
+        if (Input.GetMouseButtonDown(0) && buildingRequirements.canBuild && buildingRequirements.ownZonedLand && buildingRequirements.extraRequirementFlag)
         {
             FinalizeBuilding(buildingSelection); // for desktop we finalize building by clicking - we could also tap for the mobile version
         }
@@ -593,6 +609,7 @@ public class Build : MonoBehaviour
 
     // non mobile?
 
+    // currently not being used ?
     void CancelBuildingNonMobile()
     {
         // not sure why the above CancelBuildingNonMobile is not being called on right click at line 469, for now we will put the functions here that should really go in CancelBuildingNonMobile
@@ -608,6 +625,7 @@ public class Build : MonoBehaviour
 
     public void DestroyBuilding()
     {
+        SoundManager.instance.PlaySingle(cancelBuilding, 0.3f);
         costs.Refund(costs.currentlySelectedBuildingCost); // give back the money on canceling building
         mobileTouchCamera.lockCamera = false;
         Destroy(GO);
