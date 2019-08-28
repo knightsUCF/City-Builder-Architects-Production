@@ -55,6 +55,8 @@ public class PayOut : MonoBehaviour
     public void UpdatePower()
     {
 
+        /* need take this out for now because we are using the factory model for the water plant
+
         factories = GameObject.FindGameObjectsWithTag("Factory");
 
         foreach (GameObject factory in factories)
@@ -81,6 +83,8 @@ public class PayOut : MonoBehaviour
 
             }
         }
+
+        */
     }
 
     
