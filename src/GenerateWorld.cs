@@ -14,6 +14,8 @@ public class GenerateWorld : MonoBehaviour
     public int objectWidth = 30;
     public int objectLength = 30;
 
+    public float yOffset = -0.8f; // road height could also be modified instead
+
 
     
 
@@ -30,7 +32,7 @@ public class GenerateWorld : MonoBehaviour
 
     void GenerateTile(int i, int j)
     {
-        GameObject go = Instantiate(FloorTile, new Vector3((i * objectLength), 0, (j * objectWidth)), Quaternion.identity);
+        GameObject go = Instantiate(FloorTile, new Vector3((i * objectLength), yOffset, (j * objectWidth)), Quaternion.identity, this.transform);
     }
 
 
