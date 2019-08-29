@@ -536,8 +536,19 @@ public class Build : MonoBehaviour
 
         ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         MoveBuildingToDragPoint();
-        
-        if (Input.GetMouseButtonDown(0) && buildingRequirements.canBuild && buildingRequirements.ownZonedLand && buildingRequirements.extraRequirementFlag)
+
+        /*
+        Debug.Log("buildingRequirements.canBuild: " + buildingRequirements.canBuild);
+        Debug.Log("buildingRequirements.ownZonedLand: " + buildingRequirements.ownZonedLand);
+        Debug.Log("buildingRequirements.waterAvailable: " + buildingRequirements.waterAvailable);
+        Debug.Log("buildingRequirements.extraRequirementFlag: " + buildingRequirements.extraRequirementFlag);
+        */
+    
+        if (Input.GetMouseButtonDown(0) &&
+            buildingRequirements.canBuild && 
+            buildingRequirements.ownZonedLand &&
+            buildingRequirements.waterAvailable && 
+            buildingRequirements.extraRequirementFlag)
         {
             FinalizeBuilding(buildingSelection); // for desktop we finalize building by clicking - we could also tap for the mobile version
         }
