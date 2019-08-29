@@ -64,7 +64,10 @@ public class BuildingRequirements : MonoBehaviour
 
     public bool canBuild = false;
     public bool ownZonedLand = false;
+    public bool waterAvailable = false;
     public bool extraRequirementFlag = false;
+
+    public bool isThisAWaterPipe = false;
 
     public bool structureFinalized = false; // for preventing color changes when dragging over new elements with collider events on a building that's already set down
 
@@ -99,11 +102,29 @@ public class BuildingRequirements : MonoBehaviour
     public string extraRequirement = "...";
 
 
+    /*
+    void Update()
+    {
+        Debug.Log("canBuild: " + canBuild);
+        Debug.Log("ownZonedLand: " + ownZonedLand);
+        Debug.Log("waterAvailable: " + waterAvailable);
+    }
+    */
+
+
 
 
 
     void Start()
     {
+
+        // if we build a water pipe first with nothing else on the map to collide, we will never reach the water pipe set bool to true in the collision code
+
+        if (isThisAWaterPipe) 
+        {
+            waterAvailable = true;
+            extraRequirementFlag = true; // wtf
+        }
 
         
 
@@ -151,6 +172,11 @@ public class BuildingRequirements : MonoBehaviour
                     canBuild = true;
                 }
 
+                if (c.tag == "WaterPipe" && !structureFinalized)
+                {
+                    waterAvailable = true;
+                }
+
                 if (c.tag == zonedLand && !structureFinalized)
                 {
                     ownZonedLand = true;
@@ -168,7 +194,7 @@ public class BuildingRequirements : MonoBehaviour
 
                 if (!useExtraRequirement) extraRequirementFlag = true;
 
-                if (canBuild && ownZonedLand && extraRequirementFlag) material.color = Color.grey;
+                if (canBuild && ownZonedLand && extraRequirementFlag && waterAvailable) material.color = Color.grey;
 
                 // Debug.Log("canBuild: " + canBuild);
                 // Debug.Log("ownZonedLand: " + ownZonedLand);
@@ -180,9 +206,10 @@ public class BuildingRequirements : MonoBehaviour
 
             case StructureType.WaterPipe:
 
-                Debug.Log("Reached Scope!!!");
+                Debug.Log("WATER SCOPE!!!");
 
                 canBuild = true; // don't have to check for roads with water pipes
+                waterAvailable = true; // we don't need to check for other water pipes, perhaps water plants later
 
 
                 if (( c.tag == "ResidentialLand" || c.tag == "CommercialLand" || c.tag == "IndustrialLand") && !structureFinalized)
@@ -235,6 +262,14 @@ public class BuildingRequirements : MonoBehaviour
                     ownZonedLand = false;
                     material.color = Color.magenta;
                 }
+
+                if (c.tag == "WaterPipe" && !structureFinalized)
+                {
+                    waterAvailable = false;
+                    material.color = Color.magenta;
+                }
+
+
 
                 if (useExtraRequirement)
                 {
