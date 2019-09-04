@@ -58,6 +58,16 @@ public class BuildingRequirements : MonoBehaviour
     Build build;
     Material material;
 
+    public Material shaderMaterial1;
+    public Material shaderMaterial2;
+
+
+    Shader shader1;
+    Shader shader2;
+
+    Renderer renderer;
+
+
     Material blueMaterial;
     Material pinkMaterial;
 
@@ -65,9 +75,10 @@ public class BuildingRequirements : MonoBehaviour
     public bool canBuild = false;
     public bool ownZonedLand = false;
     public bool waterAvailable = false;
+    public bool powerAvailable = false;
     public bool extraRequirementFlag = false;
 
-    public bool isThisAWaterPipe = false;
+    public bool isThisPowerOrWater = false;
 
     public bool structureFinalized = false; // for preventing color changes when dragging over new elements with collider events on a building that's already set down
 
@@ -87,7 +98,11 @@ public class BuildingRequirements : MonoBehaviour
     public enum StructureType
     {
         Residential,
-        WaterPipe
+        WaterPipe,
+        PowerLine,
+        Land,
+        Skyscraper,
+        Test // anything can be built
     }
 
     public StructureType structureType;
@@ -100,6 +115,10 @@ public class BuildingRequirements : MonoBehaviour
 
     public bool useExtraRequirement = false;
     public string extraRequirement = "...";
+
+
+    MeshRenderer meshRenderer;
+    // public Material[] shaderMaterials;
 
 
     /*
@@ -118,14 +137,50 @@ public class BuildingRequirements : MonoBehaviour
     void Start()
     {
 
+        Renderer renderer = GetComponentInChildren<Renderer>();
+
+
+
+
         // if we build a water pipe first with nothing else on the map to collide, we will never reach the water pipe set bool to true in the collision code
 
-        if (isThisAWaterPipe) 
+        if (isThisPowerOrWater)
         {
             waterAvailable = true;
+            canBuild = true; // don't have to check for roads with water pipes
             extraRequirementFlag = true; // wtf
         }
 
+
+        if (structureType == StructureType.Land)
+        {
+            // pass all the requirements to build land
+            
+            canBuild = true;
+            ownZonedLand = true;
+            waterAvailable = true;
+            powerAvailable = true;
+            extraRequirementFlag = true;
+
+            meshRenderer = gameObject.GetComponentInChildren<MeshRenderer>();
+
+
+        }
+
+
+        // pass all the requirements for a test structure
+
+        if (structureType == StructureType.Test)
+        {
+            canBuild = true;
+            ownZonedLand = true;
+            waterAvailable = true;
+            powerAvailable = true;
+            extraRequirementFlag = true;
+        }
+
+
+        
         
 
         material = GetComponentInChildren<Renderer>().material;
@@ -160,10 +215,105 @@ public class BuildingRequirements : MonoBehaviour
 
     void OnTriggerStay(Collider c)
     {
-        Debug.Log("Reached on Trigger Stay scope");
+        // Debug.Log("Reached on Trigger Stay scope");
 
         switch(structureType)
         {
+
+
+            case StructureType.Land:
+
+                /*
+                canBuild = True;
+                waterAvailable = true;
+                powerAvailable = true;
+                ownZonedLand = true;
+                */
+
+                // let's start by detecting if we are colliding with an already placed land tile
+
+
+                // go.GetComponent<MeshRenderer>();
+
+                // this functionality is a little different (backwards) then building houses
+                // a house will want to require a road collider and etc,
+                // while a land plot will want to require no other land colliders
+
+
+                if (c.tag == "Land" && !structureFinalized)
+                {
+                    Debug.Log("Detecting land collision!");
+
+
+
+                    meshRenderer.material = new Material(shaderMaterial2);
+
+                    // so here we cannot build
+
+                    canBuild = false;
+
+
+
+
+
+
+
+
+
+
+
+
+
+                    // let's try to switch out the shader material on the renderer
+
+                    // https://forum.unity.com/threads/how-to-change-the-material-of-certain-element-in-mesh-renderer.334089/
+                    
+                    // meshRenderer[0].color = Color.magenta;
+
+                    /*
+                    public MeshRenderer meshRenderer;
+                    public Material[] shaderMaterials;
+
+                    mat = ren.materials;
+
+                    shaderMaterials = meshRenderer.materials;
+    
+                    */
+
+
+
+                    /*
+                    shaderMaterials = meshRenderer.materials;
+
+                    shaderMaterials[0].color = Color.blue;
+
+
+                    
+                    intMaterials = new Material[cachedMaterial.Length];
+
+                    shaderMaterial1Instance = new Material
+
+                    
+                    for (int i = 0; i < intMaterials.Length;i++)
+                    {
+                        intMaterials[i] = inReplaceMat;
+                    }
+
+                    cachedRenderer.materials = intMaterials;
+
+
+                    */
+      
+                }
+
+                // then let's turn the color based on land collision
+                
+
+            
+            break;
+
+
+
             case StructureType.Residential:
 
 
@@ -175,6 +325,11 @@ public class BuildingRequirements : MonoBehaviour
                 if (c.tag == "WaterPipe" && !structureFinalized)
                 {
                     waterAvailable = true;
+                }
+
+                if (c.tag == "PowerLine" && !structureFinalized)
+                {
+                    powerAvailable = true;
                 }
 
                 if (c.tag == zonedLand && !structureFinalized)
@@ -235,6 +390,33 @@ public class BuildingRequirements : MonoBehaviour
             break; 
 
 
+
+            case StructureType.PowerLine:
+
+
+                if (( c.tag == "ResidentialLand" || c.tag == "CommercialLand" || c.tag == "IndustrialLand") && !structureFinalized)
+                {
+                    ownZonedLand = true;
+                }
+
+                if (useExtraRequirement)
+                {
+                    if (c.tag == extraRequirement && !structureFinalized)
+                    {
+                        extraRequirementFlag = true;
+                    }
+                    // else extraRequirementFlag = false;
+
+                }
+
+                if (!useExtraRequirement) extraRequirementFlag = true;
+
+                if (canBuild && ownZonedLand && extraRequirementFlag) material.color = Color.grey;
+
+
+            break;
+
+
         }
 
 
@@ -269,7 +451,11 @@ public class BuildingRequirements : MonoBehaviour
                     material.color = Color.magenta;
                 }
 
-
+                if (c.tag == "PowerLine" && !structureFinalized)
+                {
+                    powerAvailable = false;
+                    material.color = Color.magenta;
+                }
 
                 if (useExtraRequirement)
                 {
@@ -309,6 +495,40 @@ public class BuildingRequirements : MonoBehaviour
 
             break;
 
+
+
+            case StructureType.PowerLine:
+
+
+                if (( c.tag == "ResidentialLand" || c.tag == "CommercialLand" || c.tag == "IndustrialLand") && !structureFinalized)
+                {
+                    ownZonedLand = false;
+                    material.color = Color.magenta;
+                }
+
+                if (useExtraRequirement)
+                {
+                    if (c.tag == extraRequirement && !structureFinalized)
+                    {
+                        extraRequirementFlag = false;
+                        material.color = Color.magenta;
+                    }
+                }
+
+
+            break;
+
+
+            case StructureType.Land:
+
+
+                if (c.tag == "Land" && !structureFinalized) 
+                {
+                    meshRenderer.material = new Material(shaderMaterial1);
+                    canBuild = true;
+                }
+
+            break;
         }
 
     }
