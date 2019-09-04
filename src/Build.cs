@@ -64,6 +64,11 @@ public class Build : MonoBehaviour
     public GameObject waterPlant;
     public GameObject waterPipe;
 
+    public GameObject land;
+
+
+    public GameObject skyscraper1;
+
 
     int currentlySelectedBuildingCost = 0; // so that we can give back the money if the player cancels the building
 
@@ -78,6 +83,7 @@ public class Build : MonoBehaviour
     Costs costs;
     BuildingRequirements buildingRequirements;
     BitBenderGames.MobileTouchCamera mobileTouchCamera;
+    SoundInterface soundInterface;
 
 
     // do we need these
@@ -117,11 +123,17 @@ public class Build : MonoBehaviour
 
 
 
+
+    bool hideMouse = false;
+
+
+
     void Awake()
     {
         // BitBenderGames
         mobileTouchCamera = FindObjectOfType<BitBenderGames.MobileTouchCamera>();
         costs = FindObjectOfType<Costs>();
+        soundInterface = FindObjectOfType<SoundInterface>();
     }
 
 
@@ -150,6 +162,10 @@ public class Build : MonoBehaviour
 
         EventManager.StartListening("BuildWaterPlant", BuildWaterPlantEvent);
         EventManager.StartListening("BuildWaterPipe", BuildWaterPipeEvent);
+
+        // EventManager.StartListening("BuildLand", BuildLandEvent);
+
+        EventManager.StartListening ("BuyLand", BuyLandEvent);
     }
 
 
@@ -177,19 +193,37 @@ public class Build : MonoBehaviour
 
         EventManager.StopListening("BuildWaterPlant", BuildWaterPlantEvent);
         EventManager.StopListening("BuildWaterPipe", BuildWaterPipeEvent);
+
+        // EventManager.StopListening("BuildLand", BuildLandEvent);
+
+        EventManager.StopListening ("BuyLand", BuyLandEvent);
     }
 
 
+    
+
     // rewrite the rest of the methods like this with Purchasable()
 
-    void BuildHouse1Event()
+
+    public void BuildSkyscraper1Event()
     {
-        if (costs.Purchasable(costs.house1))
-        {
+        gridSize = 16.0f;
+        start = true;
+        buildingSelection = skyscraper1;
+        PlaceStartingBuilding(skyscraper1);
+    }
+
+
+
+    public void BuildHouse1Event()
+    {
+        // if (costs.Purchasable(costs.house1))
+        // {
+            gridSize = 8.0f;
             start = true;
             buildingSelection = house1; 
             PlaceStartingBuilding(house1);
-        }        
+        // }        
     }
 
 
@@ -348,6 +382,20 @@ public class Build : MonoBehaviour
 
 
 
+    public void BuyLandEvent()
+    {
+        if (costs.Purchasable(costs.land))
+        {
+            // set the snap to grid level, but keep in mind, will need to declare the snap to grid level for each build method
+            gridSize = 64.0f;
+            Debug.Log("Buying land!");
+            start = true;
+            buildingSelection = land;
+            PlaceStartingBuilding(land);
+        }        
+    }
+
+
 
 
     void SetBuilding(GameObject structure)
@@ -373,6 +421,7 @@ public class Build : MonoBehaviour
     {
 
 
+        /*
         #if UNITY_ANDROID
 
 
@@ -391,6 +440,7 @@ public class Build : MonoBehaviour
 
 
         #endif
+        */
 
 
 
@@ -421,9 +471,11 @@ public class Build : MonoBehaviour
 
         #endif
 
-        */
+        
 
         #if UNITY_EDITOR || UNITY_STANDALONE
+
+        */
 
         ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
@@ -435,9 +487,11 @@ public class Build : MonoBehaviour
         startPos.z += 100; // offset for placing the building in view position
 
 
+        Cursor.visible = false;
+
         SetBuildingInView(structure, startPos);
 
-        #endif
+        // #endif
     }
 
 
@@ -497,7 +551,8 @@ public class Build : MonoBehaviour
 
             if (lastGridPos != newGridPos)
             {
-                SoundManager.instance.PlaySingle(select, 0.3f);
+                // SoundManager.instance.PlaySingle(select, 0.3f);
+                soundInterface.PlayDragStructureSound();
                 lastGridPos = newGridPos;
             }
         }
@@ -532,7 +587,7 @@ public class Build : MonoBehaviour
   
         #endif
 
-        #if UNITY_EDITOR || UNITY_STANDALONE
+        // #if UNITY_EDITOR || UNITY_STANDALONE
 
         ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         MoveBuildingToDragPoint();
@@ -547,17 +602,23 @@ public class Build : MonoBehaviour
         if (Input.GetMouseButtonDown(0) &&
             buildingRequirements.canBuild && 
             buildingRequirements.ownZonedLand &&
-            buildingRequirements.waterAvailable && 
+            buildingRequirements.waterAvailable &&
+            buildingRequirements.powerAvailable &&
             buildingRequirements.extraRequirementFlag)
         {
             FinalizeBuilding(buildingSelection); // for desktop we finalize building by clicking - we could also tap for the mobile version
         }
 
-        // if (Input.GetMouseButtonDown(0) && !buildingRequirements.canBuild) SoundManager.instance.PlaySingle(cantBuild, 0.5f);
-        
-        if (Input.GetMouseButtonDown(1)) DestroyBuilding(); // cancel
+        // if we can't build play the appropriate sound effect
 
-        #endif       
+        if (Input.GetMouseButtonDown(0) && !buildingRequirements.canBuild) soundInterface.PlayCantBuildHereSound();
+        
+
+        // cancel building
+
+        if (Input.GetMouseButtonDown(1)) DestroyBuilding();
+
+        // #endif       
     }
 
 
@@ -585,6 +646,13 @@ public class Build : MonoBehaviour
 
     void FinalizeBuilding(GameObject gameObject)
     {
+        soundInterface.PlayFinalizeStructureSound();
+
+
+        Cursor.visible = true;
+
+
+
         Vector3 finalizedPosition; // not to be confused with finalPosition
         finalizedPosition = GO.transform.position;
         Quaternion finalizedRotation = GO.transform.rotation;
@@ -624,6 +692,9 @@ public class Build : MonoBehaviour
         buildingStages = finalGO.GetComponent<BuildingStages>();
         buildingStages.OnFinalizeBuildingEvent(finalizedRotation);
 
+
+        
+
     }
 
     
@@ -648,6 +719,7 @@ public class Build : MonoBehaviour
 
     public void DestroyBuilding()
     {
+        Cursor.visible = true;
         SoundManager.instance.PlaySingle(cancelBuilding, 0.3f);
         costs.Refund(costs.currentlySelectedBuildingCost); // give back the money on canceling building
         mobileTouchCamera.lockCamera = false;
