@@ -27,13 +27,31 @@ public class BuildingStages : MonoBehaviour
     // add some smoke effects
 
 
+    public enum StructureType
+    {
+        Residential,
+        WaterPipe,
+        PowerLine,
+        Land,
+        Skyscraper,
+        Test // anything can be built
+    }
+
+    public StructureType structureType;
+
+
+
+
 
     public void OnFinalizeBuildingEvent(Quaternion r)
     {
-        rotation = r;
-        GO = Instantiate(stage1, this.transform.position, rotation, this.transform);
-        building.SetActive(false);
-        Invoke("Stage2", 4.0f);
+        if (structureType != StructureType.Land && structureType != StructureType.Skyscraper) // land is giving us unexpected behaviour when we drag
+        {
+            rotation = r;
+            GO = Instantiate(stage1, this.transform.position, rotation, this.transform);
+            building.SetActive(false);
+            Invoke("Stage2", 4.0f);
+        }
     }
 
 
