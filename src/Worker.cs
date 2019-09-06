@@ -110,8 +110,12 @@ public class Worker : MonoBehaviour
 
     void ToggleBuildMenu()
     {
+        Debug.Log("Pop up some sim panel");
+        
+        /* decomissioned for now
         buildMenu.SetActive(buildMenuSelect);
         buildMenuSelect = !buildMenuSelect;
+        */
     }
 
 
