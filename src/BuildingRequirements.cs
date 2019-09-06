@@ -1,536 +1,800 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.Events;
 
 
 
 /*
+float volume = 1.0F;
+    
+    public AudioClip select;
+    AudioSource audio;
 
-Different proximity requirements
-
-1) is building close enough next to a road to build
-
-2) is building overlapping another building
-
-3) is the building properly zoned
+audio.PlayOneShot(select, volume);
 
 
-
-Case 1 -  is building close enough next to a road to build
-
-
-The road will be the one with the large collider
-
-So put an is trigger collider on the road, and make the collider large enough for the area
+void Start()
+    {
+        audio = GetComponent<AudioSource>();
+    }
 
 
-
-For this setup to work need:
-
-- place box collider (is trigger checked) on parent game object of the road
-- place box collider (is trigger unchecked) on parent game object of the building (house)
-- and place a rigidbody (use gravity unchecked, kinematic checked) on the parent game object of the building (house)
-
-
-so we have a bug -- if we place a new road element near an existing already built structure, then that structure's trigger collider registers,
-and the structure changes color
-
-we don't want that, 
-
-so we should have a flag which detects if this structure already has been built
-
-this will work fine, except when we later add the feature of destroying roads, which then we will need to turn the color, since a road will no
-longer be close, we will cross that bridge when we get there
-
-
-a big part of the solution here was using OnTriggerStay, instead of OnTriggerEnter
 */
 
 
 
-
-
-
-public class BuildingRequirements : MonoBehaviour
+public class Build : MonoBehaviour
 {
 
-    Build build;
-    Material material;
-
-    public Material shaderMaterial1;
-    public Material shaderMaterial2;
+    public float gridSize = 10.0f;
 
 
-    Shader shader1;
-    Shader shader2;
-
-    Renderer renderer;
-
-
-    Material blueMaterial;
-    Material pinkMaterial;
+    float volume = 1.0F;
+    public AudioClip select;
+    public AudioClip finalizedBuilding;
+    public AudioClip cantBuild;
+    public AudioClip cancelBuilding;
 
 
-    public bool canBuild = false;
-    public bool ownZonedLand = false;
-    public bool waterAvailable = false;
-    public bool powerAvailable = false;
-    public bool extraRequirementFlag = false;
+    
+    GameObject GO;
+    GameObject finalGO;
+    GameObject buildingSelection;
 
-    public bool isThisPowerOrWater = false;
+    public GameObject house1;
+    public GameObject house2;
+    public GameObject house3;
 
-    public bool structureFinalized = false; // for preventing color changes when dragging over new elements with collider events on a building that's already set down
+    public GameObject tenament1;
+    public GameObject tenament2;
+    public GameObject tenament3;
+
+    public GameObject store;
+    public GameObject facility1;
+    public GameObject facility2;
+    public GameObject factory;
+
+    public GameObject employmentOffice;
+    public GameObject office1;
+    public GameObject office2;
+    public GameObject office3;
+    public GameObject office4;
+    
+    public GameObject waterPlant;
+    public GameObject waterPipe;
+
+    public GameObject land;
+
+
+    public GameObject skyscraper1;
+    public GameObject skyscraper2;
+    public GameObject skyscraper3;
+    public GameObject skyscraper4;
+    public GameObject skyscraper5;
+    public GameObject skyscraper6;
+
+
+    int currentlySelectedBuildingCost = 0; // so that we can give back the money if the player cancels the building
+
+
+    
+    
+    Ray ray;
+    Touch touch;
+    Vector3 closestVector;
+    RaycastHit hitInfo;
+
+    Costs costs;
+    BuildingRequirements buildingRequirements;
+    BitBenderGames.MobileTouchCamera mobileTouchCamera;
+    SoundInterface soundInterface;
+
+
+    // do we need these
+    public bool startedBuild = false;
+    public bool doneBuilding = true; // set to true because normal state is not building (for moving the camera around)
+    public bool setDownStartingBuilding = false; // for HouseBuilding stages
+    public bool haveWePlacedFirstBuildingStage = false;
+
+
+    // okay so we will definitely need this, this will be what is activate by clicking on the build button
+    // 2 parts here
+    // 1 - did the user click on a building structure, (after clicking on a worker)
+    // 2 - what sort of structure did they click on?
+    // so for now let's just build one structure, and then add building types
+
+    public bool allowBuild = false;
+
+
+    // temporary ?
+
+    public bool start = false;
 
 
 
-    [System.Serializable]
-    public enum landType
-    {
-        Residential,
-        Commercial,
-        Industrial
-    };
 
-    public landType zoneType;
+    // setting current: buildingType = BuildingType.House;
 
+    enum BuildingType {
 
-    public enum StructureType
-    {
-        Residential,
-        WaterPipe,
-        PowerLine,
-        Land,
-        Skyscraper,
-        Test // anything can be built
+        House,
+        LumberMill,
+        StoneMill
+
     }
 
-    public StructureType structureType;
+    private BuildingType buildingType;
+
+
+
+
+    bool hideMouse = false;
+
+
+
+    void Awake()
+    {
+        // BitBenderGames
+        mobileTouchCamera = FindObjectOfType<BitBenderGames.MobileTouchCamera>();
+        costs = FindObjectOfType<Costs>();
+        soundInterface = FindObjectOfType<SoundInterface>();
+    }
+
+
+
+
+    void OnEnable()
+    {
+        EventManager.StartListening("BuildHouse1", BuildHouse1Event);
+        EventManager.StartListening("BuildHouse2", BuildHouse2Event);
+        EventManager.StartListening("BuildHouse3", BuildHouse3Event);
+
+        EventManager.StartListening("BuildTenament1", BuildTenament1Event);
+        EventManager.StartListening("BuildTenament2", BuildTenament2Event);
+        EventManager.StartListening("BuildTenament3", BuildTenament3Event);
+
+        EventManager.StartListening("BuildStore", BuildStoreEvent);
+        EventManager.StartListening("BuildProductionFacility1", BuildProductionFacility1Event);
+        EventManager.StartListening("BuildProductionFacility2", BuildProductionFacility2Event);
+        EventManager.StartListening("BuildFactory", BuildFactoryEvent);
+
+        EventManager.StartListening("BuildEmploymentOffice", BuildEmploymentOfficeEvent);
+        EventManager.StartListening("BuildOffice1", BuildOffice1Event);
+        EventManager.StartListening("BuildOffice2", BuildOffice2Event);
+        EventManager.StartListening("BuildOffice3", BuildOffice3Event);
+        EventManager.StartListening("BuildOffice4", BuildOffice4Event);
+
+        EventManager.StartListening("BuildWaterPlant", BuildWaterPlantEvent);
+        EventManager.StartListening("BuildWaterPipe", BuildWaterPipeEvent);
+
+        // EventManager.StartListening("BuildLand", BuildLandEvent);
+
+        EventManager.StartListening ("BuyLand", BuyLandEvent);
+    }
+
+
+
+    void OnDisable()
+    {
+        EventManager.StopListening("BuildHouse1", BuildHouse1Event);
+        EventManager.StopListening("BuildHouse2", BuildHouse2Event);
+        EventManager.StopListening("BuildHouse3", BuildHouse3Event);
+
+        EventManager.StopListening("BuildTenament1", BuildTenament1Event);
+        EventManager.StopListening("BuildTenament2", BuildTenament2Event);
+        EventManager.StopListening("BuildTenament3", BuildTenament3Event);
+
+        EventManager.StopListening("BuildStore", BuildStoreEvent);
+        EventManager.StopListening("BuildProductionFacility1", BuildProductionFacility1Event);
+        EventManager.StopListening("BuildProductionFacility2", BuildProductionFacility2Event);
+        EventManager.StopListening("BuildFactory", BuildFactoryEvent);
+
+        EventManager.StopListening("BuildEmploymentOffice", BuildEmploymentOfficeEvent);
+        EventManager.StopListening("BuildOffice1", BuildOffice1Event);
+        EventManager.StopListening("BuildOffice2", BuildOffice2Event);
+        EventManager.StopListening("BuildOffice3", BuildOffice3Event);
+        EventManager.StopListening("BuildOffice4", BuildOffice4Event);
+
+        EventManager.StopListening("BuildWaterPlant", BuildWaterPlantEvent);
+        EventManager.StopListening("BuildWaterPipe", BuildWaterPipeEvent);
+
+        // EventManager.StopListening("BuildLand", BuildLandEvent);
+
+        EventManager.StopListening ("BuyLand", BuyLandEvent);
+    }
+
+
+    
+
+    // rewrite the rest of the methods like this with Purchasable()
+
+
+    // not really events for the skycraper buttons, interfering with audio sounds
+
+    public void BuildSkyscraper1()
+    {
+        gridSize = 16.0f;
+        start = true;
+        buildingSelection = skyscraper1;
+        PlaceStartingBuilding(skyscraper1);
+    }
+
+
+
+    public void BuildSkyscraper2()
+    {
+        gridSize = 16.0f;
+        start = true;
+        buildingSelection = skyscraper2;
+        PlaceStartingBuilding(skyscraper2);
+    }
+
+
+
+    public void BuildSkyscraper3()
+    {
+        gridSize = 16.0f;
+        start = true;
+        buildingSelection = skyscraper3;
+        PlaceStartingBuilding(skyscraper3);
+    }
+
+
+
+    public void BuildSkyscraper4()
+    {
+        gridSize = 16.0f;
+        start = true;
+        buildingSelection = skyscraper4;
+        PlaceStartingBuilding(skyscraper4);
+    }
+
+
+
+    public void BuildSkyscraper5()
+    {
+        gridSize = 16.0f;
+        start = true;
+        buildingSelection = skyscraper5;
+        PlaceStartingBuilding(skyscraper5);
+    }
+
+
+
+    public void BuildSkyscraper6()
+    {
+        gridSize = 16.0f;
+        start = true;
+        buildingSelection = skyscraper6;
+        PlaceStartingBuilding(skyscraper6);
+    }
+
+
+
+
+
+
+    public void BuildHouse1Event()
+    {
+        // if (costs.Purchasable(costs.house1))
+        // {
+            gridSize = 8.0f;
+            start = true;
+            buildingSelection = house1; 
+            PlaceStartingBuilding(house1);
+        // }        
+    }
+
+
+
+    void BuildHouse2Event()
+    {
+        /*
+        if (costs.House2())
+        {
+            start = true;
+            buildingSelection = house2;
+            PlaceStartingBuilding(house2);
+        }
+        */
+    }
+
+
+
+    void BuildHouse3Event()
+    {
+        /*
+        if (costs.House3())
+        {
+            start = true;
+            buildingSelection = house3;
+            PlaceStartingBuilding(house3); 
+        }
+        */   
+    }
+
+
+
+    void BuildTenament1Event()
+    {        
+        start = true;
+        buildingSelection = tenament1;
+        PlaceStartingBuilding(tenament1);        
+    }
+
+
+
+    void BuildTenament2Event()
+    {        
+        start = true;
+        buildingSelection = tenament2;
+        PlaceStartingBuilding(tenament2);        
+    }
+
+
+
+    void BuildTenament3Event()
+    {        
+        start = true;
+        buildingSelection = tenament3;
+        PlaceStartingBuilding(tenament3);        
+    }
+
+
+
+    void BuildStoreEvent()
+    {        
+        start = true;
+        buildingSelection = store;
+        PlaceStartingBuilding(store);        
+    }
+
+
+
+    void BuildProductionFacility1Event()
+    {        
+        start = true;
+        buildingSelection = facility1;
+        PlaceStartingBuilding(facility1);        
+    }
+
+
+
+    void BuildProductionFacility2Event()
+    {        
+        start = true;
+        buildingSelection = facility2;
+        PlaceStartingBuilding(facility2);        
+    }
+
+
+
+    void BuildFactoryEvent()
+    {        
+        start = true;
+        buildingSelection = factory;
+        PlaceStartingBuilding(factory);        
+    }
+
+
+
+    void BuildEmploymentOfficeEvent()
+    {        
+        start = true;
+        buildingSelection = employmentOffice;
+        PlaceStartingBuilding(employmentOffice);        
+    }
+
+
+
+    void BuildOffice1Event()
+    {        
+        start = true;
+        buildingSelection = office1;
+        PlaceStartingBuilding(office1);        
+    }
+
+
+
+    void BuildOffice2Event()
+    {        
+        start = true;
+        buildingSelection = office2;
+        PlaceStartingBuilding(office2);        
+    }
+
+
+
+    void BuildOffice3Event()
+    {        
+        start = true;
+        buildingSelection = office3;
+        PlaceStartingBuilding(office3);        
+    }
     
 
 
-    string zonedLand = "Land";
+    void BuildOffice4Event()
+    {        
+        start = true;
+        buildingSelection = office4;
+        PlaceStartingBuilding(office4);        
+    }
+
+
+
+    void BuildWaterPlantEvent()
+    {
+        start = true;
+        buildingSelection = waterPlant;
+        PlaceStartingBuilding(waterPlant);
+    }
+
+
+
+    void BuildWaterPipeEvent()
+    {
+        start = true;
+        buildingSelection = waterPipe;
+        PlaceStartingBuilding(waterPipe);
+    }
+
+
+
+    public void BuyLandEvent()
+    {
+        if (costs.Purchasable(costs.land))
+        {
+            // set the snap to grid level, but keep in mind, will need to declare the snap to grid level for each build method
+            gridSize = 64.0f;
+            Debug.Log("Buying land!");
+            start = true;
+            buildingSelection = land;
+            PlaceStartingBuilding(land);
+        }        
+    }
+
+
+
+
+    void SetBuilding(GameObject structure)
+    {
+        if (Physics.Raycast(ray, out hitInfo)) 
+        {
+            PlaceBuilding(hitInfo.point, structure);
+            // startedBuild = true; // come back to this
+            // haveWePlacedFirstBuildingStage = true;
+        }
+    }
+
+
+
+    void SetBuildingInView(GameObject structure, Vector3 pos)
+    {
+        PlaceBuilding(pos, structure);
+    }
+
+
+
+    void PlaceStartingBuilding(GameObject structure)
+    {
+
+
+        /*
+        #if UNITY_ANDROID
+
+
+        if (Input.touchCount > 0)
+        {
+            touch = Input.GetTouch(0);
+
+            if (Physics.Raycast(ray, out hitInfo)) 
+            {
+                mobileTouchCamera.lockCamera = true;
+                PlaceBuilding(hitInfo.point, structure);
+            }
+
+            // touch phase began doesn't work here?
+        }
+
+
+        #endif
+        */
+
+
+
+        /*
+        #if UNITY_ANDROID
+        Debug.Log("Calling PlaceStartingBuilding()");
+
+        // stopping here
+
+        if (Input.touchCount > 0)
+        {
+            Debug.Log("Reached Input.touchCount > 0");
+
+            touch = Input.GetTouch(0);
+            ray = Camera.main.ScreenPointToRay(touch.position);
+            if (touch.phase == TouchPhase.Began) 
+            {
+                Debug.Log("Reached SetBuilding() Scope!!!");
+                // SetBuilding();
+                if (Physics.Raycast(ray, out hitInfo)) 
+                {
+                    PlaceBuilding(hitInfo.point, buildSelection);
+                    // startedBuild = true; // come back to this
+                    // haveWePlacedFirstBuildingStage = true;
+                }
+            }
+        }
+
+        #endif
+
+        
+
+        #if UNITY_EDITOR || UNITY_STANDALONE
+
+        */
+
+        ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+
+        // SetBuilding(structure); // old way -- placing building in starting position of mouse, but this is covered under the menu, so let's move the building up a little
+
+
+        Vector3 startPos = Input.mousePosition;
+
+        startPos.z += 100; // offset for placing the building in view position
+
+
+        Cursor.visible = false;
+
+        SetBuildingInView(structure, startPos);
+
+        // #endif
+    }
+
+
+
+    void Example()
+    {
+        switch (buildingType)
+        {
+            case BuildingType.House:
+                
+                // commands
+                break;
+
+            case BuildingType.LumberMill:
+                // commands
+                break;
+        }
+    }
+
+
+
+    public Vector3 GetNearestPointOnGrid(Vector3 position)
+    {
+        position -= transform.position;
+        int xCount = Mathf.RoundToInt(position.x / gridSize);
+        int zCount = Mathf.RoundToInt(position.z / gridSize);
+        int yCount = 0;
+        closestVector = new Vector3((float)xCount * gridSize, (float)yCount, (float)zCount * gridSize);
+        closestVector += transform.position;
+        return closestVector;
+    }
+
+
+
+    Vector2 PlaceBuilding(Vector3 clickPoint, GameObject gameObject)
+    {
+        var finalPosition = GetNearestPointOnGrid(clickPoint);
+        GO = Instantiate(gameObject, finalPosition, Quaternion.identity, this.transform);
+        buildingRequirements = GO.GetComponent<BuildingRequirements>(); 
+        return (Vector2)finalPosition;
+    }
+
+
+
+    Vector3 lastGridPos = new Vector3(0.0f, 0.0f, 0.0f);
+    Vector3 newGridPos = new Vector3(0.0f, 0.0f, 0.0f);
+
+
+    void MoveBuildingToDragPoint()
+    {
+        if (Physics.Raycast(ray, out hitInfo))
+        {
+            var gridPos = GetNearestPointOnGrid(hitInfo.point);
+            GO.transform.position = gridPos;
+
+            newGridPos = gridPos;
+
+            if (lastGridPos != newGridPos)
+            {
+                // SoundManager.instance.PlaySingle(select, 0.3f);
+                soundInterface.PlayDragStructureSound();
+                lastGridPos = newGridPos;
+            }
+        }
+    }
+
+
+
+    void DragBuilding()
+    {
+        #if UNITY_ANDROID
+
+        if (Input.touchCount > 0)
+        {
+            touch = Input.GetTouch(0);
+            ray = Camera.main.ScreenPointToRay(touch.position);
+            // if (touch.phase == TouchPhase.Began) MoveBuildingToDragPoint();
+            if (GO != null) MoveBuildingToDragPoint();
+
+
+            // this will finalize the building no matter where we double tap
+
+            if(Input.touches[0].tapCount == 2)
+            {
+                EventManager.TriggerEvent("LumberMillEstablished");
+                FinalizeBuilding(buildingSelection);
+                mobileTouchCamera.lockCamera = false;
+            } 
+
+
+            // if (double tap) FinalizeBuilding(buildSelection);
+        }
+  
+        #endif
+
+        // #if UNITY_EDITOR || UNITY_STANDALONE
+
+        ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        MoveBuildingToDragPoint();
+
+        /*
+        Debug.Log("buildingRequirements.canBuild: " + buildingRequirements.canBuild);
+        Debug.Log("buildingRequirements.ownZonedLand: " + buildingRequirements.ownZonedLand);
+        Debug.Log("buildingRequirements.waterAvailable: " + buildingRequirements.waterAvailable);
+        Debug.Log("buildingRequirements.extraRequirementFlag: " + buildingRequirements.extraRequirementFlag);
+        */
+    
+        if (Input.GetMouseButtonDown(0) &&
+            buildingRequirements.canBuild && 
+            buildingRequirements.ownZonedLand &&
+            buildingRequirements.waterAvailable &&
+            buildingRequirements.powerAvailable &&
+            buildingRequirements.extraRequirementFlag)
+        {
+            FinalizeBuilding(buildingSelection); // for desktop we finalize building by clicking - we could also tap for the mobile version
+        }
+
+        // if we can't build play the appropriate sound effect
+
+        if (Input.GetMouseButtonDown(0) && !buildingRequirements.canBuild) soundInterface.PlayCantBuildHereSound();
+        
+
+        // cancel building
+
+        if (Input.GetMouseButtonDown(1)) DestroyBuilding();
+
+        // #endif       
+    }
+
+
+
+    void RotateBuilding()
+    {
+        if (Input.GetAxis("Mouse ScrollWheel") > 0)
+        {
+            mobileTouchCamera.lockCamera = true;
+            // GO.transform.Rotate(Vector3.up * 3.0f, Space.Self);
+            GO.transform.Rotate(0, 90, 0);
+            SoundManager.instance.PlaySingle(select, 0.3f);
+        }
+
+        if (Input.GetAxis("Mouse ScrollWheel") < 0)
+        {
+            mobileTouchCamera.lockCamera = true;
+            // GO.transform.Rotate(Vector3.up * 3.0f, Space.Self);
+            GO.transform.Rotate(0, -90, 0);
+            SoundManager.instance.PlaySingle(select, 0.3f);
+        }
+    }
+
+
+
+    void FinalizeBuilding(GameObject gameObject)
+    {
+        soundInterface.PlayFinalizeStructureSound();
+
+
+        Cursor.visible = true;
+
+
+
+        Vector3 finalizedPosition; // not to be confused with finalPosition
+        finalizedPosition = GO.transform.position;
+        Quaternion finalizedRotation = GO.transform.rotation;
+
+        Destroy(GO);
+
+        
+
+        finalGO = (GameObject)Instantiate(gameObject, finalizedPosition, finalizedRotation, this.transform);
+
+
+
+        // for preventing the structure changing colors on collider event when we have already set down the building
+        buildingRequirements = finalGO.GetComponent<BuildingRequirements>();
+        buildingRequirements.structureFinalized = true;
+
+
+        start = false;
+
+        mobileTouchCamera.lockCamera = false;
+
+        GetComponent<AudioSource>().PlayOneShot(finalizedBuilding, volume);
+
+
+        // here we will need some way to trigger build events based on building type, we could use the previous events but those are triggered when we first set the building
+        // and the purpose here is that we don't want to replace the first build stage right away when the player is still dragging the building, but only when they set the building down
+        // which will be another event, so here we will need to trigger an event, and we already have the current build selection type state set above to go by
+
+        // EventManager.TriggerEvent("House1Finalized");
+        
+        // what if instead we just simply grab the build component on the object
+
+        // this way the whole building stages component will contain the different model stages attached to each building object, so we simply drag in the appropriate stages for each game object
+
+        BuildingStages buildingStages;
+
+        buildingStages = finalGO.GetComponent<BuildingStages>();
+        buildingStages.OnFinalizeBuildingEvent(finalizedRotation);
+
+
+        
+
+    }
 
     
 
-    public bool useExtraRequirement = false;
-    public string extraRequirement = "...";
 
 
-    MeshRenderer meshRenderer;
-    // public Material[] shaderMaterials;
+    // non mobile?
+
+    // currently not being used ?
+    void CancelBuildingNonMobile()
+    {
+        // not sure why the above CancelBuildingNonMobile is not being called on right click at line 469, for now we will put the functions here that should really go in CancelBuildingNonMobile
+        // if there are any bad state resets, that's because we are not calling CancelBuildingNonMobile
+
+        mobileTouchCamera.lockCamera = false;
+        allowBuild = false;
+        startedBuild = false;
+        Destroy(GO);
+    }
 
 
-    /*
+
+    public void DestroyBuilding()
+    {
+        Cursor.visible = true;
+        SoundManager.instance.PlaySingle(cancelBuilding, 0.3f);
+        costs.Refund(costs.currentlySelectedBuildingCost); // give back the money on canceling building
+        mobileTouchCamera.lockCamera = false;
+        Destroy(GO);
+    }
+
+
+
     void Update()
     {
-        Debug.Log("canBuild: " + canBuild);
-        Debug.Log("ownZonedLand: " + ownZonedLand);
-        Debug.Log("waterAvailable: " + waterAvailable);
-    }
-    */
-
-
-
-
-
-    void Start()
-    {
-
-        Renderer renderer = GetComponentInChildren<Renderer>();
-
-
-
-
-        // if we build a water pipe first with nothing else on the map to collide, we will never reach the water pipe set bool to true in the collision code
-
-        if (isThisPowerOrWater)
+        if (start && GO != null)
         {
-            waterAvailable = true;
-            canBuild = true; // don't have to check for roads with water pipes
-            extraRequirementFlag = true; // wtf
+            DragBuilding();
+            RotateBuilding();
         }
-
-
-        if (structureType == StructureType.Land)
-        {
-            // pass all the requirements to build land
-            
-            canBuild = true;
-            ownZonedLand = true;
-            waterAvailable = true;
-            powerAvailable = true;
-            extraRequirementFlag = true;
-
-            meshRenderer = gameObject.GetComponentInChildren<MeshRenderer>();
-
-
-        }
-
-
-        // pass all the requirements for a test structure
-
-        if (structureType == StructureType.Test)
-        {
-            canBuild = true;
-            ownZonedLand = true;
-            waterAvailable = true;
-            powerAvailable = true;
-            extraRequirementFlag = true;
-        }
-
-
-        
-        
-
-        material = GetComponentInChildren<Renderer>().material;
-        build = FindObjectOfType<Build>();
-
-        blueMaterial = (Material)Resources.Load("Blue", typeof(Material));
-        pinkMaterial = (Material)Resources.Load("Pink", typeof(Material));
-
-        // a new game object is created when set down, so we should check if the structure is finalized before intializing to the unavailable color
-        if (!structureFinalized) material.color = Color.magenta; // we should start off with the unavailable material, since if starting we never have the chance to leave a collider we will get an available color
-    
-
-        if (zoneType == landType.Residential)
-        {
-            zonedLand = "ResidentialLand";
-        }
-
-        if (zoneType == landType.Commercial)
-        {
-            zonedLand = "CommercialLand";
-        }
-
-        if (zoneType == landType.Industrial)
-        {
-            zonedLand = "IndustrialLand";
-        }
-
-    }
-
-
-
-
-    void OnTriggerStay(Collider c)
-    {
-        // Debug.Log("Reached on Trigger Stay scope");
-
-        switch(structureType)
-        {
-
-
-            case StructureType.Land:
-
-                /*
-                canBuild = True;
-                waterAvailable = true;
-                powerAvailable = true;
-                ownZonedLand = true;
-                */
-
-                // let's start by detecting if we are colliding with an already placed land tile
-
-
-                // go.GetComponent<MeshRenderer>();
-
-                // this functionality is a little different (backwards) then building houses
-                // a house will want to require a road collider and etc,
-                // while a land plot will want to require no other land colliders
-
-
-                if (c.tag == "Land" && !structureFinalized)
-                {
-                    Debug.Log("Detecting land collision!");
-
-
-
-                    meshRenderer.material = new Material(shaderMaterial2);
-
-                    // so here we cannot build
-
-                    canBuild = false;
-
-
-
-
-
-
-
-
-
-
-
-
-
-                    // let's try to switch out the shader material on the renderer
-
-                    // https://forum.unity.com/threads/how-to-change-the-material-of-certain-element-in-mesh-renderer.334089/
-                    
-                    // meshRenderer[0].color = Color.magenta;
-
-                    /*
-                    public MeshRenderer meshRenderer;
-                    public Material[] shaderMaterials;
-
-                    mat = ren.materials;
-
-                    shaderMaterials = meshRenderer.materials;
-    
-                    */
-
-
-
-                    /*
-                    shaderMaterials = meshRenderer.materials;
-
-                    shaderMaterials[0].color = Color.blue;
-
-
-                    
-                    intMaterials = new Material[cachedMaterial.Length];
-
-                    shaderMaterial1Instance = new Material
-
-                    
-                    for (int i = 0; i < intMaterials.Length;i++)
-                    {
-                        intMaterials[i] = inReplaceMat;
-                    }
-
-                    cachedRenderer.materials = intMaterials;
-
-
-                    */
-      
-                }
-
-                // then let's turn the color based on land collision
-                
-
-            
-            break;
-
-
-
-            case StructureType.Residential:
-
-
-                if (c.tag == "Road" && !structureFinalized)
-                {
-                    canBuild = true;
-                }
-
-                if (c.tag == "WaterPipe" && !structureFinalized)
-                {
-                    waterAvailable = true;
-                }
-
-                if (c.tag == "PowerLine" && !structureFinalized)
-                {
-                    powerAvailable = true;
-                }
-
-                if (c.tag == zonedLand && !structureFinalized)
-                {
-                    ownZonedLand = true;
-                }
-
-                if (useExtraRequirement)
-                {
-                    if (c.tag == extraRequirement && !structureFinalized)
-                    {
-                        extraRequirementFlag = true;
-                    }
-                    // else extraRequirementFlag = false;
-
-                }
-
-                if (!useExtraRequirement) extraRequirementFlag = true;
-
-                if (canBuild && ownZonedLand && extraRequirementFlag && waterAvailable) material.color = Color.grey;
-
-                // Debug.Log("canBuild: " + canBuild);
-                // Debug.Log("ownZonedLand: " + ownZonedLand);
-                // Debug.Log("extraRequirementFlag: " + extraRequirementFlag);
-
-            break;
-
-
-
-            case StructureType.WaterPipe:
-
-                Debug.Log("WATER SCOPE!!!");
-
-                canBuild = true; // don't have to check for roads with water pipes
-                waterAvailable = true; // we don't need to check for other water pipes, perhaps water plants later
-
-
-                if (( c.tag == "ResidentialLand" || c.tag == "CommercialLand" || c.tag == "IndustrialLand") && !structureFinalized)
-                {
-                    ownZonedLand = true;
-                }
-
-                if (useExtraRequirement)
-                {
-                    if (c.tag == extraRequirement && !structureFinalized)
-                    {
-                        extraRequirementFlag = true;
-                    }
-                    // else extraRequirementFlag = false;
-
-                }
-
-                if (!useExtraRequirement) extraRequirementFlag = true;
-
-                if (canBuild && ownZonedLand && extraRequirementFlag) material.color = Color.grey;
-
-
-            break; 
-
-
-
-            case StructureType.PowerLine:
-
-
-                if (( c.tag == "ResidentialLand" || c.tag == "CommercialLand" || c.tag == "IndustrialLand") && !structureFinalized)
-                {
-                    ownZonedLand = true;
-                }
-
-                if (useExtraRequirement)
-                {
-                    if (c.tag == extraRequirement && !structureFinalized)
-                    {
-                        extraRequirementFlag = true;
-                    }
-                    // else extraRequirementFlag = false;
-
-                }
-
-                if (!useExtraRequirement) extraRequirementFlag = true;
-
-                if (canBuild && ownZonedLand && extraRequirementFlag) material.color = Color.grey;
-
-
-            break;
-
-
-        }
-
-
-        
-    }
-
-
-
-    void OnTriggerExit(Collider c)
-    {
-        switch(structureType)
-        {
-            case StructureType.Residential:
-
-
-
-                if (c.tag == "Road" && !structureFinalized) 
-                {
-                    canBuild = false;
-                    material.color = Color.magenta;
-                }
-
-                if (c.tag == zonedLand && !structureFinalized) 
-                {
-                    ownZonedLand = false;
-                    material.color = Color.magenta;
-                }
-
-                if (c.tag == "WaterPipe" && !structureFinalized)
-                {
-                    waterAvailable = false;
-                    material.color = Color.magenta;
-                }
-
-                if (c.tag == "PowerLine" && !structureFinalized)
-                {
-                    powerAvailable = false;
-                    material.color = Color.magenta;
-                }
-
-                if (useExtraRequirement)
-                {
-                    if (c.tag == extraRequirement && !structureFinalized)
-                    {
-                        extraRequirementFlag = false;
-                        material.color = Color.magenta;
-                    }
-                }
-
-                // Debug.Log("canBuild: " + canBuild);
-                // Debug.Log("ownZonedLand: " + ownZonedLand);
-                // Debug.Log("extraRequirementFlag: " + extraRequirementFlag);
-
-            break;
-
-
-
-            case StructureType.WaterPipe:
-
-
-                if (( c.tag == "ResidentialLand" || c.tag == "CommercialLand" || c.tag == "IndustrialLand") && !structureFinalized)
-                {
-                    ownZonedLand = false;
-                    material.color = Color.magenta;
-                }
-
-                if (useExtraRequirement)
-                {
-                    if (c.tag == extraRequirement && !structureFinalized)
-                    {
-                        extraRequirementFlag = false;
-                        material.color = Color.magenta;
-                    }
-                }
-
-
-            break;
-
-
-
-            case StructureType.PowerLine:
-
-
-                if (( c.tag == "ResidentialLand" || c.tag == "CommercialLand" || c.tag == "IndustrialLand") && !structureFinalized)
-                {
-                    ownZonedLand = false;
-                    material.color = Color.magenta;
-                }
-
-                if (useExtraRequirement)
-                {
-                    if (c.tag == extraRequirement && !structureFinalized)
-                    {
-                        extraRequirementFlag = false;
-                        material.color = Color.magenta;
-                    }
-                }
-
-
-            break;
-
-
-            case StructureType.Land:
-
-
-                if (c.tag == "Land" && !structureFinalized) 
-                {
-                    meshRenderer.material = new Material(shaderMaterial1);
-                    canBuild = true;
-                }
-
-            break;
-        }
-
     }
 
 
