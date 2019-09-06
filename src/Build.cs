@@ -68,6 +68,11 @@ public class Build : MonoBehaviour
 
 
     public GameObject skyscraper1;
+    public GameObject skyscraper2;
+    public GameObject skyscraper3;
+    public GameObject skyscraper4;
+    public GameObject skyscraper5;
+    public GameObject skyscraper6;
 
 
     int currentlySelectedBuildingCost = 0; // so that we can give back the money if the player cancels the building
@@ -205,13 +210,68 @@ public class Build : MonoBehaviour
     // rewrite the rest of the methods like this with Purchasable()
 
 
-    public void BuildSkyscraper1Event()
+    // not really events for the skycraper buttons, interfering with audio sounds
+
+    public void BuildSkyscraper1()
     {
         gridSize = 16.0f;
         start = true;
         buildingSelection = skyscraper1;
         PlaceStartingBuilding(skyscraper1);
     }
+
+
+
+    public void BuildSkyscraper2()
+    {
+        gridSize = 16.0f;
+        start = true;
+        buildingSelection = skyscraper2;
+        PlaceStartingBuilding(skyscraper2);
+    }
+
+
+
+    public void BuildSkyscraper3()
+    {
+        gridSize = 16.0f;
+        start = true;
+        buildingSelection = skyscraper3;
+        PlaceStartingBuilding(skyscraper3);
+    }
+
+
+
+    public void BuildSkyscraper4()
+    {
+        gridSize = 16.0f;
+        start = true;
+        buildingSelection = skyscraper4;
+        PlaceStartingBuilding(skyscraper4);
+    }
+
+
+
+    public void BuildSkyscraper5()
+    {
+        gridSize = 16.0f;
+        start = true;
+        buildingSelection = skyscraper5;
+        PlaceStartingBuilding(skyscraper5);
+    }
+
+
+
+    public void BuildSkyscraper6()
+    {
+        gridSize = 16.0f;
+        start = true;
+        buildingSelection = skyscraper6;
+        PlaceStartingBuilding(skyscraper6);
+    }
+
+
+
 
 
 
