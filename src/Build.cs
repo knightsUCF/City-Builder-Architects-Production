@@ -288,16 +288,17 @@ public class Build : MonoBehaviour
 
 
 
-    void BuildHouse2Event()
+    public void BuildHouse2Event()
     {
-        /*
-        if (costs.House2())
-        {
+        
+        // if (costs.House2())
+        // {
+            gridSize = 16.0f;
             start = true;
             buildingSelection = house2;
             PlaceStartingBuilding(house2);
-        }
-        */
+        // }
+        
     }
 
 
@@ -751,6 +752,9 @@ public class Build : MonoBehaviour
 
         buildingStages = finalGO.GetComponent<BuildingStages>();
         buildingStages.OnFinalizeBuildingEvent(finalizedRotation);
+
+
+        EventManager.TriggerEvent("PlacedHouse"); // for sending notification to SimMovementControls
 
 
         
