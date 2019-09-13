@@ -17,12 +17,8 @@ public class SimSelector : MonoBehaviour
 
     void OnMouseDown()
     {
-
         panel.SetActive(toggle);
-
         toggle = !toggle;
-
-        Debug.Log(simData.level);
     }
 
 }
