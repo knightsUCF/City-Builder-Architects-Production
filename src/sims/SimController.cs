@@ -67,6 +67,7 @@ public class SimController : MonoBehaviour
 
     public void Move(Vector3 destination)
     {
+        checkForStop = true;
         agent.SetDestination(destination);
     }
 
