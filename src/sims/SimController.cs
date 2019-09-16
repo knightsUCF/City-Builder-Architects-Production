@@ -24,7 +24,7 @@ Use:
 
 
 
-Move(Vector3 destination) - send an agent to a vector position. make sure they component is level with terrain
+Move(Vector3 destination) - send an agent to a vector position. make sure the component is level with terrain
 
 MoveToMouseClick() - moves the agent to where the user clicks
 
@@ -54,8 +54,6 @@ public class SimController : MonoBehaviour
     void Start()
     {
         agent.updateRotation = false; // rotation handled by ThirdPersonCharacter
-        Vector3 moveDestination = new Vector3(100.0f, -0.39f, 100.0f);
-        Move(moveDestination);
     }
 
 
