@@ -31,6 +31,13 @@ GENERAL
 
 - state machine
 
+- to be classy sims will not show any sort of pop up status icons, instead they will communicate their feelings with animations
+
+- if they are displeased, they will shake their head, with their hands on the hips, etc
+
+- we can create our own custom animations if needed, especially if they are stationary, walking, running animations are the hardest
+
+
 
     
 EXAMPLE: Animation as the end goal in an "on pattern action" (PATTERN.MEET_SIM)
