@@ -183,7 +183,14 @@ class AI
             Debug.Log("Agent is moving");
         }
 
-    }  
+    } 
+
+
+
+    public void RunOnPatternActions()
+    {
+
+    }
 
 
 
