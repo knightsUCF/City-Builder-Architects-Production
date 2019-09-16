@@ -44,7 +44,7 @@ StopAgentOnArrival() - stops agent velocity and movement when they reach their d
 public class SimController : MonoBehaviour
 {
     public Camera camera;
-    public NavMeshAgent agent;
+    public NavMeshAgent agent; // drag navmesh agent here
     public ThirdPersonCharacter character; // drag third person character script on the object to the slot
 
     bool checkForStop = false;
