@@ -76,7 +76,7 @@ class AI
 
     void Update()
     {
-        Run();
+        RunOnStateActions();
     }
 
 
@@ -95,5 +95,23 @@ class AI
                 Debug.Log("Agent is moving");
             }
         }
+    }
+
+
+
+    // to be more efficient run on state actions, instead of constantly checking in update
+
+    public bool RunOnStateActions()
+    {
+        if (CURRENT_STATE == 0)
+        {
+            Debug.Log("Agent in idle");
+        }
+
+        else if (CURRENT_STATE == 1)
+        {
+            Debug.Log("Agent is moving");
+        }
+
     }   
 }
