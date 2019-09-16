@@ -1,5 +1,11 @@
 
+/*
 
+AI class for managing the state machine of the sim, and also calling actions on state and on pattern
+
+
+
+*/
 
 
 
