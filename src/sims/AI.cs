@@ -32,7 +32,8 @@
 
     /*
     
-    Example
+    EXAMPLE: Animation as the end goal in an "on pattern action" (PATTERN.MEET_SIM)
+
 
     1. Once done with an action we run RunOnStateActions()
 
@@ -63,6 +64,8 @@
             // find closes sim's coordinates
 
             // walk over there and waive to them
+
+            // the animation is the end goal in this example
         }
 
 
