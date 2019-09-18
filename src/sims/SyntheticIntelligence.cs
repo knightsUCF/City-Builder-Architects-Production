@@ -82,8 +82,8 @@ public class SyntheticIntelligence : MonoBehaviour
 
     public bool runWanderRoutine = true;
 
-
-    public float arrivalDistanceWithinRange = 3.0f;
+    [SerializeField]
+    private float arrivalDistanceWithinRange = 3.0f;
 
 
 
@@ -111,6 +111,9 @@ public class SyntheticIntelligence : MonoBehaviour
 
 
         StartCoroutine(Wander());
+
+
+        WalkToRandomLocation(); // so we set a difference from start destination to get going
         
 
 
@@ -148,7 +151,7 @@ public class SyntheticIntelligence : MonoBehaviour
     bool HaveWeArrived()
     {
         float distance = Vector3.Distance(transform.position, destination);
-        return arrivalDistanceWithinRange >= distance;
+        return arrivalDistanceWithinRange >= distance; // 3 >= 5
     }
 
 
@@ -158,7 +161,6 @@ public class SyntheticIntelligence : MonoBehaviour
 
     IEnumerator Pause()
     {
-        // waiting = false;
         runWanderRoutine = false;
         yield return new WaitForSeconds(2.0f);
     }
@@ -167,26 +169,14 @@ public class SyntheticIntelligence : MonoBehaviour
     
     IEnumerator Move()
     {
-
         WalkToRandomLocation();
-
         yield return new WaitForSeconds(2.0f);
-        /*
-        if (HaveWeArrived())
-        {
-            // reachedDestination = true;
-            StartCoroutine(Pause());
-            if (!waiting) WalkToRandomLocation();
-        }
-        */
-        // else reachedDestination = false;
     }
     
     
 
     IEnumerator Wander()
     {
-        // while(reachedDestination)
         while(runWanderRoutine)
         {
             if (HaveWeArrived()) StartCoroutine(Move());
@@ -197,15 +187,12 @@ public class SyntheticIntelligence : MonoBehaviour
 
 
     
-    
-
     float RandomizeFromRange(float min, float max)
     {
         return Random.Range(min, max);
     }
 
 
-    // includes the sleep, wait method
 
     void WalkToRandomLocation()
     {
@@ -213,10 +200,7 @@ public class SyntheticIntelligence : MonoBehaviour
         float z = RandomizeFromRange(currentPosition.z, currentPosition.z + zMaxRange);
 
         destination = new Vector3(x, 0.1f, z);
-
         simController.Move(destination);
-
-        waiting = true;
     }
     
 
