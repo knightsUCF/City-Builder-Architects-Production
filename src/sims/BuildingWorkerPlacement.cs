@@ -16,6 +16,20 @@ public class BuildingWorkerPlacement : MonoBehaviour
 
 
 
+    // drag in a cube, and then turn off mesh, this is the door position the sim will go to
+
+    public GameObject doorPos;
+    private Vector3 destination;
+
+
+
+    void OnEnable()
+    {
+        destination = doorPos.transform.position;
+    }
+
+
+
     void OnMouseDown()
     {
         foreach (GameObject sim in sims)
@@ -23,6 +37,7 @@ public class BuildingWorkerPlacement : MonoBehaviour
             if (sim.GetComponent<SimData>().selected)
             {
                 placedSimID = sim.GetComponent<SimData>().ID;
+                sim.GetComponent<SimController>().WalkToBuilding(destination);
             }
         }
 
