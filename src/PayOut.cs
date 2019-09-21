@@ -13,6 +13,8 @@ public class PayOut : MonoBehaviour
     public GameObject[] houses2;
     public GameObject[] houses3;
 
+    public GameObject[] workers; // populated by the below search gameobjects and then foreach
+
 
     public int house1rent = 10000;
     public int house2rent = 200;
@@ -49,6 +51,28 @@ public class PayOut : MonoBehaviour
         }
 
         tokens.UpdateMoney();
+    }
+
+
+    public void UpdateWorkerPay()
+    {
+        Debug.Log("Updating worker pay!");
+
+        workers = GameObject.FindGameObjectsWithTag("Sim");
+
+        foreach (GameObject worker in workers)
+        {
+            // tokens.money += house1rent;
+
+            if (worker.GetComponent<SimData>().working)
+            {
+                Debug.Log("Sim is working! Making money!");
+
+                // since we are turning off the sim game object when they arrive at the destination,
+                // we will need a centralized data repo which will tells us how to pay out, per workers
+                // probably in SimsData.cs
+            }
+        }
     }
 
 
