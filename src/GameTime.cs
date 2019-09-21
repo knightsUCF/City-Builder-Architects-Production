@@ -61,7 +61,8 @@ public class GameTime : MonoBehaviour
 
     void DoMonthTurnActions()
     {
-        payOut.UpdateRent();
+        // payOut.UpdateRent();
+        payOut.UpdateWorkerPay();
     }
 
 
@@ -69,13 +70,13 @@ public class GameTime : MonoBehaviour
    void DoTurnActions()
    {
        
-       pieCharts.Set();
+       // pieCharts.Set();
 
        
        
        // update resources
        
-       payOut.UpdatePower();
+       // payOut.UpdatePower();
 
 
 
