@@ -44,7 +44,7 @@ StopAgentOnArrival() - stops agent velocity and movement when they reach their d
 public class SimController : MonoBehaviour
 {
     public Camera camera;
-    public NavMeshAgent agent; // drag navmesh agent here
+    public NavMeshAgent agent;
     public ThirdPersonCharacter character; // drag third person character script on the object to the slot
 
     bool checkForStop = false;
@@ -73,6 +73,20 @@ public class SimController : MonoBehaviour
 
 
 
+    public void Wander()
+    {
+        // some sort of random wandering method
+
+
+        // let's start with just a simple movement
+
+        Vector3 destination = new Vector3(10.0f, 0.0f, 10.0f); // what is the y value here?
+
+        Move(destination);
+    }
+
+
+
     public void MoveToMouseClick()
     {
         checkForStop = true; // turn on the check for stop flag, so we begin to check on everyupdate frame if the agent has arrived, at the end of this action we turn check for stop back to false, so we are not checking every update frame needlessly
@@ -94,6 +108,19 @@ public class SimController : MonoBehaviour
             character.Move(Vector3.zero, false, false); // stop moving
             checkForStop = false;
         }
+    }
+
+
+    public void StopAgent()
+    {
+        character.Move(Vector3.zero, false, false); 
+    }
+
+
+
+    public void WalkToBuilding(Vector3 destination)
+    {
+        Debug.Log("Walking to building! Destination: " + destination);
     }
 
 
