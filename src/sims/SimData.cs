@@ -17,4 +17,6 @@ public class SimData : MonoBehaviour
     public string name = "Joe";
     public int level = 1;
     public bool selected = false;
+    public bool working = false;
+    public int money = 0;
 }
