@@ -27,6 +27,7 @@ public class WorkDoor : MonoBehaviour
     {
         if (c.tag == "Sim")
         {
+            c.gameObject.GetComponent<SimData>().working = true;  // check later to see how many times we are calling this, probably want to call just once
             c.gameObject.SetActive(false);
         }
 
