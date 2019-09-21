@@ -121,6 +121,9 @@ public class SimController : MonoBehaviour
     public void WalkToBuilding(Vector3 destination)
     {
         Debug.Log("Walking to building! Destination: " + destination);
+        agent.SetDestination(destination);
+        checkForStop = true;
+        Move(destination);
     }
 
 
